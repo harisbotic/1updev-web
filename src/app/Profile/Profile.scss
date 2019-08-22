@@ -1,0 +1,229 @@
+@import "../../Shared/variables.scss";
+
+.profile {
+    padding: 20px 0;
+
+    .profile-visual {
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .tag {
+        height: 40px;
+        background-color: $color-primary;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        line-height: 40px;
+        border-radius: $border-radius $border-radius 0 0;
+    }
+
+    .photo-wrap {
+        background-color: white;
+        position: relative;
+    }
+
+    .photo {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+        margin-top: -1px;
+    }
+
+    .plusOne-wrap {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 55px;
+        height: 30px;
+        line-height: 32px;
+        background-color: $color-primary;
+        border-radius: 20px 0 0 0;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .icon {
+        position: absolute;
+        bottom: 18px;
+        right: 43px;
+        font-size: 14px;
+    }
+
+    .profile-text {
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .name-wrap {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .nickname {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .name {
+        font-size: 14px;
+    }
+
+    .label-wrap {
+        margin: 20px 0;
+    }
+
+    .label {
+        position: relative;
+        height: 32px;
+        line-height: 32px;
+        color: white;
+        padding-left: 15px;
+        border-radius: $border-radius;
+        margin: 7px 0;
+        font-weight: bold;
+    }
+
+    .points {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        line-height: 32px;
+        width: 60px;
+        text-align: center;
+        border-radius: 0 $border-radius $border-radius 0;
+    }
+
+    .medal-wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .start_medal-wrap,
+    .end_medal-wrap {
+        display: flex;
+    }
+
+    .medal_text-wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 20px;
+    }
+
+    .medal_text-title {
+        margin-top: auto;
+        font-weight: bold;
+    }
+
+    .medal_text-points {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .bronze {
+        color: $color-bronze;
+    }
+
+    .silver {
+        color: $color-silver;
+    }
+
+    .gold {
+        color: $color-gold;
+    }
+
+    .platinum {
+        color: $color-platinum;
+    }
+
+    .diamond {
+        color: $color-diamond;
+    }
+
+    .master {
+        color: $color-master;
+    }
+
+    .progress_bar-wrap {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .progress {
+        height: 20px;
+    }
+
+    .progress-bar {
+        // background-color: $color-bronze !important;
+        font-weight: bold;
+        padding-left: 15px;
+    }
+
+    .progress_text {
+        display: flex;
+        width: fit-content;
+        background-color: transparentize($color-gray-dark, 0.7);
+        border-radius: $border-radius;
+        padding: 0 10px;
+    }
+
+    .section_title {
+        font-size: 14px;
+        font-weight: bold;
+        border-bottom: 2px solid $color-gray;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .chart {
+        position: relative;
+        padding: 20px 0;
+        min-height: 300px;
+        cursor: pointer;
+    }
+
+    .ranking_table-wrap .rankingRow:first-child,
+    .activity_table-wrap .activityRow:first-child {
+        border-radius: $border-radius $border-radius 0 0;
+    }
+
+    .ranking_table-wrap .rankingRow:last-child,
+    .activity_table-wrap .activityRow:last-child {
+        border-radius: 0 0 $border-radius $border-radius;
+    }
+
+    .activity_table-wrap {
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .myActivity {
+        max-height: 830px;
+        overflow-y: scroll;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .col-left {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .profile-visual {
+            padding-right: 10px;
+        }
+
+        .profile-text {
+            padding-left: 10px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .section_title {
+            margin-top: 0px;
+        }
+    }
+}
