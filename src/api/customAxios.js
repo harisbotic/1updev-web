@@ -12,7 +12,7 @@ const axiosCall = () => {
             grant_type: "refresh_token",
             refresh_token: localStorage.getItem("refresh_token"),
             resource: 'https://localhost:5001',
-            scope: 'offline_access oudAPI'
+            scope: 'offline_access'
         }), { headers: clientAuthHeader }).then((response) => {
             resolve(response.data);
         }).catch((error) => {
