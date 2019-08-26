@@ -50,7 +50,7 @@ const Login = props => {
                         className="input_default"
                         value={credentials.email}
                         onChange={handleChange}
-                    />
+                    /> 
                     <div className="label">Password</div>
                     <input
                         type="password"
