@@ -7,12 +7,12 @@ export default {
         username: credentials.email,
         password: credentials.password,
         resource: 'https://localhost:5001',
-        scope: 'offline_access'
+        scope: 'offline_access oudAPI'
     }), { headers: clientAuthHeader }),
     refreshToken: () => axios.post(`${BASE_AUTH_URL}/connect/token`, toFormData({
         grant_type: "refresh_token",
         refresh_token: localStorage.getItem("refresh_token"),
         resource: 'https://localhost:5001',
-        scope: 'offline_access'
+        scope: 'offline_access oudAPI'
     }), { headers: clientAuthHeader }),
 }
