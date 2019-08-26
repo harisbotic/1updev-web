@@ -9,12 +9,15 @@ export class Inventory extends Component {
             <div className="inventoryContainer">
                 <div className="filterSectiobn"></div>
                 <h1>
-                    <span className="inventoryText">Inventory</span><span className="inventoryValue">(INVENTORY VALUE: <span className="tokenValue">1250</span> Tokens)</span>
+                    <span className="inventoryText">Inventory</span>
+                    <span className="inventoryValue">(INVENTORY VALUE:
+                        <span className="tokenValue">1250</span> Tokens)
+                    </span>
                 </h1>
                 <div className="itemsContainer">
-                    <Item/>
-                    <Item/>
-                    <Item/>
+                    <Item />
+                    <Item />
+                    <Item />
                 </div>
             </div>
         )

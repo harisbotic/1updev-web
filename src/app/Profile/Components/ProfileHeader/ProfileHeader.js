@@ -1,13 +1,22 @@
 import React, { Component } from "react";
+import Button from 'react-bootstrap/Button';
 
-import './ProfileHeader.scss'
+import './ProfileHeader.style.scss'
 
 class ProfileHeader extends Component {
+    state = {
+        username: "tradoncic1",
+        title: "Codemaster",
+        availableTokens: 455,
+        inventoryValue: 125,
+        rank: 6
+    }
+
     render() {
         return (
             <div className="profile-display-component">
 
-                <button>Edit Profile</button>
+                <Button variant="info">Edit Profile</Button>
 
                 <div className="profile-display">
 
@@ -15,18 +24,21 @@ class ProfileHeader extends Component {
 
                     <div className="profile-details">
 
-                        <p className="user-title">User title goes here</p>
-                        <h1 className="user-name">@tradoncic1</h1>
+                        <p className="user-title">{ this.state.title ? 
+                            (this.state.title)
+                            : ("User title goes here") }
+                        </p>
+                        <h1 className="user-name">@{this.state.username}</h1>
                         <div className="token-related">
-                            <p className="available-tokens">Available tokens: 455</p>
-                            <p className="profile-value">Profile value: 455</p>
-                            <p className="profile-rank">#6</p>
+                            <p className="available-tokens">Available tokens: {this.state.availableTokens}</p>
+                            <p className="profile-value">Profile value: {this.state.availableTokens + this.state.inventoryValue}</p>
+                            <p className="profile-rank">#{this.state.rank}</p>
                         </div>
 
                         <div className="badges">
-                            <div className="badge"></div>
-                            <div className="badge"></div>
-                            <div className="badge"></div>
+                            <div className="badge"> </div>
+                            <div className="badge"> </div>
+                            <div className="badge"> </div>
                         </div>
                     </div>
                 </div>

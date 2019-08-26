@@ -1,26 +1,26 @@
 p {
   color: white;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: "Roboto";
 }
 
 h1 {
   color: white;
   padding-left: 25px;
   padding-right: 25px;
+  font-family: "Roboto Light";
 }
 
 .profile-display-component {
-  height: 15%;
   align-items: flex-start;
-  background-color: #1f0429;
-  padding: 15px 50px;
+  padding-top: 2.5%;
   flex-direction: column;
   display: flex;
 
   .profile-display {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 25px;
 
     img {
@@ -30,6 +30,12 @@ h1 {
     }
 
     .profile-details {
+
+      .token-related {
+        flex-direction: row;
+        display: flex;
+      }
+
       .badges {
         flex-direction: row;
         display: flex;

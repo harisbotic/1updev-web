@@ -1,6 +1,7 @@
 .inventoryContainer {
 
-        padding:96px 220px 0 0;
+        padding:96px 0px;
+        width: 100%;
 
     h1 {
         text-align: left;
@@ -30,6 +31,7 @@
     }
 
     width:100%;
-    border-radius: 70px 70px 0px 0px;
+    border-top-right-radius: 50pt;
+    border-top-left-radius: 50pt;
     background: #FFFFFF 0% 0% no-repeat padding-box;
 }
