@@ -1,0 +1,245 @@
+.profile {
+  padding: 20px 0;
+}
+
+.profile .profile-visual {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+.profile .tag {
+  height: 40px;
+  background-color: #614076;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 4px 4px 0 0;
+}
+
+.profile .photo-wrap {
+  background-color: white;
+  position: relative;
+}
+
+.profile .photo {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  margin-top: -1px;
+}
+
+.profile .plusOne-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 55px;
+  height: 30px;
+  line-height: 32px;
+  background-color: #614076;
+  border-radius: 20px 0 0 0;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+}
+
+.profile .icon {
+  position: absolute;
+  bottom: 18px;
+  right: 43px;
+  font-size: 14px;
+}
+
+.profile .profile-text {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+.profile .name-wrap {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.profile .nickname {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile .name {
+  font-size: 14px;
+}
+
+.profile .label-wrap {
+  margin: 20px 0;
+}
+
+.profile .label {
+  position: relative;
+  height: 32px;
+  line-height: 32px;
+  color: white;
+  padding-left: 15px;
+  border-radius: 4px;
+  margin: 7px 0;
+  font-weight: bold;
+}
+
+.profile .points {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  line-height: 32px;
+  width: 60px;
+  text-align: center;
+  border-radius: 0 4px 4px 0;
+}
+
+.profile .medal-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.profile .start_medal-wrap,
+.profile .end_medal-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profile .medal_text-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 20px;
+}
+
+.profile .medal_text-title {
+  margin-top: auto;
+  font-weight: bold;
+}
+
+.profile .medal_text-points {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile .bronze {
+  color: #f2ba49;
+}
+
+.profile .silver {
+  color: #a8a8a8;
+}
+
+.profile .gold {
+  color: #ffd34d;
+}
+
+.profile .platinum {
+  color: #61b8a7;
+}
+
+.profile .diamond {
+  color: #06a6e2;
+}
+
+.profile .master {
+  color: #cc00ff;
+}
+
+.profile .progress_bar-wrap {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.profile .progress {
+  height: 20px;
+}
+
+.profile .progress-bar {
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+.profile .progress_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgba(102, 102, 102, 0.3);
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.profile .section_title {
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 2px solid #bdc3c7;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.profile .chart {
+  position: relative;
+  padding: 20px 0;
+  min-height: 300px;
+  cursor: pointer;
+}
+
+.profile .ranking_table-wrap .rankingRow:first-child,
+.profile .activity_table-wrap .activityRow:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.profile .ranking_table-wrap .rankingRow:last-child,
+.profile .activity_table-wrap .activityRow:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.profile .activity_table-wrap {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.profile .myActivity {
+  max-height: 830px;
+  overflow-y: scroll;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .profile .col-left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .profile .profile-visual {
+    padding-right: 10px;
+  }
+  .profile .profile-text {
+    padding-left: 10px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .profile .section_title {
+    margin-top: 0px;
+  }
+}
+/*# sourceMappingURL=Profile.css.map */
