@@ -1,7 +1,35 @@
 .inventoryContainer {
-    display:flex;
-    flex-direction: row;
-    
+
+        padding:96px 220px 0 0;
+
+    h1 {
+        text-align: left;
+    }
+
+    .inventoryText {
+        font-family: "Roboto";
+        font-weight: 700;
+        font-size:36px;
+        letter-spacing: 0.36px;
+        color: #712EBD;
+        opacity: 1;
+        margin-right:10px;
+    }
+
+    .inventoryValue {
+        font-family: "Roboto";
+        font-size:16px;
+        font-weight: 200;
+        letter-spacing: 0.1px;
+        color: #434343;
+        opacity: 1;
+    }
+
+    .tokenValue {
+        font-weight:700;
+    }
+
     width:100%;
-    border: 2px solid black;
+    border-radius: 70px 70px 0px 0px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
 }

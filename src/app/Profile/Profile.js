@@ -6,7 +6,6 @@ import "./Profile.scss";
 const Profile = () => {
     return (
         <div>
-            {/* HEADER */}
             <Inventory />
         </div>
     )
