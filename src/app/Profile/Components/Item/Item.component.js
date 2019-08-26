@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import "./Item.style.scss";
 
-const Item = () => {
+const Item = props => {
     return (
-        <div>
+        <div className="card">
             <h1>Item</h1>
         </div>
     )
