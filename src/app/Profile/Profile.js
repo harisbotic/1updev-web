@@ -44,7 +44,7 @@ export class Profile extends Component {
 
                 <div className="profile-display">
 
-                    <img src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
+                    <img className="profile-picture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
 
                     <div className="profile-details">
 

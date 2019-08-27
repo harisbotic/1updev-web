@@ -63,12 +63,6 @@
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
   }
-
-  /*@media only screen and (max-width: 768px) {
-        .itemsContainer {
-            flex-direction: column;
-        }
-      }*/
 }
 
 @media only screen and (max-width: 415px) {
@@ -84,12 +78,12 @@
     }
 
     .itemsContainer {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        
-        .itemsContainer {
-            padding: 10px;
-        }
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .itemsContainer {
+        padding: 10px;
+      }
     }
   }
 }
