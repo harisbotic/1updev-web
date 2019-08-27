@@ -1,40 +1,77 @@
-import React, { useEffect, useState } from "react";
-import {Button, ButtonToolbar, Container, Row, Col, Form, FormControl,} from 'react-bootstrap';
+import React, { useEffect, useState, Component } from "react";
+import {Button, ButtonToolbar, Container, Row, Col, Form, FormControl, Card} from 'react-bootstrap';
 import "./Shop.scss";
 import AddItem from './AddItem';
+import Item from './Item/Item.component.js';
+import jsonItemList from './list.json';
 
-const Shop = () => {
-    const [modalShow, setModalShow] = useState(false);
-    return <div className="container">
-            <Row className="justify-content-center">
-                <Col lg={2}><p>Shop</p></Col>
-                <Col lg={{ span: 1, offset: 3 }}><p>filter</p></Col>
-                <Col lg={1}><p>Sort by name</p></Col>
-                <Col lg={1}><p>Sort by price</p></Col>
-                <Col lg={1}><p>Sort by category</p></Col>
-                <Col lg={3}><Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                </Form></Col>
-            </Row>
-            <Row>
-                <Col lg={2}>
-                <ButtonToolbar>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Launch modal with grid
-                </Button>
 
-                <AddItem show={modalShow} onHide={() => setModalShow(false)} />
-                </ButtonToolbar>
-                </Col>
-                <Col lg={2}>Shop item</Col>
-                <Col lg={2}>Shop item</Col>
-                <Col lg={2}>Shop item</Col>
-                <Col lg={2}>Shop item</Col>
-                <Col lg={2}>Shop item</Col>
-            </Row>
-
-            </div>
+// const [modalShow, setModalShow] = useState(false);
     
-};
-
-export default Shop;
+    
+    
+    export class Shop extends Component {
+        
+        constructor() {
+            super();
+            this.state = {
+                itemList: jsonItemList,
+                searchField: ""
+            }
+        }
+        inventoryDisplay = () => {
+            const searchField = this.state.searchField;
+            const itemList = this.state.itemList.items;
+            const filteredList = itemList.filter(item =>
+                item.name.toLowerCase().includes(searchField.toLowerCase()));
+            return (
+                <div className="inventoryContainer">
+                    <div className="infoSection">
+                        <h1 className="heading">
+                            <span className="inventoryText">Inventory</span>
+                            <span className="inventoryValue">(INVENTORY VALUE:
+                                <span className="tokenValue"> 1250</span> Tokens)
+                            </span>
+                        </h1>
+                        <div className="filterOptions">
+                            <p>Sort by Name <i className="fas fa-caret-down"></i></p>
+                            <p>Sort by Price<i className="fas fa-caret-down"></i></p>
+                            <p>Sort by Category <i className="fas fa-caret-down"></i></p>
+                            <input
+                                type="search"
+                                placeholder="Search inventory..."
+                                id="searchInventory"
+                                onChange={e => {
+                                    this.setState({ 'searchField': e.target.value })
+                                }} />
+                        </div>
+                    </div>
+                    <div className="itemsContainer">
+                        {
+                            filteredList.map((v) => {
+                                return (
+                                    <Item
+                                        key={v.id}
+                                        background={v.background}
+                                        itemCategory={v.category}
+                                        itemIcon={v.icon}
+                                        itemName={v.name}
+                                        itemValue={v.value}
+                                        itemType={v.type}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        }
+        render() {
+            return (
+                <div>
+                        {this.inventoryDisplay()}
+                </div>
+            )
+        }
+    };
+    export default Shop;

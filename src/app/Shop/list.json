@@ -1,0 +1,67 @@
+{
+    "id": 0,
+    "items": [
+        {
+            "id": 1,
+            "name": "",
+            "icon": "fas fa-plus",
+            "type": "",
+            "background": "transparent linear-gradient(180deg, #D67900 0%, #F94400 100%) 0% 0% no-repeat padding-box"
+        },
+        {
+            "id": 2,
+            "category": "Badge",
+            "name": "Coder",
+            "icon": "fas fa-medal",
+            "value": 150,
+            "type": "Common",
+            "background": "transparent linear-gradient(180deg, #D67900 0%, #F94400 100%) 0% 0% no-repeat padding-box"
+        },
+        {
+            "id": 3,
+            "category": "Badge",
+            "name": "Debugger",
+            "icon": "fas fa-award",
+            "value": 200,
+            "type": "Epic",
+            "background": "transparent linear-gradient(180deg, #F8154B 0%, #FF036A 100%) 0% 0% no-repeat padding-box"
+        },
+        {
+            "id": 4,
+            "category": "Badge",
+            "name": "React Expert",
+            "icon": "fas fa-trophy",
+            "value": 300,
+            "type": "Legendary",
+            "background": "transparent linear-gradient(180deg, #0F80E2 0%, #00E5FF 100%) 0% 0% no-repeat padding-box"
+        },
+        {
+            "id": 5,
+            "category": "Games",
+            "name": "Spin The Wheel",
+            "icon": "fas fa-dice",
+            "value": 50,
+            "type": "Common",
+            "background": "red"
+        },
+        {
+            "id": 6,
+            "category": "Merch",
+            "name": "Razer Headphones",
+            "icon": "fas fa-headphones",
+            "value": 800,
+            "type": "Rare",
+            "background": "gray"
+        },
+        {
+            "id": 7,
+            "category": "Merch",
+            "name": "T-shirt",
+            "icon": "fas fa-tshirt",
+            "value": 500,
+            "type": "Common",
+            "background": "green"
+        }
+
+    ]
+}

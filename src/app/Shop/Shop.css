@@ -1,0 +1,91 @@
+.inventoryContainer {
+  font-family: "Roboto";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  padding: 3% 10% 0 10%;
+  border-top-right-radius: 40pt;
+  border-top-left-radius: 40pt;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+
+.inventoryContainer .infoSection {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+}
+
+.inventoryContainer .infoSection .heading {
+  padding: 0;
+}
+
+.inventoryContainer .infoSection .inventoryText {
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.36px;
+  color: #712EBD;
+  opacity: 1;
+  margin-right: 10px;
+}
+
+.inventoryContainer .infoSection .inventoryValue {
+  font-size: 12px;
+  font-weight: 200;
+  letter-spacing: 0.1px;
+  color: #434343;
+  opacity: 1;
+}
+
+.inventoryContainer .infoSection .tokenValue {
+  font-weight: 700;
+}
+
+.inventoryContainer .infoSection .filterOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.inventoryContainer .infoSection .filterOptions p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 200;
+  letter-spacing: 0.1px;
+  color: #434343;
+  opacity: 1;
+  display: block;
+}
+
+.inventoryContainer .infoSection .filterOptions .searchInventory {
+  height: inherit;
+}
+
+.inventoryContainer .itemsContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+}
+
+@media only screen and (min-width: 414px) {
+  .inventoryContainer .itemsContainer {
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+  }
+}
+/*# sourceMappingURL=Shop.css.map */
