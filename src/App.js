@@ -6,6 +6,7 @@ import PrivateRoute from "./Shared/Routes/PrivateRoute";
 //components
 import Login from "./app/Login/Login";
 import Routes from "./Shared/Routes/Routes";
+import Shop from "./app/Shop/Shop";
 
 import "./App.scss";
 
