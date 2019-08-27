@@ -6,7 +6,7 @@ import Profile from "../../app/Profile/Profile";
 function Routes() {
     return (
         <div>
-            <div className="container">
+            <div>
                 <Switch>
                     <Route exact path="/" component={Profile} />
                     <Route exact path="/profile" component={Profile} />

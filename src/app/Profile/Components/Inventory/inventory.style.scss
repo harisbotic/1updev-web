@@ -1,16 +1,19 @@
 .inventoryContainer {
+    font-family: "Roboto";
+    display:flex;
+    flex-direction: column;
+    padding:3% 10% 0 10%;
+    border-top-right-radius: 40pt;
+    border-top-left-radius: 40pt;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
 
-        padding:96px 0px;
-        width: 100%;
-
-    h1 {
-        text-align: left;
+    .heading {
+        padding:0;
     }
 
     .inventoryText {
-        font-family: "Roboto";
         font-weight: 700;
-        font-size:36px;
+        font-size:28px;
         letter-spacing: 0.36px;
         color: #712EBD;
         opacity: 1;
@@ -18,8 +21,7 @@
     }
 
     .inventoryValue {
-        font-family: "Roboto";
-        font-size:16px;
+        font-size:12px;
         font-weight: 200;
         letter-spacing: 0.1px;
         color: #434343;
@@ -30,8 +32,39 @@
         font-weight:700;
     }
 
-    width:100%;
-    border-top-right-radius: 50pt;
-    border-top-left-radius: 50pt;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    .itemsContainer {
+        display:flex;
+        flex-direction: row;
+        justify-content:space-between;
+        flex-wrap: wrap;
+    }
+
+    .infoSection {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom:10px;
+        
+        p {
+            margin:0;
+            font-size:14px;
+            font-weight: 200;
+            letter-spacing: 0.1px;
+            color: #434343;
+            opacity: 1;
+        }
+    }
+
+    .filterOptions {
+        display:flex;
+        flex-direction: row;
+        text-align: center;
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .itemsContainer {
+            flex-direction: column;
+        }
+      }
+
 }
