@@ -4,7 +4,7 @@ import ProfileHeader from "./Components/ProfileHeader/ProfileHeader.js";
 
 import "./Profile.scss";
 
-import jsonList from "./list.json"
+import jsonItemList from "./list.json"
 
 export class Profile extends Component {
 
@@ -12,7 +12,7 @@ export class Profile extends Component {
         super();
 
         this.state = {
-            itemList: jsonList
+            itemList: jsonItemList
         }
     }
     

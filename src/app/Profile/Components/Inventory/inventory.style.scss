@@ -7,59 +7,63 @@
     border-top-left-radius: 40pt;
     background: #FFFFFF 0% 0% no-repeat padding-box;
 
-    .heading {
-        padding:0;
-    }
-
-    .inventoryText {
-        font-weight: 700;
-        font-size:28px;
-        letter-spacing: 0.36px;
-        color: #712EBD;
-        opacity: 1;
-        margin-right:10px;
-    }
-
-    .inventoryValue {
-        font-size:12px;
-        font-weight: 200;
-        letter-spacing: 0.1px;
-        color: #434343;
-        opacity: 1;
-    }
-
-    .tokenValue {
-        font-weight:700;
-    }
-
-    .itemsContainer {
-        display:flex;
-        flex-direction: row;
-        justify-content:space-between;
-        flex-wrap: wrap;
-    }
-
     .infoSection {
-        display:flex;
-        flex-direction: row;
-        justify-content: space-between;
+        display:grid;
+        grid-template-columns: 1fr 1fr;
         margin-bottom:10px;
-        
-        p {
-            margin:0;
-            font-size:14px;
+       
+        .heading {
+            padding:0;
+        }
+
+        .inventoryText {
+            font-weight: 700;
+            font-size:28px;
+            letter-spacing: 0.36px;
+            color: #712EBD;
+            opacity: 1;
+            margin-right:10px;
+        }
+
+        .inventoryValue {
+            font-size:12px;
             font-weight: 200;
             letter-spacing: 0.1px;
             color: #434343;
             opacity: 1;
         }
+
+        .tokenValue {
+            font-weight:700;
+        }
+
+        .filterOptions {
+            display:flex;
+            flex-direction: row;   
+            
+            p {
+                margin:0;
+                font-size:14px;
+                font-weight: 200;
+                letter-spacing: 0.1px;
+                color: #434343;
+                opacity: 1;
+                display:block;
+            }
+            
+            .searchInventory {
+                height: inherit;
+            }
+        
+        }
     }
 
-    .filterOptions {
-        display:flex;
-        flex-direction: row;
-        text-align: center;
+    .itemsContainer {
+        display:grid;
+        grid-template-columns: repeat(6,1fr);
+        grid-gap:10px;
     }
+  
     
     @media only screen and (max-width: 768px) {
         .itemsContainer {

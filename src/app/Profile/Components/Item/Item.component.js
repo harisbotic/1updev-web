@@ -1,19 +1,35 @@
-import React from "react";
+import React, { Component } from 'react'
 
 import "./Item.style.scss";
 
-const Item = props => {
+export class Item extends Component {
 
-    return (
-    
-        <div className="item-card" style={{background:props.background}}>
-            <p className="itemCategory">{props.itemCategory}</p>
-            <i className={props.itemIcon}></i>
-            <p className="itemName">{props.itemName}</p>
-            <p className="itemValue">{props.itemValue} Tokens</p>
-            <p className="itemType">{props.itemType}</p>
-        </div>
-    )
+    constructor() {
+        super();
+
+        this.state = {
+            isHovered : false
+        }
+    }
+
+    toggleHover(state){
+        this.setState({'isHovered':!this.state.isHovered});
+    }
+   
+
+      
+    render() {
+        return (
+        
+            <div className="item-card" style={{background:this.props.background}} onMouseEnter = {()=>this.toggleHover(this.state)} onMouseLeave = {()=>this.toggleHover(this.state)}>
+                <p className="itemCategory">{this.props.itemCategory}</p>
+                <i className={this.props.itemIcon}></i>
+                <p className="itemName">{this.props.itemName}</p>
+                <p className="itemValue">{this.props.itemValue} Tokens</p>
+                <p className="itemType">{this.props.itemType}</p>
+            </div>
+        )
+    }
 };
 
 export default Item;
