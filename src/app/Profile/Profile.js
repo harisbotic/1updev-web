@@ -26,6 +26,16 @@ export class Profile extends Component {
         }
     }
 
+    getBadges = () => {
+        this.state.itemList.items.map((item) => {
+            return (
+                <div className="badge">
+                    <i className="fa fas-trophy"></i>
+                </div>
+            )
+        })
+    }
+
     profileHeader = () => {
         return (
             <div className="profile-display-component">
@@ -46,13 +56,20 @@ export class Profile extends Component {
                         <div className="token-related">
                             <p className="available-tokens">Available tokens: {this.state.availableTokens}</p>
                             <p className="profile-value">Profile value: {this.state.availableTokens}</p>
-                            <p className="profile-rank">#{this.state.rank}</p>
+                            <p className="profile-rank">#6</p>
                         </div>
 
                         <div className="badges">
-                            <div className="badge"> </div>
-                            <div className="badge"> </div>
-                            <div className="badge"> </div>
+                            {
+                                this.state.itemList.items.map((item) => {
+                                    if (item.category == "Badge" && item.isActive)
+                                    return (
+                                        <div className="badge">
+                                            <i className={item.icon}></i>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
@@ -117,10 +134,8 @@ export class Profile extends Component {
     render() {
         return (
             <div>
-                <div className="profile-header">
-                    {this.profileHeader()}
-                </div>
-                    {this.inventoryDisplay()}
+                {this.profileHeader()}
+                {this.inventoryDisplay()}
             </div>
         )
     }

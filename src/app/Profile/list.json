@@ -8,7 +8,8 @@
             "icon": "fas fa-medal",
             "value": 150,
             "type": "Common",
-            "background": "transparent linear-gradient(180deg, #D67900 0%, #F94400 100%) 0% 0% no-repeat padding-box"
+            "background": "transparent linear-gradient(180deg, #D67900 0%, #F94400 100%) 0% 0% no-repeat padding-box",
+            "isActive": true
         },
         {
             "id": 2,
@@ -26,7 +27,8 @@
             "icon": "fas fa-trophy",
             "value": 300,
             "type": "Legendary",
-            "background": "transparent linear-gradient(180deg, #0F80E2 0%, #00E5FF 100%) 0% 0% no-repeat padding-box"
+            "background": "transparent linear-gradient(180deg, #0F80E2 0%, #00E5FF 100%) 0% 0% no-repeat padding-box",
+            "isActive": true
         },
         {
             "id": 4,
@@ -54,6 +56,25 @@
             "value": 500,
             "type": "Common",
             "background": "green"
+        },
+        {
+            "id": 7,
+            "category": "Merch",
+            "name": "Hoodie",
+            "icon": "fas fa-tshirt",
+            "value": 500,
+            "type": "Common",
+            "background": "green"
+        },
+        {
+            "id": 8,
+            "category": "Badge",
+            "name": "Keyboard Warrior",
+            "icon": "fas fa-keyboard",
+            "value": 500,
+            "type": "Common",
+            "background": "blue",
+            "isActive": true
         }
     ]
 }

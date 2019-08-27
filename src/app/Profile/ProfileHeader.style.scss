@@ -21,7 +21,6 @@
 
   .profile-display {
     display: flex;
-    justify-content: flex-start;
     padding: 25px;
 
     img {
@@ -31,7 +30,6 @@
     }
 
     .profile-details {
-
       .token-related {
         flex-direction: row;
         display: flex;
@@ -40,6 +38,8 @@
       .badges {
         flex-direction: row;
         display: flex;
+        
+        
 
         .badge {
           width: 50px;
@@ -49,8 +49,36 @@
           margin: 0px 10px;
           background-color: white;
           border-radius: 15%;
+          background-color: #2e0e53;
+          display: table;
+
+          i {
+            font-size: 32px;
+            color: white;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+          }
         }
       }
+
+      
+    }
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .profile-display-component {
+    .profile-display {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+
+      .badges {
+        justify-content: center;
+      }
+      
     }
   }
 }
