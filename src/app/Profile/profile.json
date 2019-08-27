@@ -1,0 +1,14 @@
+{
+    "identity": {
+        "id": 0,
+        "username": "team-atea",
+        "password": "test",
+        "profile": {
+            "firstname": "Team",
+            "lastname": "Atea",
+            "role": "user",
+            "email": "team-atea@gmail.com",
+            "inventoryId": 0
+        }
+    }
+}

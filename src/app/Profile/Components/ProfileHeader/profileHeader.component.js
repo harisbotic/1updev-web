@@ -1,15 +1,26 @@
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 
-import './ProfileHeader.style.scss'
+import './ProfileHeader.style.scss';
+
 
 class ProfileHeader extends Component {
+
     state = {
-        username: "tradoncic1",
-        title: "Codemaster",
-        availableTokens: 455,
-        inventoryValue: 125,
-        rank: 6
+        identity: this.props.profile.identity,
+        profile: this.props.profile.identity.profile,
+        inventory: null,
+        activeBadges: 0,
+        activeSkins: 0,
+        activeTitles: 0
+    }
+
+    checkInventory = () => {
+        this.props.inventoryList.map((inv) => {
+            if (inv === this.state.profile.inventoryId) {
+                this.setState({inventory: inv})
+            }
+        });
     }
 
     render() {
@@ -24,11 +35,11 @@ class ProfileHeader extends Component {
 
                     <div className="profile-details">
 
-                        <p className="user-title">{ this.state.title ? 
+                        <p className="user-title">{this.state.title ?
                             (this.state.title)
-                            : ("User title goes here") }
+                            : ("User title goes here")}
                         </p>
-                        <h1 className="user-name">@{this.state.username}</h1>
+                        <h1 className="user-name">@{this.state.identity.username}</h1>
                         <div className="token-related">
                             <p className="available-tokens">Available tokens: {this.state.availableTokens}</p>
                             <p className="profile-value">Profile value: {this.state.availableTokens + this.state.inventoryValue}</p>
