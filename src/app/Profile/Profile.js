@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 
-import Inventory from './Components/Inventory/inventory.component.js';
-import ProfileHeader from "./Components/ProfileHeader/profileHeader.component.js";
+import Item from './Components/Item/Item.component'
+
+//import Inventory from './Components/Inventory/inventory.component.js';
 
 import "./Profile.scss";
 
-import jsonList from "./list.json";
-import profileJson from './profile.json';
+import jsonItemList from "./list.json";
+import jsonProfileList from './profile.json';
+
+import './ProfileHeader.style.scss';
+import './inventory.style.scss';
+
 
 export class Profile extends Component {
 
@@ -15,8 +20,9 @@ export class Profile extends Component {
         super();
 
         this.state = {
-            itemList: jsonList,
-            profile: profileJson
+            itemList: jsonItemList,
+            searchField: "",
+            profile: jsonProfileList
         }
     }
 
@@ -54,13 +60,67 @@ export class Profile extends Component {
         )
     }
 
+    inventoryDisplay = () => {
+        const searchField = this.state.searchField;
+        const itemList = this.state.itemList.items;
+
+        const filteredList = itemList.filter(item =>
+            item.name.toLowerCase().includes(searchField.toLowerCase()));
+
+        return (
+            <div className="inventoryContainer">
+
+                <div className="infoSection">
+                    <h1 className="heading">
+                        <span className="inventoryText">Inventory</span>
+                        <span className="inventoryValue">(INVENTORY VALUE:
+                            <span className="tokenValue"> 1250</span> Tokens)
+                        </span>
+                    </h1>
+                    <div className="filterOptions">
+                        <p>Sort by Name <i className="fas fa-caret-down"></i></p>
+                        <p>Sort by Price<i className="fas fa-caret-down"></i></p>
+                        <p>Sort by Category <i className="fas fa-caret-down"></i></p>
+                        <input
+                            type="search"
+                            placeholder="Search inventory..."
+                            id="searchInventory"
+                            onChange={e => {
+                                this.setState({ 'searchField': e.target.value })
+                            }} />
+                    </div>
+                </div>
+                <div className="itemsContainer">
+                    {
+                        filteredList.map((v) => {
+
+                            return (
+                                <Item
+                                    key={v.id}
+                                    background={v.background}
+                                    itemCategory={v.category}
+                                    itemIcon={v.icon}
+                                    itemName={v.name}
+                                    itemValue={v.value}
+                                    itemType={v.type}
+                                />
+
+                            )
+
+                        })
+                    }
+                </div>
+            </div>
+        )
+    }
+
     render() {
         return (
             <div>
                 <div className="profile-header">
                     {this.profileHeader()}
                 </div>
-                <Inventory itemList={this.state.itemList} />
+                    {this.inventoryDisplay()}
             </div>
         )
     }
