@@ -2,7 +2,7 @@
     "id": 0,
     "items": [
         {
-            "id": 1,
+            "id": 1, 
             "category": "Badge",
             "name": "Coder",
             "icon": "fas fa-medal",

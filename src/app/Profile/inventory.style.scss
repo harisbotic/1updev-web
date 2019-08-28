@@ -63,6 +63,11 @@
           margin:0 5px 0 5px;
         }
       }
+      
+      p:first-child {
+        color: #712ebd;
+        font-weight: 700; 
+      }
 
       p:not(:first-child) {
         cursor:pointer;
@@ -96,15 +101,9 @@
 
         i {
           color:white;  
-          cursor:pointer;
           text-align: center;
           font-size: 14px;
         }
-
-        i:hover {
-          color:black;
-        }
-
       }
     }
   }
@@ -116,7 +115,7 @@
   }
 }
 
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 414px) {
   .inventoryContainer {
     display: flex;
     flex-direction: column;
@@ -124,8 +123,13 @@
     .infoSection {
       display: flex;
       flex-direction: column;
-      grid-template-columns: 1fr 1fr;
-      margin-bottom: 10px;
+      text-align: center;
+
+      .heading {
+        display:flex;
+        flex-direction: column;
+      }
+
     }
 
     .itemsContainer {
