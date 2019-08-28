@@ -10,8 +10,12 @@
 
   .infoSection {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 60%;
     margin-bottom: 10px;
+
+    h1 {
+      margin:0; 
+    }
 
     .heading {
       padding: 0;
@@ -27,7 +31,7 @@
     }
 
     .inventoryValue {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 200;
       letter-spacing: 0.1px;
       color: #434343;
@@ -39,21 +43,68 @@
     }
 
     .filterOptions {
-      display: flex;
+      display:flex;
       flex-direction: row;
-
+      justify-content:flex-end;
+      vertical-align: middle;
+      align-items: center;
+      
       p {
-        margin: 0;
+        margin:0;
+        margin-right:10px;
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 500;
         letter-spacing: 0.1px;
         color: #434343;
         opacity: 1;
-        display: block;
+        transition:0.2s;
+
+        i {
+          margin:0 5px 0 5px;
+        }
       }
 
-      .searchInventory {
-        height: inherit;
+      p:not(:first-child) {
+        cursor:pointer;
+      }
+
+      p:not(:first-child):hover,i:hover{
+        color: #712ebd;
+        font-weight: 700; 
+      }
+
+      .searchBoxComponent {
+        display:grid;
+        grid-template-columns: 20% 80%;
+        align-items: center;
+        background:#898B91;
+        opacity:0.5;
+        border-radius:30px; 
+
+        .searchBox {
+          margin:0;
+          border:0;
+          border-radius:30px;
+        }
+
+        .searchBox::placeholder {
+          font-family: "Roboto";        
+          color:white;
+          font-size:14px;
+          vertical-align: middle;
+        }
+
+        i {
+          color:white;  
+          cursor:pointer;
+          text-align: center;
+          font-size: 14px;
+        }
+
+        i:hover {
+          color:black;
+        }
+
       }
     }
   }
