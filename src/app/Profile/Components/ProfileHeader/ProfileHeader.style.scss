@@ -15,8 +15,9 @@
 .profile-display-component {
   align-items: flex-start;
   padding-top: 2.5%;
-  flex-direction: column;
+  flex-direction: row;
   display: flex;
+  justify-content: space-around;
 
   .profile-display {
     display: flex;

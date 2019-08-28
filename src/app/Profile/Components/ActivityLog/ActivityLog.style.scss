@@ -1,0 +1,50 @@
+.Activity-log {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    width: 400px;
+    height: 200px;
+    border-radius: 25px;
+    backdrop-filter: blur(4px);
+  }
+  
+  .Transaction-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .Scrollable-log {
+    overflow-y: auto;
+    height: calc(100% - 64px);
+    margin-right: 10px;
+    font: 12px Roboto;
+  }
+
+  .Activity-headers {
+    font: Bold 14px/32px Roboto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2.5%;
+    margin-left: 11%;
+    margin-right: 12%;
+  }
+
+  .Activity-headers p {
+    margin: 0 0;
+  }
+
+  .Scrollable-log::-webkit-scrollbar
+  {
+    width: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+  }
+  
+  .Scrollable-log::-webkit-scrollbar-thumb
+  {
+    background-color: white;
+    border-radius: 10px;
+  }

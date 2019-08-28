@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
+import ActivityLog from '../ActivityLog/ActivityLog.js'
 
 import './ProfileHeader.style.scss'
 
@@ -42,6 +43,7 @@ class ProfileHeader extends Component {
                         </div>
                     </div>
                 </div>
+                <ActivityLog/>
             </div>
         )
     }
