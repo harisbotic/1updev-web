@@ -1,32 +1,32 @@
-.profile-details p {
+.profileDetails p {
   color: white;
   font-family: "Roboto";
 }
 
-.profile-details h1 {
+.profileDetails h1 {
   color: white;
   font-family: "Roboto";
 }
 
-.profile-display-component {
+.profileDisplayComponent {
   align-items: flex-start;
   padding-top: 2.5%;
   flex-direction: column;
   display: flex;
 
-  .profile-display {
+  .profileDisplay {
     display: flex;
     padding: 25px;
 
-    .profile-picture {
+    .profilePicture {
       max-width: 12.5em;
       max-height: 12.5em;
       border-radius: 100%;
     }
 
-    .profile-details {
+    .profileDetails {
 
-      .token-related {
+      .tokenRelated {
         flex-direction: row;
         display: flex;
         justify-items: center;
@@ -61,11 +61,11 @@
 }
 
 @media screen and (min-width: 414px) {
-  .profile-display-component {
+  .profileDisplayComponent {
     padding-left: 10%;
 
-    .profile-display {
-      .profile-details {
+    .profileDisplay {
+      .profileDetails {
         padding-left: 10px;
       }
     }
@@ -74,13 +74,13 @@
 
 @media screen and (max-width: 414px) {
   
-  .profile-display-component {
+  .profileDisplayComponent {
     padding-top: 15%;
     align-items: center;
     justify-content: center;
     justify-items: center;
 
-    .profile-display {
+    .profileDisplay {
       flex-direction: column;
       align-items: center;
       text-align: center;
@@ -92,7 +92,7 @@
     }
   }
 
-  .token-related {
+  .tokenRelated {
     justify-content: center;
 
     p {

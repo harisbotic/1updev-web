@@ -81,25 +81,25 @@ export class Profile extends Component {
         return (
         <div>
             
-            <div className="profile-display-component">
+            <div className="profileDisplayComponent">
 
             <Button variant="info">Edit Profile</Button>
 
-            <div className="profile-display">
+            <div className="profileDisplay">
 
-                <img className="profile-picture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
+                <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
 
-                <div className="profile-details">
+                <div className="profileDetails">
 
-                    <p className="user-title">{this.state.title ?
+                    <p className="userTitle">{this.state.title ?
                         (this.state.title)
                         : ("User title goes here")}
                     </p>
-                    <h1 className="user-name">@{this.state.profile.identity.username}</h1>
-                    <div className="token-related">
-                        <p className="available-tokens">Available tokens: {this.state.availableTokens}</p>
-                        <p className="profile-value">Profile value: {this.state.availableTokens}</p>
-                        <p className="profile-rank">#6</p>
+                    <h1 className="username">@{this.state.profile.identity.username}</h1>
+                    <div className="tokenRelated">
+                        <p className="availableTokens">Available tokens: {this.state.availableTokens}</p>
+                        <p className="profileValue">Profile value: {this.state.availableTokens}</p>
+                        <p className="profileRank">#6</p>
                     </div>
 
                     <div className="badges">
