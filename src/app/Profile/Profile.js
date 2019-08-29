@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
-
 import "./Profile.scss";
+import Header from "../Header/Header.js"
+import {withRouter} from "react-router-dom";
 
-const Profile = () => {
-    return <h1>Profile page</h1>
-};
+class Profile extends React.Component {
+    render() {
+        
+        return (
+        <div className="mainWrapper">
+            <h1>Profile page</h1>
+        </div>
+        );
+    }
 
-export default Profile;
+}
+
+export default withRouter(Profile);

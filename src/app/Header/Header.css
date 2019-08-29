@@ -1,0 +1,24 @@
+#header {
+    min-height: 84px !important;
+    background-image: linear-gradient( to right, #461864, #5b1f5e);
+    
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    padding-left:0px !important;
+    display:flex;
+    align-items: center;
+}
+
+.buttons
+{
+    display:flex;
+    justify-content: space-between;
+}
+
+.rightWrapper
+{
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+}

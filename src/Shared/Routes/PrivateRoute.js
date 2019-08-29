@@ -1,12 +1,16 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom'
+import Header from "../../app/Header/Header";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={(props) =>
             localStorage.getItem('access_token') ? (
+                <>
+                <Header/>
                 <Component {...props} />
+                </>
             ) : (
                     <Redirect
                         to={{
