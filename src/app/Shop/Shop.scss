@@ -1,3 +1,31 @@
+.available-tokens, .items-own{
+    width: 155px;
+    height: 29px;
+    text-align: left;
+    font: Regular 16px/32px Roboto;
+    letter-spacing: 0.1px;
+    // color: #FFFFFF;
+    color:black;
+    margin-bottom:20px;
+    }
+
+.token-count, .own-count{
+    width: 38px;
+    height: 29px;
+    text-align: left;
+    font: Bold 22px/32px Roboto;
+    letter-spacing: 0.13px;
+    //color: #FFFFFF;
+    color:black;
+    display:inline-flex;
+    flex-direction:row;
+    }
+
+.items-in-use{
+    display:inline-flex;
+    flex-direction:row;
+  //  margin-bottom:40px;
+}
 
 .inventoryContainer {
     font-family: "Roboto";
@@ -9,7 +37,7 @@
     border-top-left-radius: 40pt;
     background: #FFFFFF 0% 0% no-repeat padding-box;
 
-    .infoSection {
+        .infoSection {
         display:grid;
         grid-template-columns: 1fr 1fr;
         margin-bottom:10px;

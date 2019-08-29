@@ -1,0 +1,32 @@
+.skin-text{
+width: 191px;
+height: 48px;
+text-align: left;
+font: Bold 36px/61px Roboto;
+letter-spacing: 0.36px;
+/* color: #FFFFFF; */
+color:black;
+opacity: 1;
+margin-bottom:20px;
+}
+
+.skin-container{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 133px;
+height: 133px;
+    /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    background:black; 
+    /* privremeno crna boja u upotrebi jer nam je trenutno podloga bjela */
+border-radius: 18px;
+opacity: 1;
+}
+.skin1{
+    width: 110px;
+    height: 110px;
+    background: #2B0D41 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    opacity: 1;
+}

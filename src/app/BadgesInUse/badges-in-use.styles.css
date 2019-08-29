@@ -1,0 +1,88 @@
+.badge-text{
+/* top: 183px; */
+/* left: 220px; */
+width: 242px;
+height: 48px;
+text-align: left;
+font: Bold 36px/61px Roboto;
+letter-spacing: 0.36px;
+/* color: #FFFFFF; */
+color:black;
+opacity: 1;
+margin-bottom:20px;
+}
+.badge1{
+    display:flex;
+    /* top: 276px; */
+    /* left: 247px; */
+    width: 76px;
+    height: 94px;
+    
+    background: transparent url( '../Assets/mark.svg' );
+    opacity: 1;
+}
+.badge2{
+    /*top: 276px;
+    left: 416px;*/
+    width: 55px;
+    height: 94px;
+    opacity: 1;
+    background: transparent url( '../Assets/medal.svg' );
+    
+}
+.badge3{
+    top: 276px;
+    left: 555px;
+    width: 94px;
+    height: 93px;
+   
+    background: transparent url( '../Assets/quality-assurance.svg' );
+    opacity: 1;
+    /* margin-right:20px; */
+}
+.badges-in-use-container{
+     /* top: 257px;  
+     left: 220px; 
+    width: 449px;
+    height: 133px;
+    opacity: 1;*/
+    display:flex;
+}
+.badge-container1{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 257px;
+    left: 220px;
+    width: 134px;
+    height: 133px;
+    background: #461864 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    opacity: 1;
+    
+}
+.badge-container2{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+top: 257px;
+left: 378px;
+width: 133px;
+height: 133px;
+background: #461864 0% 0% no-repeat padding-box;
+border-radius: 18px;
+opacity: 1;
+}
+.badge-container3{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+/* top: 257px; */
+/* left: 536px; */
+width: 133px;
+height: 133px;
+background: #461864 0% 0% no-repeat padding-box;
+border-radius: 18px;
+opacity: 1;
+margin-right: 40px;
+}

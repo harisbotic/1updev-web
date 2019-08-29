@@ -5,6 +5,9 @@ import AddItem from './AddItem';
 import Item from './Item/Item.component.js';
 import jsonItemList from './list.json';
 
+import BadgesInUse from '../BadgesInUse/badges-in-use';
+import SkinInUse from "../SkinInUse/skin-in-use";
+
 
 // const [modalShow, setModalShow] = useState(false);
     
@@ -25,6 +28,24 @@ import jsonItemList from './list.json';
             const filteredList = itemList.filter(item =>
                 item.name.toLowerCase().includes(searchField.toLowerCase()));
             return (
+                <div className='parent-div'> 
+                {/* //moje */}
+                    <div className='items-in-use'>
+                    <BadgesInUse />     
+                    <SkinInUse />
+                    </div> 
+                    <div className='available-tokens'>
+                         AVAILABLE TOKENS: 
+                        <span className='token-count'>455</span>
+                    </div>
+                    <div className='items-own'>
+                        ITEMS OWN:
+                        <span className='own-count'>22</span>
+                    </div>
+                    
+                {/* //zavrseno */}
+
+
                 <div className="inventoryContainer">
                     <div className="infoSection">
                         <h1 className="heading">
@@ -64,6 +85,7 @@ import jsonItemList from './list.json';
                         }
                     </div>
                 </div>
+            </div>
             )
         }
         render() {
