@@ -1,106 +1,104 @@
-.available-tokens, .items-own{
-    width: 155px;
-    height: 29px;
-    text-align: left;
-    font: Regular 16px/32px Roboto;
-    letter-spacing: 0.1px;
-    // color: #FFFFFF;
-    color:black;
-    margin-bottom:20px;
-    }
+.available-tokens,
+.items-own {
+  width: 155px;
+  height: 29px;
+  text-align: left;
+  font: Regular 16px/32px Roboto;
+  letter-spacing: 0.1px;
+  // color: #FFFFFF;
+  color: black;
+  margin-bottom: 20px;
+}
 
-.token-count, .own-count{
-    width: 38px;
-    height: 29px;
-    text-align: left;
-    font: Bold 22px/32px Roboto;
-    letter-spacing: 0.13px;
-    //color: #FFFFFF;
-    color:black;
-    display:inline-flex;
-    flex-direction:row;
-    }
+.token-count,
+.own-count {
+  width: 38px;
+  height: 29px;
+  text-align: left;
+  font: Bold 22px/32px Roboto;
+  letter-spacing: 0.13px;
+  //color: #FFFFFF;
+  color: black;
+  display: inline-flex;
+  flex-direction: row;
+}
 
-.items-in-use{
-    display:inline-flex;
-    flex-direction:row;
+.items-in-use {
+  display: inline-flex;
+  flex-direction: row;
   //  margin-bottom:40px;
 }
 
 .inventoryContainer {
-    font-family: "Roboto";
-    display:flex;
-    flex-direction: column;
-    justify-content: end;
-    padding:3% 10% 0 10%;
-    border-top-right-radius: 40pt;
-    border-top-left-radius: 40pt;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 3% 10% 0 10%;
+  border-top-right-radius: 40pt;
+  border-top-left-radius: 40pt;
+  background: #ffffff 0% 0% no-repeat padding-box;
 
-        .infoSection {
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        margin-bottom:10px;
-       
-        .heading {
-            padding:0;
-        }
+  .infoSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 10px;
 
-        .inventoryText {
-            font-weight: 700;
-            font-size:28px;
-            letter-spacing: 0.36px;
-            color: #712EBD;
-            opacity: 1;
-            margin-right:10px;
-        }
-
-        .inventoryValue {
-            font-size:12px;
-            font-weight: 200;
-            letter-spacing: 0.1px;
-            color: #434343;
-            opacity: 1;
-        }
-
-        .tokenValue {
-            font-weight:700;
-        }
-
-        .filterOptions {
-            display:flex;
-            flex-direction: row;   
-            
-            p {
-                margin:0;
-                font-size:14px;
-                font-weight: 200;
-                letter-spacing: 0.1px;
-                color: #434343;
-                opacity: 1;
-                display:block;
-            }
-
-            .searchInventory {
-                height: inherit;
-            }
-        
-        }
+    .heading {
+      padding: 0;
     }
 
-    .itemsContainer {
-        display:grid;
-        grid-template-columns: repeat(6,1fr);
-        grid-gap:10px;
+    .inventoryText {
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.36px;
+      color: #712ebd;
+      opacity: 1;
+      margin-right: 10px;
     }
-  
-    
-    @media only screen and (min-width: 414px) {
 
-        .itemsContainer {
-            grid-template-rows: 1fr 1fr;
-            grid-gap:10px;
-        }
+    .inventoryValue {
+      font-size: 12px;
+      font-weight: 200;
+      letter-spacing: 0.1px;
+      color: #434343;
+      opacity: 1;
+    }
+
+    .tokenValue {
+      font-weight: 700;
+    }
+
+    .filterOptions {
+      display: flex;
+      flex-direction: row;
+
+      p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 200;
+        letter-spacing: 0.1px;
+        color: #434343;
+        opacity: 1;
+        display: block;
       }
 
+      .searchInventory {
+        height: inherit;
+      }
+    }
+  }
+
+  .itemsContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+  }
+
+  @media only screen and (min-width: 414px) {
+    .itemsContainer {
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 10px;
+    }
+  }
 }

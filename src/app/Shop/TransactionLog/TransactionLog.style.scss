@@ -1,0 +1,49 @@
+.activity_log-wrap {
+  background-color: transparentize(white, 0.8);
+  border-radius: 25px;
+  color: white;
+  max-height: 200px;
+  width: 100%;
+  margin-right: 10px;
+  overflow-y: scroll;
+
+  height: calc(100% - 64px);
+
+  .header_row {
+    font: 15px/32px Roboto;
+    margin: 0 30px;
+    text-align: left;
+
+    .time {
+      text-align: right;
+    }
+  }
+
+  .activity_row {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    letter-spacing: 0.09px;
+    font: Regular 15px/32px Lato;
+    justify-content: space-between;
+    margin: 0 12px;
+  }
+
+  .profile_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4%;
+    padding: 5px 5px;
+  }
+}
+
+.activity_log-wrap::-webkit-scrollbar {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 10px;
+}
+
+.activity_log-wrap::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
