@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 
 import Item from './Components/Item/Item.component'
+import ActivityLog from './Components/ActivityLog/ActivityLog.js'
+
 
 //import Inventory from './Components/Inventory/inventory.component.js';
 
@@ -55,10 +57,11 @@ export class Profile extends Component {
                 this.setState({"filteredList":
                 filteredList.sort((a, b) => a.category.localeCompare(b.category)) })
                 break
+            default :
+                
         }
 
     }
-
 
     getBadges = () => {
 
@@ -74,28 +77,27 @@ export class Profile extends Component {
 
     render() {
      
-        const searchField = this.state.searchField;
         const itemList = this.state.itemList;
         const filteredList = this.state.filteredList;
      
         return (
         <div>
-            
-            <div className="profileDisplayComponent">
-
-            <Button variant="info">Edit Profile</Button>
-
+ 
             <div className="profileDisplay">
 
                 <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
 
                 <div className="profileDetails">
+                
+                {/* <Button variant="info">Edit Profile</Button>*/}
 
                     <p className="userTitle">{this.state.title ?
                         (this.state.title)
-                        : ("User title goes here")}
+                        : ("User special title goes here")}
                     </p>
+
                     <h1 className="username">@{this.state.profile.identity.username}</h1>
+                    
                     <div className="tokenRelated">
                         <p className="availableTokens">Available tokens: {this.state.availableTokens}</p>
                         <p className="profileValue">Profile value: {this.state.availableTokens}</p>
@@ -104,19 +106,24 @@ export class Profile extends Component {
 
                     <div className="badges">
                         {
-                            itemList.map((item) => {
-                                if (item.category == "Badge" && item.isActive)
+                            itemList.map(item => {
+                                if (item.category === "Badge" && item.isActive)
                                 return (
-                                    <div className="badge">
+                                    <div key={item.id} className="badge">
                                         <i className={item.icon}></i>
                                     </div>
-                                )
+                                ) 
+                                else return null;
                             })
                         }
                     </div>
+
                 </div>
+
+                <ActivityLog/>
+            
             </div>
-        </div>
+ 
         
             <div className="inventoryContainer">
                 <div className="infoSection">

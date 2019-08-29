@@ -1,68 +1,83 @@
-.profileDetails p {
-  color: white;
-  font-family: "Roboto";
-}
+@import './variables.scss'; 
 
-.profileDetails h1 {
-  color: white;
-  font-family: "Roboto";
-}
+.profileDisplay {
+  display: grid;
+  grid-template-columns:1fr 3fr 3fr;
+  align-items: center;
+  padding: 3% 10% 3% 10%;
 
-.profileDisplayComponent {
-  align-items: flex-start;
-  padding-top: 2.5%;
-  flex-direction: column;
-  display: flex;
+  .profilePicture {
+    max-width: 130px;
+    max-height: 130px;
+    border-radius: 100%;
+  }
 
-  .profileDisplay {
-    display: flex;
-    padding: 25px;
+  .profileDetails {
 
-    .profilePicture {
-      max-width: 12.5em;
-      max-height: 12.5em;
-      border-radius: 100%;
+    padding:5%;
+    
+    .userTitle {
+      color: $white;
+      font-family: "Roboto";
+      font-weight: $regular;
+      font-size:14px;
+      margin:0;
+    }
+  
+    .username {
+      color: $white;
+      font-family: "Roboto";
+      font-weight: $bold;
+      font-size: 35px;
+      margin:5px 0 5px 0;
     }
 
-    .profileDetails {
+    .tokenRelated {
+      flex-direction: row;
+      display: flex;
+      justify-items: center;
 
-      .tokenRelated {
-        flex-direction: row;
-        display: flex;
-        justify-items: center;
-      }
+        p {
+          color: $white;
+          font-family: "Roboto";
+          font-weight: $regular;
+          font-size:14px;
+          margin:5px;
+        }
 
-      .badges {
-        flex-direction: row;
-        display: flex;
+    }
+
+    .badges {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width:60%;
 
         .badge {
           width: 50px;
           height: 50px;
           max-width: 50px;
           max-height: 50px;
-          margin: 0px 10px;
-          background-color: white;
           border-radius: 15%;
-          background-color: #2e0e53;
+          background-color: $primary-purple;
           display: table;
 
-          i {
-            font-size: 32px;
-            color: white;
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-          }
+            i {
+              font-size: 32px;
+              color: $lighter-blue;
+              display: table-cell;
+              vertical-align: middle;
+              text-align: center;
+            }
         }
-      }
     }
+
   }
+
 }
 
 @media screen and (min-width: 414px) {
   .profileDisplayComponent {
-    padding-left: 10%;
 
     .profileDisplay {
       .profileDetails {

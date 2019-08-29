@@ -1,0 +1,53 @@
+@import '../../variables.scss'; 
+
+.activityLog {
+    background: rgba(255, 255, 255, 0.3);
+    color: $white;
+    width: 400px;
+    height: 200px;
+    border-radius: 25px;
+    
+  }
+
+  .transactionDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+  }
+
+  .scrollableLog {
+    overflow-y: auto;
+    height: calc(100% - 64px);
+    margin-right: 10px;
+    font-family:"Roboto";
+    font-size:12px;
+  }
+
+  .scrollableLog::-webkit-scrollbar {
+    width: 10px;
+    border: 2px solid $white;
+    border-radius: 10px;
+  }
+
+  .scrollableLog::-webkit-scrollbar-thumb {
+    background-color: $white;
+    border-radius: 10px;
+  }
+
+  .activityHeaders {
+    font-family:"Roboto";
+    font-size:14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2.5%;
+    margin-left: 11%;
+    margin-right: 12%;
+
+      p {
+        margin: 0 0;
+      }
+  
+  }
