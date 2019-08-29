@@ -4,6 +4,7 @@ import BlueButton from '../Buttons/BlueButton.js'
 import PurpleButton from '../Buttons/PurpleButton.js'
 import Logo from './Logo/Logo.js'
 import {withRouter} from "react-router";
+import AccountDetails from './AccountDetail/AccountDetail';
 
 class Header extends React.Component {
     constructor(){
@@ -35,23 +36,23 @@ class Header extends React.Component {
                 {this.state.windowWidth >= 690 ? 
                 <div className="row" id="header">
                     <div className="col">
-                        <Logo />
+                       
                     </div>
     
                     <div className="col buttons">
                             <BlueButton title={"PROFILE"} onClick={() => this.handleRedirect("/profile")}/>
-                             <BlueButton title={"SHOP"} onClick={()=>this.handleRedirect("/shop")} /> 
+                            <BlueButton title={"SHOP"} onClick={()=>this.handleRedirect("/shop")} /> 
                             <PurpleButton title={"RANKS"} onClick={()=>this.handleRedirect("/ranking")} />
                     </div>
-                    <div className="col rightWrapper">
+                    <div className="col rightWrapper search">
                         ovdje ide search
                     </div>
                     <div className="col rightWrapper">
-                        ovdje ide slika profila
+                        <AccountDetails/>
                     </div>
                 </div> 
                 :
-                <div>ja sam mobilna!</div>
+                <div className="search">ovdje ide search</div>
                 }
                 
 

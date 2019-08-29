@@ -8,7 +8,7 @@ class Profile extends React.Component {
         
         return (
         <div className="mainWrapper">
-            <h1>Profile page</h1>
+            <h1 style={{marginTop:"88px"}}>Profile page</h1>
         </div>
         );
     }
