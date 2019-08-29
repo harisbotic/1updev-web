@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
+import Ranking from "../../app/Ranking/Ranking";
 import Profile from "../../app/Profile/Profile";
 import Header from "../../app/Header/Header";
 
@@ -14,6 +14,7 @@ function Routes() {
                 <Route exact path="/ranking"/>
                 <Route exact path="/shop"/>
             </Switch>
+
         </div>
     );
 }

@@ -10,12 +10,12 @@ import Routes from "./Shared/Routes/Routes";
 function App() {
     return (
         <div className="App">
-            <Router>
+             <Router>
                 <Switch>
-                    <PublicRoute exact path="/login" component={Login} />
-                    <PrivateRoute path="" component={Routes} />
+                  <PublicRoute exact path="/login" component={Login} />
+                  <PrivateRoute path="" component={Routes} />
                 </Switch>
-            </Router>
+           </Router>
         </div>
     );
 }
