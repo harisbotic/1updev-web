@@ -60,7 +60,7 @@ export class Profile extends Component {
 
     getBadges = () => {
 
-        jsonItemList.map((item) => {
+        jsonItemList.items.map((item) => {
             return (
                 <div className="badge">
                     <i className="fa fas-trophy"></i>
@@ -108,7 +108,7 @@ export class Profile extends Component {
 
                         <div className="badges">
                             {
-                                filteredList.map(item => {
+                                jsonItemList.items.map(item => {
                                     if (item.category === "Badge" && item.isActive)
                                         return (
                                             <div key={item.id} className="badge">
@@ -134,7 +134,7 @@ export class Profile extends Component {
                         <Accordion.Toggle as={Button} variant="link" eventKey="0">
                             Show Activity Log
                         </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="0">
+                        <Accordion.Collapse className="collapseWindow" eventKey="0">
                             <ActivityLog />
                         </Accordion.Collapse>
                     </Accordion>
@@ -186,8 +186,8 @@ export class Profile extends Component {
                                             <p id="sortByName" onClick={() => this.typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
                                             <p id="sortByValue" onClick={() => this.typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
                                             <p id="sortByCategory" onClick={() => this.typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
-
-                                            <div className="searchBoxComponent">
+                                        </div>
+                                        <div className="searchBoxComponent">
                                                 <i className="fas fa-search"></i>
                                                 <input
                                                     type="text"
@@ -197,8 +197,6 @@ export class Profile extends Component {
                                                     placeholder="Search items..."
                                                 />
                                             </div>
-
-                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>

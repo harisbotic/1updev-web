@@ -11,19 +11,12 @@
     padding:10px;
     cursor:pointer;
     transition: 0.5s;
-<<<<<<< HEAD
+    color: #FFFFFF;
+    opacity: 1;
     text-align: center;
-=======
->>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
-
-    p {
-        letter-spacing: 0.1px;
-        color: #FFFFFF;
-        opacity: 1;
-    }
+    
 
     .itemCategory {
-<<<<<<< HEAD
         font-family: "Roboto";
         font-weight: 300;
         text-align: right;
@@ -36,19 +29,6 @@
         margin-bottom: 5px;
     }
     
-=======
-        text-align: right;
-        font-family: "Roboto";
-        font-weight: 300;
-    }
-
-    i {
-        font-size:48px;
-        color:#FFFFFF;
-        margin:auto auto 5px auto;
-    }
-
->>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
     .itemName {
         font-family: "Roboto";
         font-weight: bold;
@@ -74,10 +54,6 @@
         display:flex;
         flex-direction: column;
         justify-content: space-evenly;
-<<<<<<< HEAD
-=======
-        margin:0 auto;
->>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
         height:100%;
 
         .editProfileButton {
@@ -88,13 +64,8 @@
             background:$white;
             cursor:pointer;
             transition:0.2s;
-<<<<<<< HEAD
             display:table;
             margin:0 auto;
-=======
-            text-align:center;
-            display:table;
->>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
 
             p {
                 color:purple;
@@ -124,16 +95,16 @@
         text-align: center;
         font-family:"Roboto";
         margin-top:5px;
-<<<<<<< HEAD
         width:100%;
-=======
->>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
 
         p {
-            font-size:14px;
-            font-weight: $bold;
+            font-size:14px;    
             margin:0;
             padding:0;       
+        }
+
+        p:first-child {
+            font-weight: $bold;
         }
     }
 }
