@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Accordion, Button, Card } from 'react-bootstrap';
 
 import Item from './Components/Item/Item.component';
 import ActivityLog from './Components/ActivityLog/ActivityLog.js';
@@ -21,7 +22,7 @@ export class Profile extends Component {
             itemList: jsonItemList,
             searchField: "",
             profile: jsonProfileList,
-            isAscending:true,
+            isAscending: true,
             filteredList: jsonItemList.items
         }
     }
@@ -42,19 +43,19 @@ export class Profile extends Component {
         const filteredList = this.state.filteredList;
         const isAscending = this.state.isAscending;
 
-        if(isAscending) {
+        if (isAscending) {
             this.setState({
                 "filteredList":
                     filteredList.sort((a, b) => a[target].toString().localeCompare(b[target].toString(), undefined, { numeric: (target === "value") }))
-            })   
-        } else if(!isAscending) {
+            })
+        } else if (!isAscending) {
             this.setState({
                 "filteredList":
                     filteredList.sort((a, b) => b[target].toString().localeCompare(a[target].toString(), undefined, { numeric: target === "value" }))
-            }) 
+            })
         }
-        
-        this.setState({"isAscending":!isAscending});
+
+        this.setState({ "isAscending": !isAscending });
     }
 
     getBadges = () => {
@@ -74,7 +75,7 @@ export class Profile extends Component {
 
         /* LOGIC TO REMOVE IT FROM DATABASE */
 
-        this.setState({"filteredList":filteredList});
+        this.setState({ "filteredList": filteredList });
 
     }
 
@@ -90,7 +91,6 @@ export class Profile extends Component {
                     <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
 
                     <div className="profileDetails">
-            
                         <div className="editProfileButton"><p>EDIT PROFILE</p></div>
 
                         <p className="userTitle">{this.state.title ?
@@ -108,56 +108,102 @@ export class Profile extends Component {
 
                         <div className="badges">
                             {
-                                jsonItemList.items.map(item => {  
+                                filteredList.map(item => {
                                     if (item.category === "Badge" && item.isActive)
                                         return (
                                             <div key={item.id} className="badge">
-                                            <i className={item.icon}></i>
+                                                <i className={item.icon}></i>
                                             </div>
                                         )
                                     else return null;
                                 })
                             }
                         </div>
-                    
-                        </div>
 
-                    <ActivityLog className="activityLog" />
+                    </div>
+
+                    <div className="logsDesktop">
+                        <ActivityLog className="logsDesktop" />
+                    </div>
 
                 </div>
-            
+
+                <center>
+                    <Accordion className="logsMobile">
+
+                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                            Show Activity Log
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                            <ActivityLog />
+                        </Accordion.Collapse>
+                    </Accordion>
+                </center>
+
+
                 <div className="inventoryContainer">
-                    
+
                     <div className="infoSection">
-                    
-                    <div className="infoText">
-                        <p className="inventoryText">Inventory</p>
-                        <p className="inventoryValue">(INVENTORY VALUE:  
+
+                        <div className="infoText">
+                            <p className="inventoryText">Inventory</p>
+                            <p className="inventoryValue">(INVENTORY VALUE:
                             <span className="tokenValue"> {jsonProfileList.identity.profile.tokenValue} </span>
-                        Tokens)</p>
-                    </div>
-                        
-                        
-                        <div className="filterOptions">
-                            <p>FILTER</p>
-                            <p id="sortByName" onClick={() => this.typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
-                            <p id="sortByValue" onClick={() => this.typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
-                            <p id="sortByCategory" onClick={() => this.typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
-                           
-                            <div className="searchBoxComponent">
-                                <i className="fas fa-search"></i>
-                                <input
-                                    type="text"
-                                    name="search"
-                                    className="searchBox"
-                                    onChange={(e) => this.searchFilterInventory(e.target.value)}
-                                    placeholder="Search items..."
-                                />
-                            </div>
-                        
+                                Tokens)</p>
                         </div>
 
+                        <div className="filterOptionsDesktop">
+                            <div className="filterOptions">
+                                <p>FILTER</p>
+                                <p id="sortByName" onClick={() => this.typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
+                                <p id="sortByValue" onClick={() => this.typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
+                                <p id="sortByCategory" onClick={() => this.typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
+
+                                <div className="searchBoxComponent">
+                                    <i className="fas fa-search"></i>
+                                    <input
+                                        type="text"
+                                        name="search"
+                                        className="searchBox"
+                                        onChange={(e) => this.searchFilterInventory(e.target.value)}
+                                        placeholder="Search items..."
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        
                     </div>
+
+                    <Accordion className="filterOptionsMobile">
+                            <Card>
+                                <Accordion.Toggle as={Card.Header} eventKey="0">
+                                    Show Filter Options
+                                </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="0">
+                                    <Card.Body>
+                                        <div className="filterOptions">
+                                            <p id="sortByName" onClick={() => this.typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
+                                            <p id="sortByValue" onClick={() => this.typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
+                                            <p id="sortByCategory" onClick={() => this.typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
+
+                                            <div className="searchBoxComponent">
+                                                <i className="fas fa-search"></i>
+                                                <input
+                                                    type="text"
+                                                    name="search"
+                                                    className="searchBox"
+                                                    onChange={(e) => this.searchFilterInventory(e.target.value)}
+                                                    placeholder="Search items..."
+                                                />
+                                            </div>
+
+                                        </div>
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion>
+
 
                     <div className="itemsContainer">
                         {
@@ -175,7 +221,7 @@ export class Profile extends Component {
                                         itemType={item.type}
                                         itemDisenchantValue={item.disenchantValue}
                                         itemActivatePrice={item.activatePrice}
-                                        disenchantItem = {this.disenchantItem}
+                                        disenchantItem={this.disenchantItem}
                                     />
 
                                 )

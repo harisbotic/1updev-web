@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import './variables.scss';
+=======
+@import "./variables.scss";
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
 
 .inventoryContainer {
   font-family: "Roboto";
@@ -6,7 +10,11 @@
   display: flex;
   flex-direction: column;
   padding: 3% 10% 10% 10%;
+<<<<<<< HEAD
   border-radius:40pt;
+=======
+  //border-radius:40pt;
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
   background: #ffffff 0% 0% no-repeat padding-box;
 
   .infoSection {
@@ -16,7 +24,11 @@
     margin-bottom: 10px;
 
     .infoText {
+<<<<<<< HEAD
       display:flex;
+=======
+      display: flex;
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
       flex-direction: row;
       justify-content: space-evenly;
       align-items: baseline;
@@ -27,25 +39,39 @@
         letter-spacing: 0.36px;
         color: #712ebd;
         opacity: 1;
+<<<<<<< HEAD
         margin:0;
         margin-right:10px;
       }
   
+=======
+        margin: 0;
+        margin-right: 10px;
+      }
+
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
       .inventoryValue {
         font-size: 14px;
         font-weight: 200;
         letter-spacing: 0.1px;
         color: #434343;
         opacity: 1;
+<<<<<<< HEAD
         margin:0;
       }
   
+=======
+        margin: 0;
+      }
+
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
       .tokenValue {
         font-weight: 700;
       }
     }
 
     .filterOptions {
+<<<<<<< HEAD
       display:flex;
       flex-direction: row;
       justify-content:flex-end;
@@ -55,12 +81,24 @@
       p {
         margin:0;
         margin-right:10px;
+=======
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      vertical-align: middle;
+      align-items: center;
+
+      p {
+        margin: 0;
+        margin-right: 10px;
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
         font-size: 14px;
         font-weight: 500;
         letter-spacing: 0.1px;
         color: #434343;
 
         i {
+<<<<<<< HEAD
           margin:0 5px 0 5px;
         }
       }
@@ -97,11 +135,54 @@
           font-family: "Roboto";        
           color:white;
           font-size:14px;
+=======
+          margin: 0 5px 0 5px;
+        }
+      }
+
+      p:first-child {
+        color: #712ebd;
+        font-weight: 700;
+      }
+
+      p:not(:first-child) {
+        cursor: pointer;
+      }
+
+      p:not(:first-child):hover,
+      i:hover {
+        color: #712ebd;
+        font-weight: 700;
+      }
+
+      .searchBoxComponent {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        align-items: center;
+        background: #898b91;
+        opacity: 0.5;
+        border-radius: 40px;
+
+        .searchBox {
+          margin: 0;
+          border: 0;
+          border-radius: 40px;
+        }
+
+        .searchBox::placeholder {
+          font-family: "Roboto";
+          color: white;
+          font-size: 14px;
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
           vertical-align: middle;
         }
 
         i {
+<<<<<<< HEAD
           color:white;  
+=======
+          color: white;
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
           text-align: center;
           font-size: 14px;
         }
@@ -116,6 +197,17 @@
   }
 }
 
+<<<<<<< HEAD
+=======
+@media only screen and (min-width: 415px) {
+  .inventoryContainer {
+    margin-top: 5%;
+    border-top-left-radius: 40pt;
+    border-top-right-radius: 40pt;
+  }
+}
+
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
 @media only screen and (max-width: 414px) {
   .inventoryContainer {
     display: flex;
@@ -127,10 +219,16 @@
       text-align: center;
 
       .heading {
+<<<<<<< HEAD
         display:flex;
         flex-direction: column;
       }
 
+=======
+        display: flex;
+        flex-direction: column;
+      }
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
     }
 
     .itemsContainer {

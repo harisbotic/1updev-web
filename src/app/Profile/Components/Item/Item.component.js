@@ -13,6 +13,13 @@ export class Item extends Component {
         }
     }
 
+<<<<<<< HEAD
+=======
+    toggleHover(state){
+        this.setState({'isHovered':!this.state.isHovered});
+    }
+
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
     switchHoverInfo(hoveredButton) {
     
         switch(hoveredButton) {
@@ -56,7 +63,11 @@ export class Item extends Component {
 
         return (
         
+<<<<<<< HEAD
             <div className="item-card" style={{background:this.props.background}} onMouseEnter = {()=>this.setState({'isHovered':true})} onMouseLeave = {()=>this.setState({'isHovered':false})}>
+=======
+            <div className="item-card" style={{background:this.props.background}} onMouseEnter = {()=>this.toggleHover(this.state)} onMouseLeave = {()=>this.toggleHover(this.state)}>
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
             { !isHovered ? (
                 <div>
                     <p className="itemCategory">{this.props.itemCategory}</p>
@@ -91,9 +102,17 @@ export class Item extends Component {
                         >    
                             <p>DISENCHANT</p>
                         </div>
+<<<<<<< HEAD
                         {this.switchHoverInfo(hoveredButton)}
                     </div>
                 )}
+=======
+                    </div>
+                )}
+
+                {this.switchHoverInfo(hoveredButton)}
+                    
+>>>>>>> b0db9ab52fa1db72a4c4999b423eaced3f52c6d7
             </div>
         )
     }
