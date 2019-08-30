@@ -1,0 +1,11 @@
+.userImg{
+    height: 50px;
+     width: 50px;
+    border-radius: 50%; 
+
+}
+.btn dropdown-toggle{
+    background-color: "transparent";
+
+}
+

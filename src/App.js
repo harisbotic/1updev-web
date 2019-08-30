@@ -6,7 +6,6 @@ import PrivateRoute from "./Shared/Routes/PrivateRoute";
 import Login from "./app/Login/Login";
 import Routes from "./Shared/Routes/Routes";
 
-import "./App.scss";
 
 function App() {
     return (
