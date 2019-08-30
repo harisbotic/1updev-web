@@ -1,5 +1,4 @@
 {
-    "id": 0,
     "items": [
         {
             "id": 1, 
@@ -9,7 +8,9 @@
             "value": 150,
             "type": "Common",
             "background": "transparent linear-gradient(180deg, #D67900 0%, #F94400 100%) 0% 0% no-repeat padding-box",
-            "isActive": true
+            "isActive": true,
+            "activatePrice":10,
+            "disenchantValue":75
         },
         {
             "id": 2,
@@ -18,7 +19,10 @@
             "icon": "fas fa-award",
             "value": 200,
             "type": "Epic",
-            "background": "transparent linear-gradient(180deg, #F8154B 0%, #FF036A 100%) 0% 0% no-repeat padding-box"
+            "background": "transparent linear-gradient(180deg, #F8154B 0%, #FF036A 100%) 0% 0% no-repeat padding-box",
+            "isActive":false,
+            "activatePrice":5,
+            "disenchantValue":100
         },
         {
             "id": 3,
@@ -28,7 +32,9 @@
             "value": 300,
             "type": "Legendary",
             "background": "transparent linear-gradient(180deg, #0F80E2 0%, #00E5FF 100%) 0% 0% no-repeat padding-box",
-            "isActive": true
+            "isActive": true,
+            "activatePrice":40,
+            "disenchantValue":150
         },
         {
             "id": 4,
@@ -37,7 +43,10 @@
             "icon": "fas fa-dice",
             "value": 50,
             "type": "Common",
-            "background": "red"
+            "background": "red",
+            "isActive":false,
+            "activatePrice":0,
+            "disenchantValue":20
         },
         {
             "id": 5,
@@ -46,35 +55,46 @@
             "icon": "fas fa-headphones",
             "value": 800,
             "type": "Rare",
-            "background": "gray"
+            "background": "gray",
+            "isActive":false,
+            "activatePrice":0,
+            "disenchantValue":400
         },
         {
             "id": 6,
             "category": "Merch",
             "name": "T-shirt",
             "icon": "fas fa-tshirt",
-            "value": 500,
+            "value": 350,
             "type": "Common",
-            "background": "green"
+            "background": "green",
+            "isActive":false,
+            "activatePrice":0,
+            "disenchantValue":175
         },
         {
             "id": 7,
             "category": "Merch",
             "name": "Hoodie",
             "icon": "fas fa-tshirt",
-            "value": 500,
+            "value": 400,
             "type": "Common",
-            "background": "green"
+            "background": "green",
+            "isActive":false,
+            "activatePrice":0,
+            "disenchantValue":400
         },
         {
             "id": 8,
             "category": "Badge",
             "name": "Keyboard Warrior",
             "icon": "fas fa-keyboard",
-            "value": 500,
+            "value": 700,
             "type": "Common",
             "background": "blue",
-            "isActive": true
-        }
+            "isActive": true,
+            "activatePrice":15,
+            "disenchantValue":350
+       }
     ]
 }

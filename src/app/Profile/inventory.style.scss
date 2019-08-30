@@ -1,45 +1,48 @@
+@import './variables.scss';
+
 .inventoryContainer {
   font-family: "Roboto";
   justify-content: flex-start;
   display: flex;
   flex-direction: column;
   padding: 3% 10% 10% 10%;
-  border-top-right-radius: 40pt;
-  border-top-left-radius: 40pt;
+  border-radius:40pt;
   background: #ffffff 0% 0% no-repeat padding-box;
 
   .infoSection {
-    display: grid;
-    grid-template-columns: 40% 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin-bottom: 10px;
 
-    h1 {
-      margin:0; 
-    }
+    .infoText {
+      display:flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: baseline;
 
-    .heading {
-      padding: 0;
-    }
-
-    .inventoryText {
-      font-weight: 700;
-      font-size: 28px;
-      letter-spacing: 0.36px;
-      color: #712ebd;
-      opacity: 1;
-      margin-right: 10px;
-    }
-
-    .inventoryValue {
-      font-size: 14px;
-      font-weight: 200;
-      letter-spacing: 0.1px;
-      color: #434343;
-      opacity: 1;
-    }
-
-    .tokenValue {
-      font-weight: 700;
+      .inventoryText {
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: 0.36px;
+        color: #712ebd;
+        opacity: 1;
+        margin:0;
+        margin-right:10px;
+      }
+  
+      .inventoryValue {
+        font-size: 14px;
+        font-weight: 200;
+        letter-spacing: 0.1px;
+        color: #434343;
+        opacity: 1;
+        margin:0;
+      }
+  
+      .tokenValue {
+        font-weight: 700;
+      }
     }
 
     .filterOptions {
@@ -56,8 +59,6 @@
         font-weight: 500;
         letter-spacing: 0.1px;
         color: #434343;
-        opacity: 1;
-        transition:0.2s;
 
         i {
           margin:0 5px 0 5px;
@@ -84,12 +85,12 @@
         align-items: center;
         background:#898B91;
         opacity:0.5;
-        border-radius:30px; 
+        border-radius:40px; 
 
         .searchBox {
           margin:0;
           border:0;
-          border-radius:30px;
+          border-radius:40px;
         }
 
         .searchBox::placeholder {
