@@ -25,6 +25,12 @@
     color: white;
 }
 
+.logo{
+    max-height: 42px;
+    margin:0 auto !important;
+    margin-left: 30% !important;
+}
+
 @media (max-width: 690px){
     .search{
         position: fixed;

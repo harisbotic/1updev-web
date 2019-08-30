@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import BlueButton from '../Buttons/BlueButton.js'
 import PurpleButton from '../Buttons/PurpleButton.js'
-import Logo from './Logo/Logo.js'
+import Logo from '../../assets/logo.png'
 import {withRouter} from "react-router";
 import AccountDetails from './AccountDetail/AccountDetail';
 
@@ -36,7 +36,7 @@ class Header extends React.Component {
                 {this.state.windowWidth >= 690 ? 
                 <div className="row" id="header">
                     <div className="col">
-                       
+                    <img className="logo" alt="X" src={Logo}  />
                     </div>
     
                     <div className="col buttons">

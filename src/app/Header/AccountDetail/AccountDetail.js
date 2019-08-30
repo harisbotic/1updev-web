@@ -1,5 +1,5 @@
 import React from 'react'
-import img from "../../../app/Image 545.png";
+import img from "../../../assets/Image 545.png";
 import './AccountDetail.css';
 
 function AccountDetails(props) {
