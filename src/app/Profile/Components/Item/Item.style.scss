@@ -1,0 +1,110 @@
+@import '../../variables.scss';
+
+.item-card {
+    display:flex;
+    flex-direction: column;  
+    box-sizing: border-box;  
+    border-radius: 8px;
+    font-size:12px;
+    height: 160px;
+    width: 160px;
+    padding:10px;
+    cursor:pointer;
+    transition: 0.5s;
+    text-align: center;
+
+    p {
+        letter-spacing: 0.1px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    .itemCategory {
+        font-family: "Roboto";
+        font-weight: 300;
+        text-align: right;
+    }
+
+  
+    i {
+        font-size:48px;
+        color:#FFFFFF;
+        margin-bottom: 5px;
+    }
+    
+    .itemName {
+        font-family: "Roboto";
+        font-weight: bold;
+    }
+
+    .itemValue {
+        font-family: "Roboto";
+        font-weight: 200;
+    }
+
+    .itemType {
+        font-family: "Roboto";
+        font-weight: 300;
+
+    }
+
+    .itemName,.itemValue,.itemType {
+        text-align: left;
+        margin-bottom:0;
+    }
+
+    .hoveredState {
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height:100%;
+
+        .editProfileButton {
+            border-radius:30px;
+            text-align: center;
+            height:25px;
+            width:90px;
+            background:$white;
+            cursor:pointer;
+            transition:0.2s;
+            display:table;
+            margin:0 auto;
+
+            p {
+                color:purple;
+                padding:0;
+                font-weight: $bold;
+                font-size:12px;
+                margin:0;
+                display: table-cell;
+                vertical-align: middle;
+            }
+    
+        }
+
+        .editProfileButton:hover {
+            background:transparent;
+            border:2px solid $white;
+            cursor:pointer;
+
+            p {
+                color:white;
+                font-weight: $bold;
+            }
+        }
+    }
+
+    .hoverText {
+        text-align: center;
+        font-family:"Roboto";
+        margin-top:5px;
+        width:100%;
+
+        p {
+            font-size:14px;
+            font-weight: $bold;
+            margin:0;
+            padding:0;       
+        }
+    }
+}
