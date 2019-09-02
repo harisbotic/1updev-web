@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="215.992" height="79.449" viewBox="0 0 215.992 79.449">
+  <g id="logo" transform="translate(0 -6.17)">
+    <g id="Group_1" data-name="Group 1" transform="translate(0 6.169)">
+      <rect id="Rectangle_3145" data-name="Rectangle 3145" width="56.179" height="56.179" rx="15" transform="translate(39.725) rotate(45)" fill="#3292e1"/>
+    </g>
+    <text id="UpDev" transform="translate(91.992 58.734)" fill="#fff" font-size="45" font-family="EurostileRegular, Eurostile" letter-spacing="0.006em"><tspan x="0" y="0">UpDev</tspan></text>
+    <path id="Path_1" data-name="Path 1" d="M2652.839,301.323c-.871-.428-11.906.844-11.906.844v-5.56l19.894-2.281s-.74,42.927-.74,43.069c0,.04-1.673.787-1.673.787a8.909,8.909,0,0,1-2.067.65c-.087.015-1.088.12-1.993.162a6.37,6.37,0,0,1-2.063-.162S2653.71,301.75,2652.839,301.323Z" transform="translate(-2614.182 -258.543)" fill="#fff"/>
+  </g>
+</svg>

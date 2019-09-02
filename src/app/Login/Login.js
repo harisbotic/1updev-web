@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { auth } from "../../api/index";
+import  logo  from "./logo.png";
 
 import "./Login.scss";
 
@@ -37,21 +38,30 @@ const Login = props => {
     return (
         <div className={`login ${loading ? "loading" : null}`}>
             <div className="login_widget-wrap">
+                <div className="logo">
+                    <img src={logo} alt="logo" />
+                </div>
+                <div className="text1">
+                    1UpDev
+                    </div>
+                <div className="text2">
+                    <br/>Don't miss the chance today, <br/> tomorrow could be too late...
+                    </div>
                 <form onSubmit={onSubmit} className="login_widget">
                     <div className="title">
-                        OneUpDev
+                        Sign in to your account!
                     </div>
 
-                    <div className="label">Email</div>
+                    <div className="label"></div>
                     <input
                         name="email"
                         type="email"
-                        placeholder="Email"
+                        placeholder="Email address or username"
                         className="input_default"
                         value={credentials.email}
                         onChange={handleChange}
                     />
-                    <div className="label">Password</div>
+                    <div className="label"></div>
                     <input
                         type="password"
                         placeholder="Password"
@@ -60,12 +70,14 @@ const Login = props => {
                         value={credentials.password}
                         onChange={handleChange}
                     />
+                  
+                   
 
                     <button
                         type="submit"
                         className="button-secondary login_button"
                         disabled={loading}>
-                        Login
+                        LOG IN
                     </button>
                 </form>
             </div>
