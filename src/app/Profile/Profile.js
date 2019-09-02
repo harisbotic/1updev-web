@@ -6,12 +6,10 @@ import ActivityLog from './Components/ActivityLog/ActivityLog.js';
 
 import "./Profile.scss";
 
-import jsonItemList from "./list.json";
+import jsonItemList from "./itemList.json";
 import jsonProfileList from './profile.json';
 
-import './ProfileHeader.style.scss';
-import './inventory.style.scss';
-
+import './Profile.scss';
 
 export class Profile extends Component {
 
@@ -84,6 +82,7 @@ export class Profile extends Component {
         const filteredList = this.state.filteredList;
 
         return (
+
             <div className="profile">
 
                 <div className="profileDisplayComponent">
@@ -121,24 +120,28 @@ export class Profile extends Component {
                         </div>
 
                     </div>
+                    
+                    <div className="activityLogContainer">     
+                    
+                        <div className="logsDesktop">
+                            <ActivityLog className="logsDesktop" />
+                        </div>
+                        
+                        <center>
+                            <Accordion className="logsMobile">
 
-                    <div className="logsDesktop">
-                        <ActivityLog className="logsDesktop" />
+                                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                    Show Activity Log
+                                </Accordion.Toggle>
+                                <Accordion.Collapse className="collapseWindow" eventKey="0">
+                                    <ActivityLog />
+                                </Accordion.Collapse>
+                            </Accordion>
+
+                        </center>
                     </div>
-
+                
                 </div>
-
-                <center>
-                    <Accordion className="logsMobile">
-
-                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                            Show Activity Log
-                        </Accordion.Toggle>
-                        <Accordion.Collapse className="collapseWindow" eventKey="0">
-                            <ActivityLog />
-                        </Accordion.Collapse>
-                    </Accordion>
-                </center>
 
 
                 <div className="inventoryContainer">
@@ -146,12 +149,14 @@ export class Profile extends Component {
                     <div className="infoSection">
 
                         <div className="infoText">
-                            <p className="inventoryText">Inventory</p>
-                            <p className="inventoryValue">(INVENTORY VALUE:
-                            <span className="tokenValue"> {jsonProfileList.identity.profile.tokenValue} </span>
-                                Tokens)</p>
-                        </div>
-
+                                <p className="inventoryText">Inventory</p>
+                                <p className="inventoryValue">(INVENTORY VALUE:
+                                <span className="tokenValue"> {jsonProfileList.identity.profile.tokenValue} </span>
+                                    Tokens)</p>
+                            </div>
+                            
+                        <div className="filterOptionsContainer">
+                            
                         <div className="filterOptionsDesktop">
                             <div className="filterOptions">
                                 <p>FILTER</p>
@@ -171,11 +176,8 @@ export class Profile extends Component {
                                 </div>
                             </div>
                         </div>
-
                         
-                    </div>
-
-                    <Accordion className="filterOptionsMobile">
+                            <Accordion className="filterOptionsMobile">
                             <Card>
                                 <Accordion.Toggle as={Card.Header} eventKey="0">
                                     Show Filter Options
@@ -202,6 +204,9 @@ export class Profile extends Component {
                             </Card>
                         </Accordion>
 
+                        </div>
+                   
+                    </div>
 
                     <div className="itemsContainer">
                         {
@@ -217,9 +222,8 @@ export class Profile extends Component {
                                         itemName={item.name}
                                         itemValue={item.value}
                                         itemType={item.type}
+                                        itemActivateValue={item.activatePrice}
                                         itemDisenchantValue={item.disenchantValue}
-                                        itemActivatePrice={item.activatePrice}
-                                        disenchantItem={this.disenchantItem}
                                     />
 
                                 )
@@ -227,6 +231,7 @@ export class Profile extends Component {
                             })
                         }
                     </div>
+                
                 </div>
 
             </div>

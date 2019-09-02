@@ -6,7 +6,7 @@ let customAxios = axios.create({
     baseURL: BASE_URL
 });
 
-const axiosCall = () => {s
+const axiosCall = () => {
     return new Promise((resolve, reject) => {
         axios.post(`${BASE_AUTH_URL}/connect/token`, toFormData({
             grant_type: "refresh_token",

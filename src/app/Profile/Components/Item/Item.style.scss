@@ -1,24 +1,30 @@
-@import '../../variables.scss';
+@import "../../../../Shared/variables.scss";
 
-.item-card {
+
+.itemCard {
+
+    position:relative;
     display:flex;
     flex-direction: column;  
+    justify-content: space-evenly;
     box-sizing: border-box;  
-    border-radius: 8px;
+    border-radius: 10px;
     font-size:12px;
-    height: 160px;
-    width: 160px;
+    max-height: 180px;
+    max-width: 180px;
+    min-height: 140px;
+    min-width: 140px;
     padding:10px;
     cursor:pointer;
-    transition: 0.5s;
-    color: #FFFFFF;
+    transition: 1s;
+    color: $white;
     opacity: 1;
     text-align: center;
     
 
     .itemCategory {
         font-family: "Roboto";
-        font-weight: 300;
+        font-weight: $bold;
         text-align: right;
     }
 
@@ -26,85 +32,196 @@
     i {
         font-size:48px;
         color:#FFFFFF;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
     
-    .itemName {
+    .itemDetails {
         font-family: "Roboto";
-        font-weight: bold;
-    }
-
-    .itemValue {
-        font-family: "Roboto";
-        font-weight: 200;
-    }
-
-    .itemType {
-        font-family: "Roboto";
-        font-weight: 300;
-
-    }
-
-    .itemName,.itemValue,.itemType {
         text-align: left;
-        margin-bottom:0;
-    }
+        margin:0;
+        font-weight: $regular;
 
-    .hoveredState {
-        display:flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        height:100%;
-
-        .editProfileButton {
-            border-radius:30px;
-            text-align: center;
-            height:25px;
-            width:90px;
-            background:$white;
-            cursor:pointer;
-            transition:0.2s;
-            display:table;
-            margin:0 auto;
-
-            p {
-                color:purple;
-                padding:0;
-                font-weight: $bold;
-                font-size:12px;
-                margin:0;
-                display: table-cell;
-                vertical-align: middle;
-            }
-    
-        }
-
-        .editProfileButton:hover {
-            background:transparent;
-            border:2px solid $white;
-            cursor:pointer;
-
-            p {
-                color:white;
-                font-weight: $bold;
-            }
-        }
-    }
-
-    .hoverText {
-        text-align: center;
-        font-family:"Roboto";
-        margin-top:5px;
-        width:100%;
-
-        p {
-            font-size:14px;    
-            margin:0;
-            padding:0;       
-        }
-
-        p:first-child {
+        .itemName {
             font-weight: $bold;
         }
+
+        p {
+            margin:0
+        }
     }
+
+
+    .hovered {
+        opacity:0;
+        background:rgba(113, 46, 189,0.9);
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        width:100%;
+        transition: .5s ease;
+        font-family: "Roboto";
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding:inherit;
+        border-radius: inherit;
+
+        .buttons {
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding:5px;
+
+            .itemButton {
+                display:table;
+                border-radius: $border-radius;
+                background:$white;
+                border:2px solid $white;
+                padding:4px;
+                width: 80%;
+                text-align: center;
+                transition: 0.5s ease;
+
+                p {
+                    display:table-cell;
+                    color:$secondary-purple;
+                    font-weight: $bold;
+                    margin:0;
+                    font-size:12px;
+                    text-transform: uppercase;
+                }
+
+                &:hover {
+                    background:transparent;
+
+                    p {
+                        color:$white;
+                    }
+                }
+            }
+
+            
+
+        }
+    
+
+        .hoveredInfo {
+
+            p {
+                margin:0;
+                text-shadow: 1px 1px 1px black;
+            }
+
+            .infoText {
+                font-size:12px;
+            }
+
+            .tokenValue {
+                font-weight: $bold;
+            }
+        }
+
+    }
+
+}
+
+
+.itemCard:hover {
+
+    .hovered {
+        opacity:1;
+    }
+
+
+}
+
+.modal {
+    display:none;
+    background:transparent;
+    box-shadow: none;
+    font-family: "Roboto";
+}
+
+.modal-header {
+    font-weight: $bold;
+    text-align: center;
+}
+
+.modal-content {
+    border-radius: 40px;
+}
+
+.modal-body {
+    font-weight: $regular;
+}
+
+.modalSpan {
+    font-weight: $bold;
+}
+
+.modalButton {
+    font-family:"Roboto";
+    border-radius: $border-radius;
+    background:$secondary-purple;
+    transition:0.5s ease;
+    text-align: center;
+    padding:10px;
+    width:50%;
+    cursor:pointer;
+    margin-top:10px;
+
+    p {
+        color:white;
+        font-weight: $bold;
+        margin:0;
+    }
+
+    &:hover {
+        opacity:0.8;
+    }
+}
+@media screen and (max-width: $mobile) {
+
+    .itemCard {
+        height: 140px;
+        width: 140px;
+        font-size:10px;
+
+        i {
+            font-size:32px;
+        }
+
+        .hovered {
+            .buttons {
+                .itemButton {
+                    padding:2px;
+                    p {
+                        font-size:10px;
+                    }
+                }
+            }
+
+            .hoveredInfo {
+                .infoText,.tokenValue {
+                    font-size:10px;
+                }
+            }
+        }
+    }
+
+    .itemCard:active {
+
+        .hovered {
+            opacity:1;
+        }
+    
+    
+    }
+    
+
 }

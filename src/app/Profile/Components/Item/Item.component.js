@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 
 import "./Item.style.scss";
 
@@ -8,95 +11,94 @@ export class Item extends Component {
         super();
 
         this.state = {
-            isHovered : false,
-            hoveredButton:""
+            
+            modalShow:false,
+            modalType:"",
+            hoveredInfoText:"Name",
+            hoveredTokenValue:"Token Value"
+
         }
     }
-
-    switchHoverInfo(hoveredButton) {
-    
-        switch(hoveredButton) {
-            case 'activate':
-                return( 
-                    <div className="hoverText">
-                        <p>Activate price</p>
-                        <p>{this.props.itemActivatePrice} Tokens</p>
-                    </div>
-                );
-            case 'gift':
-                return( 
-                    <div className="hoverText">
-                        <p>Gifting is</p>
-                        <p>free :D</p>
-                    </div>
-                );
-            case 'disenchant':
-                return( 
-                    <div className="hoverText">
-                        <p>Disenchant value</p>
-                        <p>{this.props.itemDisenchantValue} Tokens</p>
-                    </div>
-                );
-            default:
-                    return( 
-                        <div className="hoverText">
-                        <p> </p>
-                        <p> </p>
-                        </div>
-                    );
-      }
-
-    }
    
-    
+    changeHeader = category => {
+        if(category=="Badge" || category=="Games" || category=="Skin")
+            this.setState({"modalType":"Activate"});
+        else if(category=="Merch")
+            this.setState({"modalType":"Purchase"});
+    }
+
+    updatePrice = category => {
+        if(category=="Badge" || category=="Games" || category=="Skin")
+            this.setState({"hoveredTokenValue":this.props.itemActivateValue+" Tokens"});
+        else if(category=="Merch")
+            this.setState({"hoveredTokenValue":this.props.itemValue+" Tokens"});
+    }
+
     render() {
 
-        const isHovered = this.state.isHovered;
-        const hoveredButton = this.state.hoveredButton;
-
+        
         return (
         
-            <div className="item-card" style={{background:this.props.background}} onMouseEnter = {()=>this.setState({'isHovered':true})} onMouseLeave = {()=>this.setState({'isHovered':false})}>
-            { !isHovered ? (
-                <div>
-                    <p className="itemCategory">{this.props.itemCategory}</p>
-                    <i className={this.props.itemIcon}></i>
+            <div className="itemCard" style={{background:this.props.background}}>
+
+                <p className="itemCategory">{this.props.itemCategory}</p>
+                
+                <i className={this.props.itemIcon}></i>
+
+                <div className="itemDetails">
                     <p className="itemName">{this.props.itemName}</p>
                     <p className="itemValue">{this.props.itemValue} Tokens</p>
                     <p className="itemType">{this.props.itemType}</p>
                 </div>
-                ) : (
-                    
-                    <div className="hoveredState">
-                        <div 
-                            className="editProfileButton" 
-                            onMouseEnter = {()=>this.setState({"hoveredButton":"activate"})} 
-                            onMouseLeave = {()=>this.setState({"hoveredButton":""})}
-                            onClick = {() => {this.props.disenchantItem(this.props.itemId); this.setState({"isHovered":true}); }}
-                        >    
-                            <p>ACTIVATE</p>
+
+                <div className="hovered" onMouseEnter={()=>this.changeHeader(this.props.itemCategory)}>
+
+                    <div className="buttons">
+                        <div className="itemButton activate" onClick={()=>this.setState({"modalShow":true})} onMouseEnter={()=>{this.setState({"hoveredInfoText":this.state.modalType+" value"});this.updatePrice(this.props.itemCategory)}}>    
+                            <p>{this.state.modalType}</p>
                         </div>
-                        <div 
-                            className="editProfileButton" 
-                            onMouseEnter = {()=>this.setState({"hoveredButton":"gift"})} 
-                            onMouseLeave = {()=>this.setState({"hoveredButton":""})}
-                        >    
+
+                        <div className="itemButton gift" onClick={()=>this.setState({"modalShow":true,"modalType":"Gift"})} onMouseEnter={()=>this.setState({"hoveredInfoText":"Gifting is free","hoveredTokenValue":"Click to select user"})}>    
                             <p>GIFT</p>
                         </div>
-                        <div 
-                            className="editProfileButton" 
-                            onMouseEnter = {()=>this.setState({"hoveredButton":"disenchant"})} 
-                            onMouseLeave = {()=>this.setState({"hoveredButton":""})}
-                            onClick = {() => {this.props.disenchantItem(this.props.itemId)}}
-                        >    
+
+                        <div className="itemButton activate" onClick={()=>this.setState({"modalShow":true,"modalType":"Disenchant"})} onMouseEnter={()=>this.setState({"hoveredInfoText":"Disenchant value","hoveredTokenValue":this.props.itemDisenchantValue+" Tokens"})}>                             
                             <p>DISENCHANT</p>
                         </div>
-                        {this.switchHoverInfo(hoveredButton)}
                     </div>
-                )}
+
+                    <div className="hoveredInfo">
+                        <p className="infoText">{this.state.hoveredInfoText}</p>
+                        <p className="tokenValue">{this.state.hoveredTokenValue}</p>
+                    </div>
+
+                    <Modal show={this.state.modalShow} className="itemModal">
+                            
+                            <Modal.Header className="modalHeader">
+                            <Modal.Title>{this.state.modalType} Item</Modal.Title>
+                            </Modal.Header>
+                            
+                            <Modal.Body>You are about to {this.state.modalType.toLowerCase()} <span className="modalSpan"> {this.props.itemName}</span> for <span className="modalSpan">{this.state.hoveredTokenValue} </span> Tokens </Modal.Body>
+                                <Modal.Footer>
+                                <div variant="secondary" className = "modalButton" onClick={() => {this.props.disenchantItem(this.props.itemId)}}>
+                                    <p>ACCEPT</p>
+                                </div>
+                                <div variant="primary" className = "modalButton" onClick={()=>this.setState({"modalShow":false})}>
+                                    <p>CANCLE</p>
+                                </div>
+                            </Modal.Footer>
+                        
+                    </Modal>
+
+
+                </div>
+            
             </div>
+
         )
+
     }
+
 };
 
 export default Item;
