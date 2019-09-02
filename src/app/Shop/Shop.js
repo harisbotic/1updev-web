@@ -37,7 +37,7 @@ export class Shop extends Component {
       <div className="parent-div">
         <div className="shop_header row">
           <div className="in_use col-6">
-            {/* //moje */}
+            {/* /MOJE */}
             <div className="items-in-use">
               <BadgesInUse />
               <SkinInUse />
@@ -51,7 +51,7 @@ export class Shop extends Component {
               <span className="own-count">22</span>
             </div>
           </div>
-          {/* //zavrseno */}
+        {/* DOVDE */}
           <div className="transaction_log col-6">
             <TransactionLog></TransactionLog>
           </div>

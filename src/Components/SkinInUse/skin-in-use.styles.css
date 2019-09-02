@@ -5,7 +5,7 @@ text-align: left;
 font: Bold 36px/61px Roboto;
 letter-spacing: 0.36px;
 /* color: #FFFFFF; */
-color:black;
+color:white;
 opacity: 1;
 margin-bottom:20px;
 }
@@ -18,7 +18,7 @@ margin-bottom:20px;
     width: 133px;
 height: 133px;
     /* background: #FFFFFF 0% 0% no-repeat padding-box; */
-    background:black; 
+    background:white; 
     /* privremeno crna boja u upotrebi jer nam je trenutno podloga bjela */
 border-radius: 18px;
 opacity: 1;
