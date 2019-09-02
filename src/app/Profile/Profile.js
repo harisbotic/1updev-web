@@ -224,6 +224,7 @@ export class Profile extends Component {
                                         itemType={item.type}
                                         itemActivateValue={item.activatePrice}
                                         itemDisenchantValue={item.disenchantValue}
+                                        disenchantItem={this.disenchantItem}
                                     />
 
                                 )
