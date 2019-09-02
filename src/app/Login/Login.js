@@ -1,6 +1,6 @@
-import React, { useState } from "./node_modules/react";
-import { withRouter, Link } from "./node_modules/react-router-dom";
-import { auth } from "../../Api/index";
+import React, { useState } from "react";
+import { withRouter, Link } from "react-router-dom";
+import { auth } from "../../api/index";
 
 import "./Login.scss";
 

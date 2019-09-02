@@ -1,4 +1,4 @@
-import axios from './node_modules/axios';
+import axios from '../../node_modules/axios';
 import { BASE_AUTH_URL, clientAuthHeader, toFormData } from './shared';
 
 export default {
