@@ -4,9 +4,9 @@ import PublicRoute from "./Shared/Routes/PublicRoute";
 import PrivateRoute from "./Shared/Routes/PrivateRoute";
 
 //components
-import Login from "./app/Login/Login";
+import Login from "./App/Login/Login";
 import Routes from "./Shared/Routes/Routes";
-import Shop from "./app/Shop/Shop";
+import Shop from "./App/Shop/Shop";
 
 import "./App.scss";
 

@@ -18,7 +18,7 @@ margin-bottom:20px;
     width: 76px;
     height: 94px;
     
-    background: transparent url( '../Assets/mark.svg' );
+    background: transparent url( '../../Assets/mark.svg' );
     opacity: 1;
 }
 .badge2{
@@ -27,16 +27,16 @@ margin-bottom:20px;
     width: 55px;
     height: 94px;
     opacity: 1;
-    background: transparent url( '../Assets/medal.svg' );
+    background: transparent url( '../../Assets/medal.svg' );
     
 }
 .badge3{
     top: 276px;
     left: 555px;
-    width: 94px;
+    width: 94px;    
     height: 93px;
    
-    background: transparent url( '../Assets/quality-assurance.svg' );
+    background: transparent url( '../../Assets/quality-assurance.svg' );
     opacity: 1;
     /* margin-right:20px; */
 }

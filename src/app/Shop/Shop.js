@@ -10,12 +10,12 @@ import {
   Card
 } from "react-bootstrap";
 import "./Shop.scss";
-import AddItem from "./AddItem";
-import Item from "./Item/Item.component.js";
+import AddItem from "../../Components/AddItem/AddItem";
+import Item from "../../Components/Item/Item.component";
 import jsonItemList from "./list.json";
-import TransactionLog from "./TransactionLog/Transactionlog.component";
-import BadgesInUse from "../BadgesInUse/badges-in-use";
-import SkinInUse from "../SkinInUse/skin-in-use";
+import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
+import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
+import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 
 // const [modalShow, setModalShow] = useState(false);
 

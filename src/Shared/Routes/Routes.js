@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Profile from "../../app/Shop/Shop";
+import Profile from "../../App/Profile/Profile";
 
 function Routes() {
     return (
