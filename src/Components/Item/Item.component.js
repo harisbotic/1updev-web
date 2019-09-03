@@ -21,7 +21,7 @@ export class Item extends Component {
     render() {
         return (
         
-            <div className="item-card" style={{background:this.props.background}} onMouseEnter = {()=>this.toggleHover(this.state)} onMouseLeave = {()=>this.toggleHover(this.state)}>
+            <div className="item-card xs-column" style={{background:this.props.background}} onMouseEnter = {()=>this.toggleHover(this.state)} onMouseLeave = {()=>this.toggleHover(this.state)}>
                 <p className="itemCategory">{this.props.itemCategory}</p>
                 <i className={this.props.itemIcon}></i>
                 <p className="itemName">{this.props.itemName}</p>

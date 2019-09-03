@@ -40,7 +40,8 @@
   background: #ffffff 0% 0% no-repeat padding-box;
 
   .infoSection {
-    display: grid;
+    // display: grid;
+    display:flex;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 10px;
 
@@ -85,12 +86,14 @@
 
       .searchInventory {
         height: inherit;
+        // width:auto;
       }
     }
   }
 
   .itemsContainer {
-    display: grid;
+    display: flex;
+    // display:grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
   }

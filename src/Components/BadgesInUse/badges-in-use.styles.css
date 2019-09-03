@@ -12,14 +12,22 @@ color:white;
 opacity: 1;
 margin-bottom:20px;
 }
+
+/* moram skontat kako da mi badgevi budu responsive */
+
 .badge1{
-    display:flex;
-    /* top: 276px; */
-    /* left: 247px; */
+    /* display:flex; */
     width: 76px;
     height: 94px;
-    
+    /* width:100%; */
+    /* min-width:50px; */
+    /* height:auto; */
+    /* height:auto; */
     background: transparent url( '../../Assets/mark.svg' );
+    /* background-repeat:no-repeat; */
+    /* background-size:contain; */
+    /* background-position:center; */
+    
     opacity: 1;
 }
 .badge2{
@@ -29,11 +37,8 @@ margin-bottom:20px;
     height: 94px;
     opacity: 1;
     background: transparent url( '../../Assets/medal.svg' );
-    
 }
 .badge3{
-    top: 276px;
-    left: 555px;
     width: 94px;
     height: 93px;
    
@@ -53,8 +58,14 @@ margin-bottom:20px;
         display:flex;
         justify-content: space-around;
         align-items: center;
-        width: 134px;
-        height: 133px;
+        object-fit: contain;
+        /* width: 134px; */
+        /* height: 133px; */
+        /* margin-right: 20px; */
+        /* width:100px; */
+        /* height:100px; */
+        min-width:100px;
+        height:auto;
         background: #461864 0% 0% no-repeat padding-box;
         border-radius: 18px;
         opacity: 1;
@@ -64,8 +75,12 @@ margin-bottom:20px;
         display:flex;
         justify-content: space-around;
         align-items: center;
-        width: 133px;
-        height: 133px;
+        /* width: 133px; */
+        /* height: 133px; */
+        /* width:100px; */
+        /* height:100px; */
+        min-width:100px;
+        height:auto;
         background: #461864 0% 0% no-repeat padding-box;
         border-radius: 18px;
         opacity: 1;
@@ -74,8 +89,12 @@ margin-bottom:20px;
         display:flex;
         justify-content: space-around;
         align-items: center;
-        width: 133px;
-        height: 133px;
+        /* width: 133px; */
+        /* height: 133px; */
+        /* width:100px; */
+        /* height:100px; */
+        min-width:100px;
+        height:auto;
         background: #461864 0% 0% no-repeat padding-box;
         border-radius: 18px;
         opacity: 1;

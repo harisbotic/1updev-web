@@ -29,7 +29,10 @@ class BadgesInUse extends React.Component{
     }
     render(){
         return(
+
             <div className='badges-parent-div'>
+                {/* <img src='https://cdn0.iconfinder.com/data/icons/black-friday-shopping/512/certificate-standard-medal-certified-ribbon-badge-512.png' alt='mark' width='100px' height='auto' /> */}
+                {/* <img transparent {url( '../../Assets/mark.svg' )} alt='mark' src='govno' /> */}
                <div className='badge-text'>
                         Badges in use:
                 </div>
