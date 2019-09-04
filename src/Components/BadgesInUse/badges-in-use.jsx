@@ -36,11 +36,11 @@ class BadgesInUse extends React.Component{
                <div className='badge-text'>
                         Badges in use:
                 </div>
-             <div className='badges-in-use-container'>                
+             <div className='badges-in-use-container'>             
                 {
                     this.state.badges.map( (badge) =>{
                         return(
-                        <div class='col-4' className='badge-container'>
+                            <div class='col-4' className='badge-container'>
                             <i className= {badge.icon}></i>
                             {/* award,trophy,dice */}
                         </div>

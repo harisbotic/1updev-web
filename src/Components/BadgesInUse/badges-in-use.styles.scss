@@ -37,20 +37,16 @@ i{
 }
 .badge-container{
         display:flex;
-        /* justify-content: space-around; */
         justify-content: center;
          align-items: center; 
-        /* object-fit: contain; */
-        /* width: 134px; */
-        /* height: 133px; */
-        /* margin-right: 20px; */
-        /* width:100px; */
-        /* height:100px; */
-        // min-width:100px;
-        // height:auto;
         box-sizing:border-box;
+        // box-sizing:square;
         min-width:100px;
         min-height:100px;
+        // width:10vw;
+        // height:10vw;
+        // min-width:50px;
+        // min-height:50px;
         max-width:100px;
         max-height:100px;
          background: #461864 0% 0% no-repeat padding-box; 
@@ -59,3 +55,35 @@ i{
         opacity: 1;
     
 }
+@media only screen and (max-width: 768px) {
+    i{
+        font-size:45px;
+    }
+    .badge-container{
+        min-width:80px;
+        min-height:80px;
+        max-width: 80px;
+        max-height:80px ;
+        // width:80px;
+        // height:80px;
+        border-radius:6px;
+    }
+    .badge-text{
+        font: Bold 10px/20px Roboto; 
+    }
+  }
+@media only screen and (max-width: $mobile ) {
+    i{
+        font-size:45px;
+    }
+    .badge-container{
+        min-width:60px;
+        min-height:60px;
+        max-width: 60px;
+        max-height:60px ;
+        border-radius:6px;
+    }
+    .badge-text{
+        font: Bold 10px/20px Roboto; 
+    }
+  }

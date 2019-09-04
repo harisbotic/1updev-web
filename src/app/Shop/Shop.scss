@@ -4,7 +4,7 @@
   // height: 29px;
   text-align: left;
   font: Regular 16px/32px Roboto;
-  
+  margin-right:20px;
   letter-spacing: 0.1px;
   // color: #FFFFFF;
   color: white;
@@ -111,7 +111,7 @@
   }
 
 }
-@media only screen and( min-width:768px ){
+@media only screen and( max-width:768px ){
   .available-tokens,.items-own{
     font: Regular 4px/8px Roboto;
   }
@@ -121,4 +121,5 @@
     display: flex;
     flex-direction: column;
   }
+
 }
