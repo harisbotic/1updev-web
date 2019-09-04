@@ -1,4 +1,6 @@
-.activity_log-wrap {
+/*.transaction_log-container {
+  
+  align-items: center;
   background-color: transparentize(white, 0.8);
   border-radius: 25px;
   color: white;
@@ -7,7 +9,7 @@
   margin-right: 10px;
   overflow-y: scroll;
 
-  height: calc(100% - 64px);
+  height: calc(100% - 64px); 
 
   .header_row {
     font: 15px/32px Roboto;
@@ -29,21 +31,87 @@
     margin: 0 12px;
   }
 
-  .profile_img {
-    width: 50px;
-    height: 50px;
-    border-radius: 4%;
-    padding: 5px 5px;
-  }
+ 
 }
 
-.activity_log-wrap::-webkit-scrollbar {
+.transaction_log-container::-webkit-scrollbar {
   border: 2px solid white;
   border-radius: 10px;
   width: 10px;
 }
 
-.activity_log-wrap::-webkit-scrollbar-thumb {
+.transaction_log-container::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+*/
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.transaction {
+  margin: 5%;
+  background-color: transparentize(white, 0.8);
+  border-radius: 25px;
+}
+
+.transaction_log-container {
+  padding: 5% 5% 5% 0%;
+  color: white;
+  font-weight: 400;
+  height: 200px;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.transactions {
+  max-height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0% 5% 0% 0%;
+}
+
+.header_row {
+  font: 100% Roboto;
+  position: relative;
+
+  .title {
+    left: 17%;
+  }
+
+  .time {
+    right: 10%;
+  }
+}
+
+.transaction_row {
+  font-size: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 5vh;
+  margin: 0;
+  align-items: center;
+}
+
+.profile_img {
+  width: 100%;
+  height: 100%;
+  border-radius: 4%;
+}
+
+.transactions::-webkit-scrollbar {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 10px;
+}
+
+.transactions::-webkit-scrollbar-thumb {
   background-color: white;
   border-radius: 10px;
 }

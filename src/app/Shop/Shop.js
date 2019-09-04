@@ -11,10 +11,10 @@ import {
 } from "react-bootstrap";
 import "./Shop.scss";
 import AddItem from "../../Components/AddItem/AddItem";
-import Item from "../../Components/Item/Item.component";
+import Item from "../../Components/Item/Item.component.js";
 import jsonItemList from "./list.json";
 import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
-import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
+import BadgesInUse from "../../Components/BadgesInUse/badges-in-use.jsx";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 
 // const [modalShow, setModalShow] = useState(false);
@@ -37,7 +37,6 @@ export class Shop extends Component {
       <div className="parent-div">
         <div className="shop_header row">
           <div className="in_use col-6">
-            {/* //moje */}
             <div className="items-in-use">
               <BadgesInUse />
               <SkinInUse />
@@ -51,7 +50,6 @@ export class Shop extends Component {
               <span className="own-count">22</span>
             </div>
           </div>
-          {/* //zavrseno */}
           <div className="transaction_log col-6">
             <TransactionLog></TransactionLog>
           </div>

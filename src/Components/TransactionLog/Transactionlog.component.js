@@ -40,6 +40,20 @@ class Transactionlog extends Component {
           item: "XYZ",
           price: "125",
           time: "04:06am"
+        },
+        {
+          id: "6",
+          user: "Tarik",
+          item: "XYZ",
+          price: "125",
+          time: "04:06am"
+        },
+        {
+          id: "7",
+          user: "Tarik",
+          item: "XYZ",
+          price: "125",
+          time: "04:06am"
         }
       ]
     };
@@ -47,26 +61,34 @@ class Transactionlog extends Component {
   render() {
     const { transactions } = this.state;
     return (
-      <div className="activity_log-wrap my-5">
-        <div className="header_row row">
-          <div className=""></div>
-          <div className="title col-10">Activity Log for 24h</div>
-          <div className="time col-2">Time</div>
-        </div>
-        {transactions.map(transaction => (
-          <div className="activity_row">
-            <div className="activity_row-text col-10">
-              <img
-                src={`https://robohash.org/${transaction.id}?set=set2&size=160x180`}
-                alt="img"
-                className="profile_img"
-              />
-              {transaction.user} bought {transaction.item} for{" "}
-              {transaction.price} tokens
-            </div>
-            <div className="activity_row-time col-2">{transaction.time}</div>
+      <div className="transaction">
+        <div className="transaction_log-container">
+          <div className="header_row row">
+            <div className="title col-10">Activity Log for 24h</div>
+            <div className="time col-2">Time</div>
           </div>
-        ))}
+          <div className="transactions">
+            {transactions.map(transaction => (
+              <div className="transaction_row">
+                <div className="activity_row-img col-2">
+                  <img
+                    src={`https://robohash.org/${transaction.id}?set=set2&size=160x180`}
+                    alt="img"
+                    className="profile_img"
+                  />
+                </div>
+                <div className="activity_row-text col-8">
+                  {transaction.user} bought {transaction.item} for{" "}
+                  {transaction.price} tokens
+                </div>
+
+                <div className="activity_row-time col-2">
+                  {transaction.time}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

@@ -4,23 +4,23 @@ import PublicRoute from "./Shared/Routes/PublicRoute";
 import PrivateRoute from "./Shared/Routes/PrivateRoute";
 
 //components
-import Login from "./App/Login/Login";
+import Login from "./app/Login/Login";
 import Routes from "./Shared/Routes/Routes";
-import Shop from "./App/Shop/Shop";
+import Shop from "./app/Shop/Shop";
 
 import "./App.scss";
 
 function App() {
-    return (
-        <div className="App">
-            <Router>
-                <Switch>
-                    <PublicRoute exact path="/login" component={Login} />
-                    <PrivateRoute path="" component={Routes} />
-                </Switch>
-            </Router>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+          <PublicRoute exact path="/login" component={Login} />
+          <PrivateRoute path="" component={Routes} />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
