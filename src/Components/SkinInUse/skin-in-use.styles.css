@@ -1,6 +1,6 @@
 .skin-text{
         width: 191px;
-        height: 48px;
+        /* height: 48px; */
         text-align: left;
         /* font: Bold 36px/61px Roboto; */
         font: Bold 20px/39px Roboto;
@@ -8,7 +8,7 @@
         /* color: #FFFFFF; */
         color:white;
         opacity: 1;
-        margin-bottom:20px;
+        margin-bottom:0px;
 }
 
 .skin-container{

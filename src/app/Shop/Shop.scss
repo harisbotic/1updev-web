@@ -1,13 +1,18 @@
 .available-tokens,
 .items-own {
-  width: 200px;
-  height: 29px;
+  // width: 200px;
+  // height: 29px;
   text-align: left;
   font: Regular 16px/32px Roboto;
+  
   letter-spacing: 0.1px;
   // color: #FFFFFF;
   color: white;
   margin-bottom: 20px;
+}
+
+.in_use{
+  // justify-content: center;
 }
 
 .token-count,
@@ -103,6 +108,12 @@
       grid-template-rows: 1fr 1fr;
       grid-gap: 10px;
     }
+  }
+
+}
+@media only screen and( min-width:768px ){
+  .available-tokens,.items-own{
+    font: Regular 4px/8px Roboto;
   }
 }
 @media only screen and (max-width: 768px) {

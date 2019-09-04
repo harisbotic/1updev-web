@@ -39,13 +39,13 @@ export class Shop extends Component {
       <div>
       <div className='shop-header row xs-column'>
           <div className='in_use col-lg-6 col-sm-12  row xs-column'>
-             <div className='col-9'><BadgesInUse /></div>
-             <div className='col-3'><SkinInUse /></div>
-                    <div className="available-tokens">
+             <div className='col-sm-9 col-xs-12'><BadgesInUse /></div>
+             <div className='col-sm-3 col-xs-12'><SkinInUse /></div>
+                    <div className="available-tokens col-md-6">
                       AVAILABLE TOKENS:
                       <span className="token-count">455</span>
                     </div>
-                    <div className="items-own">
+                    <div className="items-own col-md-6">
                       ITEMS OWN:
                       <span className="own-count">22</span>
                     </div>

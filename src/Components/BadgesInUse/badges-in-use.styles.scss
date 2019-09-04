@@ -1,0 +1,61 @@
+@import '../../Shared/variables.scss'; 
+.badge-text{
+/* top: 183px; */
+/* left: 220px; */
+width: 242px;
+// height: 48px;
+text-align: left;
+/* font: Bold 36px/61px Roboto; */
+font: Bold 20px/39px Roboto; 
+letter-spacing: 0.36px;
+/* color: #FFFFFF; */
+color:white;
+opacity: 1;
+margin-bottom:0px;
+}
+
+/* moram skontat kako da mi badgevi budu responsive */
+i{
+    font-size:50px;
+    color:$lighter-blue;
+}
+
+.badges-in-use-container{
+     /* top: 257px;  
+     left: 220px; 
+    width: 449px;
+    height: 133px;
+    opacity: 1;*/
+    // justify-content:space-between;
+    // display:flex;
+    // ova dva iznad umjesto ova tri ispod
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-column-gap:10px;
+    margin-bottom: 10px;
+    // justify-content: center;
+}
+.badge-container{
+        display:flex;
+        /* justify-content: space-around; */
+        justify-content: center;
+         align-items: center; 
+        /* object-fit: contain; */
+        /* width: 134px; */
+        /* height: 133px; */
+        /* margin-right: 20px; */
+        /* width:100px; */
+        /* height:100px; */
+        // min-width:100px;
+        // height:auto;
+        box-sizing:border-box;
+        min-width:100px;
+        min-height:100px;
+        max-width:100px;
+        max-height:100px;
+         background: #461864 0% 0% no-repeat padding-box; 
+        // background:black;
+        border-radius: 18px;
+        opacity: 1;
+    
+}

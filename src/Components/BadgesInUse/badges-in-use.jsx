@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './badges-in-use.styles.css';
+import './badges-in-use.styles.scss';
 
 class BadgesInUse extends React.Component{
     constructor(){
@@ -12,37 +12,37 @@ class BadgesInUse extends React.Component{
             {
                 name:'badge1',
                 type:'badge',
-                id:1
+                id:1,
+                icon:'fas fa-medal'
             },
             {
                 name:'badge2',
                 type:'badge',
-                id:2
+                id:2,
+                icon:'fas fa-award'
             },
             {
                 name:'badge3',
                 type:'badge',
-                id:3
+                id:3,
+                icon:'fas fa-trophy'
             }
         ]
     }
     }
     render(){
         return(
-
             <div className='badges-parent-div'>
-                {/* <img src='https://cdn0.iconfinder.com/data/icons/black-friday-shopping/512/certificate-standard-medal-certified-ribbon-badge-512.png' alt='mark' width='100px' height='auto' /> */}
-                {/* <img transparent {url( '../../Assets/mark.svg' )} alt='mark' src='govno' /> */}
                <div className='badge-text'>
                         Badges in use:
                 </div>
-             <div className='badges-in-use-container'>                 
+             <div className='badges-in-use-container'>                
                 {
                     this.state.badges.map( (badge) =>{
                         return(
-                        <div className= { `badge-container${badge.id}` }>
-                            <div className={ `badge${badge.id}` }>
-                            </div>
+                        <div class='col-4' className='badge-container'>
+                            <i className= {badge.icon}></i>
+                            {/* award,trophy,dice */}
                         </div>
                         )
                     }
