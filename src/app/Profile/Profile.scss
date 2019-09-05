@@ -111,19 +111,10 @@ body {
 
   .activityLogContainer {
   
-    .logsDesktop {
-      display: block;
+    .btn {
+      box-shadow: none;
     }
-  
-    .logsMobile {
-      display: none;
-  
-        .btn {
-          box-shadow: none;
-        }
-    }
-  
-  
+    
   } 
 
 }
@@ -175,14 +166,6 @@ body {
 
 
     .filterOptionsContainer {
-
-      .filterOptionsDesktop {
-        display:block;
-      }
-
-      .filterOptionsMobile {
-        display: none;
-      }
 
       .filterOptions {
         display: flex;
@@ -265,10 +248,42 @@ body {
 
 }
 
+.filterOptionsDesktop {
+  display:block;
+}
+
+.filterOptionsMobile {
+  display: none;
+}
+
+.logsDesktop {
+  display: block;
+}
+
+.logsMobile {
+  display: none;
+}
+
  
 
 @media screen and (max-width: $mobile) {
-  
+
+  .filterOptionsDesktop {
+    display:none;
+  }
+
+  .filterOptionsMobile {
+    display: block;
+  }
+
+  .logsDesktop {
+    display: none;
+  }
+
+  .logsMobile {
+    display: block;
+  }
+
 
   .profileDisplayComponent {
     display: flex;
@@ -338,13 +353,8 @@ body {
     }
 
     .filterOptionsContainer {
-      
-      .filterOptionsDesktop {
-        display: none;
-      }
 
       .filterOptionsMobile {
-        display:block;
         width: 100%;
         text-align: center;    
         border-radius: 40px;
@@ -396,13 +406,40 @@ body {
       
     }
 
-    .itemsContainer {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 10px;
-    }
+      .itemsContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+      }
 
     }
 
   
 }
+
+// .modalmodal {
+//   display:none;
+
+//   position: fixed;
+//   top:0;
+//   bottom:0;
+//   right:0;
+//   left:0;
+//   overflow: hidden;
+//   z-index: 2;
+//   background: $primary-purple;
+//   width: 100%;
+//   height: 100%;
+//   transition:0.5 ease;
+// }
+
+
+// .modalButtom {
+//   background:$primary-purple;
+//   cursor:pointer;
+// }
+
+// .closeButton{
+//   background:white;
+//   cursor:pointer;
+// }
