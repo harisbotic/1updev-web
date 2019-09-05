@@ -1,0 +1,69 @@
+@import '../../Shared/variables.scss'; 
+.skin-text{
+        width: 191px;
+        /* height: 48px; */
+        text-align: left;
+        /* font: Bold 36px/61px Roboto; */
+        font: Bold 20px/39px Roboto;
+        letter-spacing: 0.36px;
+        /* color: #FFFFFF; */
+        color:white;
+        opacity: 1;
+        margin-bottom:0px;
+}
+
+.skin-container{
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 100px;
+        height: 100px;
+        /* width:10vw; */
+        /* height:10vw; */
+        /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+        background:white; 
+        /* privremeno crna boja u upotrebi jer nam je trenutno podloga bjela */
+        border-radius: 18px;
+        /* margin-right:40px; */
+        opacity: 1;
+}
+.skin1{
+        width: 90px;
+        height: 90px;
+
+        background: #2B0D41 0% 0% no-repeat padding-box;
+        border-radius: 18px;
+        opacity: 1;
+}
+/* 768 */
+@media only screen and (max-width: 768px) {
+        .skin-text{
+                font: Bold 20px/39px Roboto;
+        }
+        .skin-container{
+                width:80px;
+                height:80px;
+                border-radius:6px;
+        }
+        .skin1{
+                width:70px;
+                height:70px;
+                border-radius:6px;
+        }
+}
+@media only screen and (max-width: $mobile ) {
+        .skin-text{
+                font: Bold 15px/30px Roboto;
+        }
+        .skin-container{
+                width:60px;
+                height:60px;
+                border-radius:6px;
+        }
+        .skin1{
+                width:50px;
+                height:50px;
+                border-radius:6px;
+        }
+}

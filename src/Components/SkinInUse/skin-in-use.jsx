@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './skin-in-use.styles.css';
+import './skin-in-use.styles.scss';
 
 class SkinInUse extends React.Component{
     constructor(){
