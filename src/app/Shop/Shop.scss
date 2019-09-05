@@ -1,9 +1,17 @@
+@import '../../Shared//variables.scss';
+.tmp{
+  // width:400px;
+  // height:auto;
+  // width:80%;
+  // margin: 0 auto;
+}
 .available-tokens,
 .items-own {
   // width: 200px;
   // height: 29px;
   text-align: left;
   font: Regular 16px/32px Roboto;
+  // font:Regular 8px/16px Roboto;
   margin-right:20px;
   letter-spacing: 0.1px;
   // color: #FFFFFF;
@@ -13,6 +21,8 @@
 
 .in_use{
   // justify-content: center;
+  width:80%;
+  margin:0 auto;
 }
 
 .token-count,
@@ -113,13 +123,27 @@
 }
 @media only screen and( max-width:768px ){
   .available-tokens,.items-own{
-    font: Regular 4px/8px Roboto;
-  }
+    // font: Regular 8px/16x Roboto;
+    font-size:18px;
+    // text-align:center;
+    // margin-left:20px;
+    // position:center;
 }
-@media only screen and (max-width: 768px) {
-  .xs-column {
-    display: flex;
-    flex-direction: column;
-  }
-
+.xs-column {
+  display: flex;
+  flex-direction: column;
+}
+.token-count, .own-count{
+    font-size:20px;
+}
+}
+@media only screen and(max-width:$mobile){
+    .available-tokens,.items-own{
+      // font:Regular 4px/8px Roboto;
+      // font:Regular 100px/100px Roboto;
+      font-size:11px;
+    }
+    .token-count, .own-count{
+          font-size:15px;
+    }
 }

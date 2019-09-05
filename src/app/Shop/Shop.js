@@ -44,7 +44,7 @@ export class Shop extends Component {
               <div className='col-3'><SkinInUse /></div>
               </div>
              
-                    <div className='row'>
+                    <div className='row tmp'>
                     <div className="available-tokens col-xs-6">
                       AVAILABLE TOKENS:
                       <span className="token-count">455</span>
