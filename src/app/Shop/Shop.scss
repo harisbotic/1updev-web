@@ -57,6 +57,11 @@
     justify-content: space-between;
     margin-bottom: 10px;
 
+    .heading {
+      display: flex;
+      flex-direction: column;
+    }
+
     .shopText {
       font-weight: 700;
       font-size: 28px;
@@ -81,10 +86,13 @@
           font-weight: 500;
           letter-spacing: 0.1px;
           color: white;
-        }
 
-        i {
-          margin: 0 5px 0 5px;
+          i {
+            margin: 0 5px 0 5px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+          }
         }
 
         .searchBoxComponent {
@@ -127,7 +135,8 @@
     grid-gap: 10px;
   }
 
-  @media only screen and (min-width: 414px) {
+  .filterOptionsDesktop {
+    display: block;
   }
 
   @media only screen and( max-width:768px ) {
@@ -147,6 +156,10 @@
     .own-count {
       font-size: 20px;
     }
+
+    .filterOptionsContainer {
+      display: none;
+    }
   }
   @media only screen and(max-width:$mobile) {
     .available-tokens,
@@ -158,6 +171,32 @@
     .token-count,
     .own-count {
       font-size: 15px;
+    }
+
+    .filterOptionsContainer {
+      display: none;
+    }
+
+    .inventoryContainer {
+      display: flex;
+      flex-direction: column;
+
+      .infoSection {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        .heading {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .itemsContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+      }
     }
   }
 }

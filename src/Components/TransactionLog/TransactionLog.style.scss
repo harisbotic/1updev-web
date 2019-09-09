@@ -68,10 +68,24 @@
   border-radius: 10px;
 }
 
+@media only screen and( max-width:991px) {
+  .transaction_log-container {
+    height: 300px;
+  }
+
+  .transactions {
+    height: 250px;
+  }
+}
+
 @media only screen and(max-width:$mobile) {
   .transaction_row {
     font-size: 12px;
     margin-top: 3px;
+  }
+
+  .transaction_log-container {
+    height: 200px;
   }
 
   .col-8 {

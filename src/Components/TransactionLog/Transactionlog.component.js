@@ -64,8 +64,8 @@ class Transactionlog extends Component {
       <div className="transaction">
         <div className="transaction_log-container">
           <div className="header_row row">
-            <div className="title col-10">Activity Log for 24h</div>
-            <div className="time col-2">Time</div>
+            <div className="title col-10">ACTIVITY LOG FOR 24h</div>
+            <div className="time col-2">TIME</div>
           </div>
           <div className="transactions">
             {transactions.map(transaction => (

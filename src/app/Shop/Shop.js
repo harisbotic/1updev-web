@@ -7,6 +7,7 @@ import {
   Col,
   Form,
   FormControl,
+  Accordion,
   Card
 } from "react-bootstrap";
 import "./Shop.scss";
@@ -73,12 +74,16 @@ export class Shop extends Component {
               <div className="filterOptionsDesktop">
                 <div className="filterOptions">
                   <p>FILTER</p>
-                  <p id="sortByName">Name</p>
-                  <i className="fas fa-caret-down"></i>
-                  <p id="sortByValue">Value</p>
-                  <i className="fas fa-caret-up"></i>
-                  <p id="sortByCategory">Category</p>
-                  <i className="fas fa-caret-up"></i>
+                  <p id="sortByName">
+                    Sort by name<i className="fas fa-chevron-down"></i>
+                  </p>
+                  <p id="sortByValue">
+                    Sort by value<i className="fas fa-chevron-down"></i>
+                  </p>
+
+                  <p id="sortByCategory">
+                    Sort by category<i className="fas fa-chevron-down"></i>
+                  </p>
 
                   <div className="searchBoxComponent">
                     <i className="fas fa-search"></i>
