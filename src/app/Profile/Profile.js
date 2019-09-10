@@ -50,15 +50,7 @@ function Profile() {
 
     }
 
-<<<<<<< HEAD
-    render() {
-
-        const filteredList = this.state.filteredList;
-        
-        return (
-=======
     return(
->>>>>>> 02d10e44af7df18989bb354d3d6475ea0deddd64
 
             <div className="profile">
 
