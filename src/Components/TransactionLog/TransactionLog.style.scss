@@ -17,7 +17,7 @@
   padding: 5% 5% 5% 0%;
   color: white;
   font-weight: 400;
-  height: 200px;
+  max-height: 200px;
   max-width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -74,7 +74,8 @@
   }
 
   .transactions {
-    height: 250px;
+    max-height: 250px;
+    overflow-y: scroll;
   }
 }
 
@@ -85,7 +86,12 @@
   }
 
   .transaction_log-container {
-    height: 200px;
+    height: 250px;
+  }
+
+  .transactions {
+    max-height: 200px;
+    overflow-y: scroll;
   }
 
   .col-8 {

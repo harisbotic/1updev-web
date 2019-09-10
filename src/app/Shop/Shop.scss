@@ -44,7 +44,7 @@
   //  margin-bottom:40px;
 }
 
-.inventoryContainer {
+.shopContainer {
   font-family: "Roboto";
   display: flex;
   flex-direction: column;
@@ -56,11 +56,6 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 10px;
-
-    .heading {
-      display: flex;
-      flex-direction: column;
-    }
 
     .shopText {
       font-weight: 700;
@@ -92,6 +87,15 @@
             color: white;
             text-align: center;
             font-size: 14px;
+          }
+        }
+
+        p:hover {
+          cursor: pointer;
+          color: #712ebd;
+
+          i {
+            color: #712ebd;
           }
         }
 
@@ -133,11 +137,24 @@
     grid-auto-rows: repeat(auto-fill, minmax(160px, 180px));
     justify-content: space-between;
     grid-gap: 10px;
+
+    #add {
+      border: white solid 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i:hover {
+        color: #712ebd;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
   }
 
-  .filterOptionsDesktop {
-    display: block;
-  }
+  // .filterOptionsDesktop {
+  //   display: block;
+  // }
 
   @media only screen and( max-width:768px ) {
     .available-tokens,
@@ -148,6 +165,22 @@
       // margin-left:20px;
       // position:center;
     }
+
+    .infoSection {
+      display: flex;
+      flex-direction: column;
+
+      .filterOptionsContainer {
+        display: flex;
+        flex-direction: column;
+
+        .filterOptions {
+          flex-wrap: wrap;
+          align-content: flex-start;
+        }
+      }
+    }
+
     .xs-column {
       display: flex;
       flex-direction: column;
@@ -156,11 +189,8 @@
     .own-count {
       font-size: 20px;
     }
-
-    .filterOptionsContainer {
-      display: none;
-    }
   }
+
   @media only screen and(max-width:$mobile) {
     .available-tokens,
     .items-own {
@@ -173,27 +203,14 @@
       font-size: 15px;
     }
 
-    .filterOptionsContainer {
-      display: none;
-    }
-
-    .inventoryContainer {
+    .shopContainer {
       display: flex;
       flex-direction: column;
 
-      .infoSection {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-
-        .heading {
-          display: flex;
-          flex-direction: column;
-        }
-      }
-
       .itemsContainer {
         display: grid;
+        align-self: center;
+        justify-content: center;
         grid-template-columns: 1fr 1fr;
         padding: 10px;
       }

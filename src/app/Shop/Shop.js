@@ -65,43 +65,49 @@ export class Shop extends Component {
           </div>
         </div>
 
-        <div className="inventoryContainer">
+        <div className="shopContainer">
           <div className="infoSection">
             <div className="infoText">
               <p className="shopText">Shop</p>
             </div>
             <div className="filterOptionsContainer">
-              <div className="filterOptionsDesktop">
-                <div className="filterOptions">
-                  <p>FILTER</p>
-                  <p id="sortByName">
-                    Sort by name<i className="fas fa-chevron-down"></i>
-                  </p>
-                  <p id="sortByValue">
-                    Sort by value<i className="fas fa-chevron-down"></i>
-                  </p>
+              {/* <div className="filterOptionsDesktop"> */}
+              <div className="filterOptions">
+                <p id="filter">
+                  Filter<i className="fas fa-chevron-up"></i>
+                </p>
+                <p id="sortByName">
+                  Sort by name<i className="fas fa-chevron-up"></i>
+                </p>
+                <p id="sortByValue">
+                  Sort by value<i className="fas fa-chevron-up"></i>
+                </p>
 
-                  <p id="sortByCategory">
-                    Sort by category<i className="fas fa-chevron-down"></i>
-                  </p>
+                <p id="sortByCategory">
+                  Sort by category<i className="fas fa-chevron-up"></i>
+                </p>
 
-                  <div className="searchBoxComponent">
-                    <i className="fas fa-search"></i>
-                    <input
-                      type="text"
-                      name="search"
-                      className="searchBox"
-                      onChange={e => {
-                        this.setState({ searchField: e.target.value });
-                      }}
-                      placeholder="Search items..."
-                    />
-                  </div>
+                <div className="searchBoxComponent">
+                  <i className="fas fa-search"></i>
+                  <input
+                    type="text"
+                    name="search"
+                    className="searchBox"
+                    onChange={e => {
+                      this.setState({ searchField: e.target.value });
+                    }}
+                    placeholder="Search items..."
+                  />
                 </div>
+                {/* </div> */}
               </div>
             </div>
           </div>
+
           <div className="itemsContainer">
+            <div className="item-card xs-column" id="add">
+              <i className="fas fa-plus"></i>
+            </div>
             {filteredList.map(item => {
               return (
                 <Item
