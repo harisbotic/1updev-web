@@ -80,7 +80,7 @@ export class Profile extends Component {
     render() {
 
         const filteredList = this.state.filteredList;
-
+        
         return (
 
             <div className="profile">
