@@ -4,7 +4,7 @@ import { BASE_AUTH_URL, clientAuthHeader, toFormData } from './shared';
 export default {
     login: (credentials) => axios.post(`${BASE_AUTH_URL}/connect/token`, toFormData({
         grant_type: "password",
-        username: credentials.email,
+        username: credentials.username,
         password: credentials.password,
         resource: 'https://localhost:5001',
         scope: 'offline_access oudAPI'

@@ -22,7 +22,8 @@ const Login = props => {
         setLoading(false);
         localStorage.setItem("access_token", response.data.access_token);
         localStorage.setItem("refresh_token", response.data.refresh_token);
-        props.history.push("/profile");
+        //props.history.push("/profile");
+        props.history.push(`/profile/${credentials.username}`);
     };
 
     const handleChange = e => {
@@ -42,13 +43,13 @@ const Login = props => {
                         OneUpDev
                     </div>
 
-                    <div className="label">Email</div>
+                    <div className="label">Username</div>
                     <input
-                        name="email"
+                        name="username"
                         type="text"
-                        placeholder="Email"
+                        placeholder="Username"
                         className="input_default"
-                        value={credentials.email}
+                        value={credentials.username}
                         onChange={handleChange}
                     />
                     <div className="label">Password</div>

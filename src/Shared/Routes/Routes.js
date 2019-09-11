@@ -10,7 +10,7 @@ function Routes() {
             <div>
                 <Switch>
                     <Route exact path="/" component={Profile} />
-                    <Route exact path="/profile" component={Profile} />
+                    <Route exact path="/profile/:identifier" component={Profile} />
                     <Route exact path="/editprofile" component={EditProfile} />
 
                 </Switch>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import { Accordion, Button, Card } from 'react-bootstrap';
-import axios from "axios";
+import { profile } from "../../api/index";
 
 import { Link } from 'react-router-dom';
 
@@ -16,27 +17,58 @@ import jsonProfileList from './profile.json';
 import './Profile.scss';
 import { ENGINE_METHOD_DIGESTS } from "constants";
 
-function Profile() {
+function Profile(props) {
 
-    const [itemList,fetchItemList] = useState(jsonItemList);
-    const [profileList,fetchProfileData] = useState(jsonProfileList.identity);
-    const [filteredList,updateFilteredList] = useState(jsonItemList.items);
-    const [modalState,toggleModal] = useState("none");
+    const [itemList, fetchItemList] = useState(jsonItemList);
+    const [profileList, fetchProfileData] = useState(jsonProfileList.identity);
+    const [filteredList, updateFilteredList] = useState(jsonItemList.items);
+    const [modalState, toggleModal] = useState("none");
 
-    axios.get(`https://localhost:5001/Inventory/get/1`)
-      .then(result => {
-        const inventory = result.data;
-        let test = inventory.map(child => child.item);
-        console.log(test);
-      })
+    const [state, setState] = useState({
+        user: {},
+        userList: []
+    });
 
-      
+    // axios.get(`https://localhost:5001/Inventory/get/1`)
+    //     .then(result => {
+    //         const inventory = result.data;
+    //         let test = inventory.map(child => child.item);
+    //         console.log(test);
+    //     })
+
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            //const profileInfoResponse = await profile.profileInfo.get("profiles");
+
+            var routeParams = props.history.location.pathname.split("/");
+
+            const profileInfoResponse = await profile.profileInfo.get(routeParams[2]);
+
+            setState({
+                user: profileInfoResponse.data
+            });
+
+            console.log(profileInfoResponse.data);
+
+            console.log(routeParams[2]);
+            //console.log(state.user);
+        }
+
+        fetchData();
+    }, []);
+
+    const {
+        user
+    } = state;
+
+
 
     const searchFilterInventory = (searchText) => {
 
         updateFilteredList(
             itemList.items.filter(item =>
-            item.name.toLowerCase().includes(searchText.toLowerCase())
+                item.name.toLowerCase().includes(searchText.toLowerCase())
             )
         )
 
@@ -58,165 +90,167 @@ function Profile() {
 
     return(
 
-            <div className="profile">
+        <div className="profile">
 
-                <div className="profileDisplayComponent">
+            <div className="profileDisplayComponent">
 
-                    <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
+                <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
 
                     <div className="profileDetails">
                         <div className="editProfileButton">
                             <Link to="/editprofile">EDIT PROFILE</Link>
                         </div>
 
-                        <p className="userTitle">{profileList.title ?
-                            (profileList.title)
-                            : ("User special title goes here")}
-                        </p>
 
-                        <h1 className="username">@{profileList.username}</h1>
+                    <p className="userTitle">{profileList.title ?
+                        (profileList.title)
+                        : ("User special title goes here")}
+                    </p>
 
-                        <div className="tokenRelated">
-                            <p className="availableTokens">Available tokens: {profileList.availableTokens}</p>
-                            <p className="profileValue">Profile value: {profileList.availableTokens}</p>
-                            <p className="profileRank">#6</p>
-                        </div>
-                       
-                        <div className="badges">
-    
-                            {
-                                jsonItemList.items.map(item => {
-                                    if (item.category === "Badge" && item.isActive)
-                                        return (
-                                            <div key={item.id} className="badge">
-                                                <i className={item.icon}></i>
-                                            </div>
-                                        )
-                                    else return null;
-                                })
-                            }
-                        </div>
+                    <h1 className="username">@{user.firstName}</h1>
+                    {/* <h1 className="username">@{user.email}</h1> */}
 
-                    </div>
-                    
-                    <div className="activityLogContainer">     
-                    
-                        <div className="logsDesktop">
-                            <ActivityLog className="logsDesktop" />
-                        </div>
-                        
-                        <center>
-                            <Accordion className="logsMobile">
-
-                                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                    Show Activity Log
-                                </Accordion.Toggle>
-                                <Accordion.Collapse className="collapseWindow" eventKey="0">
-                                    <ActivityLog />
-                                </Accordion.Collapse>
-                            </Accordion>
-
-                        </center>
-                    </div>
-                
-                </div>
-
-
-                <div className="inventoryContainer">
-
-                    <div className="infoSection">
-
-                        <div className="infoText">
-                                <p className="inventoryText">Inventory</p>
-                                <p className="inventoryValue">(INVENTORY VALUE:
-                                <span className="tokenValue"> {jsonProfileList.identity.profile.tokenValue} </span>
-                                    Tokens)</p>
-                            </div>
-                            
-                        <div className="filterOptionsContainer">
-                            
-                            <div className="filterOptionsDesktop">
-                                <div className="filterOptions">
-                                    <p>FILTER</p>
-                                    <p id="sortByName" onClick={typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
-                                    <p id="sortByValue" onClick={typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
-                                    <p id="sortByCategory" onClick={typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
-
-                                    <div className="searchBoxComponent">
-                                        <i className="fas fa-search"></i>
-                                        <input
-                                            type="text"
-                                            name="search"
-                                            className="searchBox"
-                                            onChange={(e) => searchFilterInventory(e.target.value)}
-                                            placeholder="Search items..."
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            
-                                <Accordion className="filterOptionsMobile">
-                                <Card>
-                                    <Accordion.Toggle as={Card.Header} eventKey="0">
-                                        Show Filter Options
-                                    </Accordion.Toggle>
-                                    <Accordion.Collapse eventKey="0">
-                                        <Card.Body>
-                                            <div className="filterOptions">
-                                                <p id="sortByName" onClick={() => this.typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
-                                                <p id="sortByValue" onClick={() => this.typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
-                                                <p id="sortByCategory" onClick={() => this.typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
-                                            </div>
-                                            <div className="searchBoxComponent">
-                                                <i className="fas fa-search"></i>
-                                                <input
-                                                    type="text"
-                                                    name="search"
-                                                    className="searchBox"
-                                                    onChange={(e) => this.searchFilterInventory(e.target.value)}
-                                                    placeholder="Search items..."
-                                                />
-                                            </div>
-                                        </Card.Body>
-                                    </Accordion.Collapse>
-                                </Card>
-                            </Accordion>
-
-                        </div>
-                   
+                    <div className="tokenRelated">
+                        <p className="availableTokens">Available tokens: {profileList.availableTokens}</p>
+                        <p className="profileValue">Profile value: {profileList.availableTokens}</p>
+                        <p className="profileRank">#6</p>
                     </div>
 
-                    <div className="itemsContainer">
+                    <div className="badges">
+
                         {
-                            filteredList.map((item) => {
-
-                                return (
-                                    <Item
-                                        key={item.id}
-                                        itemId={item.id}
-                                        background={item.background}
-                                        itemCategory={item.category}
-                                        itemIcon={item.icon}
-                                        itemName={item.name}
-                                        itemValue={item.value}
-                                        itemType={item.type}
-                                        itemActivateValue={item.activatePrice}
-                                        itemDisenchantValue={item.disenchantValue}
-                                        disenchantItem={disenchantItem}
-                                    />
-
-                                )
-
+                            jsonItemList.items.map(item => {
+                                if (item.category === "Badge" && item.isActive)
+                                    return (
+                                        <div key={item.id} className="badge">
+                                            <i className={item.icon}></i>
+                                        </div>
+                                    )
+                                else return null;
                             })
                         }
                     </div>
-                
+
                 </div>
-                
+
+                <div className="activityLogContainer">
+
+                    <div className="logsDesktop">
+                        <ActivityLog className="logsDesktop" />
+                    </div>
+
+                    <center>
+                        <Accordion className="logsMobile">
+
+                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                Show Activity Log
+                                </Accordion.Toggle>
+                            <Accordion.Collapse className="collapseWindow" eventKey="0">
+                                <ActivityLog />
+                            </Accordion.Collapse>
+                        </Accordion>
+
+                    </center>
+                </div>
+
             </div>
-    
+
+
+            <div className="inventoryContainer">
+
+                <div className="infoSection">
+
+                    <div className="infoText">
+                        <p className="inventoryText">Inventory</p>
+                        <p className="inventoryValue">(INVENTORY VALUE:
+                                <span className="tokenValue"> {jsonProfileList.identity.profile.tokenValue} </span>
+                            Tokens)</p>
+                    </div>
+
+                    <div className="filterOptionsContainer">
+
+                        <div className="filterOptionsDesktop">
+                            <div className="filterOptions">
+                                <p>FILTER</p>
+                                <p id="sortByName" onClick={typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
+                                <p id="sortByValue" onClick={typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
+                                <p id="sortByCategory" onClick={typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
+
+                                <div className="searchBoxComponent">
+                                    <i className="fas fa-search"></i>
+                                    <input
+                                        type="text"
+                                        name="search"
+                                        className="searchBox"
+                                        onChange={(e) => searchFilterInventory(e.target.value)}
+                                        placeholder="Search items..."
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <Accordion className="filterOptionsMobile">
+                            <Card>
+                                <Accordion.Toggle as={Card.Header} eventKey="0">
+                                    Show Filter Options
+                                    </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="0">
+                                    <Card.Body>
+                                        <div className="filterOptions">
+                                            <p id="sortByName" onClick={() => this.typeFilter("name")}>Name <i className="fas fa-caret-down"></i></p>
+                                            <p id="sortByValue" onClick={() => this.typeFilter("value")}>Value<i className="fas fa-caret-down"></i></p>
+                                            <p id="sortByCategory" onClick={() => this.typeFilter("category")}>Category <i className="fas fa-caret-down"></i></p>
+                                        </div>
+                                        <div className="searchBoxComponent">
+                                            <i className="fas fa-search"></i>
+                                            <input
+                                                type="text"
+                                                name="search"
+                                                className="searchBox"
+                                                onChange={(e) => this.searchFilterInventory(e.target.value)}
+                                                placeholder="Search items..."
+                                            />
+                                        </div>
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion>
+
+                    </div>
+
+                </div>
+
+                <div className="itemsContainer">
+                    {
+                        filteredList.map((item) => {
+
+                            return (
+                                <Item
+                                    key={item.id}
+                                    itemId={item.id}
+                                    background={item.background}
+                                    itemCategory={item.category}
+                                    itemIcon={item.icon}
+                                    itemName={item.name}
+                                    itemValue={item.value}
+                                    itemType={item.type}
+                                    itemActivateValue={item.activatePrice}
+                                    itemDisenchantValue={item.disenchantValue}
+                                    disenchantItem={disenchantItem}
+                                />
+
+                            )
+
+                        })
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
     );
 
 }
 
-export default Profile;
+export default withRouter(Profile);
