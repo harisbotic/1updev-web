@@ -17,11 +17,11 @@ class EditProfile extends Component {
                         <p>User special title goes here</p>
                 </div>
                 <div className="Buttons">
-                <div>
-                    <button> SAVE CHANGES </button>
+                <div className="saveChangesButton">
+                     SAVE CHANGES
                 </div>
-                <div>
-                    <button> BACK TO PROFILE </button>
+                <div className="backProfileButton">
+                     BACK TO PROFILE
                 </div> 
                 </div>
                 
@@ -29,12 +29,13 @@ class EditProfile extends Component {
                </div>
                <div className="ContactForm">
                <form className="Forma">
-                   <div>
+                   <h3> Contact </h3>
+                   <div className="FullName">
                     <label>
                             First name:
                             <input type="text" name="firstname" value="Edis" />
                         </label>
-                        <label>
+                        <label className="lastName">
                             Last name:
                             <input type="text" name="lastname" value="Sijaric" />
                         </label>
@@ -53,11 +54,6 @@ class EditProfile extends Component {
                         <input type="text" name="username" value="edissijaric" />
                      </label>
                      </div>
-                     
-                     <label>
-                         Date of Birth
-                         <input type="date" name="date" />
-                     </label>
                 </form>
                 </div>
            </div>
