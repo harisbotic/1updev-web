@@ -3,6 +3,9 @@ import { withRouter } from "react-router-dom";
 import { Accordion, Button, Card } from 'react-bootstrap';
 import { profile } from "../../api/index";
 
+import { Link } from 'react-router-dom';
+
+
 import Item from '../../Components/Item/Item.component';
 import ActivityLog from './Components/ActivityLog/ActivityLog';
 
@@ -12,6 +15,7 @@ import jsonItemList from "./itemList.json";
 import jsonProfileList from './profile.json';
 
 import './Profile.scss';
+import { ENGINE_METHOD_DIGESTS } from "constants";
 
 function Profile(props) {
 
@@ -82,7 +86,9 @@ function Profile(props) {
 
     }
 
-    return (
+    
+
+    return(
 
         <div className="profile">
 
@@ -90,8 +96,10 @@ function Profile(props) {
 
                 <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
 
-                <div className="profileDetails">
-                    <div className="editProfileButton"><p>EDIT PROFILE</p></div>
+                    <div className="profileDetails">
+                        <div className="editProfileButton">
+                            <Link to="/editprofile">EDIT PROFILE</Link>
+                        </div>
 
 
                     <p className="userTitle">{profileList.title ?

@@ -1,0 +1,64 @@
+@import "../../Shared/variables.scss";
+
+
+body {
+    background: #300C42;
+  }
+
+
+ .ProfileDetails {  
+    
+    top: 222px;
+    left: 220px;
+    width: 100%;
+    //height: 126px;
+    opacity: 1;
+
+    h3 {
+        color: #FFFFFF;
+        font-family: lato;
+        font-style: bold;
+        font-size: 26px;
+    }
+
+    p {
+        color: #99999F;
+        font-family: roboto;
+        font-size: 22px;
+
+    }
+ }
+
+ .profilePicture {
+    max-width: 160px;
+    max-height: 160px;
+    border-radius: 100%;
+    cursor:pointer;
+
+    &:hover {
+      background:gray;
+    }
+  }
+
+  
+  .Forma {
+    top: 429px;
+    left: 220px;
+   // width: 1480px;
+    //height: 430px;
+    opacity: 1;
+    padding: 5%;
+
+    label {
+        color: white;
+    }
+
+ }
+
+ .Buttons {
+     padding: 20px;
+ }
+
+
+
+
