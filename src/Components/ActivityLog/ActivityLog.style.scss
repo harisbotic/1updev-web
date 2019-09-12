@@ -1,4 +1,4 @@
-@import "../../../../Shared/variables.scss";
+@import "../../Shared/variables.scss";
 
 .activityLog {
   background: rgba(255, 255, 255, 0.3);
@@ -53,4 +53,27 @@
 .User-avatar {
   padding: 5px 5px;
   border-radius: 10px;
+}
+
+@media screen and (max-width: $mobile) {
+
+  .activityLogContainer {
+
+    .btn {
+      border-radius: 30px;
+      text-align: center;
+      background: $secondary-purple;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      transition:0.5s;
+
+        &:active,&:hover {
+          color:$primary-purple;
+          text-decoration: none;
+          color:$white;
+        }
+
+    }
+  }
+
 }

@@ -16,13 +16,12 @@
     min-width: 140px;
     padding:10px;
     cursor:pointer;
-    transition: 1s;
     color: $white;
     opacity: 1;
     text-align: center;
     
 
-    .itemCategory {
+    .itemType {
         font-family: "Roboto";
         font-weight: $bold;
         text-align: right;
@@ -53,7 +52,7 @@
 
     .hovered {
         opacity:0;
-        background:rgba(113, 46, 189,0.9);
+        background:rgba(50, 146, 225,0.9);
         position: absolute;
         top:0;
         bottom: 0;
@@ -61,7 +60,7 @@
         left: 0;
         height: 100%;
         width:100%;
-        transition: .5s ease;
+        transition: 0.5s ease-in-out;
         font-family: "Roboto";
         display:flex;
         flex-direction: column;
@@ -89,7 +88,7 @@
 
                 p {
                     display:table-cell;
-                    color:$secondary-purple;
+                    color:$lighter-blue;
                     font-weight: $bold;
                     margin:0;
                     font-size:12px;

@@ -4,13 +4,13 @@ body {
   background: #300C42;
 }
 
-
 .profileDisplayComponent {
   display: grid;
   grid-template-columns: 1fr 3fr 3fr;
   align-items: center;
   padding: 3% 10% 0 10%;
   font-family: "Roboto";
+  margin-bottom:10px;
 
   .profilePicture {
     max-width: 160px;
@@ -81,41 +81,16 @@ body {
         margin: 5px;
       }
     }
-
+    
     .badges {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       width: 70%;
       box-sizing: border-box;
-
-      .badge {
-        width: 70px;
-        height: 70px;
-        max-width: 70px;
-        max-height: 70px;
-        border-radius: 15%;
-        background-color: $primary-purple;
-        display: table;
-
-        i {
-          font-size: 32px;
-          color: $lighter-blue;
-          display: table-cell;
-          vertical-align: middle;
-          text-align: center;
-        }
-      }
-    }
-  }
-
-  .activityLogContainer {
-  
-    .btn {
-      box-shadow: none;
     }
     
-  } 
+  }
 
 }
 
@@ -125,7 +100,11 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   padding: 3% 10% 10% 10%;
-  border-radius:40pt;
+  border-top-left-radius: 40pt;
+  border-top-right-radius: 40pt;
+  min-height: 500px;
+  height: auto !important;
+  height: 500px;
   background: #ffffff 0% 0% no-repeat padding-box;
 
   .infoSection {
@@ -165,77 +144,6 @@ body {
     }
 
 
-    .filterOptionsContainer {
-
-      .filterOptions {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        vertical-align: middle;
-        align-items: center;
-      
-        p {
-          margin: 0;
-          margin-right: 10px;
-          font-size: 14px;
-          font-weight: 500;
-          letter-spacing: 0.1px;
-          color: #434343;
-
-          i {
-            margin: 0 5px 0 5px;
-          }
-        }
-
-        p:first-child {
-          color: #712ebd;
-          font-weight: 700;
-        }
-
-        p:not(:first-child) {
-          cursor: pointer;
-        }
-
-        p:not(:first-child):hover,
-        i:hover {
-          color: #712ebd;
-          font-weight: 700;
-        }
-
-        .searchBoxComponent {
-          display: grid;
-          grid-template-columns: 20% 80%;
-          align-items: center;
-          background: #898b91;
-          opacity: 0.5;
-          border-radius: 40px;
-
-          .searchBox {
-            margin: 0;
-            border: 0;
-            border-radius: 40px;
-          }
-
-          .searchBox::placeholder {
-            font-family: "Roboto";
-            color: white;
-            font-size: 14px;
-            vertical-align: middle;
-          }
-
-          i {
-            color: white;
-            text-align: center;
-            font-size: 14px;
-          }
-        }
-
-      }
-
-    }
-
-
-
   }
 
   .itemsContainer {
@@ -244,6 +152,7 @@ body {
     grid-auto-rows: repeat(auto-fill, minmax(160px,180px));
     justify-content: space-between;
     grid-gap:10px;
+    position: relative;
   }
 
 }
@@ -256,11 +165,11 @@ body {
   display: none;
 }
 
-.logsDesktop {
+.activityLogDesktop {
   display: block;
 }
 
-.logsMobile {
+.activityLogMobile {
   display: none;
 }
 
@@ -276,11 +185,11 @@ body {
     display: block;
   }
 
-  .logsDesktop {
+  .activityLogDesktop {
     display: none;
   }
 
-  .logsMobile {
+  .activityLogMobile {
     display: block;
   }
 
@@ -290,7 +199,8 @@ body {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-
+    margin-bottom:0;
+    
     .profileDetails {
 
       .editProfileButton {
@@ -304,36 +214,24 @@ body {
       }
 
     }
-
-    .activityLogContainer {
-      
-      .logsDesktop {
-        display: none;
-      }
-      
-      .logsMobile {
-        display: block;
-      }
+    
+    .activityLogMobile {
 
       .btn {
-        border-radius: 30px;
-        text-align: center;
-        background: $secondary-purple;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        transition:0.5s;
+        background:$secondary-purple;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
 
-          &:active,&:hover {
-            color:$primary-purple;
-            text-decoration: none;
-            color:white;
-          }
-
+        p {
+          font-family:"Roboto";
+          color:$white;
+          font-size:12px;
+          font-weight: $bold;
+          text-decoration: none;
+        }
       }
-
-
     }
- 
+
   }
 
 
@@ -352,94 +250,14 @@ body {
       }
     }
 
-    .filterOptionsContainer {
-
-      .filterOptionsMobile {
-        width: 100%;
-        text-align: center;    
-        border-radius: 40px;
-        padding:0;
-        width: 100%;
-      
-        .card-header {
-          color:white;
-          font-weight: $bold;
-          background:$secondary-purple;
-          border-radius: 40px;
-        }
-      
-        .card-body {
-          border-radius: 40px; 
-        }
-      
-        .card-body .filterOptions{
-          display:flex;
-          flex-direction: row;
-          justify-content: space-between;
-      
-          p {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            
-              i {
-                margin-left:5px;
-                color:$secondary-purple;
-              }
-          }
-          
-        }
-
-        .card-body .searchBoxComponent {
-          display:flex;
-          flex-direction: row;
-          align-items: center;
-  
-            i {
-              font-size:24px;
-              margin-right:5px;
-              color:$secondary-purple;
-            }
-        }
-
-      }
-      
+    .itemsContainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 10px;
     }
-
-      .itemsContainer {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: 10px;
-      }
 
     }
 
   
 }
 
-// .modalmodal {
-//   display:none;
-
-//   position: fixed;
-//   top:0;
-//   bottom:0;
-//   right:0;
-//   left:0;
-//   overflow: hidden;
-//   z-index: 2;
-//   background: $primary-purple;
-//   width: 100%;
-//   height: 100%;
-//   transition:0.5 ease;
-// }
-
-
-// .modalButtom {
-//   background:$primary-purple;
-//   cursor:pointer;
-// }
-
-// .closeButton{
-//   background:white;
-//   cursor:pointer;
-// }

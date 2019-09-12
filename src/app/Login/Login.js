@@ -42,10 +42,10 @@ const Login = props => {
                         OneUpDev
                     </div>
 
-                    <div className="label">Email</div>
+                    <div className="label">Email/Username</div>
                     <input
                         name="email"
-                        type="email"
+                        type="text"
                         placeholder="Email"
                         className="input_default"
                         value={credentials.email}

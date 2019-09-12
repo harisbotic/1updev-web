@@ -1,0 +1,48 @@
+@import "../../Shared/variables.scss";
+
+.badge {
+    width: 70px;
+    height: 70px;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius:15%;
+    background-color: $primary-purple;
+    cursor:pointer;
+    position: relative;    
+    transition: 0.5s ease-in-out;
+
+    .activeBadge {
+        height: 100%;
+        width:100%;
+        border-radius:15%;
+        text-align: center;
+
+        .modalClick {
+            position: absolute;
+            top:0;
+            bottom:0;
+            right:0;
+            left:0;
+            border-radius: $border-radius;
+        }
+
+        i {
+            font-size: 32px;
+            color: $lighter-blue;
+                        transition: 0.5s ease-in-out;
+        }
+
+    }
+
+    &:hover {
+
+        background: $lighter-blue;
+
+        i {
+            color:$primary-purple;
+        }
+
+    }
+}
+
+  

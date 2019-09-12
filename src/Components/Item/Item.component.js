@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 
-
 import "./Item.style.scss";
 
 export function Item(props){
@@ -11,17 +10,17 @@ export function Item(props){
     const [hoveredInfoText,setHoverText] = useState("Name");
     const [hoveredTokenValue,setHoverTokenValue] = useState("Token Value");
 
-    const changeHeader = category => {
-        if(category==="Badge" || category==="Games" || category==="Skin")
+    const changeHeader = type => {
+        if(type==="Badge" || type==="Games" || type==="Skin")
             setModalType("Activate");
-        else if(category==="Merch")
+        else if(type==="Merch")
             setModalType("Purchasse");
     }
 
-    const updatePrice = category => {
-        if(category==="Badge" || category==="Games" || category==="Skin")
+    const updatePrice = type => {
+        if(type==="Badge" || type==="Games" || type==="Skin")
             setHoverTokenValue(props.itemActivateValue+" Tokens");
-        else if(category==="Merch")
+        else if(type==="Merch")
             setHoverTokenValue(props.itemValue+" Tokens");
     }
 
@@ -30,20 +29,20 @@ export function Item(props){
     
         <div className="itemCard" style={{background:props.background}}>
 
-            <p className="itemCategory">{props.itemCategory}</p>
+            <p className="itemType">{props.itemType}</p>
             
             <i className={props.itemIcon}></i>
 
             <div className="itemDetails">
                 <p className="itemName">{props.itemName}</p>
                 <p className="itemValue">{props.itemValue} Tokens</p>
-                <p className="itemType">{props.itemType}</p>
+                <p className="itemRarity">{props.itemRarity}</p>
             </div>
 
-            <div className="hovered" onMouseEnter={()=>changeHeader(props.itemCategory)}>
+            <div className="hovered" onMouseEnter={()=>changeHeader(props.itemType)}>
 
                 <div className="buttons">
-                    <div className="itemButton activate" onClick={()=> setModalShow(true)} onMouseEnter={()=>{setHoverText(modalType);updatePrice(props.itemCategory)}}>    
+                    <div className="itemButton activate" onClick={()=> setModalShow(true)} onMouseEnter={()=>{setHoverText(modalType);updatePrice(props.itemtype)}}>    
                         <p>{modalType}</p>
                     </div>
 
@@ -63,19 +62,19 @@ export function Item(props){
 
                 <Modal show={modalState} className="itemModal">
                         
-                        <Modal.Header className="modalHeader">
+                    <Modal.Header className="modalHeader">
                         <Modal.Title>{modalType} Item</Modal.Title>
-                        </Modal.Header>
-                        
-                        <Modal.Body>You are about to {modalType.toLowerCase()} <span className="modalSpan"> {props.itemName}</span> for <span className="modalSpan">{hoveredTokenValue} </span> Tokens </Modal.Body>
-                            <Modal.Footer>
-                            <div variant="secondary" className = "modalButton" onClick={() => {props.disenchantItem(props.itemId)}}>
-                                <p>ACCEPT</p>
-                            </div>
-                            <div variant="primary" className = "modalButton" onClick={() => setModalShow(false)}>
-                                <p>CANCEL</p>
-                            </div>
-                        </Modal.Footer>
+                    </Modal.Header>
+                    
+                    <Modal.Body>You are about to {modalType.toLowerCase()} <span className="modalSpan"> {props.itemName}</span> for <span className="modalSpan">{hoveredTokenValue} </span> Tokens </Modal.Body>
+                        <Modal.Footer>
+                        <div variant="secondary" className = "modalButton" onClick={() => {props.disenchantItem(props.itemId)}}>
+                            <p>ACCEPT</p>
+                        </div>
+                        <div variant="primary" className = "modalButton" onClick={() => setModalShow(false)}>
+                            <p>CANCEL</p>
+                        </div>
+                    </Modal.Footer>
                     
                 </Modal>
 
