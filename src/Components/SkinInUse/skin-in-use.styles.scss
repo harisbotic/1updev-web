@@ -1,6 +1,6 @@
 @import '../../Shared/variables.scss'; 
 .skin-text{
-        width: 191px;
+        // width: 191px;
         /* height: 48px; */
         text-align: left;
         /* font: Bold 36px/61px Roboto; */
@@ -54,7 +54,7 @@
 }
 @media only screen and (max-width: $mobile ) {
         .skin-text{
-                font: Bold 15px/30px Roboto;
+                font: Bold 13px/26px Roboto;
         }
         .skin-container{
                 width:60px;
