@@ -36,7 +36,7 @@ const Header = (props) => {
                 </div>
 
                 <div className="col rightWrapper search" style={{ color: "white" }}>
-                    Ovdje ide search
+                    <input type="text" placeholder="search user" />
                  </div>
 
                 <div className="col rightWrapper">
