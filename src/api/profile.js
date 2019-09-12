@@ -1,4 +1,5 @@
-import customAxios from './customAxios'; import { BASE_URL, getHeaders, tokenRefreshHandler } from "./shared";
+import customAxios from './customAxios';
+import { BASE_URL, getHeaders, tokenRefreshHandler } from "./shared";
 
 
 const profileInfo = {
@@ -15,20 +16,20 @@ const profileInfo = {
 };
 
 const editProfile = {
-    update: (route, user) =>
+    update: (user, currentUsername) =>
         tokenRefreshHandler(
             customAxios.put(
-                `${BASE_URL}/profiles/${route}`,
+                `${BASE_URL}/profiles/${currentUsername}`,
                 {
-                    headers: getHeaders(),
-                    data: {
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                        identity: {
-                            username: user.username
-                        }
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    identity: {
+                        username: user.username
                     }
+                },
+                {
+                    headers: getHeaders()
                 }
 
             )

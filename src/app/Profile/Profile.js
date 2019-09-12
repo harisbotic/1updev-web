@@ -3,11 +3,8 @@ import { withRouter } from "react-router-dom";
 import { Accordion, Button, Card } from 'react-bootstrap';
 import { profile } from "../../api/index";
 
-import { Link } from 'react-router-dom';
-
-
 import Item from '../../Components/Item/Item.component';
-import ActivityLog from './Components/ActivityLog/ActivityLog';
+import ActivityLog from './/ActivityLog/ActivityLog';
 
 import "./Profile.scss";
 
@@ -15,7 +12,6 @@ import jsonItemList from "./itemList.json";
 import jsonProfileList from './profile.json';
 
 import './Profile.scss';
-import { ENGINE_METHOD_DIGESTS } from "constants";
 
 function Profile(props) {
 
@@ -28,19 +24,9 @@ function Profile(props) {
         user: {},
         userList: []
     });
-
-    // axios.get(`https://localhost:5001/Inventory/get/1`)
-    //     .then(result => {
-    //         const inventory = result.data;
-    //         let test = inventory.map(child => child.item);
-    //         console.log(test);
-    //     })
-
     
     useEffect(() => {
         const fetchData = async () => {
-            //const profileInfoResponse = await profile.profileInfo.get("profiles");
-
             var routeParams = props.history.location.pathname.split("/");
 
             const profileInfoResponse = await profile.profileInfo.get(routeParams[2]);
@@ -48,11 +34,6 @@ function Profile(props) {
             setState({
                 user: profileInfoResponse.data
             });
-
-            console.log(profileInfoResponse.data);
-
-            console.log(routeParams[2]);
-            //console.log(state.user);
         }
 
         fetchData();
@@ -87,7 +68,11 @@ function Profile(props) {
     }
 
     const editProfileClick = () => {
-        props.history.push(`/editprofile/${user.username}`)
+        //props.history.push(`/editprofile/${user.username}`)
+        props.history.push({
+            pathname: "/editprofile",
+            state: { username: user.username }
+        });
     }
     
 
@@ -101,9 +86,7 @@ function Profile(props) {
 
                     <div className="profileDetails">
                         <div className="editProfileButton" onClick={editProfileClick}>
-                            {/* <Link to="/editprofile">EDIT PROFILE</Link> */}
                             EDIT PROFILE
-                            {/* props.history.push(`editprofile/${user.userName}`) */}
                         </div>
 
 
@@ -112,8 +95,7 @@ function Profile(props) {
                         : ("User special title goes here")}
                     </p>
 
-                    <h1 className="username">@{user.firstName}</h1>
-                    {/* <h1 className="username">@{user.email}</h1> */}
+                    <h1 className="username">@{user.nickname}</h1>
 
                     <div className="tokenRelated">
                         <p className="availableTokens">Available tokens: {profileList.availableTokens}</p>

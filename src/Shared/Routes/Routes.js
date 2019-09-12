@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Profile from "../../app/Profile/Profile";
-import EditProfile from "../../app/Profile/EditProfile";
+import EditProfile from "../../app/EditProfile/EditProfile";
 
 function Routes() {
     return (
@@ -11,7 +11,7 @@ function Routes() {
                 <Switch>
                     <Route exact path="/" component={Profile} />
                     <Route exact path="/profile/:identifier" component={Profile} />
-                    <Route exact path="/editprofile/:identifier" component={EditProfile} />
+                    <Route exact path="/editprofile/" component={EditProfile} />
 
                 </Switch>
             </div>
