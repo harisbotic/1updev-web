@@ -1,8 +1,8 @@
 import React from 'react';
 import './Header.scss';
-import Logo from '../../Assets/logo.png'
+import Logo from '../../assets/logo.png'
 import { withRouter } from "react-router";
-import img from "../../Assets/Image 545.png";
+import img from "../../assets/Image 545.png";
 
 
 const Header = (props) => {

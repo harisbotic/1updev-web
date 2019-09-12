@@ -8,12 +8,21 @@ class Ranking extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1>Ranking</h1>
+                <h1>Ranking table:</h1>
                 <div className="row">
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Special Title</th>
+                    <th scope="col">Value Of Inventory</th>
+                    <th scope="col">Badges</th>
+                </tr>
+                <tr>
+                    <th scope="row">{x.user}</th>
+                </tr>
                     {mockRanks.map(x =>
                         <div className="col mx-3 my-5">
                             <div>
-                                <p>
+                                <p> 
                                     {x.user} has {x.value}.
                                 </p>
                                 <img src={x.profileImg} />
