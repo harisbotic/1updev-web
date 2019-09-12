@@ -16,9 +16,7 @@ class Ranking extends React.Component {
                     <th scope="col">Value Of Inventory</th>
                     <th scope="col">Badges</th>
                 </tr>
-                <tr>
-                    <th scope="row">{x.user}</th>
-                </tr>
+
                     {mockRanks.map(x =>
                         <div className="col mx-3 my-5">
                             <div>
