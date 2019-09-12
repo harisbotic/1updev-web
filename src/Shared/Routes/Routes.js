@@ -11,7 +11,7 @@ function Routes() {
                 <Switch>
                     <Route exact path="/" component={Profile} />
                     <Route exact path="/profile/:identifier" component={Profile} />
-                    <Route exact path="/editprofile" component={EditProfile} />
+                    <Route exact path="/editprofile/:identifier" component={EditProfile} />
 
                 </Switch>
             </div>

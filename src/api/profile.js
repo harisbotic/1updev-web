@@ -14,6 +14,19 @@ const profileInfo = {
         )
 };
 
+const editProfile = {
+    get: route =>
+        tokenRefreshHandler(
+            customAxios.put(
+                `${BASE_URL}/profiles/${route}`,
+                {
+                    headers: getHeaders()
+                }
+
+            )
+        )
+};
+
 const allProfiles = {
     get: route =>
         tokenRefreshHandler(
@@ -28,5 +41,6 @@ const allProfiles = {
 
 export default {
     profileInfo,
-    allProfiles
+    allProfiles,
+    editProfile
 };

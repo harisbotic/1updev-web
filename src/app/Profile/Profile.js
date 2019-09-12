@@ -86,6 +86,9 @@ function Profile(props) {
 
     }
 
+    const editProfileClick = () => {
+        props.history.push(`/editprofile/${user.username}`)
+    }
     
 
     return(
@@ -97,8 +100,10 @@ function Profile(props) {
                 <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
 
                     <div className="profileDetails">
-                        <div className="editProfileButton">
-                            <Link to="/editprofile">EDIT PROFILE</Link>
+                        <div className="editProfileButton" onClick={editProfileClick}>
+                            {/* <Link to="/editprofile">EDIT PROFILE</Link> */}
+                            EDIT PROFILE
+                            {/* props.history.push(`editprofile/${user.userName}`) */}
                         </div>
 
 
