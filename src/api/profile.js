@@ -15,12 +15,20 @@ const profileInfo = {
 };
 
 const editProfile = {
-    get: route =>
+    update: (route, user) =>
         tokenRefreshHandler(
             customAxios.put(
                 `${BASE_URL}/profiles/${route}`,
                 {
-                    headers: getHeaders()
+                    headers: getHeaders(),
+                    data: {
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                        identity: {
+                            username: user.username
+                        }
+                    }
                 }
 
             )

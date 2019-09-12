@@ -9,6 +9,19 @@ function EditProfile(props) {
         user: {}
     });
 
+    const [firstName, setFirstName] = useState({
+        firstName: ''
+    });
+    const [lastName, setLastName] = useState({
+        lastName: ''
+    });
+    const [email, setEmail] = useState({
+        email: ''
+    });
+    const [username, setUserName] = useState({
+        username: ''
+    });
+
     useEffect(() => {
         const fetchData = async () => {
             //const profileInfoResponse = await profile.profileInfo.get("profiles");
@@ -21,10 +34,14 @@ function EditProfile(props) {
                 user: profileInfoResponse.data
             });
 
+            
+
         }
 
         fetchData();
     }, []);
+
+            
 
     const submitHandler = () =>
     {
@@ -51,6 +68,32 @@ function EditProfile(props) {
         props.history.push(`/profile/${user.username}`)
     }
     
+    const SaveChangesHandler = (e) => {
+        e.preventDefault();
+        setState({
+            user:{
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                identity: {
+                    username: username
+                }
+                
+            }
+        });
+
+        console.log(user);
+    }
+
+    // const InputChangeHandler = (e) => {
+    //     setState({
+    //         user: {
+    //             {e.target.name}: e.target.value
+    //         }
+    //     })
+    // }
+
+  
     
     return (
         <div className="editProfile">
@@ -62,7 +105,7 @@ function EditProfile(props) {
                     <p>User special title goes here</p>
                 </div>
                 <div className="Buttons">
-                    <div className="saveChangesButton">
+                    <div className="saveChangesButton" onSubmit={SaveChangesHandler}>
                         SAVE CHANGES
                     </div>
                     <div className="backProfileButton" onClick={BackToProfile}>
@@ -78,25 +121,33 @@ function EditProfile(props) {
                     <div className="FullName">
                         <label>
                             First name:
-                            <input type="text" name="firstname" placeholder={user.firstName} />
+                            <input type="text" name="firstname" 
+                            placeholder={user.firstName} 
+                            onChange={e => setFirstName(e.target.value)}/>
                         </label>
                         <label className="lastName">
                             Last name:
-                            <input type="text" name="lastname" placeholder={user.lastName} />
+                            <input type="text" name="lastname" 
+                            placeholder={user.lastName}
+                            onChange={e => setLastName(e.target.value)} />
                         </label>
                     </div>
 
                     <div>
                         <label>
                             Email:
-                        <input type="text" name="email" placeholder={user.email} />
+                        <input type="text" name="email" 
+                        placeholder={user.email}
+                        onChange={e => setEmail(e.target.value)} />
                         </label>
                     </div>
 
                     <div>
                         <label>
                             Username:
-                        <input type="text" name="username" placeholder={user.username} />
+                        <input type="text" name="username" 
+                        placeholder={user.username} 
+                        onChange={e => setUserName(e.target.value)}/>
                         </label>
                     </div>
                 </form>
