@@ -14,7 +14,6 @@ function EditProfile(props) {
         const fetchData = async () => {
             console.log(props.location.state.username);
             const username = props.location.state.username;
-            var routeParams = props.history.location.pathname.split("/");
 
             const profileInfoResponse = await profile.profileInfo.get(username);
 
