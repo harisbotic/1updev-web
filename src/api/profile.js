@@ -62,7 +62,6 @@ const searchProfileInventory = {
 
 export default {
   profileInfo,
-  allProfiles,
   editProfile,
   fetchProfileInventory,
   fetchSortedProfileInventory,

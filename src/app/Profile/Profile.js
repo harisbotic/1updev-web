@@ -13,51 +13,77 @@ import {
 } from "../../Components/FilterOptions/FilterOptions.component";
 import Item from "../../Components/Item/Item.component";
 import LoadingElement from "../../Components/LoadingElement/LoadingElement.component";
-import ActivityLog from ".//ActivityLog/ActivityLog";
 
 import jsonProfileList from "./profile.json";
 
 import "./Profile.scss";
 
 function Profile(props) {
-  const [state, setState] = useState({
-    user: {},
-    inventory: [],
-    itemList: [],
-    badges: [],
-    isFetchingInventory: false // Mozda dodati da se triggera nakon 1/2 sekunde a ne stalno
+
+  const [itemsList, setItemsList] = useState({
+    itemList: []
   });
 
-  var profileID = 12; // Izbrisi ovo i dole u request salji ID
+  const [activeBadges, setBadges] = useState({
+    badges: []
+  })
+
+  const [isLoading, setIsFetchingInv] = useState({
+    isFetchingInventory: false
+  })
+
+  const [profileInfo, setProfileInfo] = useState({
+    user: {}
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-      setState({ isFetchingInventory: true });
 
+    const fetchData = async () => {
       var routeParams = props.history.location.pathname.split("/");
 
       const profileInfoResponse = await profile.profileInfo.get(routeParams[2]);
 
+      setProfileInfo({
+        user: profileInfoResponse.data
+      });
+
+      setIsFetchingInv({
+        isFetchingInventory: true
+      })
+
       const fetchProfileInventory = await profile.fetchProfileInventory.get(
-        profileID
+        profileInfoResponse.data.id
       );
 
-      setState({
-        user: profileInfoResponse.data,
-        inventory: fetchProfileInventory.data,
-        itemList: fetchProfileInventory.data.map(inventory => inventory.item),
+      setItemsList({
+        itemList: fetchProfileInventory.data.map(inventory => inventory.item)
+      })
+
+      setBadges({
         badges: fetchProfileInventory.data.filter(
           inventory =>
             inventory.isActive && inventory.item.type.name === "Badge"
-        ),
-        isFetchingInventory: false
+        )
       });
-    };
+
+      setIsFetchingInv({
+        isFetchingInventory: false
+      })
+
+    }
 
     fetchData();
+
   }, []);
 
-  const { user, inventory, itemList, badges, isFetchingInventory } = state;
+
+  const { user } = profileInfo;
+
+  const { isFetchingInventory } = isLoading;
+
+  const { badges } = activeBadges;
+
+  const { itemList } = itemsList;
 
   const deactivateBadge = async badgeID => {
     // Remove from database by ID
@@ -65,38 +91,50 @@ function Profile(props) {
   };
 
   const searchFilter = async searchText => {
-    setState({ isFetchingInventory: true });
-
+    
+    setIsFetchingInv({
+      isFetchingInventory: true
+    })
+    
     if (searchText === "") searchText = " ";
 
     const searchProfileInventory = await profile.searchProfileInventory.get(
       searchText,
-      profileID
+      user.id
     );
 
-    setState({
-      itemList: searchProfileInventory.data.map(inventory => inventory.item),
+    setItemsList({
+      itemList: searchProfileInventory.data.map(inventory => inventory.item)
+    })
+
+    setIsFetchingInv({
       isFetchingInventory: false
-    });
+    })
+
   };
 
   const categoryFilter = async (sort, isAscending) => {
-    setState({ isFetchingInventory: true });
 
+    setIsFetchingInv({
+      isFetchingInventory: true
+    })
     const order = isAscending === true ? "asc" : "desc";
 
     const fetchSortedProfileInventory = await profile.fetchSortedProfileInventory.get(
       sort,
       order,
-      profileID
+      user.id
     );
-
-    setState({
+    
+    setItemsList({
       itemList: fetchSortedProfileInventory.data.map(
         inventory => inventory.item
-      ),
+      )
+    })
+
+    setIsFetchingInv({
       isFetchingInventory: false
-    });
+    })
   };
 
   const disenchantItem = itemID => {
@@ -122,7 +160,7 @@ function Profile(props) {
 
         <div className="profileDetails">
           <div className="editProfileButton" onClick={editProfileClick}>
-            EDIT PROFILE
+            <p>EDIT PROFILE </p>
           </div>
 
           <h1 className="username">@{user.nickname}</h1>
@@ -144,19 +182,18 @@ function Profile(props) {
           </div>
 
           <div className="badges">
-            {isFetchingInventory ? (
-              <LoadingElement />
-            ) : (
-              badges.map(badge => {
-                return (
-                  <Badge
-                    key={badge.item.id}
-                    badgeData={badge}
-                    item={badge.item}
-                  />
-                );
-              })
-            )}
+            { isFetchingInventory ? 
+                <div></div> :
+                badges.map(badge => {
+                  return (
+                    <Badge
+                      key={badge.item.id}
+                      badgeData={badge}
+                      item={badge.item}
+                    />
+                  );
+                })}
+              
           </div>
         </div>
 
@@ -191,27 +228,25 @@ function Profile(props) {
         </div>
 
         <div className="itemsContainer">
-          {isFetchingInventory ? (
-            <LoadingElement />
-          ) : (
-            itemList.map(item => {
-              return (
-                <Item
-                  key={item.id}
-                  itemId={item.id}
-                  background={"#702dbc"}
-                  itemType={item.type.name}
-                  itemIcon={item.image}
-                  itemName={item.name}
-                  itemValue={item.value}
-                  itemRarity={item.rarity.name}
-                  itemActivateValue={item.price}
-                  itemDisenchantValue={item.value}
-                  disenchantItem={disenchantItem}
-                /> // Bolji destructure uradit ovde
-              );
-            })
-          )}
+              { isFetchingInventory ? 
+                <LoadingElement/> :
+                itemList.map(item => {
+                return (
+                  <Item
+                    key={item.id}
+                    itemId={item.id}
+                    background={"#702dbc"}
+                    itemType={item.type.name}
+                    itemIcon={item.image}
+                    itemName={item.name}
+                    itemValue={item.value}
+                    itemRarity={item.rarity.name}
+                    itemActivateValue={item.price}
+                    itemDisenchantValue={item.value}
+                    disenchantItem={disenchantItem}
+                  /> // Bolji destructure uradit ovde
+                );
+              })}
         </div>
       </div>
     </div>
