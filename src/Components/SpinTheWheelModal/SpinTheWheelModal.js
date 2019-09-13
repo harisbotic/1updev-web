@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 import './SpinTheWheelModal.scss';
-import itemList from '../../App/Shop/list.json';
+import itemList from '../../app/Shop/list.json';
 import { SpinTheWheelItem } from '../SpinTheWheelItem/SpinTheWheelItem';
 
 export const SpinTheWheelModal = () => {
@@ -58,3 +58,5 @@ export const SpinTheWheelModal = () => {
     </>
   );
 }
+
+export default SpinTheWheelModal;
