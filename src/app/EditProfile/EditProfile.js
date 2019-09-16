@@ -56,7 +56,7 @@ function EditProfile(props) {
         <div className="editProfile">
 
             <div className="profileDisplayComponent">
-                <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
+                <img className="profilePicture" src={`https://robohash.org/${user.id}`} alt="user" />
                 <div className="ProfileDetails">
                     <h3> {user.nickname} </h3>
                     <p>User special title goes here</p>
