@@ -154,7 +154,8 @@ function Profile(props) {
       <div className="profileDisplayComponent">
         <img
           className="profilePicture"
-          src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
+          src={`https://robohash.org/${user.id}`}
+         // src="https://source.unsplash.com/random"
           alt="user"
         />
 
