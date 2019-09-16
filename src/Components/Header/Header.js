@@ -27,7 +27,24 @@ function Header (props) {
         })
     }
 
-    
+    const DisplayDataHandler = () => {
+        // Declare variables
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
+      
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
 
     return (
         <div className="container-fluid" id="header-container">
@@ -53,9 +70,16 @@ function Header (props) {
 
                 </div>
 
-                <div className="col rightWrapper search" style={{ color: "white" }}>
-                    <input type="text" placeholder="search user" onChange={onChangeHandler} />
-                 </div>
+                <div  className="col rightWrapper search" style={{ color: "white" }}>
+                    <input type="text" id="mySearch" placeholder="search user" onChange={onChangeHandler} onKeyUp={DisplayDataHandler} />
+                    <ul id="myMenu">
+                    {userList.userList.map((user, index) => {
+                        return (
+                            <li> {user.firstName} {user.lastName} </li>
+                        )
+                    })}
+                    </ul>
+                </div>
 
                 <div className="col rightWrapper">
                     <img className="header-user-img" alt="X" src={img} />
