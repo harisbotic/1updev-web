@@ -23,11 +23,11 @@ class Ranking extends React.Component {
                                 <p> 
                                     {x.user} has {x.value}.
                                 </p>
-                                <img src={x.profileImg} />
+                                <img src={x.profileImg} alt='' />
                                 <br></br>
                                 Badges:
                         <br></br>
-                                {x.badges.map(y => <img src={y} />)}
+                                {x.badges.map(y => <img src={y} alt='' />)}
                             </div>
                         </div>
                     )}
