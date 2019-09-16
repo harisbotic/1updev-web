@@ -67,9 +67,6 @@ function Header (props) {
                 </div>
             </div>
 
-            <div className="search">
-                Ovdje ide search
-                </div>
         </div>
     );
 }
