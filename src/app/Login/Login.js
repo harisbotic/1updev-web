@@ -45,7 +45,7 @@ const Login = props => {
                     <div className="label">Email</div>
                     <input
                         name="email"
-                        type="email"
+                        type="text"
                         placeholder="Email"
                         className="input_default"
                         value={credentials.email}

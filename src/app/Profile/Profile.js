@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
-
 import "./Profile.scss";
+import {withRouter} from "react-router-dom";
 
-const Profile = () => {
-    return <h1>Profile page</h1>
-};
+class Profile extends React.Component {
+    render() {
+        
+        return (
+        
+            <h1 >Profile page</h1>
+       
+        );
+    }
 
-export default Profile;
+}
+
+export default withRouter(Profile);
