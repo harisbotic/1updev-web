@@ -3,7 +3,7 @@ $header-btn-blue: #3292E1 ;
 
 $purple: #712EBD;
 
-#header {
+#header{
     height: 70px;
     background-image: $background-gradient;
     width: 100% !important; /* Full width */
@@ -18,7 +18,7 @@ $purple: #712EBD;
     margin: 0% !important;
 }
 .header-nav-button{
-    width: 30%;
+    min-width: 30%;
     height: 36px;
     border-radius: 40px;
     text-align: center;
@@ -30,24 +30,38 @@ $purple: #712EBD;
     justify-content: center;
     font-family: 'Roboto';
 }
-#header-nav-purple_button {
+#header-nav-purple_button{
     border: 2px solid $purple;
     background-color: transparent;
 }
-#header-nav-blue_button {
+.header-user_name_btn{
+    background-color: transparent !important;
+    border: none !important;
+}
+#header-dropdown-item{
+    font-family: 'Roboto' !important;
+}
+#header-nav-blue_button{
     background-color: $header-btn-blue;
 }
-.btn
-{
+.header-btn{
+    margin-left: 2%;
     display: flex;
     justify-content: space-between;
 }
-.search{
+.header-search-wrapper{
     display: none;
-    background-image: $background-gradient;
+    visibility: collapse;
 }
-.rightWrapper
-{
+.header-search{
+    width: 100%;
+    color: white;
+    background-color:transparent;
+    border-radius: 20px;
+    border-color: purple;
+    background-blend-mode: color-dodge;
+}
+.header-rightWrapper{
     display: flex;
     justify-content: flex-end;
     color: white;
@@ -68,10 +82,8 @@ $purple: #712EBD;
 #dropdownMenuButton{
      font-family: 'Roboto';
 }
-
-
-@media (max-width: 668px) {
-    .search{
+@media (max-width: 668px){
+    .header-search-wrapper{
         background-color: $background-gradient;
         color:white;
         width: 100%;
@@ -79,8 +91,14 @@ $purple: #712EBD;
         visibility:visible;
         padding: 0% !important;
         margin: 0% !important;
+        display: flex;
     }
      #header{
-        display: none,
+        display: none,   
+    }
+    .header-search{
+        background-image: $background-gradient;
+        width: 100%;
+        border-radius: 0px;
     }
   }
