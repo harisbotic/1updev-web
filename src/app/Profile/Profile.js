@@ -163,7 +163,7 @@ function Profile(props) {
             <p>EDIT PROFILE </p>
           </div>
 
-          <h1 className="username">@{user.nickname}</h1>
+          <h1 className="username">{user.username}</h1>
 
           <p className="userTitle">
             {jsonProfileList.title
