@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
 import Logo from '../../assets/logo.png'
 import { withRouter } from "react-router";
 import img from "../../assets/Image 545.png";
+import { profile } from "../../api/index";
 
 
-const Header = (props) => {
+function Header (props) {
+
+    const [userList, setUserList] = useState({
+        userList: []
+    });
 
     const handleRedirect = (route) => {
         props.history.push(route);
     }
+
+   const onChangeHandler = async (event) =>
+    {
+        const searchQueryResponse = await profile.searchByQuery.get(event.target.value);
+
+        console.log(searchQueryResponse.data);
+
+        setUserList({
+            userList: searchQueryResponse.data
+        })
+    }
+
+    
 
     return (
         <div className="container-fluid" id="header-container">
@@ -36,7 +54,7 @@ const Header = (props) => {
                 </div>
 
                 <div className="col rightWrapper search" style={{ color: "white" }}>
-                    <input type="text" placeholder="search user" />
+                    <input type="text" placeholder="search user" onChange={onChangeHandler} />
                  </div>
 
                 <div className="col rightWrapper">
