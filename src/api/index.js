@@ -1,7 +1,9 @@
 import auth from './auth';
-import profile from './profile'
+import profile from './profile';
+import shop from './shop';
 
 export {
     auth,
-    profile
+    profile,
+    shop
 }

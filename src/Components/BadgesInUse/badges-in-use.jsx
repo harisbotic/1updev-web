@@ -23,7 +23,7 @@ function BadgesInUse() {
             icon:'fas fa-trophy'
         }
     ]
-    
+
     const [badgesInUse, setBadgesInUse] = useState(badges);
 
     return(
