@@ -1,0 +1,100 @@
+@import "../../Shared//variables.scss";
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.transaction {
+  margin: 5%;
+  background-color: transparentize(white, 0.8);
+  border-radius: 25px;
+}
+
+.transaction_log-container {
+  padding: 5% 5% 5% 0%;
+  color: white;
+  font-weight: 400;
+  max-height: 200px;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.transactions {
+  height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0% 5% 0% 0%;
+}
+
+.header_row {
+  font: 100% Roboto;
+  position: relative;
+
+  .title {
+    left: 17%;
+  }
+
+  .time {
+    right: 10%;
+  }
+}
+
+.transaction_row {
+  font-size: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  align-items: flex-end;
+}
+
+.profile_img {
+  width: 100%;
+  border-radius: 4%;
+}
+
+.transactions::-webkit-scrollbar {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 10px;
+}
+
+.transactions::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media only screen and( max-width:991px) {
+  .transaction_log-container {
+    height: 300px;
+  }
+
+  .transactions {
+    max-height: 250px;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and(max-width:$mobile) {
+  .transaction_row {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  .transaction_log-container {
+    height: 250px;
+  }
+
+  .transactions {
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+
+  .col-8 {
+    padding: 0px;
+  }
+}
