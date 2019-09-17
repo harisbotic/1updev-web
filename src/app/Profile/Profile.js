@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { profile } from "../../api/index";
+import { profile, availableTokens } from "../../api/index";
 
 import Badge from "../../Components/Badges/Badge.component";
 import {
@@ -17,6 +17,7 @@ import LoadingElement from "../../Components/LoadingElement/LoadingElement.compo
 import jsonProfileList from "./profile.json";
 
 import "./Profile.scss";
+import tokenTransactions from "../../api/tokenTransactions";
 
 function Profile(props) {
 
@@ -24,6 +25,7 @@ function Profile(props) {
     const [activeBadges, setBadges] = useState({badges: []});
     const [isLoading, setIsFetchingInv] = useState({isFetchingInventory: false})
     const [profileInfo, setProfileInfo] = useState({user: {}});
+    const [userTokens, setUserTokens] = useState();
 
     const { user } = profileInfo;
     const { isFetchingInventory } = isLoading;
@@ -55,8 +57,11 @@ function Profile(props) {
                 )   
             });
             
-            setIsFetchingInv({isFetchingInventory: false})
+            setIsFetchingInv({isFetchingInventory: false});
 
+            const fetchAvailableTokens = await tokenTransactions.fetchTokenValue.get(profileInfoResponse.data.username);
+
+            setUserTokens(fetchAvailableTokens.data);
         }
 
         fetchData();
@@ -151,7 +156,7 @@ function Profile(props) {
                         <p>EDIT PROFILE </p>
                     </div>
 
-                    <h1 className="username">@{user.nickname}</h1>
+                    <h1 className="username">{user.username}</h1>
 
                     <p className="userTitle">
                         {jsonProfileList.title
@@ -161,7 +166,7 @@ function Profile(props) {
 
                     <div className="tokenRelated">
                         <p className="availableTokens">
-                        Available tokens: {jsonProfileList.availableTokens}
+                        Available tokens: {userTokens}
                         </p>
                         <p className="profileValue">
                         Profile value: {jsonProfileList.availableTokens}
