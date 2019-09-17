@@ -5,7 +5,7 @@ import { auth } from "../../api/index";
 import "./Login.scss";
 
 const Login = props => {
-    const [credentials, setCredentials] = useState({ email: "", password: "" });
+    const [credentials, setCredentials] = useState({ username: "", password: "" });
     const [loading, setLoading] = useState(false);
     const onSubmit = async e => {
         e.preventDefault();

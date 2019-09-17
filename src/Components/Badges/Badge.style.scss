@@ -11,14 +11,19 @@
     position: relative;    
     transition: 0.5s ease-in-out;
 
-    .activeBadge {
+    .activeBadge,.inactiveBadge {
         height: 100%;
         width:100%;
         border-radius:15%;
-        text-align: center;
         display: flex;
+        text-align: center;
         justify-content: center;
         align-items: center;
+        text-align: center;
+
+        .modal-header {
+            text-align: center;
+        }
 
         .modalClick {
             position: absolute;
@@ -32,7 +37,7 @@
         i {
             font-size: 32px;
             color: $lighter-blue;
-                        transition: 0.5s ease-in-out;
+            transition: 0.5s ease-in-out;
         }
 
     }
@@ -48,4 +53,42 @@
     }
 }
 
-  
+.bold {
+    font-weight: $bold;
+}
+
+.badgeModal {
+
+    .modalBodyButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .modalButton {
+        font-family:"Roboto";
+        border-radius: $border-radius;
+        background:$secondary-purple;
+        transition:0.5s ease;
+        text-align: center;
+        padding:10px;
+        width:50%;
+        cursor:pointer;
+        margin-top:10px;
+        width:40%;
+    
+        p {
+            color:white;
+            font-weight: $bold;
+            margin:0;
+        }
+    
+        &:hover {
+            background: $lighter-blue;
+        }
+    }
+
+    .closeButton {
+        width:100%;
+    }
+}
