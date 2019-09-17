@@ -11,6 +11,9 @@ function EditProfile(props) {
     const [inputs, setInputs] = useState({});
 
     useEffect(() => {
+
+        console.log(localStorage.getItem('Username'));
+
         const fetchData = async () => {
             const username = props.location.state.username;
 
@@ -38,7 +41,7 @@ function EditProfile(props) {
     const submitHandler = async event => {
         event.preventDefault();
 
-        const editProfileResponse = await profile.editProfile.update(inputs, user.username);
+        await profile.editProfile.update(inputs, user.username);
 
         props.history.push(`/profile/${inputs.username}`);
     }
@@ -59,8 +62,7 @@ function EditProfile(props) {
             <div className="profileDisplayComponent">
                 <img className="profilePicture" src={`https://robohash.org/${user.id}`} alt="user" />
                 <div className="ProfileDetails">
-                    <h3> {user.nickname} </h3>
-                    <p>User special title goes here</p>
+                    <h3> {user.username} </h3>
                 </div>
                 <div className="Buttons">
                     <button className="saveChangesButton" form="form" onSubmit={submitHandler}>

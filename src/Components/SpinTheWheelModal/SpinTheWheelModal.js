@@ -21,7 +21,7 @@ export const SpinTheWheelModal = () => {
         Launch modal
       </Button>
 
-      <div className="modal" style={{ display: modalState }}>
+      <div className="spin_the_wheel_modal" style={{ display: modalState }}>
         <div className="wheel_container">
           {list.map((item, index) => {
             return (
