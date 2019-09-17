@@ -1,0 +1,58 @@
+@import "../../Shared//variables.scss";
+.item-card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 12px;
+  min-width: 150px;
+  min-height: 150px;
+  height: 100%;
+
+  p {
+    letter-spacing: 0.1px;
+    color: #ffffff;
+    opacity: 1;
+  }
+
+  .itemCategory {
+    text-align: right;
+    font-family: "Roboto";
+    font-weight: 300;
+  }
+
+  i {
+    font-size: 50px;
+    color: #ffffff;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .itemName {
+    font-family: "Roboto";
+    font-weight: bold;
+  }
+
+  .itemValue {
+    font-family: "Roboto";
+    font-weight: 200;
+  }
+
+  .itemType {
+    font-family: "Roboto";
+    font-weight: 300;
+  }
+
+  .itemName,
+  .itemValue,
+  .itemType {
+    text-align: left;
+    margin-bottom: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .xs-column {
+    display: flex;
+    flex-direction: column;
+  }
+}
