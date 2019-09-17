@@ -1,0 +1,79 @@
+@import "../../Shared/variables.scss";
+
+.activityLog {
+  background: rgba(255, 255, 255, 0.3);
+  color: $white;
+  width: 400px;
+  height: 200px;
+  border-radius: 25px;
+  overflow: auto;
+}
+
+.transactionDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.scrollableLog {
+  overflow-y: auto;
+  height: calc(100% - 56px);
+  margin-right: 10px;
+  font-family: "Roboto";
+  font-size: 12px;
+  margin: auto 10px;
+}
+
+.scrollableLog::-webkit-scrollbar {
+  width: 10px;
+  border: 2px solid $white;
+  border-radius: 10px;
+}
+
+.scrollableLog::-webkit-scrollbar-thumb {
+  background-color: $white;
+  border-radius: 10px;
+}
+
+.activityHeaders {
+  font-family: "Roboto";
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1.5% 12%;
+
+  p {
+    margin: 0 0;
+  }
+}
+
+.User-avatar {
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: $mobile) {
+
+  .activityLogContainer {
+
+    .btn {
+      border-radius: 30px;
+      text-align: center;
+      background: $secondary-purple;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      transition:0.5s;
+
+        &:active,&:hover {
+          color:$primary-purple;
+          text-decoration: none;
+          color:$white;
+        }
+
+    }
+  }
+
+}

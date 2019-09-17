@@ -1,229 +1,273 @@
 @import "../../Shared/variables.scss";
 
-.profile {
-    padding: 20px 0;
+body {
+  background: #300C42;
+}
 
-    .profile-visual {
-        box-sizing: border-box;
-        padding: 0;
+.profileDisplayComponent {
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr;
+  align-items: center;
+  padding: 3% 10% 0 10%;
+  font-family: "Roboto";
+  margin-bottom:10px;
+
+  .profilePicture {
+    max-width: 160px;
+    max-height: 160px;
+    border-radius: 100%;
+    cursor:pointer;
+
+    &:hover {
+      background:gray;
     }
+  }
 
-    .tag {
-        height: 40px;
-        background-color: $color-primary;
-        color: white;
-        font-weight: bold;
+  .profileDetails {
+    padding: 5%;
+
+    .editProfileButton {
+        border-radius: 30px;
         text-align: center;
-        line-height: 40px;
-        border-radius: $border-radius $border-radius 0 0;
+        background: $secondary-purple;
+        width: 45%;
+        cursor: pointer;
+        transition: 0.2s;
+        margin:5px 0 5px 0;
+
+        p {
+          color: $white;
+          padding: 10px;
+          font-weight: $bold;
+          font-size: 14px;
+        }
+
+        &:hover {
+          background: rgba(112, 45, 188, 0.5);
+
+          p {
+            text-shadow: 1px 1px black;
+          }
+
+        }
     }
 
-    .photo-wrap {
-        background-color: white;
-        position: relative;
+    .userTitle {
+      color: $white;
+      font-family: "Roboto";
+      font-weight: $regular;
+      font-size: 14px;
+      margin: 5px 0 5px 0;
     }
 
-    .photo {
-        max-width: 100%;
+    .username {
+      color: $white;
+      font-family: "Roboto";
+      font-weight: $bold;
+      font-size: 35px;
+      margin: 5px 0 5px 0;
+    }
+
+    .tokenRelated {
+      display: flex;
+      flex-direction: row;
+      margin:5px 0 5px 0;
+
+      p {
+        color: $white;
+        font-family: "Roboto";
+        font-weight: $regular;
+        font-size: 14px;
+        margin: 5px;
+      }
+    }
+    
+    .badges {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 50%;
+      box-sizing: border-box;
+
+      // .badge {
+      //   margin: 0 15px 0 0;
+      // }
+    }
+    
+  }
+
+}
+
+.inventoryContainer {
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 3% 10% 10% 10%;
+  border-top-left-radius: 40pt;
+  border-top-right-radius: 40pt;
+  min-height: 500px;
+  height: auto !important;
+  height: 500px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+
+  .infoSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .infoText {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: baseline;
+
+      .inventoryText {
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: 0.36px;
+        color: #712ebd;
+        opacity: 1;
+        margin: 0;
+        margin-right: 10px;
+      }
+
+      .inventoryValue {
+        font-size: 14px;
+        font-weight: 200;
+        letter-spacing: 0.1px;
+        color: #434343;
+        opacity: 1;
+        margin: 0;
+      }
+
+      .tokenValue {
+        font-weight: 700;
+      }
+    }
+
+
+  }
+
+  .itemsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px,180px));
+    grid-auto-rows: repeat(auto-fill, minmax(160px,180px));
+    justify-content: space-between;
+    grid-gap:10px;
+    position: relative;
+  }
+
+}
+
+.filterOptionsDesktop {
+  display:block;
+}
+
+.filterOptionsMobile {
+  display: none;
+}
+
+.activityLogDesktop {
+  display: block;
+}
+
+.activityLogMobile {
+  display: none;
+}
+
+@media screen and (min-width: $mobile) {
+  .badges {
+    .badge {
+      margin: 0 15px 0 0;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+
+  .filterOptionsDesktop {
+    display:none;
+  }
+
+  .filterOptionsMobile {
+    display: block;
+  }
+
+  .activityLogDesktop {
+    display: none;
+  }
+
+  .activityLogMobile {
+    display: block;
+  }
+
+
+  .profileDisplayComponent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-bottom:0;
+    
+    .profileDetails {
+
+      .editProfileButton {
         width: 100%;
-        border-radius: 0 0 10px 10px;
-        margin-top: -1px;
-    }
+      }
 
-    .plusOne-wrap {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 55px;
-        height: 30px;
-        line-height: 32px;
-        background-color: $color-primary;
-        border-radius: 20px 0 0 0;
-        color: white;
-        font-weight: bold;
-        text-align: center;
-        font-size: 18px;
-    }
-
-    .icon {
-        position: absolute;
-        bottom: 18px;
-        right: 43px;
-        font-size: 14px;
-    }
-
-    .profile-text {
-        box-sizing: border-box;
-        padding: 0;
-    }
-
-    .name-wrap {
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .nickname {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .name {
-        font-size: 14px;
-    }
-
-    .label-wrap {
-        margin: 20px 0;
-    }
-
-    .label {
-        position: relative;
-        height: 32px;
-        line-height: 32px;
-        color: white;
-        padding-left: 15px;
-        border-radius: $border-radius;
-        margin: 7px 0;
-        font-weight: bold;
-    }
-
-    .points {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        line-height: 32px;
-        width: 60px;
-        text-align: center;
-        border-radius: 0 $border-radius $border-radius 0;
-    }
-
-    .medal-wrap {
-        display: flex;
+      .badges {
+        flex-direction: row;
         justify-content: space-between;
+        width: 100%;
+      }
+
+    }
+    
+    .activityLogMobile {
+
+      .btn {
+        background:$secondary-purple;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+
+        p {
+          font-family:"Roboto";
+          color:$white;
+          font-size:12px;
+          font-weight: $bold;
+          text-decoration: none;
+        }
+      }
     }
 
-    .start_medal-wrap,
-    .end_medal-wrap {
-        display: flex;
-    }
+  }
 
-    .medal_text-wrap {
+
+  .inventoryContainer {
+    display: flex;
+    flex-direction: column;
+
+    .infoSection {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      .heading {
         display: flex;
         flex-direction: column;
-        margin: 0 20px;
+      }
     }
 
-    .medal_text-title {
-        margin-top: auto;
-        font-weight: bold;
+    .itemsContainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 10px;
     }
 
-    .medal_text-points {
-        font-size: 12px;
-        font-weight: bold;
-        margin-bottom: 5px;
     }
 
-    .bronze {
-        color: $color-bronze;
-    }
-
-    .silver {
-        color: $color-silver;
-    }
-
-    .gold {
-        color: $color-gold;
-    }
-
-    .platinum {
-        color: $color-platinum;
-    }
-
-    .diamond {
-        color: $color-diamond;
-    }
-
-    .master {
-        color: $color-master;
-    }
-
-    .progress_bar-wrap {
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    .progress {
-        height: 20px;
-    }
-
-    .progress-bar {
-        // background-color: $color-bronze !important;
-        font-weight: bold;
-        padding-left: 15px;
-    }
-
-    .progress_text {
-        display: flex;
-        width: fit-content;
-        background-color: transparentize($color-gray-dark, 0.7);
-        border-radius: $border-radius;
-        padding: 0 10px;
-    }
-
-    .section_title {
-        font-size: 14px;
-        font-weight: bold;
-        border-bottom: 2px solid $color-gray;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-
-    .chart {
-        position: relative;
-        padding: 20px 0;
-        min-height: 300px;
-        cursor: pointer;
-    }
-
-    .ranking_table-wrap .rankingRow:first-child,
-    .activity_table-wrap .activityRow:first-child {
-        border-radius: $border-radius $border-radius 0 0;
-    }
-
-    .ranking_table-wrap .rankingRow:last-child,
-    .activity_table-wrap .activityRow:last-child {
-        border-radius: 0 0 $border-radius $border-radius;
-    }
-
-    .activity_table-wrap {
-        max-height: 400px;
-        overflow-y: scroll;
-    }
-
-    .myActivity {
-        max-height: 830px;
-        overflow-y: scroll;
-    }
-
-    @media only screen and (min-width: 768px) and (max-width: 991px) {
-        .col-left {
-            display: flex;
-            flex-wrap: nowrap;
-        }
-
-        .profile-visual {
-            padding-right: 10px;
-        }
-
-        .profile-text {
-            padding-left: 10px;
-        }
-    }
-
-    @media only screen and (min-width: 1024px) {
-        .section_title {
-            margin-top: 0px;
-        }
-    }
+  
 }
+
