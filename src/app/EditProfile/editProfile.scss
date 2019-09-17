@@ -40,7 +40,7 @@ body {
     width: 100%;
     justify-content: center;
     margin-left: 6.5%;
-    
+
     input {
       color: white;
     }
@@ -52,7 +52,7 @@ body {
     justify-content: stretch;
     flex-wrap: nowrap;
   }
-  
+
   h3 {
     color: #ffffff;
     font-family: lato;
@@ -60,16 +60,14 @@ body {
     font-size: 26px;
     margin-left: 6.5%;
   }
-  
+
   .lastName {
     margin-right: -6.5%;
   }
-  
-
 }
 
-.saveChangesButton, .backProfileButton {
-  padding: 5px;
+.saveChangesButton,
+.backProfileButton {
   color: white;
   border-radius: 30px;
   text-align: center;
@@ -80,20 +78,27 @@ body {
   transition: 0.2s;
   position: inherit;
 
-
-  background: #3292E1 0% 0% no-repeat padding-box;
+  background: #3292e1 0% 0% no-repeat padding-box;
   border-radius: 40px;
   opacity: 1;
-
 }
 
 @media screen and (max-width: $mobile) {
-  .saveChangesButton, .backProfileButton {
+  .saveChangesButton,
+  .backProfileButton {
     width: 100%;
+    margin-bottom: 20px;
+    padding: 5px 15px 5px 15px;
   }
 }
 @media screen and (min-width: $mobile) {
-  .saveChangesButton, .backProfileButton {
-    margin: 5px 20px 0 25%; 
+  .saveChangesButton,
+  .backProfileButton {
+    margin: 5px 20px 0 25%;
+    padding: 5px;
+  }
+
+  .profilePicture {
+    margin-right: 50px;
   }
 }

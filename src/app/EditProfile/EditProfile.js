@@ -12,7 +12,6 @@ function EditProfile(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log(props.location.state.username);
             const username = props.location.state.username;
 
             const profileInfoResponse = await profile.profileInfo.get(username);
@@ -20,6 +19,8 @@ function EditProfile(props) {
             setState({
                 user: profileInfoResponse.data
             });
+
+            setInputs(profileInfoResponse.data);
         }
 
         fetchData();
@@ -56,7 +57,7 @@ function EditProfile(props) {
         <div className="editProfile">
 
             <div className="profileDisplayComponent">
-                <img className="profilePicture" src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg" alt="user" />
+                <img className="profilePicture" src={`https://robohash.org/${user.id}`} alt="user" />
                 <div className="ProfileDetails">
                     <h3> {user.nickname} </h3>
                     <p>User special title goes here</p>
@@ -79,14 +80,14 @@ function EditProfile(props) {
                         <label>
                             First name:
                             <input type="text" name="firstName"
-                                placeholder={user.firstName}
+                                value={inputs.firstName}
                                 onChange={InputChangeHandler}
                                 required />
                         </label>
                         <label className="lastName">
                             Last name:
                             <input type="text" name="lastName"
-                                placeholder={user.lastName}
+                                value={inputs.lastName}
                                 onChange={InputChangeHandler}
                                 required />
                         </label>
@@ -96,7 +97,7 @@ function EditProfile(props) {
                         <label>
                             Email:
                         <input type="email" name="email"
-                                placeholder={user.email}
+                                value={inputs.email}
                                 onChange={InputChangeHandler}
                                 required />
                         </label>
@@ -106,7 +107,7 @@ function EditProfile(props) {
                         <label>
                             Username:
                         <input type="text" name="username"
-                                placeholder={user.username}
+                                value={inputs.username}
                                 onChange={InputChangeHandler}
                                 required />
                         </label>

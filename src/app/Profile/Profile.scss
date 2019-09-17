@@ -88,6 +88,10 @@ body {
       justify-content: space-between;
       width: 50%;
       box-sizing: border-box;
+
+      // .badge {
+      //   margin: 0 15px 0 0;
+      // }
     }
     
   }
@@ -173,7 +177,13 @@ body {
   display: none;
 }
 
- 
+@media screen and (min-width: $mobile) {
+  .badges {
+    .badge {
+      margin: 0 15px 0 0;
+    }
+  }
+}
 
 @media screen and (max-width: $mobile) {
 

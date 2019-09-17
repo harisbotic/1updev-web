@@ -11,9 +11,9 @@ const fetchProfileInventory = {
 };
 
 const profileInfo = {
-  get: route =>
+  get: identifier =>
     tokenRefreshHandler(
-      customAxios.get(`${BASE_URL}/profiles/${route}`, {
+      customAxios.get(`${BASE_URL}/profiles/${identifier}`, {
         headers: getHeaders()
       })
     )
