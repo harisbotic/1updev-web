@@ -39,26 +39,24 @@ const Login = props => {
       <div className="login_widget-wrap">
         <form onSubmit={onSubmit} className="login_widget">
           <div className="title">OneUpDev</div>
-
-          <div className="label">Email</div>
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            className="input_default"
-            value={credentials.email}
-            onChange={handleChange}
-          />
-          <div className="label">Password</div>
-          <input
-            type="password"
-            placeholder="Password"
-            className="input_default"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-          />
-
+                    <div className="label">Email</div>
+                    <input
+                        name="email"
+                        type="text"
+                        placeholder="Email"
+                        className="input_default"
+                        value={credentials.email}
+                        onChange={handleChange}
+                    />
+                    <div className="label">Password</div>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="input_default"
+                        name="password"
+                        value={credentials.password}
+                        onChange={handleChange}
+                    />
           <button
             type="submit"
             className="button-secondary login_button"
