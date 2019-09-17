@@ -1,4 +1,6 @@
-.modal {
+@import '../../Shared/variables.scss';
+
+.spin_the_wheel_modal {
   display: none;
   position: fixed;
   overflow: hidden;
@@ -23,12 +25,6 @@
   animation-delay: 2.5s;
   animation-timing-function: ease;
   z-index: 10;
-
-  // > div:last-child {
-  //   z-index: 100;
-  //   width: 150px;
-  //   height: 150px;
-  // }
 }
 
 @keyframes spin {
@@ -59,7 +55,7 @@
   }
 
   .bold {
-    font-weight: 700;
+    font-weight: $bold;
   }
 
   @keyframes showResult {
@@ -132,4 +128,30 @@
       }
     }
   }
+}
+
+@media screen and (max-width: $mobile){
+  .wheel_container {
+    width: 100%;
+    display: block;
+    margin-left: 122.5px;
+  }
+
+  .result_container {
+    flex-direction: column;
+
+    .wheel_result {
+      flex-direction: column;
+      align-self: none;
+      height: 45vh;
+      margin-top: calc(100% - 5vh);
+
+      .result_info {
+        margin-left: 60px;
+        margin-top: 70px;
+        text-align: left;
+      }
+    }
+  }
+  
 }
