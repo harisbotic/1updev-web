@@ -147,7 +147,7 @@ function Profile(props) {
                 
                 <img
                     className="profilePicture"
-                    src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
+                    src={`https://robohash.org/${user.id}`}
                     alt="user"
                 />
 
