@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Header.scss';
-import Logo from '../../assets/logo.png'
+import Logo from '../../Assets/logo.png'
 import { withRouter } from "react-router";
-import img from "../../assets/Image 545.png";
+import img from "../../Assets/Image 545.png";
 import { Dropdown } from 'react-bootstrap'
 import { profile } from "../../api/index";
 
@@ -58,8 +58,7 @@ function Header (props) {
 
                 </div>
 
-                <div className="col header-rightWrapper" style={{ color: "white" }}>
-                    <input className="header-search" type="text" placeholder=" Search user" />
+                
                 <div  className="col rightWrapper search" style={{ color: "white" }}>
                     <input type="text" id="mySearch" placeholder="search users" onChange={onChangeHandler} />
                         <ul id="myMenu">
@@ -83,11 +82,8 @@ function Header (props) {
                 </div>
             </div>
 
-            <div className="header-search-wrapper">
-            <input className="header-search" type="text" placeholder=" Search user" />
-            </div>
         </div>
-        </div>
+        
     );
 }
 
