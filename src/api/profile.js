@@ -60,10 +60,23 @@ const searchProfileInventory = {
     )
 };
 
+const searchByQuery = {
+  get:query => 
+  tokenRefreshHandler(
+      customAxios.get(`${BASE_URL}/Profiles/getByQuery?=${query}`),
+      {
+          headers: getHeaders()
+      }
+  )
+};
+
 export default {
   profileInfo,
   editProfile,
   fetchProfileInventory,
   fetchSortedProfileInventory,
-  searchProfileInventory
+  searchProfileInventory,
+  searchByQuery
 };
+
+

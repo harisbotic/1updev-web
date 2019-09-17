@@ -1,0 +1,219 @@
+@import "../../Shared//variables.scss";
+// .tmp {
+//   // width:400px;
+//   // height:auto;
+//   // width:80%;
+//   // margin: 0 auto;
+// }
+.available-tokens,
+.items-own {
+  // width: 200px;
+  // height: 29px;
+  text-align: left;
+  font: Regular 16px/32px Roboto;
+  // font:Regular 8px/16px Roboto;
+  margin-right: 20px;
+  letter-spacing: 0.1px;
+  // color: #FFFFFF;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.in_use {
+  // justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.token-count,
+.own-count {
+  width: 38px;
+  height: 29px;
+  text-align: left;
+  font: Bold 22px/32px Roboto;
+  letter-spacing: 0.13px;
+  //color: #FFFFFF;
+  color: white;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.items-in-use {
+  display: inline-flex;
+  flex-direction: row;
+  //  margin-bottom:40px;
+}
+
+.shopContainer {
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: transparentize(white, 1) 0% 0% no-repeat padding-box;
+
+  .infoSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .shopText {
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.36px;
+      color: white;
+      opacity: 1;
+      margin-right: 10px;
+    }
+
+    .filterOptionsContainer {
+      .filterOptions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        vertical-align: middle;
+        align-items: center;
+
+        p {
+          margin: 0;
+          margin-right: 10px;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.1px;
+          color: white;
+
+          i {
+            margin: 0 5px 0 5px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+          }
+        }
+
+        p:hover {
+          cursor: pointer;
+          color: #712ebd;
+
+          i {
+            color: #712ebd;
+          }
+        }
+
+        .searchBoxComponent {
+          display: grid;
+          grid-template-columns: 20% 80%;
+          align-items: center;
+          background: #898b91;
+          opacity: 0.5;
+          border-radius: 40px;
+
+          .searchBox {
+            margin: 0;
+            border: 0;
+            border-radius: 40px;
+            background: #898b91;
+          }
+
+          .searchBox::placeholder {
+            font-family: "Roboto";
+            color: white;
+            font-size: 14px;
+            vertical-align: middle;
+          }
+
+          i {
+            color: white;
+            text-align: center;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .itemsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 180px));
+    grid-auto-rows: repeat(auto-fill, minmax(160px, 180px));
+    justify-content: space-between;
+    grid-gap: 10px;
+
+    #add {
+      border: white solid 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i:hover {
+        color: #712ebd;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // .filterOptionsDesktop {
+  //   display: block;
+  // }
+
+  @media only screen and( max-width:768px ) {
+    .available-tokens,
+    .items-own {
+      // font: Regular 8px/16x Roboto;
+      font-size: 18px;
+      // text-align:center;
+      // margin-left:20px;
+      // position:center;
+    }
+
+    .infoSection {
+      display: flex;
+      flex-direction: column;
+
+      .filterOptionsContainer {
+        display: flex;
+        flex-direction: column;
+
+        .filterOptions {
+          flex-wrap: wrap;
+          align-content: flex-start;
+        }
+      }
+    }
+
+    .xs-column {
+      display: flex;
+      flex-direction: column;
+    }
+    .token-count,
+    .own-count {
+      font-size: 20px;
+    }
+  }
+
+  @media only screen and(max-width:$mobile) {
+    .available-tokens,
+    .items-own {
+      // font:Regular 4px/8px Roboto;
+      // font:Regular 100px/100px Roboto;
+      font-size: 11px;
+    }
+    .token-count,
+    .own-count {
+      font-size: 15px;
+    }
+
+    .shopContainer {
+      display: flex;
+      flex-direction: column;
+
+      .itemsContainer {
+        display: grid;
+        align-self: center;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+      }
+    }
+  }
+}

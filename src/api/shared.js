@@ -15,7 +15,7 @@ const getHeaders = () => {
     }
 }
 
-const tokenRefreshHandler = async (request) => {
+const tokenRefreshHandler = async (request) => { 
     try {
         return await request;
     } catch (err) {

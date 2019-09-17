@@ -11,7 +11,7 @@ const PublicRoute = ({ component: Component, ...rest }) => (
             ) : (
                 <Redirect
                     to={{
-                        pathname: "/profile",
+                        pathname: "/shop",
                         state: { from: props.location }
                     }}
                 />

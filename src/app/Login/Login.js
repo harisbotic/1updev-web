@@ -26,24 +26,21 @@ const Login = props => {
         props.history.push(`/profile/${credentials.username}`);
     };
 
-    const handleChange = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setCredentials({
-            ...credentials,
-            [name]: value
-        });
-    };
+  const handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setCredentials({
+      ...credentials,
+      [name]: value
+    });
+  };
 
-    return (
-        <div className={`login ${loading ? "loading" : null}`}>
-            <div className="login_widget-wrap">
-                <form onSubmit={onSubmit} className="login_widget">
-                    <div className="title">
-                        OneUpDev
-                    </div>
-
-                    <div className="label">Username</div>
+  return (
+    <div className={`login ${loading ? "loading" : null}`}>
+      <div className="login_widget-wrap">
+        <form onSubmit={onSubmit} className="login_widget">
+          <div className="title">OneUpDev</div>
+          <div className="label">Username</div>
                     <input
                         name="username"
                         type="text"
@@ -61,17 +58,17 @@ const Login = props => {
                         value={credentials.password}
                         onChange={handleChange}
                     />
-
-                    <button
-                        type="submit"
-                        className="button-secondary login_button"
-                        disabled={loading}>
-                        Login
-                    </button>
-                </form>
-            </div>
-        </div>
-    );
+          <button
+            type="submit"
+            className="button-secondary login_button"
+            disabled={loading}
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default withRouter(Login);
