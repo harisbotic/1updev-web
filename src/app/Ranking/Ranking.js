@@ -73,3 +73,25 @@ class Ranking extends React.Component {
 }
 
 export default Ranking;
+
+{/* <div className="container">
+                <h1>Ranking table:</h1>
+                <div className="row">
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Special Title</th>
+                    <th scope="col">Value Of Inventory</th>
+                    <th scope="col">Badges</th>
+                </tr>
+
+                    {mockRanks.map(x =>
+                        <div className="col mx-3 my-5">
+                            <div>
+                                <p> 
+                                    {x.user} has {x.value}.
+                                </p>
+                                <img src={x.profileImg} />
+                                <br></br>
+                                Badges:
+                        <br></br>
+                                {x.badges.map(y => <img src={y} />)} */}
