@@ -18,7 +18,9 @@ function Header(props) {
   const currentUsername = jwtdecode(localStorage.getItem("access_token"))
     .Username;
 
-
+  const currentUserId = jwtdecode(localStorage.getItem("access_token"))
+    .id;
+  
   const onChangeHandler = async event => {
     const searchQueryResponse = await profile.searchByQuery.get(
       event.target.value
@@ -28,6 +30,8 @@ function Header(props) {
       userList: searchQueryResponse.data
     });
   };
+
+
 
   return (
     <div className="container-fluid" id="header-container">
@@ -94,7 +98,7 @@ function Header(props) {
           </ul>
         </div>
         <div className="col rightWrapper">
-          <img className="header-user-img" alt="X" src={img} />
+          <img className="header-user-img" alt="X" src={`https://robohash.org/${currentUserId}`} />
 
           <button
             className="btn dropdown-toggle"

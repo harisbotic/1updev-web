@@ -103,6 +103,7 @@ function Profile(props) {
 
     };
 
+
     const categoryFilter = async (sort, isAscending) => {
 
         setIsFetchingInv({isFetchingInventory: true})
