@@ -15,13 +15,13 @@ const shopItems = {
 const spinTheWheelItems = {
     get: () => tokenRefreshHandler(
             customAxios.get(
-                `${BASE_URL}/shops/get/SpinTheWheel`,
+                `${BASE_URL}/Shops/get/SpinTheWheel`,
                 {
                     headers: getHeaders()
                 }
             )
         )
-}
+};
 
 export default {
     shopItems,

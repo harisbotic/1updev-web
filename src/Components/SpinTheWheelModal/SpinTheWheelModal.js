@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
+import { shop } from '../../api/index';
 
 import './SpinTheWheelModal.scss';
-import itemList from '../../app/Shop/list.json';
 import { SpinTheWheelItem } from '../SpinTheWheelItem/SpinTheWheelItem';
 
-export const SpinTheWheelModal = () => {
+export function SpinTheWheelModal() {
 
   const [modalState, setModalState] = useState("none");
-  const [list, setList] = useState(itemList.items);
-
-  const lastItemIndex = itemList.items.length - 1;
+  const [wheelItems, setWheelItems] = useState({
+    allSpinTheWheelItems: []
+  });
 
   const handleClose = () => setModalState("none");
   const handleShow = () => setModalState("block");
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+
+      const spinTheWheelResponse = await shop.spinTheWheelItems.get();
+
+      setWheelItems({
+        allSpinTheWheelItems: spinTheWheelResponse.data
+      });
+
+      console.log(spinTheWheelResponse.data);
+    }
+    fetchData();
+  }, []);
+
+  const { allSpinTheWheelItems } = wheelItems;
+
+  const lastItemIndex = allSpinTheWheelItems.length - 1;
 
   return (
     <>
@@ -23,21 +42,22 @@ export const SpinTheWheelModal = () => {
 
       <div className="spin_the_wheel_modal" style={{ display: modalState }}>
         <div className="wheel_container">
-          {list.map((item, index) => {
-            return (
-              <SpinTheWheelItem
-                key={index}
-                id={item.id}
-                background={item.background}
-                itemIcon={item.icon}
-                itemType={item.category}
-                itemName={item.name}
-                itemValue={item.value}
-                itemRarity={item.type}
-              />
-            )
-          })
-          }
+          {allSpinTheWheelItems && allSpinTheWheelItems.length
+            ? allSpinTheWheelItems.map((item, index) => {
+              return (
+                <SpinTheWheelItem
+                  key={index}
+                  id={item.id}
+                  background={item.background}
+                  itemIcon={item.icon}
+                  itemType={item.category}
+                  itemName={item.name}
+                  itemValue={item.value}
+                  itemRarity="epic"
+                />
+              );
+            })
+            : "..."}
         </div>
         <div className="result_container">
           <i className="fas fa-angle-double-right arrow_pointer"></i>
@@ -49,8 +69,10 @@ export const SpinTheWheelModal = () => {
                   <p className="buttonText">CONTINUE</p>
                 </div>
               </div>
-              <p className="contentText1">You have won the <span className="bold">{list[lastItemIndex].name}</span></p>
-              <p className="contentText2">Item value: <span className="bold">{list[lastItemIndex].value}</span> Tokens</p>
+              <p className="contentText1">You have won the <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
+                ? allSpinTheWheelItems[lastItemIndex].name : "..."}</span></p>
+              <p className="contentText2">Item value: <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
+                ? allSpinTheWheelItems[lastItemIndex].price : "..."}</span> Tokens</p>
             </div>
           </div>
         </div>
