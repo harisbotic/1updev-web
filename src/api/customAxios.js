@@ -24,16 +24,19 @@ const axiosCall = () => {
 
 customAxios.interceptors.request.use(async (config) => {
     const decoded = jwtdecode(localStorage.getItem("access_token"));
+
     if (decoded &&
         (new Date()).getTime() > decoded.exp * 1000) {
         const tokenResponse = await axiosCall();
         localStorage.setItem('access_token', tokenResponse.access_token);
         localStorage.setItem('refresh_token', tokenResponse.refresh_token);
-        config.headers.Authorization = `Bearer ${tokenResponse.access_token}`
+        localStorage.setItem('Username', decoded.Username);
+        localStorage.setItem('ProfileId', decoded.ProfileId);
+        config.headers.Authorization = `Bearer ${tokenResponse.access_token}`;
     }
     return config;
 }, (error) => {
     return Promise.reject(error);
 });
 
-export default customAxios;
+export default customAxios; 

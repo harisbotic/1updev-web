@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { profile, availableTokens } from "../../api/index";
+import { profile, tokenTransactions } from "../../api/index";
 
 import Badge from "../../Components/Badges/Badge.component";
 import {
@@ -17,7 +17,6 @@ import LoadingElement from "../../Components/LoadingElement/LoadingElement.compo
 import jsonProfileList from "./profile.json";
 
 import "./Profile.scss";
-import tokenTransactions from "../../api/tokenTransactions";
 
 function Profile(props) {
 
