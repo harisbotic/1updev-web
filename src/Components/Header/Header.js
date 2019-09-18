@@ -18,7 +18,6 @@ function Header(props) {
   const currentUsername = jwtdecode(localStorage.getItem("access_token"))
     .Username;
 
-
   const onChangeHandler = async event => {
     const searchQueryResponse = await profile.searchByQuery.get(
       event.target.value
