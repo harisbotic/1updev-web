@@ -15,16 +15,9 @@ function Header(props) {
     props.history.push(route);
   };
 
-  const [userList, setUserList] = useState({
-    userList: []
-  });
-
   const currentUsername = jwtdecode(localStorage.getItem("access_token"))
     .Username;
 
-  const handleRedirect = route => {
-    props.history.push(route);
-  };
 
   const onChangeHandler = async event => {
     const searchQueryResponse = await profile.searchByQuery.get(
@@ -100,66 +93,6 @@ function Header(props) {
             })}
           </ul>
         </div>
-
-        <div className="col btn">
-          <button
-            className="header-nav-button"
-            id={
-              props.location.pathname == "/profile" ||
-              props.location.pathname == "/"
-                ? "header-nav-blue_button"
-                : "header-nav-purple_button"
-            }
-            onClick={() => handleRedirect("/profile")}
-          >
-            PROFILE
-          </button>
-
-          <button
-            className="header-nav-button"
-            id={
-              props.location.pathname == "/shop"
-                ? "header-nav-blue_button"
-                : "header-nav-purple_button"
-            }
-            onClick={() => handleRedirect("/shop")}
-          >
-            SHOP
-          </button>
-
-          <button
-            className="header-nav-button"
-            id={
-              props.location.pathname == "/ranking"
-                ? "header-nav-blue_button"
-                : "header-nav-purple_button"
-            }
-            onClick={() => handleRedirect("/ranking")}
-          >
-            RANKS
-          </button>
-        </div>
-
-        <div className="col rightWrapper search" style={{ color: "white" }}>
-          <input
-            type="text"
-            id="mySearch"
-            placeholder="search user"
-            onChange={onChangeHandler}
-            onKeyUp={DisplayDataHandler}
-          />
-          <ul id="myMenu">
-            {userList.userList.map((user, index) => {
-              return (
-                <li>
-                  {" "}
-                  {user.firstName} {user.lastName}{" "}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
         <div className="col rightWrapper">
           <img className="header-user-img" alt="X" src={img} />
 

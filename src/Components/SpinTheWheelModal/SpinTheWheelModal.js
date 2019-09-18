@@ -24,8 +24,6 @@ export function SpinTheWheelModal() {
       setWheelItems({
         allSpinTheWheelItems: spinTheWheelResponse.data
       });
-
-      console.log(spinTheWheelResponse.data);
     }
     fetchData();
   }, []);
