@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { shop } from "../../api/index";
 
-import Item from "../../Components/Item/Item.component";
+import ShopItem from '../../Components/ShopItem/ShopItem';
+// import Item from "../../Components/Item/Item.component";
 import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
@@ -114,7 +115,7 @@ export const Shop = () => {
             </div>
             {shopItems.allShopItems.map((item, index) => {
               return (
-                <Item
+                <ShopItem
                   key={index}
                   itemId={item.id}
                   background={item.rarity.background}
