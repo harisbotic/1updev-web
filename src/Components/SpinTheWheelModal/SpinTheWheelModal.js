@@ -46,12 +46,12 @@ export function SpinTheWheelModal() {
                 <SpinTheWheelItem
                   key={index}
                   id={item.id}
-                  background={item.background}
+                  background={item.rarity.background}
                   itemIcon={item.icon}
-                  itemType={item.category}
+                  itemType={item.type.name}
                   itemName={item.name}
                   itemValue={item.value}
-                  itemRarity="epic"
+                  itemRarity={item.rarity.name}
                 />
               );
             })
@@ -70,7 +70,7 @@ export function SpinTheWheelModal() {
               <p className="contentText1">You have won the <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
                 ? allSpinTheWheelItems[lastItemIndex].name : "..."}</span></p>
               <p className="contentText2">Item value: <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
-                ? allSpinTheWheelItems[lastItemIndex].price : "..."}</span> Tokens</p>
+                ? allSpinTheWheelItems[lastItemIndex].value : "..."}</span> Tokens</p>
             </div>
           </div>
         </div>

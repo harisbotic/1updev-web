@@ -117,12 +117,13 @@ export const Shop = () => {
                 <Item
                   key={index}
                   itemId={item.id}
-                  background="#000000"
-                  itemCategory={item.category}
+                  background={item.rarity.background}
                   itemIcon={item.icon}
                   itemName={item.name}
+                  itemPrice={item.price}
                   itemValue={item.value}
-                  itemType={item.type}
+                  itemType={item.type.name}
+                  itemRarity={item.rarity.name}
                   itemActivateValue={item.activatePrice}
                   itemDisenchantValue={item.disenchantValue}
                 />
