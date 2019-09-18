@@ -13,8 +13,6 @@ import "./Shop.scss";
 import itemsList from "./list.json";
 
 export const Shop = () => {
-
-
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
@@ -23,11 +21,8 @@ export const Shop = () => {
     filteredList: []
   });
 
-
   useEffect(() => {
-
     const fetchData = async () => {
-
       const shopItemsResponse = await shop.shopItems.get;
 
       setShopItems({
@@ -36,23 +31,20 @@ export const Shop = () => {
       setFilter({
         filteredList: shopItemsResponse.data
       });
-
-    }
+    };
 
     fetchData();
   }, []);
 
   // console.log(filter.filteredList);
 
-
-  const searchFilter = (searchText) => {
-
+  const searchFilter = searchText => {
     setFilter({
       filteredList: filter.filteredList.filter(item =>
         item.name.toLowerCase().includes(searchText.toLowerCase())
       )
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -72,11 +64,11 @@ export const Shop = () => {
             <div className="row tmp">
               <div className="available-tokens col-xs-6">
                 AVAILABLE TOKENS:
-                <span className="token-count">455</span>
+                <span className="token-count"> 455</span>
               </div>
               <div className="items-own col-xs-6">
                 ITEMS OWN:
-                <span className="own-count">22</span>
+                <span className="own-count"> 22</span>
               </div>
             </div>
           </div>
@@ -113,7 +105,7 @@ export const Shop = () => {
                     type="text"
                     name="search"
                     className="searchBox"
-                    onChange={(e) => searchFilter(e.target.value)}
+                    onChange={e => searchFilter(e.target.value)}
                     placeholder="Search items..."
                   />
                 </div>
@@ -141,14 +133,13 @@ export const Shop = () => {
                   itemDisenchantValue={item.disenchantValue}
                 />
               );
-            })} 
+            })}
           </div>
         </div>
       </div>
     </>
   );
-}
-
+};
 
 // export class Shop extends Component {
 //   constructor() {
