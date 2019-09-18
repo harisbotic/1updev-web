@@ -1,0 +1,142 @@
+@import "../../Shared/variables.scss";
+
+
+
+.filterOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  vertical-align: middle;
+  align-items: center;
+
+  p {
+    margin: 0;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    color: #434343;
+
+    i {
+      margin: 0 5px 0 5px;
+    }
+  }
+
+  p:first-child {
+    color: #712ebd;
+    font-weight: 700;
+  }
+
+  p:not(:first-child) {
+    cursor: pointer;
+  }
+
+  p:not(:first-child):hover,
+  i:hover {
+    color: #712ebd;
+    font-weight: 700;
+  }
+
+  .searchBoxComponent {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    align-items: center;
+    background: #898b91;
+    opacity: 0.5;
+    border-radius: 40px;
+
+    .searchBox {
+      margin: 0;
+      border: 0;
+      border-radius: 40px;
+    }
+
+    .searchBox::placeholder {
+      font-family: "Roboto";
+      color: white;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    i {
+      color: white;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+
+}
+
+
+@media screen and (max-width: $mobile) {
+
+
+  .filterOptionsMobile {
+    width: 100%;
+    text-align: center;    
+    border-radius: 40px;
+    padding:0;
+    width: 100%;
+  
+    .card-header {
+      color:white;
+      font-weight: $bold;
+      background:$secondary-purple;
+      border-radius: 40px;
+    }
+
+    .card-body {
+      width:100%;
+    }
+
+    .card-body .filterOptions{
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width:100%;
+
+  
+      p {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+          i {
+            margin-left:5px;
+            color:$secondary-purple;
+          }
+      }
+      
+    }
+
+    .card-body .typeFilter {
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom:10px;
+      width:100%;
+
+    }
+
+    .card-body .searchBoxComponent {
+      display:grid;
+      grid-template-columns: 10% 90%;
+      width:100%;
+
+      i {
+        font-size:24px;
+        margin-left:10px;
+        color:$secondary-purple;
+      }
+
+      input {
+        text-align: left;
+        margin-left:15px;
+      }
+    }
+
+  }
+  
+}
+
+  

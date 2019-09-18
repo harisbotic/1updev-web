@@ -1,4 +1,5 @@
 import auth from './auth';
+import jwtdecode from 'jwt-decode';
 
 const BASE_AUTH_URL = 'https://localhost:6001';
 const BASE_URL = 'https://localhost:5001';
@@ -15,12 +16,13 @@ const getHeaders = () => {
     }
 }
 
-const tokenRefreshHandler = async (request) => { 
+const tokenRefreshHandler = async (request) => {
     try {
         return await request;
     } catch (err) {
         if (err.code !== 401) throw err
         else {
+
             await auth.refreshToken().then(response => {
                 localStorage.setItem('access_token', response.data.access_token);
                 localStorage.setItem('refresh_token', response.data.refresh_token);
