@@ -28,7 +28,7 @@ export const Shop = () => {
 
     const fetchData = async () => {
 
-      const shopItemsResponse = await shop.shopItems.get;
+      const shopItemsResponse = await shop.shopItems.get();
 
       setShopItems({
         allShopItems: shopItemsResponse.data

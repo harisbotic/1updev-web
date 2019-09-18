@@ -2,7 +2,7 @@ import customAxios from './customAxios';
 import { BASE_URL, getHeaders, tokenRefreshHandler } from './shared';
 
 const shopItems = {
-    get:  tokenRefreshHandler(
+    get: () => tokenRefreshHandler(
             customAxios.get(
                 `${BASE_URL}/shops/get`,
                 {
@@ -13,7 +13,7 @@ const shopItems = {
 };
 
 const spinTheWheelItems = {
-    get: tokenRefreshHandler(
+    get: () => tokenRefreshHandler(
             customAxios.get(
                 `${BASE_URL}/shops/get/SpinTheWheel`,
                 {
