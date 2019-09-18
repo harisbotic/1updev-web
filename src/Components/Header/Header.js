@@ -102,7 +102,7 @@ function Header(props) {
             id="dropdownMenuButton"
             style={{ color: "white" }}
           >
-            @NekoNekic{" "}
+           {currentUsername}{" "}
           </button>
         </div>
       </div>
