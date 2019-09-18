@@ -9,7 +9,8 @@
 
 .transaction {
   margin: 5%;
-  background-color: transparentize(white, 0.8);
+  background: rgba(255, 255, 255, 0.3);
+  // background-color: transparentize(white, 0.8);
   border-radius: 25px;
 }
 
@@ -17,21 +18,22 @@
   padding: 5% 5% 5% 0%;
   color: white;
   font-weight: 400;
-  max-height: 200px;
+  max-height: 250px;
   max-width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
 .transactions {
-  height: 150px;
+  height: 190px;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0% 5% 0% 0%;
 }
 
 .header_row {
-  font: 100% Roboto;
+  font-family: "Roboto";
+  font-size: 90%;
   position: relative;
 
   .title {
@@ -39,12 +41,12 @@
   }
 
   .time {
-    right: 10%;
+    right: 9%;
   }
 }
 
 .transaction_row {
-  font-size: 100%;
+  font-size: 85%;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -53,7 +55,7 @@
 }
 
 .profile_img {
-  width: 100%;
+  width: 80%;
   border-radius: 4%;
 }
 
@@ -68,7 +70,19 @@
   border-radius: 10px;
 }
 
-@media only screen and( max-width:991px) {
+@media only screen and( max-width:1201px) and (min-width: 992px) {
+  .transaction {
+    width: 105%;
+  }
+
+  .profile_img {
+    width: 80%;
+  }
+}
+@media only screen and( max-width:991px) and (min-width: 768px) {
+  .transaction {
+    width: 70%;
+  }
   .transaction_log-container {
     height: 300px;
   }
@@ -76,6 +90,10 @@
   .transactions {
     max-height: 250px;
     overflow-y: scroll;
+  }
+
+  .profile_img {
+    width: 80%;
   }
 }
 
@@ -92,6 +110,20 @@
   .transactions {
     max-height: 200px;
     overflow-y: scroll;
+  }
+
+  .header_row {
+    font-family: "Roboto";
+    font-size: 85%;
+    position: relative;
+
+    .title {
+      left: 14%;
+    }
+
+    .time {
+      right: 10%;
+    }
   }
 
   .col-8 {
