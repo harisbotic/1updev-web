@@ -68,7 +68,7 @@ export function FilterOptionsMobile(props) {
     return (
         <div className="filterOptionsMobile">                    
             <Accordion>
-                <Card>
+                <div>
                 
                 <Accordion.Toggle as={Card.Header} eventKey="0">
                     Show Filter Options
@@ -99,7 +99,7 @@ export function FilterOptionsMobile(props) {
 
                 </Accordion.Collapse>
 
-            </Card>
+            </div>
         </Accordion>
     </div>
     )

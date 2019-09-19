@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { profile, tokenTransactions } from "../../api/index";
+import jwtdecode from 'jwt-decode';
 
 import Badge from "../../Components/Badges/Badge.component";
 import {
@@ -32,13 +33,16 @@ function Profile(props) {
     const { badges } = activeBadges;
     const { itemList } = itemsList;
 
+    const currentUser = jwtdecode(localStorage.getItem("access_token")).Username;
+
+    const routeParams = props.history.location.pathname.split("/");
+    const pageUser = routeParams[2];
+    
+
     useEffect(() => {
 
         const fetchData = async () => {
-
-            var routeParams = props.history.location.pathname.split("/");
-
-            const profileInfoResponse = await profile.profileInfo.get(routeParams[2]);
+            const profileInfoResponse = await profile.profileInfo.get(pageUser);
 
             setProfileInfo({user: profileInfoResponse.data});
 
@@ -162,9 +166,16 @@ function Profile(props) {
                 />
 
                 <div className="profileDetails">
-                    <div className="editProfileButton" onClick={editProfileClick}>
-                        <p>EDIT PROFILE </p>
-                    </div>
+                    {pageUser == currentUser ? (
+                        <div className="editProfileButton" onClick={editProfileClick}>
+                            <p>EDIT PROFILE</p>
+                        </div>
+                    ) : (
+                        <div className="editProfileButton" onClick={editProfileClick}>
+                            <p>SEND GIFT</p>
+                        </div>
+                    )}
+                    
 
                     <h1 className="username">{user.username}</h1>
 
@@ -255,9 +266,9 @@ function Profile(props) {
                             itemName={item.name}
                             itemValue={item.value}
                             itemRarity={item.rarity.name}
-                            itemActivateValue={item.price}
-                            itemDisenchantValue={item.value}
                             disenchantItem={disenchantItem}
+                            currentUsername={currentUser}
+                            pageUsername={pageUser}
                         /> // Bolji destructure uradit ovde
                         );
                     })}
