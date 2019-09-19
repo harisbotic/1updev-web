@@ -12,6 +12,7 @@
   background: rgba(255, 255, 255, 0.3);
   // background-color: transparentize(white, 0.8);
   border-radius: 25px;
+  width: 400px;
 }
 
 .transaction_log-container {
@@ -25,7 +26,7 @@
 }
 
 .transactions {
-  height: 190px;
+  height: 120px;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0% 5% 0% 0%;
@@ -35,9 +36,10 @@
   font-family: "Roboto";
   font-size: 90%;
   position: relative;
+  margin-bottom: 5px;
 
   .title {
-    left: 17%;
+    left: 11%;
   }
 
   .time {
@@ -46,17 +48,31 @@
 }
 
 .transaction_row {
-  font-size: 85%;
+  font-size: 90%;
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 0;
-  align-items: flex-end;
+  margin: 0px;
+}
+
+.activity_row-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.activity_row-time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .profile_img {
-  width: 80%;
+  width: 10%;
   border-radius: 4%;
+  margin-right: 3px;
 }
 
 .transactions::-webkit-scrollbar {
@@ -70,45 +86,52 @@
   border-radius: 10px;
 }
 
-@media only screen and( max-width:1201px) and (min-width: 992px) {
-  .transaction {
-    width: 105%;
-  }
+// @media only screen and( max-width:1201px) and (min-width: 992px) {
+//   .transaction {
+//     width: 105%;
+//   }
 
-  .profile_img {
-    width: 80%;
-  }
-}
-@media only screen and( max-width:991px) and (min-width: 768px) {
-  .transaction {
-    width: 70%;
-  }
-  .transaction_log-container {
-    height: 300px;
-  }
+//   .profile_img {
+//     width: 80%;
+//   }
+// }
+// @media only screen and( max-width:991px) and (min-width: 768px) {
+//   .transaction {
+//     width: 90%;
+//     height: 80%;
+//   }
+//   .transaction_log-container {
+//     height: 300px;
+//   }
 
-  .transactions {
-    max-height: 250px;
-    overflow-y: scroll;
-  }
+//   .transactions {
+//     max-height: 250px;
+//     overflow-y: scroll;
+//     width: 90%;
+//     height: 80%;
+//   }
 
-  .profile_img {
-    width: 80%;
-  }
-}
+//   .profile_img {
+//     width: 80%;
+//   }
+// }
 
 @media only screen and(max-width:$mobile) {
+  .transaction {
+    width: 90%;
+    height: 80%;
+  }
   .transaction_row {
-    font-size: 12px;
+    font-size: 10px;
     margin-top: 3px;
   }
 
-  .transaction_log-container {
-    height: 250px;
-  }
+  // .transaction_log-container {
+  //   height: 250px;
+  // }
 
   .transactions {
-    max-height: 200px;
+    //  max-height: 200px;
     overflow-y: scroll;
   }
 
@@ -118,11 +141,11 @@
     position: relative;
 
     .title {
-      left: 14%;
+      left: 11%;
     }
 
     .time {
-      right: 10%;
+      right: 11%;
     }
   }
 

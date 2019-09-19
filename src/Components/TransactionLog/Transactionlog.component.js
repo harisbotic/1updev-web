@@ -67,14 +67,19 @@ function Transactionlog() {
           {transactionLog.map(transaction => {
             return (
               <div className="transaction_row">
-                <div className="activity_row-img col-2">
+                {/* <div className="activity_row-img col-2">
                   <img
                     src={`https://robohash.org/${transaction.id}?set=set2&size=160x180`}
                     alt="img"
                     className="profile_img"
                   />
-                </div>
-                <div className="activity_row-text col-8">
+                </div> */}
+                <div className="activity_row-text col-10">
+                  <img
+                    src={`https://robohash.org/${transaction.id}?set=set2&size=160x180`}
+                    alt="img"
+                    className="profile_img"
+                  />
                   {transaction.user} bought {transaction.item} for{" "}
                   {transaction.price} tokens
                 </div>
