@@ -4,11 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 
 import './Badge.style.scss';
 
+
+
 export default function Badge(props) {
 
     const {
         badgeData,
-        item
+        item,
+        deactivateBadge
     } = props
 
     const [state,setState] = useState({
@@ -20,7 +23,7 @@ export default function Badge(props) {
         isModalVisible,
         isConfirmationVisible
     } = state;
-
+    
     return (
         
         <div className="badge">
@@ -31,7 +34,7 @@ export default function Badge(props) {
 
                 <div className="modalClick" onClick={()=>setState({isModalVisible:true})}></div>
 
-                <i className={item.image}/>
+                <img src={props.item.image} />
 
                 <Modal show={isModalVisible} className="badgeModal">
                                 
@@ -51,7 +54,7 @@ export default function Badge(props) {
                                 <p>UPGRADE</p>
                             </div>
 
-                            <div className = "modalButton actionButton" onClick={()=>setState({isModalVisible:false})}>
+                            <div className = "modalButton actionButton" onClick={()=>setState({isConfirmationVisible:true})}>
                                 <p>DEACTIVATE</p>
                             </div>
                         </div>
@@ -65,6 +68,31 @@ export default function Badge(props) {
                     </Modal.Footer>
                     
                 </Modal>
+
+                <Modal show={isConfirmationVisible} className="badgeModal">
+                                
+                    <Modal.Header>
+                        <Modal.Title>Confirm Deactivation</Modal.Title>
+                    </Modal.Header>
+                    
+                    <Modal.Body>
+                        <p>You are about to deactive your badge <span className="bold">{item.name}</span> </p>
+                        <p>Note that this badge will go back to your inventory and you can activate it again whenever you want !</p>
+                        <br/>
+                        <p>Click accept to continue</p>
+                    </Modal.Body>
+                        
+                    <Modal.Footer>
+                    <div className = "modalButton closeButton" onClick={()=>{setState({isModalVisible:false}); deactivateBadge(item.id)}}>
+                            <p>ACCEPT</p>
+                        </div>
+                        <div className = "modalButton closeButton" onClick={()=>setState({isModalVisible:false})} >
+                            <p>CLOSE</p>
+                        </div>
+                    </Modal.Footer>
+                    
+                </Modal>
+
             </div>
         : 
             <div className="inactiveBadge">

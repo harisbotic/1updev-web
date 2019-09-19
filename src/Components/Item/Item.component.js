@@ -10,13 +10,6 @@ export function Item(props){
     const [hoveredInfoText,setHoverText] = useState("Name");
     const [hoveredTokenValue,setHoverTokenValue] = useState("Token Value");
 
-    const changeHeader = type => {
-        if(type==="Badge" || type==="Games" || type==="Skin")
-            setModalType("Activate");
-        else if(type==="Merch")
-            setModalType("Purchasse");
-    }
-
     const updatePrice = type => {
         if(type==="Badge" || type==="Games" || type==="Skin")
             setHoverTokenValue(props.itemActivateValue+" Tokens");
@@ -31,7 +24,7 @@ export function Item(props){
 
             <p className="itemType">{props.itemType}</p>
             
-            <i className={props.itemIcon}></i>
+            <img src={props.itemIcon} />
 
             <div className="itemDetails">
                 <p className="itemName">{props.itemName}</p>
@@ -39,11 +32,11 @@ export function Item(props){
                 <p className="itemRarity">{props.itemRarity}</p>
             </div>
 
-            <div className="hovered" onMouseEnter={()=>changeHeader(props.itemType)}>
+            <div className="hovered">
 
                 <div className="buttons">
                     <div className="itemButton activate" onClick={()=> setModalShow(true)} onMouseEnter={()=>{setHoverText(modalType);updatePrice(props.itemtype)}}>    
-                        <p>{modalType}</p>
+                        <p>ACTIVATE</p>
                     </div>
 
                     <div className="itemButton gift" onClick={()=> setModalShow(true)} onMouseEnter={()=>{setHoverText("Gifting is free"); setHoverTokenValue("Click to select user !")}}>    

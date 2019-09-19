@@ -19,11 +19,13 @@
 
     i {
       margin: 0 5px 0 5px;
+      font-size:14px;
+      color:$secondary-purple;
     }
   }
 
   p:first-child {
-    color: #712ebd;
+    color: $secondary-purple;
     font-weight: 700;
   }
 

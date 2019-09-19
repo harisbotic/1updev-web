@@ -8,7 +8,7 @@ import EditProfile from "../../app/EditProfile/EditProfile";
 function Routes() {
   return (
     <div>
-      <div className="container">
+      <div>
         <Switch>
           <Route exact path="/" component={Profile} />
           <Route exact path="/ranking" component={Ranking} />

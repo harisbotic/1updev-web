@@ -21,6 +21,7 @@ import "./Profile.scss";
 function Profile(props) {
 
     const [itemsList, setItemsList] = useState({itemList: []});
+    const [badgesChanged,modifyBadges] = useState(false);
     const [activeBadges, setBadges] = useState({badges: []});
     const [isLoading, setIsFetchingInv] = useState({isFetchingInventory: false})
     const [profileInfo, setProfileInfo] = useState({user: {}});
@@ -47,7 +48,9 @@ function Profile(props) {
                 profileInfoResponse.data.id
             );
 
-            setItemsList({itemList: fetchProfileInventory.data.map(inventory => inventory.item)})
+            setItemsList({itemList: fetchProfileInventory.data
+                .filter(inventory => !inventory.isActive)
+                .map(inventory => inventory.item)})
 
             setBadges({
                 badges: fetchProfileInventory.data.filter(
@@ -65,7 +68,7 @@ function Profile(props) {
 
         fetchData();
 
-    },[]);
+    },[badgesChanged]);
 
     const refactorBadges = badges => {
             
@@ -79,9 +82,14 @@ function Profile(props) {
         }
     }
 
-    const deactivateBadge = async badgeID => {
-        // Remove from database by ID
-        // Refresh page
+    const deactivateBadge = async badgeId => {
+        
+        await profile.toggleBadge.get(
+            badgeId,
+            user.id
+        );
+        
+        modifyBadges(!badgesChanged);
     };
 
     const searchFilter = async searchText => {
@@ -96,7 +104,9 @@ function Profile(props) {
         );
 
         setItemsList({
-            itemList: searchProfileInventory.data.map(inventory => inventory.item)
+            itemList: searchProfileInventory.data
+            .filter(inventory=> !inventory.isActive)
+            .map(inventory => inventory.item)
         })
 
         setIsFetchingInv({isFetchingInventory: false})
@@ -111,15 +121,15 @@ function Profile(props) {
         const order = isAscending === true ? "asc" : "desc";
 
         const fetchSortedProfileInventory = await profile.fetchSortedProfileInventory.get(
-        sort,
-        order,
-        user.id
+            sort,
+            order,
+            user.id
         );
         
         setItemsList({
-        itemList: fetchSortedProfileInventory.data.map(
-            inventory => inventory.item
-        )
+        itemList: fetchSortedProfileInventory.data
+            .filter(inventory=> !inventory.isActive)
+            .map(inventory => inventory.item)
         })
 
         setIsFetchingInv({isFetchingInventory: false})
@@ -186,6 +196,7 @@ function Profile(props) {
                                     key={value}
                                     badgeData={badge}
                                     item={badge.item}
+                                    deactivateBadge = {deactivateBadge}
                                 />
                             );
                             }))
