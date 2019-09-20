@@ -94,7 +94,10 @@ function Header(props) {
           </ul>
         </div>
         <div className="col rightWrapper">
-          <a href="" className="logoutButton">
+          <a href="/login" className="logoutButton" onClick={() => {
+                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("refresh_token");
+                }}>
             <i className="fas fa-power-off"></i>
           </a>
         </div>
