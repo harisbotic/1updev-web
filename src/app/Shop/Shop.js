@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { shop } from "../../api/index";
 
 import ShopItem from '../../Components/ShopItem/ShopItem';
-// import Item from "../../Components/Item/Item.component";
 import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 import SpinTheWheelModal from "../../Components/SpinTheWheelModal/SpinTheWheelModal";
 import BuyItemModal from '../../Components/BuyItemModal/BuyItemModal';
+import AddItem from "../../Components/AddItem/AddItem";
 
 import "./Shop.scss";
 
@@ -121,7 +121,8 @@ export const Shop = () => {
 
           <div className="itemsContainer">
             <div className="item-card xs-column" id="add">
-              <i className="fas fa-plus"></i>
+              <AddItem />
+              
             </div>
             {shopItems.allShopItems.map((item, index) => {
               return (
