@@ -99,8 +99,6 @@ export default function Badge(props) {
 
                 <div className="modalClick" onClick={()=>setState({isModalVisible:true})}></div>
 
-                <i className={item.image}/>
-
                 <Modal show={isModalVisible} className="badgeModal">
                                 
                     <Modal.Header className="modalHeader">

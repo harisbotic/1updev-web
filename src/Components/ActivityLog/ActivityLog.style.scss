@@ -15,6 +15,14 @@
   justify-content: space-between;
   align-items: center;
   margin-right: 10px;
+
+  .participants {
+    max-width: 80%;
+
+    .embolden {
+      font-weight: bold;
+    }
+  }
 }
 
 .scrollableLog {
@@ -53,7 +61,14 @@
 .User-avatar {
   padding: 5px 5px;
   border-radius: 10px;
+  max-width: 30px; 
+  max-height: 30px;
 }
+
+.timestamp {
+  margin-right: 5%;
+}
+
 
 @media screen and (max-width: $mobile) {
 

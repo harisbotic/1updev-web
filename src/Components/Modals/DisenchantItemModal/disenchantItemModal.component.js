@@ -12,7 +12,7 @@ const DisenchantModal = (props) => {
 
     return (
         <>
-            <div className="itemButton activate" onClick={() => setModalShow(true)} onMouseEnter={props.onHover(`Activate ${props.itemName}`)} >
+            <div className="itemButton activate" onClick={() => setModalShow(true)}>
                 <p>DISENCHANT</p>
             </div>
             <Modal show={modalShow} className="itemModal">

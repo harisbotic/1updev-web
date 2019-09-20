@@ -4,16 +4,25 @@ import "./activateItemModal.style.scss";
 import jwtdecode from "jwt-decode";
 
 
-const DisenchantModal = (props) => {
+const ActivateItemModal = (props) => {
     const username = jwtdecode(localStorage.getItem("access_token")).Username;
 
     const [modalShow, setModalShow] = useState(false);
     const [hoveredInfoText, setHoverText] = useState("Name");
 
+    const activationRedirect = type => {
+        
+        switch(type) {
+            case "Badge":
+                props.activateBadge(props.itemId);
+        }
+
+    }
+
 
     return (
         <>
-            <div className="itemButton activate" onClick={() => setModalShow(true)} onMouseEnter={props.onHover(`Disenchant for ${props.itemValue}`)}>
+            <div className="itemButton activate" onClick={() => setModalShow(true)}>
                 <p>ACTIVATE</p>
             </div>
             <Modal show={modalShow} className="itemModal">
@@ -28,7 +37,7 @@ const DisenchantModal = (props) => {
 
                 <Modal.Footer>
                     {/* implement onClick for item activation */}
-                    <div variant="secondary" className="modalButton" onClick={() => setModalShow(false)}>
+                    <div variant="secondary" className="modalButton" onClick={() => { activationRedirect(props.itemType); setModalShow(false)}}>
                         <p>ACCEPT</p>
                     </div>
                     <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>
@@ -42,4 +51,4 @@ const DisenchantModal = (props) => {
 };
 
 
-export default DisenchantModal;
+export default ActivateItemModal;

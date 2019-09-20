@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-//import { DisenchantModal } from '../InventoryItemModals/inventoryItemModal.component';
 import DisenchantModal from "../Modals/DisenchantItemModal/DisenchantItemModal.component";
 import ActivateItemModal from '../Modals/ActivateItemModal/ActivateItemModal.component';
 import GiftItemModal from '../Modals/GiftItemModal/GiftItemModal.component';
@@ -31,7 +30,7 @@ export function Item(props) {
 
             <p className="itemType">{props.itemType}</p>
 
-            <i className={props.itemIcon}></i>
+            <img src={props.itemIcon} />
 
             <div className="itemDetails">
                 <p className="itemName">{props.itemName}</p>
@@ -46,21 +45,20 @@ export function Item(props) {
                     <ActivateItemModal
                         itemId={props.itemId}
                         itemName={props.itemName}
+                        itemType={props.itemType}
                         itemValue={props.itemValue}
-                        onHover={setHoverText} />
+                        activateBadge={props.activateBadge} />
 
                     <GiftItemModal
                         itemId={props.itemId}
                         itemName={props.itemName}
-                        itemValue={props.itemValue}
-                        onHover={setHoverText} />
+                        itemValue={props.itemValue} />
 
                     <DisenchantModal
                         itemId={props.itemId}
                         itemName={props.itemName}
                         itemValue={props.itemValue}
-                        disenchantItem={props.disenchant}
-                        onHover={setHoverText} />
+                        disenchantItem={props.disenchant} />
                 </div>
 
                 {/* <div className="hoveredInfo">
