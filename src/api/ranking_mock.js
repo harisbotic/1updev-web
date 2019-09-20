@@ -39,10 +39,37 @@ export const mockRanks = [
          ]
     },
     {
-        user: "Jane Doe",
+        user: "prviprviprviprviprviprviprviprvi",
         profileImg: images.randomgal,
         title: "Kinda Basic",
-        value: "90k Tokens",
+        value: "9k Tokens",
+        badges: [images.badgeTwo]
+    },
+
+    {
+        user: "drugi",
+        profileImg: images.randomguy,
+        title: "Kinda Basic",
+        value: "70k Tokens",
         badges: []
-    }
+    },
+
+    {
+        user: "treci",
+        profileImg: images.randomgal,
+        title: "Insomniac",
+        value: "1200k Tokens",
+        badges: [images.badgeOne,
+                images.badgeTwo,
+                images.badgeTwo,
+            ]
+    },
+
+    {
+        user: "cetvrti",
+        profileImg: images.randomgal,
+        title: "Kinda Basic",
+        value: "450k Tokens",
+        badges: [images.badgeOne]
+    },
 ];
