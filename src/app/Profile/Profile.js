@@ -22,7 +22,7 @@ import "./Profile.scss";
 function Profile(props) {
 
     const [itemsList, setItemsList] = useState({itemList: []});
-    const [badgesChanged,modifyBadges] = useState(false);
+    const [stateChanged, rerenderDOM] = useState(false);
     const [activeBadges, setBadges] = useState({badges: []});
     const [isLoading, setIsFetchingInv] = useState({isFetchingInventory: false})
     const [profileInfo, setProfileInfo] = useState({user: {}});
@@ -72,7 +72,7 @@ function Profile(props) {
 
         fetchData();
 
-    },[badgesChanged]);
+    },[stateChanged]);
 
     const refactorBadges = badges => {
             
@@ -93,21 +93,8 @@ function Profile(props) {
             user.id
         );
         
-        modifyBadges(!badgesChanged);
+        rerenderDOM(!stateChanged);
     };
-
-    const activateMerch = async merch  => {
-        
-        // Send mail
-
-        // Disenchant
-        
-        modifyBadges(!badgesChanged);
-    };
-
-    const activateGame = async gameId => {
-        
-    }
 
     const searchFilter = async searchText => {
     
@@ -155,6 +142,8 @@ function Profile(props) {
     const disenchantItem = async (username, itemId) => {
         var newTokensResponse = await tokenTransactions.disenchantItem.post(username, itemId);
         setUserTokens(userTokens + newTokensResponse.data);
+
+        rerenderDOM(!stateChanged);
     }
 
     const editProfileClick = () => {
