@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 //import { DisenchantModal } from '../InventoryItemModals/inventoryItemModal.component';
-import DisenchantModal from "../Modals/DisenchantItemModal/disenchantItemModal.component";
-import ActivateItemModal from '../Modals/ActivateItemModal/activateItemModal.component';
-import GiftItemModal from '../Modals/GiftItemModal/giftItemModal.component';
+import DisenchantModal from "../Modals/DisenchantItemModal/DisenchantItemModal.component";
+import ActivateItemModal from '../Modals/ActivateItemModal/ActivateItemModal.component';
+import GiftItemModal from '../Modals/GiftItemModal/GiftItemModal.component';
 
 import "./Item.style.scss";
 
@@ -46,22 +46,26 @@ export function Item(props) {
                     <ActivateItemModal
                         itemId={props.itemId}
                         itemName={props.itemName}
-                        itemValue={props.itemValue} />
+                        itemValue={props.itemValue}
+                        onHover={setHoverText} />
 
                     <GiftItemModal
                         itemId={props.itemId}
                         itemName={props.itemName}
-                        itemValue={props.itemValue} />
+                        itemValue={props.itemValue}
+                        onHover={setHoverText} />
 
                     <DisenchantModal
                         itemId={props.itemId}
                         itemName={props.itemName}
-                        itemValue={props.itemValue} />
+                        itemValue={props.itemValue}
+                        disenchantItem={props.disenchant}
+                        onHover={setHoverText} />
                 </div>
 
-                <div className="hoveredInfo">
+                {/* <div className="hoveredInfo">
                     <p className="infoText">{hoveredInfoText}</p>
-                </div>
+                </div> */}
 
             </div>
 

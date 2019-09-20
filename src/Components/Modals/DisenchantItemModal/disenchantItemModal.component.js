@@ -10,15 +10,9 @@ const DisenchantModal = (props) => {
 
     const [modalShow, setModalShow] = useState(false);
 
-    const disenchantItem = async () => {
-        await tokenTransactions.disenchantItem.post(username, props.itemId);
-
-        setModalShow(false);
-    }
-
     return (
         <>
-            <div className="itemButton activate" onClick={() => setModalShow(true)} >
+            <div className="itemButton activate" onClick={() => setModalShow(true)} onMouseEnter={props.onHover(`Activate ${props.itemName}`)} >
                 <p>DISENCHANT</p>
             </div>
             <Modal show={modalShow} className="itemModal">
@@ -28,11 +22,11 @@ const DisenchantModal = (props) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    You are about to disenchant <span className="modalSpan"> {props.itemName} </span> for <span className="modalSpan"> {props.itemValue} </span>
+                    You are about to disenchant <span className="modalSpan"> {props.itemName} </span> for <span className="modalSpan"> {props.itemValue} </span> tokens
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <div variant="secondary" className="modalButton" onClick={() => disenchantItem()}>
+                    <div variant="secondary" className="modalButton" onClick={() => {props.disenchantItem(username, props.itemId); setModalShow(false)}}>
                         <p>ACCEPT</p>
                     </div>
                     <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>

@@ -1,7 +1,7 @@
 @import "../../Shared/variables.scss";
 
 body {
-  background: #300C42;
+  background: #300c42;
 }
 
 .profileDisplayComponent {
@@ -10,16 +10,16 @@ body {
   align-items: center;
   padding: 3% 10% 0 10%;
   font-family: "Roboto";
-  margin-bottom:10px;
+  margin-bottom: 10px;
 
   .profilePicture {
     max-width: 160px;
     max-height: 160px;
     border-radius: 100%;
-    cursor:pointer;
+    cursor: pointer;
 
     &:hover {
-      background:gray;
+      background: gray;
     }
   }
 
@@ -27,29 +27,28 @@ body {
     padding: 5%;
 
     .editProfileButton {
-        border-radius: 30px;
-        text-align: center;
-        background: $secondary-purple;
-        width: 45%;
-        cursor: pointer;
-        transition: 0.2s;
-        margin:5px 0 5px 0;
+      border-radius: 30px;
+      text-align: center;
+      background: $secondary-purple;
+      width: 45%;
+      cursor: pointer;
+      transition: 0.2s;
+      margin: 5px 0 5px 0;
+
+      p {
+        color: $white;
+        padding: 10px;
+        font-weight: $bold;
+        font-size: 14px;
+      }
+
+      &:hover {
+        background: rgba(112, 45, 188, 0.5);
 
         p {
-          color: $white;
-          padding: 10px;
-          font-weight: $bold;
-          font-size: 14px;
+          text-shadow: 1px 1px black;
         }
-
-        &:hover {
-          background: rgba(112, 45, 188, 0.5);
-
-          p {
-            text-shadow: 1px 1px black;
-          }
-
-        }
+      }
     }
 
     .userTitle {
@@ -71,7 +70,7 @@ body {
     .tokenRelated {
       display: flex;
       flex-direction: row;
-      margin:5px 0 5px 0;
+      margin: 5px 0 5px 0;
 
       p {
         color: $white;
@@ -81,21 +80,15 @@ body {
         margin: 5px;
       }
     }
-    
+
     .badges {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       width: 50%;
       box-sizing: border-box;
-
-      // .badge {
-      //   margin: 0 15px 0 0;
-      // }
     }
-    
   }
-
 }
 
 .inventoryContainer {
@@ -146,23 +139,20 @@ body {
         font-weight: 700;
       }
     }
-
-
   }
 
   .itemsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px,180px));
-    grid-auto-rows: repeat(auto-fill, minmax(160px,180px));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 180px));
+    grid-auto-rows: repeat(auto-fill, minmax(160px, 180px));
     justify-content: space-between;
-    grid-gap:10px;
+    grid-gap: 10px;
     position: relative;
   }
-
 }
 
 .filterOptionsDesktop {
-  display:block;
+  display: block;
 }
 
 .filterOptionsMobile {
@@ -186,9 +176,8 @@ body {
 }
 
 @media screen and (max-width: $mobile) {
-
   .filterOptionsDesktop {
-    display:none;
+    display: none;
   }
 
   .filterOptionsMobile {
@@ -203,16 +192,14 @@ body {
     display: block;
   }
 
-
   .profileDisplayComponent {
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    margin-bottom:0;
-    
-    .profileDetails {
+    margin-bottom: 0;
 
+    .profileDetails {
       .editProfileButton {
         width: 100%;
       }
@@ -222,28 +209,24 @@ body {
         justify-content: space-between;
         width: 100%;
       }
-
     }
-    
-    .activityLogMobile {
 
+    .activityLogMobile {
       .btn {
-        background:$secondary-purple;
+        background: $secondary-purple;
         border-top-left-radius: $border-radius;
         border-top-right-radius: $border-radius;
 
         p {
-          font-family:"Roboto";
-          color:$white;
-          font-size:12px;
+          font-family: "Roboto";
+          color: $white;
+          font-size: 12px;
           font-weight: $bold;
           text-decoration: none;
         }
       }
     }
-
   }
-
 
   .inventoryContainer {
     display: flex;
@@ -265,9 +248,5 @@ body {
       grid-template-columns: 1fr 1fr;
       padding: 10px;
     }
-
-    }
-
-  
+  }
 }
-

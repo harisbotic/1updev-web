@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { profile, tokenTransactions } from "../../api/index";
 import jwtdecode from 'jwt-decode';
 
+import { profile, tokenTransactions } from "../../api/index";
 import Badge from "../../Components/Badges/Badge.component";
 import {
   ActivityLog,
@@ -44,13 +44,13 @@ function Profile(props) {
         const fetchData = async () => {
             const profileInfoResponse = await profile.profileInfo.get(pageUser);
 
-            setProfileInfo({user: profileInfoResponse.data});
-
             setIsFetchingInv({isFetchingInventory: true})
 
             const fetchProfileInventory = await profile.fetchProfileInventory.get(
                 profileInfoResponse.data.id
             );
+
+            setProfileInfo({user: profileInfoResponse.data});
 
             setItemsList({itemList: fetchProfileInventory.data
                 .filter(inventory => !inventory.isActive)
@@ -140,10 +140,10 @@ function Profile(props) {
 
     };
 
-    const disenchantItem = itemID => {
-        // Remove from database by ID
-        // Refresh page
-    };
+    const disenchantItem = async (username, itemId) => {
+        var newTokensResponse = await tokenTransactions.disenchantItem.post(username, itemId);
+        setUserTokens(userTokens + newTokensResponse.data);
+    }
 
     const editProfileClick = () => {
         
@@ -269,6 +269,7 @@ function Profile(props) {
                             disenchantItem={disenchantItem}
                             currentUsername={currentUser}
                             pageUsername={pageUser}
+                            disenchant={disenchantItem}
                         /> // Bolji destructure uradit ovde
                         );
                     })}

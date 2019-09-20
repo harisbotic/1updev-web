@@ -8,12 +8,11 @@ const GiftItemModal = (props) => {
     const username = jwtdecode(localStorage.getItem("access_token")).Username;
 
     const [modalShow, setModalShow] = useState(false);
-    const [hoveredInfoText, setHoverText] = useState("Name");
 
 
     return (
         <>
-            <div className="itemButton activate" onClick={() => setModalShow(true)} onMouseEnter={() => { setHoverText("Click to Disenchant item!") }}>
+            <div className="itemButton activate" onClick={() => setModalShow(true)} onMouseEnter={props.onHover(`Activate ${props.itemName}`)} >
                 <p>SEND GIFT</p>
             </div>
             <Modal show={modalShow} className="itemModal">
