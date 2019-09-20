@@ -18,6 +18,10 @@
 
   .participants {
     max-width: 80%;
+
+    .embolden {
+      font-weight: bold;
+    }
   }
 }
 
@@ -64,6 +68,7 @@
 .timestamp {
   margin-right: 5%;
 }
+
 
 @media screen and (max-width: $mobile) {
 

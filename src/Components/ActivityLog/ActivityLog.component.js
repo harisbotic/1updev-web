@@ -14,14 +14,6 @@ import { async } from "q";
 export function ActivityLog() {
 
   const [userLogs, setUserLogs] = useState([]);
-
-  const getShopItem = async (itemId) => {
-    const logValue = await axios(
-      `${BASE_URL}/shops?item=${itemId}`,
-    );
-    setTimeout(() => console.log(logValue.data), 2000);
-    return logValue.data;
-  }
   
   useEffect(() => {
     const fetchData = async () => {
@@ -40,23 +32,18 @@ export function ActivityLog() {
         timestamp: log.created,
         gifterImg: `https://robohash.org/${log.gifter.id}?set=set3`,
         transactionId: `${log.gifter.id}-${log.receiver.id}`
-      }))
+      }));
 
-      const logs2 = shopPurchaseLogs.data.map(log => {
-        const logValue = getShopItem(log.item.id);
-        return (
-          {
-            gifterName: log.profile.firstName + " " + log.profile.lastName,
-            gifterId: log.profile.id,
-            receiverName: null,
-            item: log.item.name,
-            price: logValue.price,
-            timestamp: log.created,
-            gifterImg: `https://robohash.org/${log.profile.id}?set=set3`,
-            transactionId: log.id
-          }
-        );
-      });
+      const logs2 = shopPurchaseLogs.data.map(log => ({
+        gifterName: log.profile.firstName + " " + log.profile.lastName,
+        gifterId: log.profile.id,
+        receiverName: null,
+        item: log.shopItem.item.name,
+        price: log.shopItem.price,
+        timestamp: log.created,
+        gifterImg: `https://robohash.org/${log.profile.id}?set=set3`,
+        transactionId: log.id
+      }));
       const data = [...logs1, ...logs2];
       data.sort((log1, log2) => new Date(log2.timestamp) - new Date(log1.timestamp));
       setUserLogs(data);
@@ -67,7 +54,11 @@ export function ActivityLog() {
   const renderGiftMessage = (gifterName, receiverName, itemName) => {
     return (
       <>
-        <b>{gifterName}</b> gifted <b>{itemName}</b> to <b>{receiverName}</b>
+        <span className="embolden">{gifterName}</span> 
+        &nbsp; gifted &nbsp;
+        <span className="embolden">{itemName}</span> 
+        &nbsp; to &nbsp;
+        <span className="embolden">{receiverName}</span>
       </>
     );
   }
@@ -75,7 +66,12 @@ export function ActivityLog() {
   const renderPurchaseMessage = (buyerName, itemName, itemPrice) => {
     return (
       <>
-        <b>{buyerName}</b> bought <b>{itemName}</b> for <b>{itemPrice}</b> tokens
+        <span className="embolden">{buyerName }</span>
+        &nbsp; bought &nbsp;
+        <span className="embolden">{itemName}</span> 
+        &nbsp; for &nbsp;
+        <span className="embolden">{itemPrice}</span> 
+        &nbsp; tokens
       </>
     );
   }
