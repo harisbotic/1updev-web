@@ -10,7 +10,11 @@
     cursor:pointer;
     position: relative;    
     transition: 0.5s ease-in-out;
-
+    
+    img {
+        height:42px;
+        width:42px;
+    }
     .activeBadge,.inactiveBadge {
         height: 100%;
         width:100%;
