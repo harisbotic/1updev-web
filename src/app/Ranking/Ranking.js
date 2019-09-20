@@ -11,87 +11,59 @@ class Ranking extends React.Component {
             <div class="container">
                 <div className="upper">
                     <div class="row">
-                        <div class="col-lg-1">slicica</div>
-                        <div class="col-lg-1">profilna slika</div>
-                        <div class="col-lg-5">podaci</div>
-                        <div class="col-lg-1">prazno</div>
-                        <div class="col-lg-3">bedzevi</div>
-                        <div class="col-lg-1">prazno desno</div>
+                        <div class="col-1">slicica</div>
+                        <div class="col-1">profilna slika</div>
+                        <div class="col-5">podaci</div>
+                        <div class="col-1">prazno</div>
+                        <div class="col-3">bedzevi</div>
+                        <div class="col-1">prazno desno</div>
                     </div>
                 </div>
 
                 {/* za sad ne dirati iznad*/}
 
                 <div class="row">
-                    <div class="col-lg-1">prazno lijevo</div>
-                    <div class="col-lg-6">
-                        <div class="row"> {/*odavde */}
+                    <div class="col-1">prazno lijevo</div>
+                    <div class="col-6">
                         <div className="wholeTable">
-                            <div className="tableTitle">
-                                <div class="row">
-                                    <div class="col-lg-6">Ranking table:</div>
-                                    <div class="col-lg-6">Value ^</div>
+                        <div className="title">
+                            <div className="name col-6">Ranking table:</div>
+                            <div className="titleValue col-6">Value^</div>
+                        </div>
+                        <div className="subtitle">
+                            <div className="number col-1"></div>
+                            <div className="picture col-1"></div>
+                            <div className="usernameTitle col-2">Username</div>
+                            <div className="specialTitle col-3">Special Title</div>
+                            <div className="valueOfInventory col-2">Value of Inventory</div>
+                            <div className="badgesIcon col-3">Badges</div>
+                        </div>
+                        <div className="data">
+                            {mockRanks.map(x => (
+                                <div className="data_rows">
+                                    <div className="orderNumber col-1">1</div>
+                                    <div className="picture col-1">{<img src={x.profileImg}/>}</div>
+                                    <div className="username col-2">{x.user}</div>
+                                    <div className="ttl col-3">{x.title}</div>
+                                    <div className="value col-2">{x.value}</div>
+                                    <div className="badges col-3">{x.badges.map(y=> <img src={y}/>)}</div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <tbody>
-                                    <tr>
-                                        <th scope="col-lg-0.5"></th>
-                                        <th scope="col-lg-0.7"></th>
-                                        <th scope="col-lg-2.3">Username</th>
-                                        <th scope="col-lg-3">Special Title</th>
-                                        <th scope="col-lg-3">Value Of Inventory</th>
-                                        <th scope="col-lg-2.5">Badges</th>
-                                    </tr>
+                            ))}
+                        </div>
 
-                                    {mockRanks.map(x=>        
-                                        <tr>
-                                            <td scope="row">1</td>
-                                            <td scope="row">{<img src={x.profileImg} />}</td>
-                                            <td scope="row">{x.user}</td>
-                                            <td scope="row">{x.title}</td>
-                                            <td scope="row">{x.value}</td>
-                                            <td scope="row">{x.badges.map(y => <img src={y} />)}</td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </div>
                         </div>
-                        </div>
-                    </div>
+                        {/* close whole table */}
+                    </div> 
+                    {/* close lg-6*/}
 
                     {/* dolje ne dirati */}
 
-                    <div class="col-lg-4">
-                        activity log
+                    <div class="col-4">activity log</div>
+                    <div class="col-1">prazno desno</div>
                     </div>
-                    <div class="col-lg-1">prazno desno</div>
                 </div>
-            </div>
         );
     }
 }
 
 export default Ranking;
-
-{/* <div className="container">
-                <h1>Ranking table:</h1>
-                <div className="row">
-                <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Special Title</th>
-                    <th scope="col">Value Of Inventory</th>
-                    <th scope="col">Badges</th>
-                </tr>
-
-                    {mockRanks.map(x =>
-                        <div className="col mx-3 my-5">
-                            <div>
-                                <p> 
-                                    {x.user} has {x.value}.
-                                </p>
-                                <img src={x.profileImg} />
-                                <br></br>
-                                Badges:
-                        <br></br>
-                                {x.badges.map(y => <img src={y} />)} */}
