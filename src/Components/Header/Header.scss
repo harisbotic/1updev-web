@@ -1,86 +1,147 @@
-$background-gradient: linear-gradient( to right, #461864, #5b1f5e);
-$header-btn-blue: #3292E1 ;
+$background-gradient: linear-gradient(to right, #461864, #5b1f5e);
+$header-btn-blue: #3292e1;
 
-$purple: #712EBD;
+$purple: #712ebd;
 
 #header {
-    height: 70px;
-    background-image: $background-gradient;
-    width: 100% !important; /* Full width */
-    padding-left:0px !important;
-    display:flex;
-    align-items: center;
-    padding: 0% !important;
-    margin: 0% !important;
+  height: 70px;
+  background-image: $background-gradient;
+  width: 100% !important; /* Full width */
+  padding-left: 0px !important;
+  display: flex;
+  align-items: center;
+  padding: 0% !important;
+  margin: 0% !important;
 }
-#header-container{
-    padding: 0% !important;
-    margin: 0% !important;
+#header-container {
+  padding: 0% !important;
+  margin: 0% !important;
 }
-.header-nav-button{
-    width: 30%;
-    height: 36px;
-    border-radius: 40px;
-    text-align: center;
-    font-size: 12px; 
-    letter-spacing: 0.08px;
-    color: #FFFFFF;
-    opacity: 1;
-    font-weight: 500;
-    justify-content: center;
-    font-family: 'Roboto';
+.header-nav-button {
+  width: 30%;
+  height: 36px;
+  border: none;
+  border-radius: 40px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.08px;
+  color: #ffffff;
+  opacity: 1;
+  font-weight: 500;
+  justify-content: center;
+  font-family: "Roboto";
+  outline: none;
+  margin: 0 5px;
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparentize($purple, 0.7);
+  }
 }
+
 #header-nav-purple_button {
-    border: 2px solid $purple;
-    background-color: transparent;
+  border: 2px solid $purple;
+  outline: none;
 }
 #header-nav-blue_button {
-    background-color: $header-btn-blue;
-}
-.btn
-{
-    display: flex;
-    justify-content: space-between;
-}
-.search{
-    display: none;
-    background-image: $background-gradient;
-}
-.rightWrapper
-{
-    display: flex;
-    justify-content: flex-end;
-    color: white;
-}
-.header-logo{
-    max-height: 42px;
-    margin:0 auto !important;
-    margin-left: 30% !important;
-}
-.header-user-img{
-    height: 50px;
-     width: 50px;
-    border-radius: 50%; 
-}
-.btn dropdown-toggle{
-    background-color: "transparent";
-}
-#dropdownMenuButton{
-     font-family: 'Roboto';
+  background-color: $header-btn-blue;
+  outline: none;
 }
 
+.search {
+  display: none;
+}
+
+.rightWrapper {
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+}
+
+.header-logo {
+  max-height: 42px;
+  margin: 0 auto !important;
+  margin-left: 30% !important;
+}
+
+.header-user-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.logoutButton {
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  color: #ffffff;
+  outline: none;
+  margin-right: 15px;
+  background-color: transparent;
+  border: 1px solid $purple;
+
+  &:hover {
+    background-color: transparentize($purple, 0.7);
+  }
+
+  &:focus {
+    outline: none !important;
+    background-color: $purple;
+  }
+
+  i {
+    font-size: 22px;
+    padding: 8px;
+    color: white;
+  }
+}
+
+#dropdownMenuButton {
+  font-family: "Roboto";
+}
+
+input[type="text"]:not(.browser-default) {
+  padding: 0 10px;
+
+  &::placeholder {
+    color: transparentize(#9e9e9e, 0.5);
+  }
+
+  &::-webkit-input-placeholder {
+    color: transparentize(#9e9e9e, 0.5);
+  }
+
+  &:-ms-input-placeholder {
+    color: transparentize(#9e9e9e, 0.5);
+  }
+}
+
+input[type="text"]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #9e9e9e;
+  -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+  box-shadow: 0 1px 0 0 #9e9e9e;
+}
 
 @media (max-width: 668px) {
-    .search{
-        background-color: $background-gradient;
-        color:white;
-        width: 100%;
-        height: 53px;
-        visibility:visible;
-        padding: 0% !important;
-        margin: 0% !important;
-    }
-     #header{
-        display: none,
-    }
+  .search {
+    color: white;
+    width: 100%;
+    height: 53px;
+    visibility: visible;
+    padding: 0% !important;
+    margin: 0% !important;
   }
+  #header {
+    // display: none;
+  }
+
+  .header-nav-button {
+    font-size: 10px;
+    min-width: 60px;
+  }
+
+  .header,
+  .search {
+    display: none;
+  }
+}
