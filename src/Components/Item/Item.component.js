@@ -31,7 +31,7 @@ export function Item(props) {
 
             <p className="itemType">{props.itemType}</p>
 
-            <i className={props.itemIcon}></i>
+            <img src={props.itemIcon} />
 
             <div className="itemDetails">
                 <p className="itemName">{props.itemName}</p>
@@ -46,7 +46,9 @@ export function Item(props) {
                     <ActivateItemModal
                         itemId={props.itemId}
                         itemName={props.itemName}
-                        itemValue={props.itemValue} />
+                        itemType={props.itemType}
+                        itemValue={props.itemValue}
+                        activateBadge={props.activateBadge} />
 
                     <GiftItemModal
                         itemId={props.itemId}

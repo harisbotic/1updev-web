@@ -86,7 +86,7 @@ function Profile(props) {
         }
     }
 
-    const deactivateBadge = async badgeId => {
+    const toggleBadge = async badgeId => {
         
         await profile.toggleBadge.get(
             badgeId,
@@ -95,6 +95,19 @@ function Profile(props) {
         
         modifyBadges(!badgesChanged);
     };
+
+    const activateMerch = async merch  => {
+        
+        // Send mail
+
+        // Disenchant
+        
+        modifyBadges(!badgesChanged);
+    };
+
+    const activateGame = async gameId => {
+        
+    }
 
     const searchFilter = async searchText => {
     
@@ -117,7 +130,6 @@ function Profile(props) {
 
     };
 
-
     const categoryFilter = async (sort, isAscending) => {
 
         setIsFetchingInv({isFetchingInventory: true})
@@ -138,11 +150,6 @@ function Profile(props) {
 
         setIsFetchingInv({isFetchingInventory: false})
 
-    };
-
-    const disenchantItem = itemID => {
-        // Remove from database by ID
-        // Refresh page
     };
 
     const editProfileClick = () => {
@@ -207,7 +214,7 @@ function Profile(props) {
                                     key={value}
                                     badgeData={badge}
                                     item={badge.item}
-                                    deactivateBadge = {deactivateBadge}
+                                    deactivateBadge = {toggleBadge}
                                 />
                             );
                             }))
@@ -266,9 +273,9 @@ function Profile(props) {
                             itemName={item.name}
                             itemValue={item.value}
                             itemRarity={item.rarity.name}
-                            disenchantItem={disenchantItem}
                             currentUsername={currentUser}
                             pageUsername={pageUser}
+                            activateBadge={toggleBadge}
                         /> // Bolji destructure uradit ovde
                         );
                     })}
