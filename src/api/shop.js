@@ -23,7 +23,43 @@ const spinTheWheelItems = {
         )
 };
 
+const itemTypes = {
+    get: () => tokenRefreshHandler(
+        customAxios.get(
+            `${BASE_URL}/shops/itemTypes`,
+            {
+                headers: getHeaders()
+            }
+        )
+    )
+};
+
+const itemRarities = {
+    get: () => tokenRefreshHandler(
+        customAxios.get(
+            `${BASE_URL}/shops/itemRarities`,
+            {
+                headers: getHeaders()
+            }
+        )
+    )
+};
+
+const addShopItem = {
+    post: body => tokenRefreshHandler(
+        customAxios.post(
+            `${BASE_URL}/shops/create`, body,
+            {
+                headers: getHeaders()
+            }
+        )
+    )
+}
+
 export default {
     shopItems,
-    spinTheWheelItems
+    spinTheWheelItems,
+    itemTypes,
+    itemRarities,
+    addShopItem
 }
