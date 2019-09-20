@@ -23,7 +23,25 @@ const spinTheWheelItems = {
         )
 };
 
+const BuyItem = {
+    post: (identifier) => tokenRefreshHandler(
+            customAxios.post(
+                `${BASE_URL}/shops/buyItem/${identifier}`,
+                {},
+                {
+                    headers: getHeaders()
+                }
+            )
+        )
+}
+
+/*const BuyItem = {
+    post: (projectKey, body, param) => tokenRefreshHandler(
+        customAxios.post(`${BASE_URL}/${projectKey}/competitions/${param}`, body, { headers: getHeaders() })),
+}*/
+
 export default {
     shopItems,
-    spinTheWheelItems
+    spinTheWheelItems,
+    BuyItem
 }

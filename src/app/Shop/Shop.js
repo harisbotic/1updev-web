@@ -7,6 +7,7 @@ import TransactionLog from "../../Components/TransactionLog/Transactionlog.compo
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 import SpinTheWheelModal from "../../Components/SpinTheWheelModal/SpinTheWheelModal";
+import BuyItemModal from '../../Components/BuyItemModal/BuyItemModal';
 
 import "./Shop.scss";
 
@@ -35,6 +36,9 @@ export const Shop = () => {
     fetchData();
   }, []);
 
+  console.log( shopItems.allShopItems );
+
+
   const searchFilter = searchText => {
     setFilter({
       filteredList: filter.filteredList.filter(item =>
@@ -46,6 +50,12 @@ export const Shop = () => {
   return (
     <>
       <div>
+        
+         {/* { Item item = shopItems.allShopItems.Where( x=>x.id == 1 ).SingleOrDefault();}; */}
+
+            <BuyItemModal name='test' id='34'/>
+        
+        
         <SpinTheWheelModal />
         <div className="shop-header row xs-column">
           <div className="in_use col-xs-12 col-lg-6 row">
@@ -115,9 +125,25 @@ export const Shop = () => {
             </div>
             {shopItems.allShopItems.map((item, index) => {
               return (
+                <div>
+                <BuyItemModal
+                // key={index}
+                itemId={item.itemId}
+                background={item.rarity.background}
+                itemIcon={item.icon}
+                itemName={item.name}
+                itemPrice={item.price}
+                itemValue={item.value}
+                itemType={item.type.name}
+                itemRarity={item.rarity.name}
+                itemActivateValue={item.activatePrice}
+                itemDisenchantValue={item.disenchantValue}
+                />
+                
                 <ShopItem
                   key={index}
                   itemId={item.id}
+                  
                   background={item.rarity.background}
                   itemIcon={item.icon}
                   itemName={item.name}
@@ -128,6 +154,7 @@ export const Shop = () => {
                   itemActivateValue={item.activatePrice}
                   itemDisenchantValue={item.disenchantValue}
                 />
+                </div>
               );
             })}
           </div>
