@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import DisenchantModal from "../Modals/DisenchantItemModal/DisenchantItemModal.component";
-import ActivateItemModal from '../Modals/ActivateItemModal/ActivateItemModal.component';
-import GiftItemModal from '../Modals/GiftItemModal/GiftItemModal.component';
+import DisenchantModal from "../Modals/DisenchantItemModal/disenchantItemModal.component";
+import ActivateItemModal from '../Modals/ActivateItemModal/activateItemModal.component';
+import GiftItemModal from '../Modals/GiftItemModal/giftItemModal.component';
 
 import "./Item.style.scss";
 
