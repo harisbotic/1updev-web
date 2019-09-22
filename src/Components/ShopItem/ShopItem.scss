@@ -45,7 +45,103 @@
         margin: 0;
       }
     }
+    .shopitem-hovered {
+      opacity:0;
+      // opacity:0.9;
+      // background:rgba(50, 146, 225,0.9);
+      background: #712EBD 0% 0% no-repeat padding-box;
+      position: absolute;
+      top:0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 100%;
+      width:100%;
+      transition: 0.5s ease-in-out;
+      font-family: "Roboto";
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding:inherit;
+      border-radius: inherit;
+
+      .shopitem-buttons {
+          display:flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          height: 100%;
+          padding:5px;
+
+          .shopItemButton {
+              display:table;
+              border-radius: $border-radius;
+              background:$white;
+              border:2px solid $white;
+              padding:4px;
+              width: 80%;
+              text-align: center;
+              transition: 0.5s ease;
+
+              p {
+                  display:table-cell;
+                  // color:$lighter-blue;
+                  color:#712EBD;
+                  font-weight: $bold;
+                  margin:0;
+                  font-size:12px;
+                  text-transform: uppercase;
+              }
+
+              &:hover {
+                  background:transparent;
+
+                  p {
+                      color:$white;
+                  }
+              }
+          }
+
+          
+
+      }
+  
+
+      .shopitem-hoveredInfo {
+
+          p {
+              margin:0;
+              text-shadow: 1px 1px 1px black;
+          }
+
+          .shopitem-infoText {
+              font-size:12px;
+          }
+
+          .shopitem-tokenValue {
+              font-weight: $bold;
+          }
+      }
+
   }
+
+}
+.shopItemCard:hover {
+
+  .shopitem-hovered {
+      // opacity:1; 
+      opacity:0.9;
+  }
+
+
+}
+/*.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}*/
 
   @media screen and (max-width: $mobile) {
     .shopItemCard {

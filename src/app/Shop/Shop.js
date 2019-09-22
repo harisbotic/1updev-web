@@ -36,8 +36,7 @@ export const Shop = () => {
     fetchData();
   }, []);
 
-  console.log( shopItems.allShopItems );
-
+  
 
   const searchFilter = searchText => {
     setFilter({
@@ -52,9 +51,6 @@ export const Shop = () => {
       <div>
         
          {/* { Item item = shopItems.allShopItems.Where( x=>x.id == 1 ).SingleOrDefault();}; */}
-
-            <BuyItemModal name='test' id='34'/>
-        
         
         <SpinTheWheelModal />
         <div className="shop-header row xs-column">
@@ -124,10 +120,12 @@ export const Shop = () => {
               <AddItem />
               
             </div>
+            {console.log( shopItems.allShopItems ),
+             console.log( "krelac" )}
             {shopItems.allShopItems.map((item, index) => {
               return (
                 <div>
-                <BuyItemModal
+                {/* <BuyItemModal 
                 // key={index}
                 itemId={item.itemId}
                 background={item.rarity.background}
@@ -139,12 +137,13 @@ export const Shop = () => {
                 itemRarity={item.rarity.name}
                 itemActivateValue={item.activatePrice}
                 itemDisenchantValue={item.disenchantValue}
-                />
+                />*/}
                 
                 <ShopItem
                   key={index}
-                  itemId={item.id}
-                  
+                 // itemId={item.id} MUHAMEDE OVO SE MORALO IZBRISATI JER NIJE UZIMALO DOBAR ID. ITEMID JE ID OD ITEMA, KOJI NAM TREBA, A OVO JE NEKI DRUGI
+                  itemQuantity = {item.quantity}
+                  itemId={item.itemId}
                   background={item.rarity.background}
                   itemIcon={item.icon}
                   itemName={item.name}
