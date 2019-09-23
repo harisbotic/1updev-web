@@ -50,8 +50,9 @@ export const BuyItemModal = (props) => {
               <div className='row tmp'>
                 <div className='col-6'>
               
-               <ShopItem 
-               itemQuantity = {props.itemQuantity}
+               <ShopItem
+              showModal={"none"}
+              itemQuantity = {props.itemQuantity}
               itemId={props.itemId}
               background={props.background}
               itemIcon={props.itemIcon}

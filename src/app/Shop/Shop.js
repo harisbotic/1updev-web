@@ -153,6 +153,7 @@ export const Shop = () => {
                   itemRarity={item.rarity.name}
                   itemActivateValue={item.activatePrice}
                   itemDisenchantValue={item.disenchantValue}
+                  showModal={"block"}
                 />
                 </div>
               );
