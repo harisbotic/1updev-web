@@ -1,6 +1,5 @@
 @import "../../Shared/variables.scss";
 
-
 .itemCard {
 
     position:relative;
@@ -28,8 +27,10 @@
     }
 
   
-    i {
-        font-size:48px;
+    img {
+        align-self: center;
+        height:64px;
+        width:64px;
         color:#FFFFFF;
         margin-bottom: 10px;
     }
@@ -137,52 +138,6 @@
     }
 
 
-}
-
-.modal {
-    display:none;
-    background:transparent;
-    box-shadow: none;
-    font-family: "Roboto";
-}
-
-.modal-header {
-    font-weight: $bold;
-    text-align: center;
-}
-
-.modal-content {
-    border-radius: 40px;
-}
-
-.modal-body {
-    font-weight: $regular;
-}
-
-.modalSpan {
-    font-weight: $bold;
-}
-
-.modalButton {
-    font-family:"Roboto";
-    border-radius: $border-radius;
-    background:$secondary-purple;
-    transition:0.5s ease;
-    text-align: center;
-    padding:10px;
-    width:50%;
-    cursor:pointer;
-    margin-top:10px;
-
-    p {
-        color:white;
-        font-weight: $bold;
-        margin:0;
-    }
-
-    &:hover {
-        opacity:0.8;
-    }
 }
 
 @media screen and (max-width: $mobile) {

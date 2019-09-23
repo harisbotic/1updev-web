@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { profile, tokenTransactions } from "../../api/index";
+import jwtdecode from 'jwt-decode';
 
+import { profile, tokenTransactions } from "../../api/index";
 import Badge from "../../Components/Badges/Badge.component";
 import {
   ActivityLog,
@@ -21,6 +22,7 @@ import "./Profile.scss";
 function Profile(props) {
 
     const [itemsList, setItemsList] = useState({itemList: []});
+    const [stateChanged, rerenderDOM] = useState(false);
     const [activeBadges, setBadges] = useState({badges: []});
     const [isLoading, setIsFetchingInv] = useState({isFetchingInventory: false})
     const [profileInfo, setProfileInfo] = useState({user: {}});
@@ -31,15 +33,16 @@ function Profile(props) {
     const { badges } = activeBadges;
     const { itemList } = itemsList;
 
+    const currentUser = jwtdecode(localStorage.getItem("access_token")).Username;
+
+    const routeParams = props.history.location.pathname.split("/");
+    const pageUser = routeParams[2];
+    
+
     useEffect(() => {
 
         const fetchData = async () => {
-
-            var routeParams = props.history.location.pathname.split("/");
-
-            const profileInfoResponse = await profile.profileInfo.get(routeParams[2]);
-
-            setProfileInfo({user: profileInfoResponse.data});
+            const profileInfoResponse = await profile.profileInfo.get(pageUser);
 
             setIsFetchingInv({isFetchingInventory: true})
 
@@ -47,7 +50,11 @@ function Profile(props) {
                 profileInfoResponse.data.id
             );
 
-            setItemsList({itemList: fetchProfileInventory.data.map(inventory => inventory.item)})
+            setProfileInfo({user: profileInfoResponse.data});
+
+            setItemsList({itemList: fetchProfileInventory.data
+                .filter(inventory => !inventory.isActive)
+                .map(inventory => inventory.item)})
 
             setBadges({
                 badges: fetchProfileInventory.data.filter(
@@ -65,7 +72,7 @@ function Profile(props) {
 
         fetchData();
 
-    },[]);
+    },[stateChanged]);
 
     const refactorBadges = badges => {
             
@@ -79,9 +86,14 @@ function Profile(props) {
         }
     }
 
-    const deactivateBadge = async badgeID => {
-        // Remove from database by ID
-        // Refresh page
+    const toggleBadge = async badgeId => {
+        
+        await profile.toggleBadge.get(
+            badgeId,
+            user.id
+        );
+        
+        rerenderDOM(!stateChanged);
     };
 
     const searchFilter = async searchText => {
@@ -96,7 +108,9 @@ function Profile(props) {
         );
 
         setItemsList({
-            itemList: searchProfileInventory.data.map(inventory => inventory.item)
+            itemList: searchProfileInventory.data
+            .filter(inventory=> !inventory.isActive)
+            .map(inventory => inventory.item)
         })
 
         setIsFetchingInv({isFetchingInventory: false})
@@ -110,25 +124,27 @@ function Profile(props) {
         const order = isAscending === true ? "asc" : "desc";
 
         const fetchSortedProfileInventory = await profile.fetchSortedProfileInventory.get(
-        sort,
-        order,
-        user.id
+            sort,
+            order,
+            user.id
         );
         
         setItemsList({
-        itemList: fetchSortedProfileInventory.data.map(
-            inventory => inventory.item
-        )
+        itemList: fetchSortedProfileInventory.data
+            .filter(inventory=> !inventory.isActive)
+            .map(inventory => inventory.item)
         })
 
         setIsFetchingInv({isFetchingInventory: false})
 
     };
 
-    const disenchantItem = itemID => {
-        // Remove from database by ID
-        // Refresh page
-    };
+    const disenchantItem = async (username, itemId) => {
+        var newTokensResponse = await tokenTransactions.disenchantItem.post(username, itemId);
+        setUserTokens(userTokens + newTokensResponse.data);
+
+        rerenderDOM(!stateChanged);
+    }
 
     const editProfileClick = () => {
         
@@ -146,14 +162,21 @@ function Profile(props) {
                 
                 <img
                     className="profilePicture"
-                    src="https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
+                    src={`https://robohash.org/${user.id}`}
                     alt="user"
                 />
 
                 <div className="profileDetails">
-                    <div className="editProfileButton" onClick={editProfileClick}>
-                        <p>EDIT PROFILE </p>
-                    </div>
+                    {pageUser == currentUser ? (
+                        <div className="editProfileButton" onClick={editProfileClick}>
+                            <p>EDIT PROFILE</p>
+                        </div>
+                    ) : (
+                        <div className="editProfileButton">
+                            <p>SEND GIFT</p>
+                        </div>
+                    )}
+                    
 
                     <h1 className="username">{user.username}</h1>
 
@@ -185,6 +208,7 @@ function Profile(props) {
                                     key={value}
                                     badgeData={badge}
                                     item={badge.item}
+                                    deactivateBadge = {toggleBadge}
                                 />
                             );
                             }))
@@ -243,9 +267,10 @@ function Profile(props) {
                             itemName={item.name}
                             itemValue={item.value}
                             itemRarity={item.rarity.name}
-                            itemActivateValue={item.price}
-                            itemDisenchantValue={item.value}
-                            disenchantItem={disenchantItem}
+                            currentUsername={currentUser}
+                            pageUsername={pageUser}
+                            disenchant={disenchantItem}
+                            activateBadge={toggleBadge}
                         /> // Bolji destructure uradit ovde
                         );
                     })}

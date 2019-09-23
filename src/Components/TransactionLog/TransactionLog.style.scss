@@ -86,6 +86,36 @@
   border-radius: 10px;
 }
 
+// @media only screen and( max-width:1201px) and (min-width: 992px) {
+//   .transaction {
+//     width: 105%;
+//   }
+
+//   .profile_img {
+//     width: 80%;
+//   }
+// }
+// @media only screen and( max-width:991px) and (min-width: 768px) {
+//   .transaction {
+//     width: 90%;
+//     height: 80%;
+//   }
+//   .transaction_log-container {
+//     height: 300px;
+//   }
+
+//   .transactions {
+//     max-height: 250px;
+//     overflow-y: scroll;
+//     width: 90%;
+//     height: 80%;
+//   }
+
+//   .profile_img {
+//     width: 80%;
+//   }
+// }
+
 @media only screen and(max-width:$mobile) {
   .transaction {
     width: 90%;
@@ -96,7 +126,12 @@
     margin-top: 3px;
   }
 
+  // .transaction_log-container {
+  //   height: 250px;
+  // }
+
   .transactions {
+    //  max-height: 200px;
     overflow-y: scroll;
   }
 
