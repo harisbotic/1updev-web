@@ -261,7 +261,7 @@ function Profile(props) {
                         <Item
                             key={item.id}
                             itemId={item.id}
-                            background={"#702dbc"}
+                            background={item.rarity.backgroundColor}
                             itemType={item.type.name}
                             itemIcon={item.image}
                             itemName={item.name}
