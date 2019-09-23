@@ -19,6 +19,8 @@ function Header(props) {
     .Username;
 
   const onChangeHandler = async event => {
+    event.preventDefault();
+    
     const searchQueryResponse = await profile.searchByQuery.get(
       event.target.value
     );
@@ -28,6 +30,9 @@ function Header(props) {
     });
   };
 
+  const selectUser = () => {
+
+  }
 
 
   return (
@@ -78,7 +83,7 @@ function Header(props) {
 
         <div className="col rightWrapper search" style={{ color: "white" }}>
           <input
-            type="text"
+            type="search"
             id="mySearch"
             placeholder="search user"
             onChange={onChangeHandler}
@@ -86,7 +91,7 @@ function Header(props) {
           <ul id="myMenu">
             {userList.userList.map((user, index) => {
               return (
-                <li>
+                <li onClick={selectUser}>
                   {" "}
                   {user.firstName} {user.lastName}{" "}
                 </li>
