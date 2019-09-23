@@ -1,4 +1,4 @@
-import images from "../assets/imageExports";
+import images from "../Assets/imageExports";
 
 export const mockRanks = [
     {
