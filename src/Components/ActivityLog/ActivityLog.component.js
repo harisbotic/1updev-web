@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Accordion, Button } from 'react-bootstrap';
 import customAxios from "../../api/customAxios";
 import axios from 'axios';
+import jwtdecode from 'jwt-decode';
 
 import { UserAvatar } from './UserAvatar';
 import { TransactionTime } from './TransactionTime';
@@ -14,14 +15,16 @@ import { async } from "q";
 export function ActivityLog() {
 
   const [userLogs, setUserLogs] = useState([]);
+
+  const currentUserId = jwtdecode(localStorage.getItem("access_token")).ProfileId;
   
   useEffect(() => {
     const fetchData = async () => {
       const itemGiftLogs = await axios(
-        `${BASE_URL}/api/itemgiftlogs?timerange=252222`,
+        `${BASE_URL}/api/itemgiftlogs/${currentUserId}?timerange=252222`,
       );
       const shopPurchaseLogs = await axios(
-        `${BASE_URL}/api/shoppurchaselogs?timerange=252222`,
+        `${BASE_URL}/api/shoppurchaselogs/${currentUserId}?timerange=252222`,
       );
       const logs1 = itemGiftLogs.data.map(log => ({
         gifterName: log.gifter.firstName + " " + log.gifter.lastName,

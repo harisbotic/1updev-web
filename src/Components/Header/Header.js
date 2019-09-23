@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Header.scss";
-import Logo from "../../Assets/logo.png";
+import Logo from "../../assets/logo.png";
 import { withRouter } from "react-router";
-import img from "../../Assets/Image545.png";
 import { profile } from "../../api/index";
 import jwtdecode from "jwt-decode";
 
@@ -19,6 +18,8 @@ function Header(props) {
     .Username;
 
   const onChangeHandler = async event => {
+    event.preventDefault();
+    
     const searchQueryResponse = await profile.searchByQuery.get(
       event.target.value
     );
@@ -28,6 +29,9 @@ function Header(props) {
     });
   };
 
+  const selectUser = () => {
+
+  }
 
 
   return (
@@ -78,15 +82,16 @@ function Header(props) {
 
         <div className="col rightWrapper search" style={{ color: "white" }}>
           <input
-            type="text"
+            type="search"
             id="mySearch"
+            autoComplete="off"
             placeholder="search user"
             onChange={onChangeHandler}
           />
-          <ul id="myMenu">
+          <ul className="myMenu">
             {userList.userList.map((user, index) => {
               return (
-                <li>
+                <li className="listItem" onClick={selectUser}>
                   {" "}
                   {user.firstName} {user.lastName}{" "}
                 </li>

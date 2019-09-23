@@ -1,4 +1,4 @@
-import images from "../Assets/imageExports";
+import images from "../assets/imageExports";
 
 export const mockActivity = [
   {

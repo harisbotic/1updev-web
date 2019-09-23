@@ -71,9 +71,9 @@ const searchByQuery = {
 };
 
 const toggleBadge = {
-  get:(badgeId,profileId) => 
+  get:(itemId,profileId) => 
   tokenRefreshHandler(
-      customAxios.get(`${BASE_URL}/Inventory/toggleBadge/${badgeId}/${profileId}`),
+      customAxios.get(`${BASE_URL}/Inventory/toggleBadge/${itemId}/${profileId}`),
       {
           headers: getHeaders()
       }

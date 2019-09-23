@@ -86,10 +86,10 @@ function Profile(props) {
         }
     }
 
-    const toggleBadge = async badgeId => {
+    const toggleBadge = async itemId => {
         
         await profile.toggleBadge.get(
-            badgeId,
+            itemId,
             user.id
         );
         
@@ -261,7 +261,7 @@ function Profile(props) {
                         <Item
                             key={item.id}
                             itemId={item.id}
-                            background={"#702dbc"}
+                            background={item.rarity.backgroundColor}
                             itemType={item.type.name}
                             itemIcon={item.image}
                             itemName={item.name}
