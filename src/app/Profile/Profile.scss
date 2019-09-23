@@ -11,6 +11,7 @@ body {
   padding: 3% 10% 0 10%;
   font-family: "Roboto";
   margin-bottom: 10px;
+  font-size: 10px; 
 
   .profilePicture {
     max-width: 160px;
@@ -37,9 +38,9 @@ body {
 
       p {
         color: $white;
-        padding: 10px;
+        padding: 1em;
         font-weight: $bold;
-        font-size: 14px;
+        font-size: 1.4em;
       }
 
       &:hover {
@@ -51,19 +52,19 @@ body {
       }
     }
 
-    .userTitle {
-      color: $white;
-      font-family: "Roboto";
-      font-weight: $regular;
-      font-size: 14px;
-      margin: 5px 0 5px 0;
-    }
-
     .username {
       color: $white;
       font-family: "Roboto";
       font-weight: $bold;
-      font-size: 35px;
+      font-size: 4em;
+      margin: 5px 0 5px 0;
+    }
+    
+    .userTitle {
+      color: $white;
+      font-family: "Roboto";
+      font-weight: $regular;
+      font-size: 1.5em;
       margin: 5px 0 5px 0;
     }
 
@@ -76,8 +77,8 @@ body {
         color: $white;
         font-family: "Roboto";
         font-weight: $regular;
-        font-size: 14px;
-        margin: 5px;
+        font-size: 1.5em;
+        margin: 5px 0 5px 0;
       }
     }
 
@@ -96,18 +97,19 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  font-size: 10px;
   padding: 3% 10% 10% 10%;
   border-top-left-radius: 40pt;
   border-top-right-radius: 40pt;
-  min-height: 500px;
-  height: 500px;
+  min-height: 60em;
+  height: 60em;
   background: #ffffff 0% 0% no-repeat padding-box;
 
   .infoSection {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
 
     .infoText {
       display: flex;
@@ -117,12 +119,12 @@ body {
 
       .inventoryText {
         font-weight: 700;
-        font-size: 28px;
+        font-size: 2.8em;
         letter-spacing: 0.36px;
         color: #712ebd;
         opacity: 1;
         margin: 0;
-        margin-right: 10px;
+        margin-right: 1em;
       }
 
       .inventoryValue {
@@ -141,12 +143,12 @@ body {
   }
 
   .itemsContainer {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 180px));
     grid-auto-rows: repeat(auto-fill, minmax(160px, 180px));
     justify-content: space-between;
-    grid-gap: 10px;
-    position: relative;
+    grid-gap: 1em;
   }
 }
 
@@ -197,6 +199,8 @@ body {
     text-align: center;
     justify-content: center;
     margin-bottom: 0;
+    font-size:8px;
+    
 
     .profileDetails {
       .editProfileButton {
@@ -219,7 +223,6 @@ body {
         p {
           font-family: "Roboto";
           color: $white;
-          font-size: 12px;
           font-weight: $bold;
           text-decoration: none;
         }
@@ -230,6 +233,7 @@ body {
   .inventoryContainer {
     display: flex;
     flex-direction: column;
+    font-size:8px;
 
     .infoSection {
       display: flex;

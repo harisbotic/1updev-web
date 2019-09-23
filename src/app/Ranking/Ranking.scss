@@ -9,104 +9,105 @@
 .upper {
      max-width: 100%;
      height: 200px;
-}
 
-.wholeTable {
-    background-color: transparentize(white, 0.8);
-    border-radius: 25px;
-    width: 100%;
-    height: 340px;
-    color: white;
-}
 
-.title {
-  font-family: "Roboto";
-  font-size: 18px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 50px;
-  padding-top: 20px;
-  text-align: center;
-}
+  .wholeTable {
+      background-color: transparentize(white, 0.8);
+      border-radius: 25px;
+      width: 100%;
+      height: 340px;
+      color: white;
+  }
 
-.subtitle {
-  font-family: Roboto;
-  font-size: 14px;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  //justify-content: space-between;
-  text-align: center;
-  padding-top: 20px;
-  //margin-left: -30px;
-}
+  .title {
+    font-family: "Roboto";
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    padding-top: 20px;
+    text-align: center;
+  }
 
-.username {
-  margin-left: -20px;
-  word-break: break-all;
-}
+  .subtitle {
+    font-family: Roboto;
+    font-size: 14px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    //justify-content: space-between;
+    text-align: center;
+    padding-top: 20px;
+    //margin-left: -30px;
+  }
 
-.usernameTitle {
-  margin-left: -20px;
-  word-break: break-all;
-}
+  .username {
+    margin-left: -20px;
+    word-break: break-all;
+  }
 
-.specialTitle {
-  padding-left: 8%;
-}
+  .usernameTitle {
+    margin-left: -20px;
+    word-break: break-all;
+  }
 
-.data_rows {
-  display: flex;
-  flex-direction: row;
-  text-align: left;
-}
+  .specialTitle {
+    padding-left: 8%;
+  }
 
-.data {
-  margin-top: 25px;
-  overflow-y: scroll;
-  height: 224px;
-  width: 623px;
-}
+  .data_rows {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
 
-.data::-webkit-scrollbar {
-  width: 10px;
-  border: 0.5px solid $white;
-  border-radius: 10px;
-}
+  .data {
+    margin-top: 25px;
+    overflow-y: scroll;
+    height: 224px;
+    width: 623px;
+  }
 
-.data::-webkit-scrollbar-thumb {
-  background-color: $white;
-  border-radius: 10px;
-}
+  .data::-webkit-scrollbar {
+    width: 10px;
+    border: 0.5px solid $white;
+    border-radius: 10px;
+  }
 
-.value {
-  padding-left: 6%;
-}
+  .data::-webkit-scrollbar-thumb {
+    background-color: $white;
+    border-radius: 10px;
+  }
 
-.valueOfInventory {
-  padding-left: 6%;
-}
+  .value {
+    padding-left: 6%;
+  }
 
-.badges img {
-  width: 30px;
-  height: 30px;
-}
+  .valueOfInventory {
+    padding-left: 6%;
+  }
 
-.ttl {
-  padding-left: 55px;
-}
+  .badges img {
+    width: 30px;
+    height: 30px;
+  }
 
-// .badges {
-//   text-align: left;
-//   padding-left: 80px;
-// }
+  .ttl {
+    padding-left: 55px;
+  }
 
-.badgesIcon {
-  padding-left: 60px;
-}
+  .badges {
+    text-align: left;
+    padding-left: 80px;
+  }
 
-.picture img {
-  margin-left: -25px;
-  max-height: 45px;
+  .badgesIcon {
+    padding-left: 60px;
+  }
+
+  .picture img {
+    margin-left: -25px;
+    max-height: 45px;
+  }
 }

@@ -10,7 +10,8 @@ import InventoryItemsModal from "../InventoryItemsModal/InventoryItemsModal";
 const GiftItemModal = (props) => {
     const username = jwtdecode(localStorage.getItem("access_token")).Username;
 
-    const[selectedItem, setSelectedItem] = useState({});
+    const[selectedItem, setSelectedItem] = useState(props.inventoryItem);
+    const[selectedUser, setSelectedUser] = useState({});
 
     const [inputs, setInputs] = useState({});
 
@@ -43,6 +44,13 @@ const GiftItemModal = (props) => {
             ...inputs,
             giftToUser: `${user.firstName} ${user.lastName}`
         }));
+
+        setSelectedUser(user);
+    }
+
+    const sendClickHandler = () => {
+        console.log(selectedItem);
+        console.log(selectedUser);
     }
 
 
@@ -67,7 +75,8 @@ const GiftItemModal = (props) => {
                                     <li onClick={(event) => {
                                         onListItemClickHandler(event, user);
                                         }}
-                                        id={user.username} key={index}>
+                                        key={index}
+                                        id={user.username}>
                                         {user.firstName} {user.lastName}
                                     </li>
                                 );
@@ -75,14 +84,18 @@ const GiftItemModal = (props) => {
                         </ul>
                     </div>
                     <div className="giftItem">
-                        <p>Item:</p>
+                        <p>Item: {selectedItem.item.name}</p>
                         
-                        <InventoryItemsModal background={props.background} icon={props.icon} setItem={setSelectedItem}/>
+                        <InventoryItemsModal
+                        background={props.inventoryItem.item.backgroundColor}
+                        icon={props.inventoryItem.item.image}
+                        inventoryItem={props.inventoryItem}
+                        setItem={setSelectedItem}/>
                     </div>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <div variant="secondary" className="modalButton" onClick={() => setModalShow(false)}>
+                    <div variant="secondary" className="modalButton" onClick={() => {sendClickHandler(); setModalShow(false)}}>
                         <p>SEND</p>
                     </div>
                     <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>

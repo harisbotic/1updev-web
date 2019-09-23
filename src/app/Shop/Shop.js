@@ -130,7 +130,7 @@ export const Shop = () => {
                 <BuyItemModal
                 // key={index}
                 itemId={item.itemId}
-                background={item.rarity.background}
+                background={item.rarity.backgroudnColor}
                 itemIcon={item.icon}
                 itemName={item.name}
                 itemPrice={item.price}
@@ -145,7 +145,7 @@ export const Shop = () => {
                   key={index}
                   itemId={item.id}
                   
-                  background={item.rarity.background}
+                  background={item.rarity.backgroudnColor}
                   itemIcon={item.icon}
                   itemName={item.name}
                   itemPrice={item.price}

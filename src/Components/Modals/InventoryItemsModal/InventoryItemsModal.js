@@ -8,20 +8,22 @@ import Item from "../../Item/Item.component";
 
 const InventoryItemModal = (props) => {
     const [modalShow, setModalShow] = useState(false);
-    const [itemsList, setItemsList] = useState({ itemList: [] });
+    const [itemsList, setItemsList] = useState([]);
 
     const [selectedItem, setSelectedItem] = useState({
-        background: props.background,
-        icon: props.icon
+        background: props.inventoryItem.item.rarity.backgroundColor,
+        icon: props.inventoryItem.item.image
     });
 
     const currentUserId = jwtdecode(localStorage.getItem("access_token")).ProfileId;
 
-    const handleClick = (item) => {
+    const handleClick = (inventoryItem) => {
         setSelectedItem({
-            background: item.rarity.backgroundColor,
-            icon: item.image
+            background: inventoryItem.item.rarity.backgroundColor,
+            icon: inventoryItem.item.image
         });
+
+        props.setItem(inventoryItem);
 
         setModalShow(false);
     }
@@ -30,13 +32,8 @@ const InventoryItemModal = (props) => {
         const fetchData = async () => {
             const fetchProfileInventory = await profile.fetchProfileInventory.get(currentUserId);
 
-            console.log(fetchProfileInventory.data);
-
-            setItemsList({
-                itemList: fetchProfileInventory.data
-                    .filter(inventory => !inventory.isActive)
-                    .map(inventory => inventory.item)
-            })
+            setItemsList(fetchProfileInventory.data
+                    .filter(inventory => !inventory.isActive));
         }
 
         fetchData();
@@ -57,16 +54,16 @@ const InventoryItemModal = (props) => {
                 </Modal.Header>
 
                 <Modal.Body className="inventoryItemsModalList">
-                        {itemList.map(item => {
+                        {itemsList.map(inventoryItem => {
                             return (
                                 <div className="itemCard"
-                                style={{ background: item.rarity.backgroundColor }}
+                                style={{ background: inventoryItem.item.rarity.backgroundColor }}
                                 onClick={() => {
-                                    handleClick(item)
+                                    handleClick(inventoryItem)
                                 }} >
-                                    <img src={item.image} alt="" />
-                                    <p>{item.name}</p>
-                                    <p>{item.value}</p>
+                                    <img src={inventoryItem.item.image} alt="" />
+                                    <p>{inventoryItem.item.name}</p>
+                                    <p>{inventoryItem.item.value}</p>
                                 </div>
                             )
                         })}

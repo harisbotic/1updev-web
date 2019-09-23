@@ -50,11 +50,7 @@ export function Item(props) {
                         activateBadge={props.activateBadge} />
 
                     <GiftItemModal
-                        itemId={props.itemId}
-                        itemName={props.itemName}
-                        itemValue={props.itemValue}
-                        background={props.background}
-                        icon={props.itemIcon} />
+                        inventoryItem={props.inventoryItem} />
 
                     <DisenchantModal
                         itemId={props.itemId}
@@ -62,10 +58,6 @@ export function Item(props) {
                         itemValue={props.itemValue}
                         disenchantItem={props.disenchant} />
                 </div>
-
-                {/* <div className="hoveredInfo">
-                    <p className="infoText">{hoveredInfoText}</p>
-                </div> */}
 
             </div>
 
