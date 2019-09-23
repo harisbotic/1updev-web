@@ -3,7 +3,7 @@
 .activityLog {
   background: rgba(255, 255, 255, 0.3);
   color: $white;
-  width: 500px;
+  width: 400px;
   height: 200px;
   border-radius: 25px;
   overflow: auto;
@@ -12,13 +12,14 @@
 .transactionDetails {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-right: 10px;
 
   .participants {
     max-width: 80%;
     overflow: visible;
+    white-space: normal;
 
     .embolden {
       font-weight: bold;

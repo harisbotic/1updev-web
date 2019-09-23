@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Header.scss";
-import Logo from "../../Assets/logo.png";
+import Logo from "../../assets/logo.png";
 import { withRouter } from "react-router";
-import img from "../../Assets/Image545.png";
 import { profile } from "../../api/index";
 import jwtdecode from "jwt-decode";
 
