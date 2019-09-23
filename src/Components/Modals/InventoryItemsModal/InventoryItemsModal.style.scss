@@ -1,0 +1,28 @@
+@import "../../../Shared/variables.scss";
+
+.inventoryItemsModal {
+    .inventoryItemsModalList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: 300px;
+        overflow-y: scroll;
+
+        .itemCard {
+            margin: 5px;
+        }
+    }
+
+    .inventoryItemsModalList::-webkit-scrollbar {
+        width: 10px;
+        border: 2px solid $secondary-purple;
+        border-radius: 10px;
+      }
+
+      .inventoryItemsModalList::-webkit-scrollbar-thumb {
+        background-color: $secondary-purple;
+        border-radius: 10px;
+      }
+
+}

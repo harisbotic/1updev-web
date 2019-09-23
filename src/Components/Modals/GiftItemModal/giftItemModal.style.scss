@@ -1,48 +1,91 @@
 @import "../../../Shared/variables.scss";
 
-
 .modal {
-    display:none;
-    background:transparent;
-    box-shadow: none;
-    font-family: "Roboto";
+  display: none;
+  background: transparent;
+  box-shadow: none;
+  font-family: "Roboto";
 }
 
 .modal-header {
-    font-weight: $bold;
-    text-align: center;
+  font-weight: $bold;
+  text-align: center;
 }
 
 .modal-content {
-    border-radius: 40px;
+  border-radius: 40px;
 }
 
 .modal-body {
-    font-weight: $regular;
+  font-weight: $regular;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 25px;
+
+  .giftTo {
+    float: right;
+
+    input {
+      width: 75%;
+    }
+
+    .giftToUserList {
+      position: fixed;
+      max-height: 250px;
+      overflow-y: auto;
+      background-color: white;
+
+      li {
+          white-space: normal;
+          padding: 2.5px;
+
+        &:hover {
+            background: $secondary-purple;
+            color: white;
+            cursor: pointer;
+        }
+      }
+    }
+    .giftToUserList::-webkit-scrollbar {
+      width: 10px;
+      border: 2px solid $secondary-purple;
+      border-radius: 10px;
+    }
+
+    .giftToUserList::-webkit-scrollbar-thumb {
+      background-color: $secondary-purple;
+      border-radius: 10px;
+    }
+  }
+
+  .giftItme {
+    float: left;
+  }
 }
 
 .modalSpan {
-    font-weight: $bold;
+  font-weight: $bold;
 }
 
 .modalButton {
-    font-family:"Roboto";
-    border-radius: $border-radius;
-    background:$secondary-purple;
-    transition:0.5s ease;
-    text-align: center;
-    padding:10px;
-    width:50%;
-    cursor:pointer;
-    margin-top:10px;
+  font-family: "Roboto";
+  border-radius: $border-radius;
+  background: $secondary-purple;
+  transition: 0.5s ease;
+  text-align: center;
+  padding: 10px;
+  width: 50%;
+  cursor: pointer;
+  margin-top: 10px;
 
-    p {
-        color:white;
-        font-weight: $bold;
-        margin:0;
-    }
+  p {
+    color: white;
+    font-weight: $bold;
+    margin: 0;
+  }
 
-    &:hover {
-        opacity:0.8;
-    }
+  &:hover {
+    opacity: 0.8;
+  }
 }
