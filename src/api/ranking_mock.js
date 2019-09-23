@@ -1,6 +1,7 @@
 import images from "../Assets/imageExports";
 
 export const mockRanks = [
+
   {
       user: "randomguy",
       profileImg: images.randomguy,

@@ -81,10 +81,10 @@ function Profile(props) {
         }
     }
 
-    const toggleBadge = async badgeId => {
-        
+    const toggleBadge = async itemId => {     
+
         await profile.toggleActivate.get(
-            badgeId,
+            itemId,
             profileInfo.id
         );
         
@@ -102,11 +102,9 @@ function Profile(props) {
             profileInfo.id
         );
 
-        setInventoryList({
-            inventoryList: searchProfileInventory.data
+        setInventoryList(searchProfileInventory.data
             .filter(inventory=> !inventory.isActive)
-            .map(inventory => inventory.item)
-        })
+        )
 
         setIsFetchingInv(false)
 
@@ -124,13 +122,11 @@ function Profile(props) {
             profileInfo.id
         );
         
-        setInventoryList({
-            inventoryList: fetchSortedProfileInventory.data
+        setInventoryList(fetchSortedProfileInventory.data
             .filter(inventory=> !inventory.isActive)
-            .map(inventory => inventory.item)
-        })
+        )
 
-        setIsFetchingInv(false)
+        setIsFetchingInv(false);
 
     };
 

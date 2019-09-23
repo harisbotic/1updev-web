@@ -84,6 +84,7 @@ const giftItem = {
   get:(senderId,recieverId,inventoryId) => 
   tokenRefreshHandler(
       customAxios.get(`${BASE_URL}/Inventory/giftItem/${senderId}/${recieverId}/${inventoryId}`),
+
       {
           headers: getHeaders()
       }
