@@ -21,17 +21,12 @@ import "./Profile.scss";
 
 function Profile(props) {
 
-    const [itemsList, setItemsList] = useState({itemList: []});
+    const [inventoryList, setInventoryList] = useState([]);
     const [stateChanged, rerenderDOM] = useState(false);
-    const [activeBadges, setBadges] = useState({badges: []});
-    const [isLoading, setIsFetchingInv] = useState({isFetchingInventory: false})
-    const [profileInfo, setProfileInfo] = useState({user: {}});
+    const [badges, setBadges] = useState([]);
+    const [isFetchingInventory, setIsFetchingInv] = useState()
+    const [profileInfo, setProfileInfo] = useState({});
     const [userTokens, setUserTokens] = useState();
-
-    const { user } = profileInfo;
-    const { isFetchingInventory } = isLoading;
-    const { badges } = activeBadges;
-    const { itemList } = itemsList;
 
     const currentUser = jwtdecode(localStorage.getItem("access_token")).Username;
 
@@ -42,28 +37,28 @@ function Profile(props) {
     useEffect(() => {
 
         const fetchData = async () => {
+            
             const profileInfoResponse = await profile.profileInfo.get(pageUser);
 
-            setIsFetchingInv({isFetchingInventory: true})
+            setIsFetchingInv(true)
 
             const fetchProfileInventory = await profile.fetchProfileInventory.get(
                 profileInfoResponse.data.id
             );
 
-            setProfileInfo({user: profileInfoResponse.data});
+            setProfileInfo(profileInfoResponse.data);
 
-            setItemsList({itemList: fetchProfileInventory.data
-                .filter(inventory => !inventory.isActive)
-                .map(inventory => inventory.item)})
+            setInventoryList(fetchProfileInventory.data
+                .filter(inventory => !inventory.isActive))
 
-            setBadges({
-                badges: fetchProfileInventory.data.filter(
+            setBadges(
+                fetchProfileInventory.data.filter(
                 inventory =>
                     inventory.isActive && inventory.item.type.name === "Badge"
                 )   
-            });
+            );
             
-            setIsFetchingInv({isFetchingInventory: false});
+            setIsFetchingInv(false)
 
             const fetchAvailableTokens = await tokenTransactions.fetchTokenValue.get(profileInfoResponse.data.username);
 
@@ -88,9 +83,9 @@ function Profile(props) {
 
     const toggleBadge = async badgeId => {
         
-        await profile.toggleBadge.get(
+        await profile.toggleActivate.get(
             badgeId,
-            user.id
+            profileInfo.id
         );
         
         rerenderDOM(!stateChanged);
@@ -98,44 +93,44 @@ function Profile(props) {
 
     const searchFilter = async searchText => {
     
-        setIsFetchingInv({isFetchingInventory: true})
+        setIsFetchingInv(true)
         
         if (searchText === "") searchText = " ";
 
         const searchProfileInventory = await profile.searchProfileInventory.get(
             searchText,
-            user.id
+            profileInfo.id
         );
 
-        setItemsList({
-            itemList: searchProfileInventory.data
+        setInventoryList({
+            inventoryList: searchProfileInventory.data
             .filter(inventory=> !inventory.isActive)
             .map(inventory => inventory.item)
         })
 
-        setIsFetchingInv({isFetchingInventory: false})
+        setIsFetchingInv(false)
 
     };
 
-    const categoryFilter = async (sort, isAscending) => {
+    const typeFilter = async (sort, isAscending) => {
 
-        setIsFetchingInv({isFetchingInventory: true})
+        setIsFetchingInv(true)
 
         const order = isAscending === true ? "asc" : "desc";
 
         const fetchSortedProfileInventory = await profile.fetchSortedProfileInventory.get(
             sort,
             order,
-            user.id
+            profileInfo.id
         );
         
-        setItemsList({
-        itemList: fetchSortedProfileInventory.data
+        setInventoryList({
+            inventoryList: fetchSortedProfileInventory.data
             .filter(inventory=> !inventory.isActive)
             .map(inventory => inventory.item)
         })
 
-        setIsFetchingInv({isFetchingInventory: false})
+        setIsFetchingInv(false)
 
     };
 
@@ -150,7 +145,7 @@ function Profile(props) {
         
         props.history.push({
             pathname: "/editprofile",
-            state: { username: user.username }
+            state: { username: profileInfo.username }
         });
     };
 
@@ -162,7 +157,7 @@ function Profile(props) {
                 
                 <img
                     className="profilePicture"
-                    src={`https://robohash.org/${user.id}`}
+                    src={`https://robohash.org/${profileInfo.id}`}
                     alt="user"
                 />
 
@@ -178,7 +173,7 @@ function Profile(props) {
                     )}
                     
 
-                    <h1 className="username">{user.username}</h1>
+                    <h1 className="username">{profileInfo.username}</h1>
 
                     <p className="userTitle">
                         {jsonProfileList.title
@@ -205,9 +200,9 @@ function Profile(props) {
                             badges.map((badge,value) => {
                             return (
                                 <Badge
-                                    key={value}
-                                    badgeData={badge}
-                                    item={badge.item}
+                                    key = {value}
+                                    badgeData = {badge}
+                                    item = {badge.item}
                                     deactivateBadge = {toggleBadge}
                                 />
                             );
@@ -243,12 +238,12 @@ function Profile(props) {
 
                     <FilterOptions
                         searchFilter={searchFilter}
-                        categoryFilter={categoryFilter}
+                        typeFilter={typeFilter}
                     />
 
                     <FilterOptionsMobile
                         searchFilter={searchFilter}
-                        categoryFilter={categoryFilter}
+                        typeFilter={typeFilter}
                     />
 
                 </div>
@@ -256,21 +251,22 @@ function Profile(props) {
                 <div className="itemsContainer">
                     { isFetchingInventory ? 
                         <LoadingElement/> :
-                        itemList.map(item => {
+                        inventoryList.map((inventory,value) => {
                         return (
                         <Item
-                            key={item.id}
-                            itemId={item.id}
-                            background={"#702dbc"}
-                            itemType={item.type.name}
-                            itemIcon={item.image}
-                            itemName={item.name}
-                            itemValue={item.value}
-                            itemRarity={item.rarity.name}
-                            currentUsername={currentUser}
-                            pageUsername={pageUser}
-                            disenchant={disenchantItem}
-                            activateBadge={toggleBadge}
+                            key = {value}
+                            inventoryId = {inventory.id}
+                            itemId = {inventory.item.id}
+                            background = {inventory.item.rarity.backgroundColor}
+                            itemType = {inventory.item.type.name}
+                            itemIcon = {inventory.item.image}
+                            itemName = {inventory.item.name}
+                            itemValue = {inventory.item.value}
+                            itemRarity = {inventory.item.rarity.name}
+                            currentUsername = {currentUser}
+                            pageUsername = {pageUser}
+                            disenchant = {disenchantItem}
+                            activateBadge = {toggleBadge}
                         /> // Bolji destructure uradit ovde
                         );
                     })}

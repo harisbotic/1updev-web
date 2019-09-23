@@ -7,7 +7,7 @@ export function FilterOptions(props) {
 
     const {
         searchFilter,
-        categoryFilter
+        typeFilter
     } = props;
 
     const [state, setState] = useState({});
@@ -26,7 +26,7 @@ export function FilterOptions(props) {
                 
                 <p id="sortByName" 
                     onClick={()=> {
-                        categoryFilter("name",nameFilterAscending);
+                        typeFilter("name",nameFilterAscending);
                         setState({nameFilterAscending:!nameFilterAscending})
                     }}>Name 
                     <i 
@@ -37,7 +37,7 @@ export function FilterOptions(props) {
                 
                 <p id="sortByValue" 
                     onClick={()=> {
-                        categoryFilter("value",valueFilterAscending);
+                        typeFilter("value",valueFilterAscending);
                         setState({valueFilterAscending:!valueFilterAscending})
                     }}>Value 
                     <i 
@@ -48,9 +48,9 @@ export function FilterOptions(props) {
                 
                 <p id="sortByType" 
                     onClick={()=> {
-                        categoryFilter("type",typeFilterAscending);
+                        typeFilter("type",typeFilterAscending);
                         setState({typeFilterAscending:!typeFilterAscending})
-                    }}>Category 
+                    }}>Type 
                     <i 
                         style={{ transform: typeFilterAscending ? 'rotate(180deg)' : 'rotate(0deg)' } }  
                         className='fas fa-chevron-down'
@@ -76,7 +76,7 @@ export function FilterOptionsMobile(props) {
 
     const {
         searchFilter,
-        categoryFilter
+        typeFilter
     } = props;
 
     const [state, setState] = useState({
@@ -108,7 +108,7 @@ export function FilterOptionsMobile(props) {
                                 
                                 <p id="sortByName" 
                                     onClick={()=> {
-                                        categoryFilter("name",nameFilterAscending);
+                                        typeFilter("name",nameFilterAscending);
                                         setState({nameFilterAscending:!nameFilterAscending})
                                     }}>Name 
                                     <i 
@@ -119,7 +119,7 @@ export function FilterOptionsMobile(props) {
 
                                 <p id="sortByValue" 
                                     onClick={()=> {
-                                        categoryFilter("value",valueFilterAscending);
+                                        typeFilter("value",valueFilterAscending);
                                         setState({valueFilterAscending:!valueFilterAscending})
                                     }}>Value
                                     <i 
@@ -130,9 +130,9 @@ export function FilterOptionsMobile(props) {
                                 
                                 <p id="sortByType" 
                                     onClick={()=> {
-                                        categoryFilter("type",typeFilterAscending);
+                                        typeFilter("type",typeFilterAscending);
                                         setState({typeFilterAscending:!typeFilterAscending})
-                                    }}>Category 
+                                    }}>Type 
                                     <i 
                                         style={{ transform: typeFilterAscending ? 'rotate(0deg)' : 'rotate(180deg)'}}
                                         className='fas fa-chevron-down'
