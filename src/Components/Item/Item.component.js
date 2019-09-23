@@ -61,10 +61,6 @@ export function Item(props) {
                         disenchantItem={props.disenchant} />
                 </div>
 
-                {/* <div className="hoveredInfo">
-                    <p className="infoText">{hoveredInfoText}</p>
-                </div> */}
-
             </div>
 
         </div>

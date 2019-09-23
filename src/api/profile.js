@@ -70,10 +70,21 @@ const searchByQuery = {
   )
 };
 
-const toggleBadge = {
-  get:(itemId,profileId) => 
+const toggleActivate = {
+  get:(activateId,profileId) => 
   tokenRefreshHandler(
-      customAxios.get(`${BASE_URL}/Inventory/toggleBadge/${itemId}/${profileId}`),
+      customAxios.get(`${BASE_URL}/Inventory/toggleActivate/${activateId}/${profileId}`),
+      {
+          headers: getHeaders()
+      }
+  )
+};
+
+const giftItem = {
+  get:(senderId,recieverId,inventoryId) => 
+  tokenRefreshHandler(
+      customAxios.get(`${BASE_URL}/Inventory/giftItem/${senderId}/${recieverId}/${inventoryId}`),
+
       {
           headers: getHeaders()
       }
@@ -87,7 +98,8 @@ export default {
   fetchSortedProfileInventory,
   searchProfileInventory,
   searchByQuery,
-  toggleBadge
+  toggleActivate,
+  giftItem
 };
 
 
