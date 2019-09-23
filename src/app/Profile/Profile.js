@@ -86,10 +86,10 @@ function Profile(props) {
         }
     }
 
-    const toggleBadge = async badgeId => {
+    const toggleBadge = async itemId => {
         
         await profile.toggleBadge.get(
-            badgeId,
+            itemId,
             user.id
         );
         

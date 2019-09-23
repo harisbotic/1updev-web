@@ -85,13 +85,14 @@ function Header(props) {
           <input
             type="search"
             id="mySearch"
+            autoComplete="off"
             placeholder="search user"
             onChange={onChangeHandler}
           />
-          <ul id="myMenu">
+          <ul className="myMenu">
             {userList.userList.map((user, index) => {
               return (
-                <li onClick={selectUser}>
+                <li className="listItem" onClick={selectUser}>
                   {" "}
                   {user.firstName} {user.lastName}{" "}
                 </li>
