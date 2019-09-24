@@ -24,7 +24,7 @@ function Profile(props) {
     const [inventoryList, setInventoryList] = useState([]);
     const [stateChanged, rerenderDOM] = useState(false);
     const [badges, setBadges] = useState([]);
-    const [activeBadges,setActiveBadges] = useState();
+    const [activeBadges, setActiveBadges] = useState([]);
     const [isFetchingInventory, setIsFetchingInv] = useState()
     const [profileInfo, setProfileInfo] = useState({});
     const [userTokens, setUserTokens] = useState();
@@ -52,7 +52,7 @@ function Profile(props) {
             setInventoryList(fetchProfileInventory.data
                 .filter(inventory => !inventory.isActive))
 
-            setBadges(
+            setActiveBadges(
                 fetchProfileInventory.data.filter(
                 inventory =>
                     inventory.isActive && inventory.item.type.name === "Badge"
@@ -70,9 +70,9 @@ function Profile(props) {
 
     },[stateChanged]);
 
-    const refactorBadges = badges => {
-        
-        for(let i=activeBadges;i<3;i++) {
+    const refactorBadges = activeBadges => {
+
+        for(let i=activeBadges.length;i<3;i++) {
             badges.push({
                 "isActive":false,
                 "item":{
@@ -101,7 +101,8 @@ function Profile(props) {
             recieverId,
             inventoryId
         );
-
+        
+        rerenderDOM(!stateChanged);
     };
 
     const searchFilter = async searchText => {
@@ -202,7 +203,7 @@ function Profile(props) {
 
                     <div className="badges">
                         {
-                            refactorBadges(badges)
+                            refactorBadges(activeBadges)
                         }
                         { isFetchingInventory ? 
                             <div></div> :(
@@ -276,7 +277,7 @@ function Profile(props) {
                             currentUsername = {currentUser}
                             pageUsername = {pageUser}
                             disenchant = {disenchantItem}
-                            badgesLenth = {activeBadges}
+                            badgesLength = {badges.length}
                             activateBadge = {toggleBadge}
                             giftItem = {giftItem}
                         /> // Bolji destructure uradit ovde

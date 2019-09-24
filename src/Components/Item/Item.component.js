@@ -25,19 +25,34 @@ export function Item(props) {
         }
         return "none"
     }
+    
+    const {
+        itemId,
+        background,
+        itemType,
+        itemIcon,
+        itemName,
+        itemValue,
+        itemRarity,
+        activateBadge,
+        badgesLength,
+        giftItem,
+        disenchant,
+        inventoryItem,
+    } = props;
 
     return (
 
-        <div className="itemCard" style={{ background: props.background }}>
+        <div className="itemCard" style={{ background: background }}>
 
-            <p className="itemType">{props.itemType}</p>
+            <p className="itemType">{itemType}</p>
 
-            <img src={props.itemIcon} />
+            <img src={itemIcon} />
 
             <div className="itemDetails">
-                <p className="itemName">{props.itemName}</p>
-                <p className="itemValue">{props.itemValue} Tokens</p>
-                <p className="itemRarity">{props.itemRarity}</p>
+                <p className="itemName">{itemName}</p>
+                <p className="itemValue">{itemValue} Tokens</p>
+                <p className="itemRarity">{itemRarity}</p>
             </div>
 
             <div className="hovered" style={{display: checkVisiting()}}>
@@ -45,22 +60,22 @@ export function Item(props) {
                 <div className="buttons">
 
                     <ActivateItemModal
-                        itemId={props.itemId}
-                        itemName={props.itemName}
-                        itemType={props.itemType}
-                        itemValue={props.itemValue}
-                        activateBadge={props.activateBadge}
+                        itemId={itemId}
+                        itemName={itemName}
+                        itemType={itemType}
+                        itemValue={itemValue}
+                        activateBadge={activateBadge}
                         badgesLength = {props.badgesLength} />
 
                     <GiftItemModal
-                        inventoryItem={props.inventoryItem} 
-                        giftItem = {props.giftItem}/>
+                        inventoryItem={inventoryItem} 
+                        giftItem = {giftItem}/>
 
                     <DisenchantModal
-                        itemId={props.itemId}
-                        itemName={props.itemName}
-                        itemValue={props.itemValue}
-                        disenchantItem={props.disenchant} />
+                        itemId={itemId}
+                        itemName={itemName}
+                        itemValue={itemValue}
+                        disenchantItem={disenchant} />
                         
                 </div>
 

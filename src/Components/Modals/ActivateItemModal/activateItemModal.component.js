@@ -20,8 +20,7 @@ const ActivateItemModal = (props) => {
         }
 
     }
-
-
+    
     return (
         <>
             <div className="itemButton activate" onClick={() => setModalShow(true)}>
