@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Dropdown } from "react-bootstrap";
 import { profile } from "../../../api/index";
 import jwtdecode from "jwt-decode";
@@ -11,8 +11,24 @@ import InventoryItemsModal from "../InventoryItemsModal/InventoryItemsModal";
 const GiftItemModal = (props) => {
     const currentUserId = jwtdecode(localStorage.getItem("access_token")).ProfileId;
 
-    const [selectedItem, setSelectedItem] = useState(props.inventoryItem);
+    const [selectedItem, setSelectedItem] = useState({
+        id: 0,
+        item: {
+            name: "",
+            image: "",
+            backgroundColor: ""
+        }
+    });
+
+    useEffect(() => {
+        if (props.inventoryItem){
+            setSelectedItem(props.inventoryItem);
+        }
+    }, [])
+    
     const [selectedUser, setSelectedUser] = useState({});
+
+    console.log(selectedItem);
 
     const [toggleList, setToggleList] = useState("block");
 
@@ -36,6 +52,8 @@ const GiftItemModal = (props) => {
             event.target.value
         );
 
+        console.log(event.target.value);
+
         setUserList({
             userList: searchQueryResponse.data
         });
@@ -52,6 +70,8 @@ const GiftItemModal = (props) => {
         }));
 
         setToggleList("none");
+
+        console.log(user);
 
         setSelectedUser(user);
     }
@@ -79,8 +99,7 @@ const GiftItemModal = (props) => {
                                     <li onClick={(event) => {
                                         onListItemClickHandler(event, user);
                                     }}
-                                        key={index}
-                                        id={user.username}>
+                                        key={index}>
                                         {user.firstName} {user.lastName}
                                     </li>
                                 );
@@ -90,11 +109,15 @@ const GiftItemModal = (props) => {
                     <div className="giftItem">
                         <p>Item: {selectedItem.item.name}</p>
 
+                        {props.inventoryItem ? (
                         <InventoryItemsModal
-                            background={props.inventoryItem.item.backgroundColor}
-                            icon={props.inventoryItem.item.image}
-                            inventoryItem={props.inventoryItem}
+                            background={selectedItem.item.backgroundColor}
+                            icon={selectedItem.item.image}
+                            inventoryItem={selectedItem}
                             setItem={setSelectedItem} />
+                        ) : (
+                            <InventoryItemsModal setItem={setSelectedItem} />
+                        )}
                     </div>
                 </Modal.Body>
 

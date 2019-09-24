@@ -91,6 +91,16 @@ const giftItem = {
   )
 };
 
+const getInventoryValue = {
+  get: profileId => 
+  tokenRefreshHandler(
+    customAxios.get(`${BASE_URL}/inventory/inventoryValue/${profileId}`),
+    {
+      headers: getHeaders()
+    }
+  )
+};
+
 export default {
   profileInfo,
   editProfile,
@@ -99,7 +109,8 @@ export default {
   searchProfileInventory,
   searchByQuery,
   toggleActivate,
-  giftItem
+  giftItem,
+  getInventoryValue
 };
 
 

@@ -14,6 +14,7 @@ import {
 } from "../../Components/FilterOptions/FilterOptions.component";
 import Item from "../../Components/Item/Item.component";
 import LoadingElement from "../../Components/LoadingElement/LoadingElement.component";
+import GiftItemModal from '../../Components/Modals/GiftItemModal/GiftItemModal.component';
 
 import jsonProfileList from "./profile.json";
 
@@ -28,6 +29,7 @@ function Profile(props) {
     const [isFetchingInventory, setIsFetchingInv] = useState()
     const [profileInfo, setProfileInfo] = useState({});
     const [userTokens, setUserTokens] = useState();
+    const [inventoryValue, setInventoryValue] = useState();
 
     const currentUser = jwtdecode(localStorage.getItem("access_token")).Username;
 
@@ -47,6 +49,8 @@ function Profile(props) {
                 profileInfoResponse.data.id
             );
 
+            const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
+
             setProfileInfo(profileInfoResponse.data);
 
             setInventoryList(fetchProfileInventory.data
@@ -59,6 +63,8 @@ function Profile(props) {
                 )   
             );
             
+            setInventoryValue(fetchInventoryValueResponse.data);
+
             setIsFetchingInv(false)
 
             const fetchAvailableTokens = await tokenTransactions.fetchTokenValue.get(profileInfoResponse.data.username);
@@ -178,7 +184,8 @@ function Profile(props) {
                         </div>
                     ) : (
                         <div className="editProfileButton">
-                            <p>SEND GIFT</p>
+                            {/* <p>SEND GIFT</p> */}
+                            <GiftItemModal giftItem={giftItem} />
                         </div>
                     )}
                     
@@ -238,8 +245,7 @@ function Profile(props) {
                         (INVENTORY VALUE:
                         
                         <span className="tokenValue">
-                            {" "}
-                            {jsonProfileList.identity.profile.tokenValue}{" "}
+                            {inventoryValue}
                         </span>
                         
                         Tokens)

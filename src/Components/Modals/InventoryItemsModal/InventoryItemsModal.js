@@ -4,15 +4,17 @@ import { profile } from "../../../api/index";
 import jwtdecode from "jwt-decode";
 import "./InventoryItemsModal.style.scss"
 
-import Item from "../../Item/Item.component";
-
 const InventoryItemModal = (props) => {
     const [modalShow, setModalShow] = useState(false);
     const [itemsList, setItemsList] = useState([]);
 
+    // const [selectedItem, setSelectedItem] = useState({
+    //     background: props.inventoryItem.item.rarity.backgroundColor,
+    //     icon: props.inventoryItem.item.image
+    // });
     const [selectedItem, setSelectedItem] = useState({
-        background: props.inventoryItem.item.rarity.backgroundColor,
-        icon: props.inventoryItem.item.image
+        background: "#79BEFF",
+        icon: ""
     });
 
     const currentUserId = jwtdecode(localStorage.getItem("access_token")).ProfileId;
@@ -33,7 +35,14 @@ const InventoryItemModal = (props) => {
             const fetchProfileInventory = await profile.fetchProfileInventory.get(currentUserId);
 
             setItemsList(fetchProfileInventory.data
-                    .filter(inventory => !inventory.isActive));
+                .filter(inventory => !inventory.isActive));
+        }
+
+        if (props.inventoryItem) {
+            setSelectedItem({
+                background: props.inventoryItem.item.rarity.backgroundColor,
+                icon: props.inventoryItem.item.image
+            })
         }
 
         fetchData();
@@ -43,33 +52,39 @@ const InventoryItemModal = (props) => {
 
     return (
         <>
-            <div className="itemCard" style={{ background: selectedItem.background }} onClick={() => {
-                setModalShow(true);
-            }}>
-                <img src={selectedItem.icon} alt="" />
-            </div>
+            {selectedItem.icon ? (
+                <div className="itemCard" style={{ background: selectedItem.background }} onClick={() => {
+                    setModalShow(true); }}>
+                    <img className="selectedItemIcon" src={selectedItem.icon} alt="" />
+                </div>
+            ) : (
+                    <div className="selectItemCard" style={{ background: selectedItem.background }} onClick={() => {
+                        setModalShow(true); }}>
+                        <img className="noSelectedItemIcon" src="https://icon-library.net/images/three-dots-icon/three-dots-icon-29.jpg" alt="itemCardImage" />
+                    </div>
+                )}
             <Modal show={modalShow} className="inventoryItemsModal">
                 <Modal.Header>
                     <p>Select Item...</p>
                 </Modal.Header>
 
                 <Modal.Body className="inventoryItemsModalList">
-                        {itemsList.map((inventoryItem, index) => {
-                            return (
-                                <div className="itemCard"
+                    {itemsList.map((inventoryItem, index) => {
+                        return (
+                            <div className="itemCard"
                                 key={index}
                                 style={{ background: inventoryItem.item.rarity.backgroundColor }}
                                 onClick={() => {
                                     handleClick(inventoryItem);
                                 }} >
-                                    <img src={inventoryItem.item.image} alt="" />
-                                    <p>{inventoryItem.item.name}</p>
-                                    <p>{inventoryItem.item.value}</p>
-                                </div>
-                            )
-                        })}
+                                <img src={inventoryItem.item.image} alt="" />
+                                <p>{inventoryItem.item.name}</p>
+                                <p>{inventoryItem.item.value}</p>
+                            </div>
+                        )
+                    })}
                 </Modal.Body>
-                
+
                 <Modal.Footer>
                     <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>
                         <p>CANCEL</p>
