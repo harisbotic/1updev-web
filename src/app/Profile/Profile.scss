@@ -82,10 +82,12 @@ body {
     }
 
     .badges {
+      display:flex;
       align-items: flex-start;
       justify-content: space-between;
-      width: 50%;
+      width: 65%;
       box-sizing: border-box;
+      text-align: center;
     }
   }
 }

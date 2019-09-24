@@ -101,6 +101,16 @@ const getInventoryValue = {
   )
 };
 
+const countActiveBadges = {
+  get: profileId => 
+  tokenRefreshHandler(
+    customAxios.get(`${BASE_URL}/Inventory/countActiveBadges/${profileId}`),
+    {
+      headers: getHeaders()
+    }
+  )
+};
+
 export default {
   profileInfo,
   editProfile,
@@ -110,7 +120,8 @@ export default {
   searchByQuery,
   toggleActivate,
   giftItem,
-  getInventoryValue
+  getInventoryValue,
+  countActiveBadges
 };
 
 

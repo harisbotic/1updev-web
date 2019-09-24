@@ -26,7 +26,7 @@ export default function Badge(props) {
     
     return (
         
-        <div className="badge">
+        <div className="badgeHolder">
         
         { item.name != "empty" ?
 

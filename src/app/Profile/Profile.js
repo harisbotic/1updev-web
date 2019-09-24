@@ -24,7 +24,7 @@ function Profile(props) {
 
     const [inventoryList, setInventoryList] = useState([]);
     const [stateChanged, rerenderDOM] = useState(false);
-    const [badges, setBadges] = useState([]);
+    const [activeBadgesCount, changeActiveBadgesCount] = useState();
     const [activeBadges, setActiveBadges] = useState([]);
     const [isFetchingInventory, setIsFetchingInv] = useState()
     const [profileInfo, setProfileInfo] = useState({});
@@ -49,7 +49,13 @@ function Profile(props) {
                 profileInfoResponse.data.id
             );
 
-            const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
+            const fetchActiveBadgesCount = await profile.countActiveBadges.get(
+                profileInfoResponse.data.id
+            );
+
+            // const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
+            
+            changeActiveBadgesCount(fetchActiveBadgesCount.data);
 
             setProfileInfo(profileInfoResponse.data);
 
@@ -63,7 +69,7 @@ function Profile(props) {
                 )   
             );
             
-            setInventoryValue(fetchInventoryValueResponse.data);
+            // setInventoryValue(fetchInventoryValueResponse.data);
 
             setIsFetchingInv(false)
 
@@ -72,22 +78,23 @@ function Profile(props) {
             setUserTokens(fetchAvailableTokens.data);
         }
 
-        fetchData();
+        fetchData();        
 
     },[stateChanged]);
 
-    const refactorBadges = activeBadges => {
+    const fillEmptyBadges = () => { 
 
-        for(let i=activeBadges.length;i<3;i++) {
-            badges.push({
+        for(let i=activeBadges.length;i<3;i++){
+            activeBadges.push({
                 "isActive":false,
                 "item":{
                     "name":"empty"
                 }
             });
         }
+        
     }
-
+   
     const toggleBadge = async itemId => {     
 
         await profile.toggleActivate.get(
@@ -99,8 +106,6 @@ function Profile(props) {
     };
 
     const giftItem = async (senderId,recieverId,inventoryId) => {
-
-        //console.log(senderId, recieverId, inventoryId);
 
         await profile.giftItem.get(
             senderId,
@@ -209,12 +214,10 @@ function Profile(props) {
                     </div>
 
                     <div className="badges">
-                        {
-                            refactorBadges(activeBadges)
-                        }
+                        {fillEmptyBadges()}
                         { isFetchingInventory ? 
                             <div></div> :(
-                            badges.map((badge,value) => {
+                            activeBadges.map((badge,value) => {
                                 return (
                                     <Badge
                                         key = {value}
@@ -283,7 +286,7 @@ function Profile(props) {
                             currentUsername = {currentUser}
                             pageUsername = {pageUser}
                             disenchant = {disenchantItem}
-                            badgesLength = {badges.length}
+                            badgesLength = {activeBadgesCount}
                             activateBadge = {toggleBadge}
                             giftItem = {giftItem}
                         /> // Bolji destructure uradit ovde

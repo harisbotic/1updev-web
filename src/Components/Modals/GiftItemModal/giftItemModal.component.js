@@ -28,8 +28,6 @@ const GiftItemModal = (props) => {
     
     const [selectedUser, setSelectedUser] = useState({});
 
-    console.log(selectedItem);
-
     const [toggleList, setToggleList] = useState("block");
 
     const [inputs, setInputs] = useState({});
