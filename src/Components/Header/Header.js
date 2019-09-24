@@ -12,6 +12,7 @@ function Header(props) {
 
   const handleRedirect = route => {
     props.history.push(route);
+    window.location.reload();
   };
 
   const currentUsername = jwtdecode(localStorage.getItem("access_token"))
@@ -29,9 +30,11 @@ function Header(props) {
     });
   };
 
-  const selectUser = () => {
-
+  const selectUser = (user) => {
+      props.history.push(`/profile/${user.username}`);
+      window.location.reload();
   }
+
 
 
   return (
@@ -51,6 +54,7 @@ function Header(props) {
                 : "header-nav-purple_button"
             }
             onClick={() => handleRedirect(`/profile/${currentUsername}`)}
+
           >
             PROFILE
           </button>
@@ -91,7 +95,9 @@ function Header(props) {
           <ul className="myMenu">
             {userList.userList.map((user, index) => {
               return (
-                <li className="listItem" onClick={selectUser}>
+                <li className="listItem" onClick={() => {
+                  selectUser(user);
+                }}>
                   {" "}
                   {user.firstName} {user.lastName}{" "}
                 </li>
