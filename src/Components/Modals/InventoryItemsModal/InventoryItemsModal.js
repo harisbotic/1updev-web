@@ -54,12 +54,13 @@ const InventoryItemModal = (props) => {
                 </Modal.Header>
 
                 <Modal.Body className="inventoryItemsModalList">
-                        {itemsList.map(inventoryItem => {
+                        {itemsList.map((inventoryItem, index) => {
                             return (
                                 <div className="itemCard"
+                                key={index}
                                 style={{ background: inventoryItem.item.rarity.backgroundColor }}
                                 onClick={() => {
-                                    handleClick(inventoryItem)
+                                    handleClick(inventoryItem);
                                 }} >
                                     <img src={inventoryItem.item.image} alt="" />
                                     <p>{inventoryItem.item.name}</p>

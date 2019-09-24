@@ -5,13 +5,13 @@ body {
 }
 
 .profileDisplayComponent {
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 3fr 3fr;
   align-items: center;
   padding: 3% 10% 0 10%;
   font-family: "Roboto";
   margin-bottom: 10px;
-  font-size: 10px; 
+  font-size: 10px;
 
   .profilePicture {
     max-width: 160px;
@@ -59,7 +59,7 @@ body {
       font-size: 4em;
       margin: 5px 0 5px 0;
     }
-    
+
     .userTitle {
       color: $white;
       font-family: "Roboto";
@@ -71,19 +71,17 @@ body {
     .tokenRelated {
       display: flex;
       flex-direction: row;
-      margin: 5px 0 5px 0;
 
       p {
         color: $white;
         font-family: "Roboto";
         font-weight: $regular;
         font-size: 1.5em;
-        margin: 5px 0 5px 0;
+        margin-right: 10px;
       }
     }
 
     .badges {
-      display: flex;
       align-items: flex-start;
       justify-content: space-between;
       width: 50%;
@@ -168,16 +166,18 @@ body {
   display: none;
 }
 
-
-@media screen and (min-width: $mobile) {
-  .badges {
-    .badge {
-      margin: 0 15px 0 0;
+@media screen and (min-width: $tablets) {
+  .profileDetails {
+    width: 45vw;
+    .badges {
+      .badge {
+        margin: 0 15px 0 0;
+      }
     }
   }
 }
 
-@media screen and (max-width: $mobile) {
+@media screen and (max-width: $small-desktop) {
   .filterOptionsDesktop {
     display: none;
   }
@@ -200,10 +200,14 @@ body {
     text-align: center;
     justify-content: center;
     margin-bottom: 0;
-    font-size:8px;
-    
+    font-size: 8px;
 
     .profileDetails {
+      .tokenRelated {
+        p {
+          margin: 5px;
+        }
+      }
       .editProfileButton {
         width: 100%;
       }
@@ -212,6 +216,10 @@ body {
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
+
+        .badge {
+          margin: 5px;
+        }
       }
     }
 
@@ -234,7 +242,7 @@ body {
   .inventoryContainer {
     display: flex;
     flex-direction: column;
-    font-size:8px;
+    font-size: 8px;
 
     .infoSection {
       display: flex;
@@ -251,6 +259,30 @@ body {
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .inventoryContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 8px;
+
+    .infoSection {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      .infoText{
+        display: flex;
+        flex-direction: column;
+      }
+
+      .heading {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

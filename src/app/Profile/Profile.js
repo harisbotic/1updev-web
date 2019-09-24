@@ -24,7 +24,7 @@ function Profile(props) {
     const [inventoryList, setInventoryList] = useState([]);
     const [stateChanged, rerenderDOM] = useState(false);
     const [badges, setBadges] = useState([]);
-    const [activeBadges,setActiveBadges] = useState(0);
+    const [activeBadges,setActiveBadges] = useState();
     const [isFetchingInventory, setIsFetchingInv] = useState()
     const [profileInfo, setProfileInfo] = useState({});
     const [userTokens, setUserTokens] = useState();
@@ -93,6 +93,8 @@ function Profile(props) {
     };
 
     const giftItem = async (senderId,recieverId,inventoryId) => {
+
+        //console.log(senderId, recieverId, inventoryId);
 
         await profile.giftItem.get(
             senderId,
@@ -205,14 +207,14 @@ function Profile(props) {
                         { isFetchingInventory ? 
                             <div></div> :(
                             badges.map((badge,value) => {
-                            return (
-                                <Badge
-                                    key = {value}
-                                    badgeData = {badge}
-                                    item = {badge.item}
-                                    deactivateBadge = {toggleBadge}
-                                />
-                            );
+                                return (
+                                    <Badge
+                                        key = {value}
+                                        badgeData = {badge}
+                                        item = {badge.item}
+                                        deactivateBadge = {toggleBadge}
+                                    />
+                                );
                             }))
                         }
 

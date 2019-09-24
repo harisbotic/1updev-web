@@ -3,8 +3,8 @@
 .activityLog {
   background: rgba(255, 255, 255, 0.3);
   color: $white;
-  width: 400px;
-  height: 200px;
+  width: 55%;
+  height: 250px;
   border-radius: 25px;
   overflow: auto;
 }
@@ -15,6 +15,7 @@
   justify-content: space-around;
   align-items: center;
   margin-right: 10px;
+  border-bottom: 1px solid $secondary-purple;
 
   .participants {
     max-width: 80%;
@@ -51,9 +52,12 @@
   font-family: "Roboto";
   font-size: 14px;
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  margin: 1.5% 12%;
+  padding: 1.5% 12%;
+  border-radius: 25px;
+  border-bottom: 1px solid $primary-purple;
 
   p {
     margin: 0 0;

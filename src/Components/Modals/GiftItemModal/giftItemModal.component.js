@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Modal, Dropdown } from "react-bootstrap";
 import { profile } from "../../../api/index";
+import jwtdecode from "jwt-decode";
 
 import "./GiftItemModal.style.scss";
-import jwtdecode from "jwt-decode";
 
 import InventoryItemsModal from "../InventoryItemsModal/InventoryItemsModal";
 
 
 const GiftItemModal = (props) => {
-    const username = jwtdecode(localStorage.getItem("access_token")).Username;
+    const currentUserId = jwtdecode(localStorage.getItem("access_token")).ProfileId;
 
-    const[selectedItem, setSelectedItem] = useState(props.inventoryItem);
-    const[selectedUser, setSelectedUser] = useState({});
+    const [selectedItem, setSelectedItem] = useState(props.inventoryItem);
+    const [selectedUser, setSelectedUser] = useState({});
+
+    const [toggleList, setToggleList] = useState("block");
 
     const [inputs, setInputs] = useState({});
 
@@ -22,7 +24,8 @@ const GiftItemModal = (props) => {
         userList: []
     });
 
-    const onChangeHandler = async event => {event.persist();
+    const onChangeHandler = async event => {
+        event.persist();
 
         setInputs(inputs => ({
             ...inputs,
@@ -36,6 +39,8 @@ const GiftItemModal = (props) => {
         setUserList({
             userList: searchQueryResponse.data
         });
+
+        setToggleList("block");
     };
 
     const onListItemClickHandler = (event, user) => {
@@ -46,10 +51,10 @@ const GiftItemModal = (props) => {
             giftToUser: `${user.firstName} ${user.lastName}`
         }));
 
+        setToggleList("none");
+
         setSelectedUser(user);
     }
-
-    const {giftItem}=props;
 
 
     return (
@@ -57,7 +62,7 @@ const GiftItemModal = (props) => {
             <div className="itemButton activate" onClick={() => setModalShow(true)}>
                 <p>SEND GIFT</p>
             </div>
-            
+
             <Modal show={modalShow} className="itemModal giftModal">
 
                 <Modal.Header className="modalHeader">
@@ -67,13 +72,13 @@ const GiftItemModal = (props) => {
                 <Modal.Body>
                     <div className="giftTo">
                         <p>Gift To:</p>
-                        <input type="text" name="giftToUser" onChange={onChangeHandler} value={inputs.giftToUser}/>
-                        <ul className="giftToUserList">
+                        <input type="text" name="giftToUser" onChange={onChangeHandler} value={inputs.giftToUser} />
+                        <ul className="giftToUserList" style={{display: toggleList}}>
                             {userList.userList.map((user, index) => {
                                 return (
                                     <li onClick={(event) => {
                                         onListItemClickHandler(event, user);
-                                        }}
+                                    }}
                                         key={index}
                                         id={user.username}>
                                         {user.firstName} {user.lastName}
@@ -84,20 +89,27 @@ const GiftItemModal = (props) => {
                     </div>
                     <div className="giftItem">
                         <p>Item: {selectedItem.item.name}</p>
-                        
+
                         <InventoryItemsModal
-                        background={props.inventoryItem.item.backgroundColor}
-                        icon={props.inventoryItem.item.image}
-                        inventoryItem={props.inventoryItem}
-                        setItem={setSelectedItem}/>
+                            background={props.inventoryItem.item.backgroundColor}
+                            icon={props.inventoryItem.item.image}
+                            inventoryItem={props.inventoryItem}
+                            setItem={setSelectedItem} />
                     </div>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <div variant="secondary" className="modalButton" onClick={() => {giftItem(); setModalShow(false)}}>
-                        <p>SEND</p>
-                    </div>
-                    <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>
+                    {userList.userList.length != 0 ? (
+                        <div variant="secondary" className="modalButton" onClick={() => { props.giftItem(currentUserId, selectedUser.id, selectedItem.id); setModalShow(false) }}>
+                            <p>SEND</p>
+                        </div>
+                    ) : (
+                            <div className="modalButton" style={{background: "gray"}}>
+                                <p>SEND</p>
+                            </div>
+                        )}
+
+                    <div variant="primary" className="modalButton cancel" onClick={() => setModalShow(false)}>
                         <p>CANCEL</p>
                     </div>
                 </Modal.Footer>
