@@ -38,9 +38,9 @@ body {
 
       p {
         color: $white;
-        padding: 1em;
+        padding: 0.5em;
         font-weight: $bold;
-        font-size: 1.4em;
+        font-size: 1.3em;
       }
 
       &:hover {
@@ -167,6 +167,7 @@ body {
 .activityLogMobile {
   display: none;
 }
+
 
 @media screen and (min-width: $mobile) {
   .badges {

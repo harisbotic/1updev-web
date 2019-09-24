@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Dropdown } from "react-bootstrap";
 import { profile } from "../../../api/index";
-import "./giftItemModal.style.scss";
+
+import "./GiftItemModal.style.scss";
 import jwtdecode from "jwt-decode";
 
 import InventoryItemsModal from "../InventoryItemsModal/InventoryItemsModal";
@@ -48,10 +49,7 @@ const GiftItemModal = (props) => {
         setSelectedUser(user);
     }
 
-    const sendClickHandler = () => {
-        console.log(selectedItem);
-        console.log(selectedUser);
-    }
+    const {giftItem}=props;
 
 
     return (
@@ -59,7 +57,8 @@ const GiftItemModal = (props) => {
             <div className="itemButton activate" onClick={() => setModalShow(true)}>
                 <p>SEND GIFT</p>
             </div>
-            <Modal show={modalShow} className="itemModal">
+            
+            <Modal show={modalShow} className="itemModal giftModal">
 
                 <Modal.Header className="modalHeader">
                     <Modal.Title>Gift Item</Modal.Title>
@@ -95,7 +94,7 @@ const GiftItemModal = (props) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <div variant="secondary" className="modalButton" onClick={() => {sendClickHandler(); setModalShow(false)}}>
+                    <div variant="secondary" className="modalButton" onClick={() => {giftItem(); setModalShow(false)}}>
                         <p>SEND</p>
                     </div>
                     <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>

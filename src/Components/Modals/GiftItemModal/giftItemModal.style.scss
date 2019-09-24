@@ -1,91 +1,94 @@
 @import "../../../Shared/variables.scss";
 
-.modal {
-  display: none;
-  background: transparent;
-  box-shadow: none;
-  font-family: "Roboto";
-}
 
-.modal-header {
-  font-weight: $bold;
-  text-align: center;
-}
+.giftModal {
+  .modal {
+    display: none;
+    background: transparent;
+    box-shadow: none;
+    font-family: "Roboto";
+  }
 
-.modal-content {
-  border-radius: 40px;
-}
+  .modal-header {
+    font-weight: $bold;
+    text-align: center;
+  }
 
-.modal-body {
-  font-weight: $regular;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 25px;
+  .modal-content {
+    border-radius: 40px;
+  }
 
-  .giftTo {
-    float: right;
+  .modal-body {
+    font-weight: $regular;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px;
 
-    input {
-      width: 75%;
-    }
+    .giftTo {
+      float: right;
 
-    .giftToUserList {
-      position: fixed;
-      max-height: 250px;
-      overflow-y: auto;
-      background-color: white;
+      input {
+        width: 75%;
+      }
 
-      li {
-          white-space: normal;
-          padding: 2.5px;
+      .giftToUserList {
+        position: fixed;
+        max-height: 250px;
+        overflow-y: auto;
+        background-color: white;
 
-        &:hover {
-            background: $secondary-purple;
-            color: white;
-            cursor: pointer;
+        li {
+            white-space: normal;
+            padding: 2.5px;
+
+          &:hover {
+              background: $secondary-purple;
+              color: white;
+              cursor: pointer;
+          }
         }
       }
-    }
-    .giftToUserList::-webkit-scrollbar {
-      width: 10px;
-      border: 2px solid $secondary-purple;
-      border-radius: 10px;
+      .giftToUserList::-webkit-scrollbar {
+        width: 10px;
+        border: 2px solid $secondary-purple;
+        border-radius: 10px;
+      }
+
+      .giftToUserList::-webkit-scrollbar-thumb {
+        background-color: $secondary-purple;
+        border-radius: 10px;
+      }
     }
 
-    .giftToUserList::-webkit-scrollbar-thumb {
-      background-color: $secondary-purple;
-      border-radius: 10px;
+    .giftItme {
+      float: left;
     }
   }
 
-  .giftItme {
-    float: left;
-  }
-}
-
-.modalSpan {
-  font-weight: $bold;
-}
-
-.modalButton {
-  font-family: "Roboto";
-  border-radius: $border-radius;
-  background: $secondary-purple;
-  transition: 0.5s ease;
-  text-align: center;
-  padding: 10px;
-  width: 50%;
-  cursor: pointer;
-  margin-top: 10px;
-
-  p {
-    color: white;
+  .modalSpan {
     font-weight: $bold;
-    margin: 0;
   }
 
-  &:hover {
-    opacity: 0.8;
+  .modalButton {
+    font-family: "Roboto";
+    border-radius: $border-radius;
+    background: $secondary-purple;
+    transition: 0.5s ease;
+    text-align: center;
+    padding: 10px;
+    width: 50%;
+    cursor: pointer;
+    margin-top: 10px;
+
+    p {
+      color: white;
+      font-weight: $bold;
+      margin: 0;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

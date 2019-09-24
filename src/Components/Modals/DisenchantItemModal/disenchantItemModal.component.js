@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import "./disenchantItemModal.style.scss";
+import "./DisenchantItemModal.style.scss";
+
 import jwtdecode from "jwt-decode";
 import { tokenTransactions } from "../../../api/index";
 
@@ -15,7 +16,7 @@ const DisenchantModal = (props) => {
             <div className="itemButton activate" onClick={() => setModalShow(true)}>
                 <p>DISENCHANT</p>
             </div>
-            <Modal show={modalShow} className="itemModal">
+            <Modal show={modalShow} className="itemModal disenchantModal">
 
                 <Modal.Header className="modalHeader">
                     <Modal.Title>Disenchant Item</Modal.Title>

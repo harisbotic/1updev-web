@@ -79,7 +79,6 @@ export default function Badge(props) {
                         <p>You are about to deactive your badge <span className="bold">{item.name}</span> </p>
                         <p>Note that this badge will go back to your inventory and you can activate it again whenever you want !</p>
                         <br/>
-                        <p>Click accept to continue</p>
                     </Modal.Body>
                         
                     <Modal.Footer>

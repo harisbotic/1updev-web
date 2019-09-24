@@ -24,6 +24,7 @@ function Profile(props) {
     const [inventoryList, setInventoryList] = useState([]);
     const [stateChanged, rerenderDOM] = useState(false);
     const [badges, setBadges] = useState([]);
+    const [activeBadges,setActiveBadges] = useState(0);
     const [isFetchingInventory, setIsFetchingInv] = useState()
     const [profileInfo, setProfileInfo] = useState({});
     const [userTokens, setUserTokens] = useState();
@@ -70,8 +71,8 @@ function Profile(props) {
     },[stateChanged]);
 
     const refactorBadges = badges => {
-            
-        for(let i=badges.length;i<3;i++) {
+        
+        for(let i=activeBadges;i<3;i++) {
             badges.push({
                 "isActive":false,
                 "item":{
@@ -89,6 +90,16 @@ function Profile(props) {
         );
         
         rerenderDOM(!stateChanged);
+    };
+
+    const giftItem = async (senderId,recieverId,inventoryId) => {
+
+        await profile.giftItem.get(
+            senderId,
+            recieverId,
+            inventoryId
+        );
+
     };
 
     const searchFilter = async searchText => {
@@ -263,7 +274,9 @@ function Profile(props) {
                             currentUsername = {currentUser}
                             pageUsername = {pageUser}
                             disenchant = {disenchantItem}
+                            badgesLenth = {activeBadges}
                             activateBadge = {toggleBadge}
+                            giftItem = {giftItem}
                         /> // Bolji destructure uradit ovde
                         );
                     })}

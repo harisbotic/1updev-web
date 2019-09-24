@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import DisenchantModal from "../Modals/DisenchantItemModal/DisenchantItemModal.component";
+
 import ActivateItemModal from '../Modals/ActivateItemModal/ActivateItemModal.component';
 import GiftItemModal from '../Modals/GiftItemModal/GiftItemModal.component';
+import DisenchantModal from "../Modals/DisenchantItemModal/DisenchantItemModal.component";
+
 
 import "./Item.style.scss";
 
@@ -47,16 +49,19 @@ export function Item(props) {
                         itemName={props.itemName}
                         itemType={props.itemType}
                         itemValue={props.itemValue}
-                        activateBadge={props.activateBadge} />
+                        activateBadge={props.activateBadge}
+                        badgesLength = {props.badgesLength} />
 
                     <GiftItemModal
-                        inventoryItem={props.inventoryItem} />
+                        inventoryItem={props.inventoryItem} 
+                        giftItem = {props.giftItem}/>
 
                     <DisenchantModal
                         itemId={props.itemId}
                         itemName={props.itemName}
                         itemValue={props.itemValue}
                         disenchantItem={props.disenchant} />
+                        
                 </div>
 
             </div>

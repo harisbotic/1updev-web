@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import "./activateItemModal.style.scss";
+import "./ActivateItemModal.style.scss";
 import jwtdecode from "jwt-decode";
 
 
@@ -9,12 +9,14 @@ const ActivateItemModal = (props) => {
 
     const [modalShow, setModalShow] = useState(false);
     const [hoveredInfoText, setHoverText] = useState("Name");
+    
 
     const activationRedirect = type => {
         
         switch(type) {
             case "Badge":
-                props.activateBadge(props.itemId);
+                if(props.badgesLength<3)
+                    props.activateBadge(props.itemId);
         }
 
     }
@@ -25,7 +27,7 @@ const ActivateItemModal = (props) => {
             <div className="itemButton activate" onClick={() => setModalShow(true)}>
                 <p>ACTIVATE</p>
             </div>
-            <Modal show={modalShow} className="itemModal">
+            <Modal show={modalShow} className="itemModal activateModal">
 
                 <Modal.Header className="modalHeader">
                     <Modal.Title>Activate Item</Modal.Title>
@@ -36,7 +38,6 @@ const ActivateItemModal = (props) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    {/* implement onClick for item activation */}
                     <div variant="secondary" className="modalButton" onClick={() => { activationRedirect(props.itemType); setModalShow(false)}}>
                         <p>ACCEPT</p>
                     </div>
