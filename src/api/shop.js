@@ -1,5 +1,33 @@
 import customAxios from './customAxios';
 import { BASE_URL, getHeaders, tokenRefreshHandler } from './shared';
+import React, { useState, useEffect } from "react";
+
+const fetchBadges = {
+    get: () =>
+      tokenRefreshHandler(
+        customAxios.get(`${BASE_URL}/shops/get/badges`, {
+          headers: getHeaders()
+        })
+      )
+};
+
+const fetchSortedShopItems = {
+    get: (sort, order) =>
+      tokenRefreshHandler(
+        customAxios.get(`${BASE_URL}/shops/${sort}/${order}`, {
+          headers: getHeaders()
+        })
+      )
+  };
+  
+  const searchShopItem = {
+    get: ( searchText ) =>
+      tokenRefreshHandler(
+        customAxios.get(`${BASE_URL}/shops/search?searchText=${searchText}`, {
+          headers: getHeaders()
+        })
+      )
+  };
 
 const shopItems = {
     get: () => tokenRefreshHandler(
@@ -68,11 +96,15 @@ const addShopItem = {
     )
 }
 
+
 export default {
     shopItems,
     spinTheWheelItems,
     BuyItem,
     itemTypes,
     itemRarities,
-    addShopItem
+    addShopItem,
+    fetchSortedShopItems,
+    searchShopItem,
+    fetchBadges
 }

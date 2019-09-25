@@ -1,41 +1,58 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import {shop} from '../../api/index';
 
 import "./badges-in-use.styles.scss";
 
 function BadgesInUse() {
-  const badges = [
-    {
-      name: "badge1",
-      type: "badge",
-      id: 1,
-      icon: "fas fa-medal"
-    },
-    {
-      name: "badge2",
-      type: "badge",
-      id: 2,
-      icon: "fas fa-award"
-    },
-    {
-      name: "badge3",
-      type: "badge",
-      id: 3,
-      icon: "fas fa-trophy"
-    }
-  ];
 
-  const [badgesInUse, setBadgesInUse] = useState(badges);
+   const [activeBadges, setBadges] = useState([]);
+  // const { badges } = activeBadges;
+
+
+  /*const fetchData = async () => {
+      
+      const fetchBadges = await shop.fetchBadges.get(
+        );
+        console.log( "bota" );
+        console.log( fetchBadges );
+        setBadges({
+          badges: fetchBadges.data
+      });
+    };
+
+    fetchData();*/
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      const fetchBadges = await shop.fetchBadges.get();
+       console.log( fetchBadges.data, " prvo text pa onda to " )
+        setBadges(fetchBadges.data);
+        console.log( " ramiz " );
+        console.log( activeBadges );
+    }
+
+    fetchData();
+   
+  }, []);
+
+  console.log( " asinkrona" );
+  console.log( activeBadges );
 
   return (
     <div className="badges-parent-div">
+      
+      {console.log(activeBadges), console.log(" eeeee ")}
+
       <div className="badge-text">Badges in use:</div>
       <div className="badges-in-use-container">
-        {badgesInUse.map(badge => {
-          return (
+        { activeBadges.map(badge => {
+          console.log( "pashaaa " );
+          console.log( badge );
+           return (
             <div className="badge-container col-4">
-              <i className={badge.icon}></i>
+              <img src={badge.badgeImage}></img>
             </div>
-          );
+           );
         })}
       </div>
     </div>

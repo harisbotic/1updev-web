@@ -21,40 +21,81 @@ i{
 }
 
 .badges-in-use-container{
-     /* top: 257px;  
-     left: 220px; 
-    width: 449px;
-    height: 133px;
-    opacity: 1;*/
-    // justify-content:space-between;
-    // display:flex;
-    // ova dva iznad umjesto ova tri ispod
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
     grid-column-gap:10px;
     margin-bottom: 10px;
-    // justify-content: center;
 }
 .badge-container{
+    
         display:flex;
         justify-content: center;
-         align-items: center; 
+        align-items: center; 
         box-sizing:border-box;
-        // box-sizing:square;
         min-width:100px;
         min-height:100px;
-        // width:10vw;
-        // height:10vw;
-        // min-width:50px;
-        // min-height:50px;
         max-width:100px;
         max-height:100px;
-         background: #461864 0% 0% no-repeat padding-box; 
-        // background:black;
+         background: #461864 0% 0% no-repeat padding-box;
+        // background-color:lightblue;
         border-radius: 18px;
         opacity: 1;
-    
+        
+        img {
+            align-self: center;
+            height: 64px;
+            width: 64px;
+            color: #ffffff;
+            margin-bottom: 10px;
+          }
 }
+/*.badge-container {
+    width: 70px;
+    height: 70px;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius:15%;
+    // background-color: $primary-purple;
+    background-color:lightblue;
+    cursor:pointer;
+    position: relative;    
+    transition: 0.5s ease-in-out;
+
+    .activeBadge,.inactiveBadge {
+        height: 100%;
+        width:100%;
+        border-radius:15%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .modal-header {
+            text-align: center;
+        }
+
+        .modalClick {
+            position: absolute;
+            top:0;
+            bottom:0;
+            right:0;
+            left:0;
+            border-radius: $border-radius;
+        }
+
+        
+
+    }
+    img {
+        align-self: center;
+        height: 64px;
+        width: 64px;
+        color: #ffffff;
+        margin-bottom: 10px;
+      }
+}*/
+
 @media only screen and (max-width: 768px) {
     i{
         font-size:45px;

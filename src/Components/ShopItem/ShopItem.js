@@ -6,7 +6,6 @@ import BuyItemModal from '../BuyItemModal/BuyItemModal';
 export const ShopItem = (props) => {
 
     const [buyItemModal, setBuyItemModal] = useState("none");
-    // if( props.showModal==true ) setBuyItemModal("block");
 
     return (
         <div className="shopItem">
@@ -46,13 +45,9 @@ export const ShopItem = (props) => {
                         />
                     </div>
                     <div className="shopitem-hoveredInfo">
-                        {/* <p className="shopitem-infoText"> Price: </p> */}
-                        {/* <p className="shopitem-tokenValue">{props.itemPrice}</p>     */}
                         <p className='shopitem-infotext'> Left: </p>
                         <p className='shopitem-tokenValue'> {props.itemQuantity} </p>
                     </div>
-                    {/* <BuyItemModal style = {{ display:buyItemModal }} /> */}
-
                 </div> : ''}
                 
 

@@ -8,6 +8,8 @@ import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 import SpinTheWheelModal from "../../Components/SpinTheWheelModal/SpinTheWheelModal";
 import BuyItemModal from '../../Components/BuyItemModal/BuyItemModal';
 import AddItem from "../../Components/AddItem/AddItem";
+import {FilterOptions} from '../../Components/FilterOptions/FilterOptions.component';
+
 
 import "./Shop.scss";
 
@@ -15,6 +17,7 @@ export const Shop = () => {
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
+
 
   const [filter, setFilter] = useState({
     filteredList: []
@@ -31,27 +34,41 @@ export const Shop = () => {
       setFilter({
         filteredList: shopItemsResponse.data
       });
-    };
+    }
 
     fetchData();
   }, []);
 
-  
+    const categoryFilter = async (sort, isAscending) => {
+    const order = isAscending === true ? "asc" : "desc";
 
-  const searchFilter = searchText => {
-    setFilter({
-      filteredList: filter.filteredList.filter(item =>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-    });
-  };
+    const fetchSortedShopItems = await shop.fetchSortedShopItems.get(
+    sort,
+    order
+    );
+    setShopItems({
+    allShopItems: fetchSortedShopItems.data
+    })
+};
+
+const searchFilter = async searchText => {
+
+  if (searchText === "") searchText = " ";
+
+  const searchShopItem = await shop.searchShopItem.get(
+      searchText
+  );
+
+  setShopItems({
+    allShopItems: searchShopItem.data
+    })
+};
+
 
   return (
     <>
       <div>
-        
-         {/* { Item item = shopItems.allShopItems.Where( x=>x.id == 1 ).SingleOrDefault();}; */}
-        
+
         <SpinTheWheelModal />
         <div className="shop-header row xs-column">
           <div className="in_use col-xs-12 col-lg-6 row">
@@ -85,72 +102,35 @@ export const Shop = () => {
             <div className="infoText">
               <p className="shopText">Shop</p>
             </div>
-            <div className="filterOptionsContainer">
-              <div className="filterOptions">
-                <p id="filter">
-                  Filter<i className="fas fa-chevron-up"></i>
-                </p>
-                <p id="sortByName">
-                  Sort by name<i className="fas fa-chevron-up"></i>
-                </p>
-                <p id="sortByValue">
-                  Sort by value<i className="fas fa-chevron-up"></i>
-                </p>
-
-                <p id="sortByCategory">
-                  Sort by category<i className="fas fa-chevron-up"></i>
-                </p>
-
-                <div className="searchBoxComponent">
-                  <i className="fas fa-search"></i>
-                  <input
-                    type="text"
-                    name="search"
-                    className="searchBox"
-                    onChange={e => searchFilter(e.target.value)}
-                    placeholder="Search items..."
-                  />
-                </div>
-              </div>
-            </div>
+            <FilterOptions
+                searchFilter={searchFilter}
+                categoryFilter={categoryFilter}
+            />
+            {
+            }
+            
           </div>
-
           <div className="itemsContainer">
             <div className="item-card xs-column" id="add">
               <AddItem />
               
             </div>
-            {console.log( shopItems.allShopItems ),
-             console.log( "krelac" )}
             {shopItems.allShopItems.map((item, index) => {
               return (
                 <div>
-                {/* <BuyItemModal 
-                // key={index}
-                itemId={item.itemId}
-                background={item.rarity.background}
-                itemIcon={item.icon}
-                itemName={item.name}
-                itemPrice={item.price}
-                itemValue={item.value}
-                itemType={item.type.name}
-                itemRarity={item.rarity.name}
-                itemActivateValue={item.activatePrice}
-                itemDisenchantValue={item.disenchantValue}
-                />*/}
                 
                 <ShopItem
                   key={index}
                  // itemId={item.id} MUHAMEDE OVO SE MORALO IZBRISATI JER NIJE UZIMALO DOBAR ID. ITEMID JE ID OD ITEMA, KOJI NAM TREBA, A OVO JE NEKI DRUGI
-                  itemQuantity = {item.quantity}
+                   itemQuantity = {item.quantity}
                   itemId={item.itemId}
-                  background={item.rarity.background}
+                  background={ item.rarity.background }
                   itemIcon={item.icon}
-                  itemName={item.name}
+                  itemName={item.name }
                   itemPrice={item.price}
                   itemValue={item.value}
-                  itemType={item.type.name}
-                  itemRarity={item.rarity.name}
+                  itemType = { item.type.name }
+                  itemRarity={ item.rarity.name }
                   itemActivateValue={item.activatePrice}
                   itemDisenchantValue={item.disenchantValue}
                   showModal={"block"}
