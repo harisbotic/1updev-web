@@ -1,37 +1,36 @@
 import React, { useState } from 'react'
-import Modal from 'react-bootstrap/Modal';
+import DisenchantModal from "../Modals/DisenchantItemModal/disenchantItemModal.component";
+import ActivateItemModal from '../Modals/ActivateItemModal/activateItemModal.component';
+import GiftItemModal from '../Modals/GiftItemModal/giftItemModal.component';
 
 import "./Item.style.scss";
 
-export function Item(props){
+export function Item(props) {
     
-    const [modalState,setModalShow] = useState(false);
-    const [modalType,setModalType] = useState("");
-    const [hoveredInfoText,setHoverText] = useState("Name");
-    const [hoveredTokenValue,setHoverTokenValue] = useState("Token Value");
-
-    const changeHeader = type => {
-        if(type==="Badge" || type==="Games" || type==="Skin")
-            setModalType("Activate");
-        else if(type==="Merch")
-            setModalType("Purchasse");
-    }
+    const [hoveredInfoText, setHoverText] = useState("Name");
+    const [hoveredTokenValue, setHoverTokenValue] = useState("Token Value");
 
     const updatePrice = type => {
-        if(type==="Badge" || type==="Games" || type==="Skin")
-            setHoverTokenValue(props.itemActivateValue+" Tokens");
-        else if(type==="Merch")
-            setHoverTokenValue(props.itemValue+" Tokens");
+        if (type === "Badge" || type === "Games" || type === "Skin")
+            setHoverTokenValue(props.itemActivateValue + " Tokens");
+        else if (type === "Merch")
+            setHoverTokenValue(props.itemValue + " Tokens");
     }
 
-        
+    const checkVisiting = () => {
+        if (props.currentUsername == props.pageUsername){
+            return "flex"
+        }
+        return "none"
+    }
+
     return (
-    
-        <div className="itemCard" style={{background:props.background}}>
+
+        <div className="itemCard" style={{ background: props.background }}>
 
             <p className="itemType">{props.itemType}</p>
-            
-            <i className={props.itemIcon}></i>
+
+            <img src={props.itemIcon} />
 
             <div className="itemDetails">
                 <p className="itemName">{props.itemName}</p>
@@ -39,48 +38,35 @@ export function Item(props){
                 <p className="itemRarity">{props.itemRarity}</p>
             </div>
 
-            <div className="hovered" onMouseEnter={()=>changeHeader(props.itemType)}>
+            <div className="hovered" style={{display: checkVisiting()}}>
 
                 <div className="buttons">
-                    <div className="itemButton activate" onClick={()=> setModalShow(true)} onMouseEnter={()=>{setHoverText(modalType);updatePrice(props.itemtype)}}>    
-                        <p>{modalType}</p>
-                    </div>
 
-                    <div className="itemButton gift" onClick={()=> setModalShow(true)} onMouseEnter={()=>{setHoverText("Gifting is free"); setHoverTokenValue("Click to select user !")}}>    
-                        <p>GIFT</p>
-                    </div>
+                    <ActivateItemModal
+                        itemId={props.itemId}
+                        itemName={props.itemName}
+                        itemType={props.itemType}
+                        itemValue={props.itemValue}
+                        activateBadge={props.activateBadge} />
 
-                    <div className="itemButton activate" onClick={()=> setModalShow(true)} onMouseEnter={()=>{setHoverText("Disenchant value"); setHoverTokenValue(props.itemDisenchantValue+" Tokens")}}>                             
-                        <p>DISENCHANT</p>
-                    </div>
+                    <GiftItemModal
+                        itemId={props.itemId}
+                        itemName={props.itemName}
+                        itemValue={props.itemValue} />
+
+                    <DisenchantModal
+                        itemId={props.itemId}
+                        itemName={props.itemName}
+                        itemValue={props.itemValue}
+                        disenchantItem={props.disenchant} />
                 </div>
 
-                <div className="hoveredInfo">
+                {/* <div className="hoveredInfo">
                     <p className="infoText">{hoveredInfoText}</p>
-                    <p className="tokenValue">{hoveredTokenValue}</p>
-                </div>
-
-                <Modal show={modalState} className="itemModal">
-                        
-                    <Modal.Header className="modalHeader">
-                        <Modal.Title>{modalType} Item</Modal.Title>
-                    </Modal.Header>
-                    
-                    <Modal.Body>You are about to {modalType.toLowerCase()} <span className="modalSpan"> {props.itemName}</span> for <span className="modalSpan">{hoveredTokenValue} </span> Tokens </Modal.Body>
-                        <Modal.Footer>
-                        <div variant="secondary" className = "modalButton" onClick={() => {props.disenchantItem(props.itemId)}}>
-                            <p>ACCEPT</p>
-                        </div>
-                        <div variant="primary" className = "modalButton" onClick={() => setModalShow(false)}>
-                            <p>CANCEL</p>
-                        </div>
-                    </Modal.Footer>
-                    
-                </Modal>
-
+                </div> */}
 
             </div>
-        
+
         </div>
 
     )

@@ -12,7 +12,6 @@ function EditProfile(props) {
 
     useEffect(() => {
 
-        console.log(localStorage.getItem('Username'));
 
         const fetchData = async () => {
             const username = props.location.state.username;

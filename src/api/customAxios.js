@@ -32,10 +32,7 @@ customAxios.interceptors.request.use(async (config) => {
         localStorage.setItem('refresh_token', tokenResponse.refresh_token);
         localStorage.setItem('Username', decoded.Username);
         localStorage.setItem('ProfileId', decoded.ProfileId);
-        config.headers.Authorization = `Bearer ${tokenResponse.access_token}`
-
-        console.log(localStorage.getItem('Username'));
-        console.log(decoded);
+        config.headers.Authorization = `Bearer ${tokenResponse.access_token}`;
     }
     return config;
 }, (error) => {

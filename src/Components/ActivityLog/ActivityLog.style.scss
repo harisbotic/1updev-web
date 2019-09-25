@@ -3,7 +3,7 @@
 .activityLog {
   background: rgba(255, 255, 255, 0.3);
   color: $white;
-  width: 400px;
+  width: 500px;
   height: 200px;
   border-radius: 25px;
   overflow: auto;
@@ -15,6 +15,15 @@
   justify-content: space-between;
   align-items: center;
   margin-right: 10px;
+
+  .participants {
+    max-width: 80%;
+    overflow: visible;
+
+    .embolden {
+      font-weight: bold;
+    }
+  }
 }
 
 .scrollableLog {
@@ -53,10 +62,20 @@
 .User-avatar {
   padding: 5px 5px;
   border-radius: 10px;
+  max-width: 30px; 
+  max-height: 30px;
 }
+
+.timestamp {
+  margin-right: 5%;
+}
+
 
 @media screen and (max-width: $mobile) {
 
+  .activityLog{
+    width: 90vw;
+  }
   .activityLogContainer {
 
     .btn {
