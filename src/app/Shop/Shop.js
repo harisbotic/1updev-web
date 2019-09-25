@@ -61,12 +61,8 @@ export const Shop = () => {
 
   return (
     <>
-      <div>
-
-        {/* { Item item = shopItems.allShopItems.Where( x=>x.id == 1 ).SingleOrDefault();}; */}
-
+      <div className="shop">
         <SpinTheWheelModal />
-        {/* <EditItem /> */}
         <div className="shop-header row xs-column">
           <div className="in_use col-xs-12 col-lg-6 row">
             <div className="row">
