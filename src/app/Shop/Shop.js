@@ -45,6 +45,12 @@ export const Shop = () => {
 
   }
 
+  const deleteShopItem = async (id) => {
+
+    await shop.deleteShopItem.remove(id);
+
+  }
+
   const searchFilter = searchText => {
     setFilter({
       filteredList: filter.filteredList.filter(item =>
@@ -152,6 +158,7 @@ export const Shop = () => {
                     itemActivateValue={item.activatePrice}
                     itemDisenchantValue={item.disenchantValue}
                     submitEditForm={submitEditForm}
+                    deleteItem={deleteShopItem}
                   />
                 </div>
               );

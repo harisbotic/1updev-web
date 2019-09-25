@@ -28,6 +28,7 @@ export const ShopItem = (props) => {
                 itemRarity={props.itemRarity}
                 itemRarityId={props.itemRarityId}
                 submitEditForm={props.submitEditForm}
+                deleteItem={props.deleteItem}
             />
             <div className="shopItem">
                 <div className="shopItemCard" style={{ background: props.background }}>

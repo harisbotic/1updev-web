@@ -114,7 +114,7 @@ export default function EditItem(props) {
                                 <button onClick={() => props.modalClose("none")} className="cancelEditButton"><p>CANCEL</p></button>
                             </div>
                             <div className="itemDelete">
-                                <button className="itemDeleteButton" ><p>DELETE ITEM</p></button>
+                                <button className="itemDeleteButton" onClick={() => {props.deleteItem(id)}}><p>DELETE ITEM</p></button>
                             </div>
                         </div>
                     </form>

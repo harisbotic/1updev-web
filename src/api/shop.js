@@ -70,7 +70,6 @@ const addShopItem = {
 
 const editShopItem = {
     update: (id, body) => tokenRefreshHandler(
-        console.log("api call", id),
         customAxios.put(
             `${BASE_URL}/shops/update/${id}`, 
             {
@@ -89,6 +88,17 @@ const editShopItem = {
     )
 };
 
+const deleteShopItem = {
+    remove: (id) => tokenRefreshHandler(
+        customAxios.delete(
+            `${BASE_URL}/shops/delete/${id}`,
+            {
+                headers: getHeaders()
+            }
+        )
+    )
+}
+
 export default {
     shopItems,
     spinTheWheelItems,
@@ -96,5 +106,6 @@ export default {
     itemTypes,
     itemRarities,
     addShopItem,
-    editShopItem
+    editShopItem,
+    deleteShopItem
 }
