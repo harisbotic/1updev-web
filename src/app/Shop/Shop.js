@@ -110,7 +110,7 @@ const searchFilter = async searchText => {
                 <span className="token-count"> {userTokens}</span>
               </div>
               <div className="items-own col-xs-6">
-                ITEMS OWN:
+                ITEM COUNT:
                 <span className="own-count"> {userItems} </span>
               </div>
             </div>
