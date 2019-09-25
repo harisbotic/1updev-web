@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import { shop } from "../../api/index";
 
 import "./AddItem.scss";
 
-function AddItem() {
+function AddItem(props) {
 
   const [modalShowState, setModalShowState] = useState("none");
   const [itemTypesAndRarities, setItemTypesAndRarities] = useState({
@@ -21,9 +20,6 @@ function AddItem() {
     typeId: 0,
     rarityId: 0
   });
-
-  // const [modalItemRarities, setModalItemRarities] = useState({
-  // });
 
   const handleClose = () => setModalShowState("none");
   const handleShow = () => setModalShowState("block");
@@ -86,58 +82,61 @@ function AddItem() {
 
     await shop.addShopItem.post(addItem);
 
+    props.rerender(!props.stateChange);
     handleClose();
   }
- 
-return (
-  <div className="addItem">
-    <i className="fas fa-plus" onClick = {() => handleShow()}></i>
-    <div className="addItemModal" style={{ display: modalShowState }}>
-      <form className="addItemForm" onSubmit={(e) => { submitForm(e); }}>
-        <div className="addItemFormLeft">
-          <label>Add image:
+
+  return (
+    <>
+      <i className="fas fa-plus" onClick={() => handleShow()}></i>
+      <div className="addItem" style={{ display: modalShowState }}>
+        <div className="addItemModal">
+          <form className="addItemForm" id="addItemForm" onSubmit={(e) => { submitForm(e); }}>
+            <div className="addItemFormLeft">
+              <label>Add image:
               <input type="text" name="image" value={image}
-              onChange={(e) => { handleChange(e) }} />
-          </label>
-        </div>
-        <div className="addItemFormRight">
-          <div className="formText">
-            <label>Item name:
+                  onChange={(e) => { handleChange(e) }} />
+              </label>
+            </div>
+            <div className="addItemFormRight">
+              <div className="formText">
+                <label>Item name:
                 <input type="text" name="name" value={name}
-                onChange={(e) => { handleChange(e) }}
-                required />
-            </label><br />
-            <label>Item price:
+                    onChange={(e) => { handleChange(e) }}
+                    required />
+                </label><br />
+                <label>Item price:
                 <input type="number" name="price" value={price}
-                onChange={(e) => { handleChange(e) }}
-                required />
-            </label><br />
-            <label>Disenchant value:
+                    onChange={(e) => { handleChange(e) }}
+                    required />
+                </label><br />
+                <label>Disenchant value:
                 <input type="number" name="value" value={value}
-                onChange={(e) => { handleChange(e) }}
-                required
-              />
-            </label><br />
-            <label>Quantity:
+                    onChange={(e) => { handleChange(e) }}
+                    required
+                  />
+                </label><br />
+                <label>Quantity:
                 <input type="number" name="quantity" value={quantity}
-                onChange={(e) => { handleChange(e) }}
-                required />
-            </label><br />
-            <label>Item type:
+                    onChange={(e) => { handleChange(e) }}
+                    required />
+                </label><br />
+                <label>Item type:
                 <select name="typeId" onChange={(e) => { handleChange(e) }}>{typeOptions}</select>
-            </label><br />
-            <label>Item rarity:
+                </label><br />
+                <label>Item rarity:
                 <select name="rarityId" onChange={(e) => { handleChange(e) }} required>{rarityOptions}</select>
-            </label>
-          </div>
-          <div className="formButtons">
-            <button type="submit" className="addItemFormButton"><p>ADD</p></button>
-            <button className="addItemFormButton" onClick={() => handleClose()}><p>CANCEL</p></button>
-          </div>
+                </label>
+              </div>
+              <div className="formButtons">
+                <button type="submit" form="addItemForm" className="addItemFormButton"><p>ADD</p></button>
+                <button className="addItemFormButton" onClick={() => handleClose()}><p>CANCEL</p></button>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-  </div>
-);
+      </div>
+    </>
+  );
 }
 export default AddItem;

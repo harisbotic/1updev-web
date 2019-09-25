@@ -12,6 +12,8 @@ import AddItem from "../../Components/AddItem/AddItem";
 import "./Shop.scss";
 
 export const Shop = () => {
+
+  const [stateChange, rerenderShop] = useState(false);
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
@@ -34,9 +36,15 @@ export const Shop = () => {
     };
 
     fetchData();
-  }, []);
+  }, [stateChange]);
 
-  
+
+  const submitEditForm = async (id, body) => {
+
+    await shop.editShopItem.update(id, body);
+
+    console.log(id, body);
+  }
 
   const searchFilter = searchText => {
     setFilter({
@@ -49,10 +57,11 @@ export const Shop = () => {
   return (
     <>
       <div>
-        
-         {/* { Item item = shopItems.allShopItems.Where( x=>x.id == 1 ).SingleOrDefault();}; */}
-        
+
+        {/* { Item item = shopItems.allShopItems.Where( x=>x.id == 1 ).SingleOrDefault();}; */}
+
         <SpinTheWheelModal />
+        {/* <EditItem /> */}
         <div className="shop-header row xs-column">
           <div className="in_use col-xs-12 col-lg-6 row">
             <div className="row">
@@ -117,43 +126,34 @@ export const Shop = () => {
 
           <div className="itemsContainer">
             <div className="item-card xs-column" id="add">
-              <AddItem />
-              
+              <AddItem
+                rerender={rerenderShop}
+                stateChange={stateChange}
+              />
+
             </div>
-            {console.log( shopItems.allShopItems ),
-             console.log( "krelac" )}
-            {shopItems.allShopItems.map((item, index) => {
+
+            {shopItems.allShopItems.map((item, value) => {
               return (
                 <div>
-                {/* <BuyItemModal 
-                // key={index}
-                itemId={item.itemId}
-                background={item.rarity.background}
-                itemIcon={item.icon}
-                itemName={item.name}
-                itemPrice={item.price}
-                itemValue={item.value}
-                itemType={item.type.name}
-                itemRarity={item.rarity.name}
-                itemActivateValue={item.activatePrice}
-                itemDisenchantValue={item.disenchantValue}
-                />*/}
-                
-                <ShopItem
-                  key={index}
-                 // itemId={item.id} MUHAMEDE OVO SE MORALO IZBRISATI JER NIJE UZIMALO DOBAR ID. ITEMID JE ID OD ITEMA, KOJI NAM TREBA, A OVO JE NEKI DRUGI
-                  itemQuantity = {item.quantity}
-                  itemId={item.itemId}
-                  background={item.rarity.background}
-                  itemIcon={item.icon}
-                  itemName={item.name}
-                  itemPrice={item.price}
-                  itemValue={item.value}
-                  itemType={item.type.name}
-                  itemRarity={item.rarity.name}
-                  itemActivateValue={item.activatePrice}
-                  itemDisenchantValue={item.disenchantValue}
-                />
+                  <ShopItem
+                    key={value}
+                    id={item.id}
+                    itemQuantity={item.quantity}
+                    itemId={item.itemId}
+                    background={item.rarity.background}
+                    itemIcon={item.image}
+                    itemName={item.name}
+                    itemPrice={item.price}
+                    itemValue={item.value}
+                    itemType={item.type.name}
+                    itemTypeId={item.type.id}
+                    itemRarity={item.rarity.name}
+                    itemRarityId={item.rarity.id}
+                    itemActivateValue={item.activatePrice}
+                    itemDisenchantValue={item.disenchantValue}
+                    submitEditForm={submitEditForm}
+                  />
                 </div>
               );
             })}

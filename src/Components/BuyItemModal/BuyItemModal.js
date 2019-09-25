@@ -14,7 +14,6 @@ import ShopItem from '../ShopItem/ShopItem';
 
 
 export const BuyItemModal = (props) => {
-     console.log( props );
     const [show, setShow] = useState(false);
     const [insufficientTokens, setInsufficientTokens] = useState( "none" );
     const handleClose = () =>{
