@@ -2,6 +2,7 @@
 
 .container {
      background-color: #461864;
+     margin: 0 auto;
      max-width: 100%;
      height: 100vh;
 }
@@ -14,7 +15,7 @@
 .wholeTable {
     background-color: transparentize(white, 0.8);
     border-radius: 25px;
-    width: 100%;
+    width: 97.5%;
     height: 340px;
     color: white;
 }
@@ -26,7 +27,7 @@
   flex-direction: row;
   justify-content: space-between;
   height: 50px;
-  padding-top: 20px;
+  padding-top: 25px;
   text-align: center;
 }
 
@@ -36,37 +37,44 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  //justify-content: space-between;
   text-align: center;
-  padding-top: 20px;
-  //margin-left: -30px;
+  padding-top: 14px;
+  width: 100%;
 }
 
 .username {
-  margin-left: -20px;
+  word-wrap: break-word;
   word-break: break-all;
+  white-space: normal;
+  width: 100%;
+  padding: 0px;
+  margin-left: -6px;
 }
 
 .usernameTitle {
-  margin-left: -20px;
+  margin-left: -29px;
+  padding-left: 24px;
   word-break: break-all;
 }
 
 .specialTitle {
-  padding-left: 8%;
+  padding-left: 37px;
 }
 
 .data_rows {
   display: flex;
   flex-direction: row;
   text-align: left;
+  padding-top: 5px;
+  position: relative;
+  height: 45px;
 }
 
 .data {
-  margin-top: 25px;
+  margin-top: 20px;
   overflow-y: scroll;
-  height: 224px;
-  width: 623px;
+  height: 68%;
+  width: 102.5%;
 }
 
 .data::-webkit-scrollbar {
@@ -81,25 +89,31 @@
 }
 
 .value {
-  padding-left: 6%;
+  padding-left: 8px;
 }
 
 .valueOfInventory {
-  padding-left: 6%;
+  padding-left: 35px;
 }
 
 .badges img {
-  width: 30px;
-  height: 30px;
+  width: 21px;
+  height: 25px;
+  margin-right: 5px;
 }
 
 .ttl {
-  padding-left: 55px;
+  padding-left: 26px;
+}
+
+.orderNumber {
+  text-align: center;
+  padding-left: 7px;
 }
 
 .badges {
   text-align: left;
-  padding-left: 80px;
+  padding-left: 50px;
 }
 
 .badgesIcon {
@@ -107,6 +121,12 @@
 }
 
 .picture img {
-  margin-left: -25px;
-  max-height: 45px;
+  margin-left: -20px;
+  max-height: 35px;
+  position: relative;
+  top: -10px;
+}
+
+@media screen and (max-width: 520px) {
+  
 }

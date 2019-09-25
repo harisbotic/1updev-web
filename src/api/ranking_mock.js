@@ -3,7 +3,7 @@ import images from "../Assets/imageExports";
 export const mockRanks = [
     {
         user: "randomguy",
-        profileImg: images.randomguy,
+        profileImg: images.first,
         title: "Winner 101",
         value: "100k Tokens",
         badges: [
@@ -12,7 +12,7 @@ export const mockRanks = [
     },
     {
         user: "randomgal",
-        profileImg: images.randomgal,
+        profileImg: images.second,
         title: "Over Achiever",
         value: "90k Tokens",
         badges: [
@@ -21,7 +21,7 @@ export const mockRanks = [
     },
     {
         user: "other random girl",
-        profileImg: images.randomgal,
+        profileImg: images.third,
         title: "Insomniac",
         value: "100 Tokens",
         badges: [
@@ -31,7 +31,7 @@ export const mockRanks = [
     },
     {
         user: "random dudebro",
-        profileImg: images.randomguy,
+        profileImg: images.fourth,
         title: "Mildly Dumb",
         value: "190k Tokens",
         badges: [
@@ -39,37 +39,105 @@ export const mockRanks = [
          ]
     },
     {
-        user: "prviprviprviprviprviprviprviprvi",
-        profileImg: images.randomgal,
+        user: "prviprvi prviprviprviprviprviprvi",
+        profileImg: images.fifth,
         title: "Kinda Basic",
-        value: "9k Tokens",
+        value: "19k Tokens",
         badges: [images.badgeTwo]
     },
 
     {
         user: "drugi",
-        profileImg: images.randomguy,
+        profileImg: images.second,
         title: "Kinda Basic",
-        value: "70k Tokens",
+        value: "35k Tokens",
         badges: []
     },
 
     {
         user: "treci",
-        profileImg: images.randomgal,
-        title: "Insomniac",
-        value: "1200k Tokens",
+        profileImg: images.fourth,
+        title: "Winner 101",
+        value: "1500k Tokens",
         badges: [images.badgeOne,
                 images.badgeTwo,
-                images.badgeTwo,
+                images.badgeThree,
             ]
     },
 
     {
         user: "cetvrti",
-        profileImg: images.randomgal,
-        title: "Kinda Basic",
-        value: "450k Tokens",
-        badges: [images.badgeOne]
+        profileImg: images.first,
+        title: "Over Achiever",
+        value: "500k Tokens",
+        badges: [images.badgeOne,
+                images.badgeThree
+        ]
     },
+    {
+        user: "dr mr ing",
+        profileImg: images.fifth,
+        title: "Mildly Dumb",
+        value: "190k Tokens",
+        badges: [
+            images.badgeOne
+         ]
+    },
+    {
+        user: "miss",
+        profileImg: images.second,
+        title: "Insomniac",
+        value: "1100k Tokens",
+        badges: [
+            images.badgeOne,
+            images.badgeTwo,
+            images.badgeThree
+         ]
+    },
+    {
+        user: "mister",
+        profileImg: images.third,
+        title: "Mildly Dumb",
+        value: "190k Tokens",
+        badges: [
+            images.badgeTwo
+         ]
+    },
+    {
+        user: "girl",
+        profileImg: images.fourth,
+        title: "Winner 101",
+        value: "600k Tokens",
+        badges: [
+            images.badgeOne
+         ]
+    },
+    {
+        user: "dude",
+        profileImg: images.first,
+        title: "Kinda Basic",
+        value: "100k Tokens",
+        badges: [
+            images.badgeThree
+         ]
+    },
+    {
+        user: "bro",
+        profileImg: images.fifth,
+        title: "Mildly Dumb",
+        value: "170k Tokens",
+        badges: [
+            images.badgeTwo
+         ]
+    },
+    {
+        user: "dudebro",
+        profileImg: images.fourth,
+        title: "Insomniac",
+        value: "250k Tokens",
+        badges: [
+            images.badgeOne,
+            images.badgeThree
+         ]
+    }
 ];

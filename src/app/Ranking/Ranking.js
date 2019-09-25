@@ -27,7 +27,7 @@ class Ranking extends React.Component {
                     <div class="col-6">
                         <div className="wholeTable">
                         <div className="title">
-                            <div className="name col-6">Ranking table:</div>
+                            <div className="name col-6"> Ranking table:</div>
                             <div className="titleValue col-6">Value^</div>
                         </div>
                         <div className="subtitle">
@@ -39,9 +39,9 @@ class Ranking extends React.Component {
                             <div className="badgesIcon col-3">Badges</div>
                         </div>
                         <div className="data">
-                            {mockRanks.map(x => (
+                            {mockRanks.map((x, index) => (
                                 <div className="data_rows">
-                                    <div className="orderNumber col-1">1</div>
+                                    <div className="orderNumber col-1">{index+1}</div>
                                     <div className="picture col-1">{<img src={x.profileImg}/>}</div>
                                     <div className="username col-2">{x.user}</div>
                                     <div className="ttl col-3">{x.title}</div>
