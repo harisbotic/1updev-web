@@ -43,7 +43,6 @@ export const Shop = () => {
 
     await shop.editShopItem.update(id, body);
 
-    console.log(id, body);
   }
 
   const searchFilter = searchText => {

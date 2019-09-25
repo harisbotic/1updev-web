@@ -34,9 +34,7 @@ function AddItem(props) {
         allItemTypes: itemTypesResponse.data,
         allItemRarities: itemRaritiesResponse.data
       });
-
-      console.log(itemTypesResponse.data);
-      console.log(itemRaritiesResponse.data);
+      
     };
 
     fetchData();
@@ -73,7 +71,6 @@ function AddItem(props) {
       ...addItem,
       [event.target.name]: event.target.value
     }));
-    console.log(addItem);
   }
 
 

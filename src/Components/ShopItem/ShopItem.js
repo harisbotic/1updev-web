@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { shop } from '../../api/index';
 
 import './ShopItem.scss';
 import BuyItemModal from '../BuyItemModal/BuyItemModal';
@@ -11,15 +10,6 @@ export const ShopItem = (props) => {
     const [editItemModalShow, setEditItemModalShow] = useState("none");
 
     const handleShow = () => setEditItemModalShow("block");
-
-    // const submitForm = async (event, id, body) => {
-    //     event.preventDefault();
-
-    //     await shop.editShopItem.update(id, body);
-        
-    //     props.rerender(!props.stateChange);
-    //     console.log(id, body);
-    // }
 
     return (
         <>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { shop } from '../../api/index';
 
 import './EditItem.scss';
-import { async } from 'q';
 
 export default function EditItem(props) {
 
@@ -61,15 +60,6 @@ export default function EditItem(props) {
         return <option key={`option_${rarity.id}`} value={rarity.id}>{rarity.name}</option>;
     });
 
-    // const submitForm = async event => {
-    //     event.preventDefault();
-
-    //     await shop.editShopItem.update(props.id, editItem);
-        
-    //     props.rerender(!props.stateChange);
-    //     console.log(props.id, editItem);
-    // }
-
     const InputHandler = (event) => {
         event.persist();
 
@@ -77,9 +67,6 @@ export default function EditItem(props) {
             ...editItem,
             [event.target.name]: event.target.value
         }));
-
-        console.log("input handler", editItem.id);
-        console.log(editItem);
     }
 
     return (
@@ -123,7 +110,7 @@ export default function EditItem(props) {
                                 </label>
                             </div>
                             <div className="editFormButtons">
-                                <button className="saveEditButton" onClick={() => {console.log("onclick", id); props.submitEditForm(id, editItem); props.modalClose("none")}}><p>SAVE</p></button>
+                                <button className="saveEditButton" onClick={() => { props.submitEditForm(id, editItem); props.modalClose("none") }}><p>SAVE</p></button>
                                 <button onClick={() => props.modalClose("none")} className="cancelEditButton"><p>CANCEL</p></button>
                             </div>
                             <div className="itemDelete">
