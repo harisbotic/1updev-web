@@ -2,6 +2,23 @@ import customAxios from './customAxios';
 import { BASE_URL, getHeaders, tokenRefreshHandler } from './shared';
 import React, { useState, useEffect } from "react";
 
+const fetchAvailableTokens = {
+    get: () =>
+      tokenRefreshHandler(
+        customAxios.get(`${BASE_URL}/shops/tokens`, {
+          headers: getHeaders()
+        })
+      )
+};
+const fetchUserItems = {
+    get: () =>
+      tokenRefreshHandler(
+        customAxios.get(`${BASE_URL}/shops/useritemcount`, {
+          headers: getHeaders()
+        })
+      )
+};
+
 const fetchBadges = {
     get: () =>
       tokenRefreshHandler(
@@ -139,5 +156,7 @@ export default {
     searchShopItem,
     fetchBadges,
     editShopItem,
-    deleteShopItem
+    deleteShopItem,
+    fetchAvailableTokens,
+    fetchUserItems
 }

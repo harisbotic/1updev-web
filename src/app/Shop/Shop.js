@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { shop } from "../../api/index";
+import { profile, tokenTransactions } from "../../api/index";
 
 import ShopItem from '../../Components/ShopItem/ShopItem';
 import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
@@ -8,7 +9,7 @@ import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 import SpinTheWheelModal from "../../Components/SpinTheWheelModal/SpinTheWheelModal";
 import BuyItemModal from '../../Components/BuyItemModal/BuyItemModal';
 import AddItem from "../../Components/AddItem/AddItem";
-import {FilterOptions} from '../../Components/FilterOptions/FilterOptions.component';
+import {FilterOptions,FilterOptionsMobile} from '../../Components/FilterOptions/FilterOptions.component';
 
 
 import "./Shop.scss";
@@ -19,15 +20,16 @@ export const Shop = () => {
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
-
-
   const [filter, setFilter] = useState({
     filteredList: []
   });
+  const[userTokens,setUserTokens] = useState();
+  const[userItems,setUserItems] = useState();
+
 
   useEffect(() => {
     const fetchData = async () => {
-
+      
       const shopItemsResponse = await shop.shopItems.get();
 
       setShopItems({
@@ -36,6 +38,14 @@ export const Shop = () => {
       setFilter({
         filteredList: shopItemsResponse.data
       });
+      
+
+      const fetchAvailableTokens = await shop.fetchAvailableTokens.get();
+      setUserTokens( fetchAvailableTokens.data );
+
+      const fetchUserItems = await shop.fetchUserItems.get();
+      setUserItems( fetchUserItems.data );
+
     }
 
     fetchData();
@@ -97,11 +107,11 @@ const searchFilter = async searchText => {
             <div className="row tmp">
               <div className="available-tokens col-xs-6">
                 AVAILABLE TOKENS:
-                <span className="token-count"> 455</span>
+                <span className="token-count"> {userTokens}</span>
               </div>
               <div className="items-own col-xs-6">
                 ITEMS OWN:
-                <span className="own-count"> 22</span>
+                <span className="own-count"> {userItems} </span>
               </div>
             </div>
           </div>
@@ -116,6 +126,12 @@ const searchFilter = async searchText => {
               <p className="shopText">Shop</p>
             </div>
             <FilterOptions
+                className='filterOptionsDesktop'
+                searchFilter={searchFilter}
+                categoryFilter={categoryFilter}
+            />
+            <FilterOptionsMobile
+                className='filterOptionsMobile'
                 searchFilter={searchFilter}
                 categoryFilter={categoryFilter}
             />
