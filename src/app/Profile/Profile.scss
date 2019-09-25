@@ -16,6 +16,8 @@ body {
   .profilePicture {
     max-width: 160px;
     max-height: 160px;
+    min-width: 160px;
+    min-height: 160px;
     border-radius: 100%;
     cursor: pointer;
 
@@ -25,7 +27,7 @@ body {
   }
 
   .profileDetails {
-    padding: 5%;
+    padding: 5% 5% 20px 5%;
 
     .editProfileButton {
       border-radius: 30px;
@@ -56,16 +58,18 @@ body {
       color: $white;
       font-family: "Roboto";
       font-weight: $bold;
-      font-size: 4em;
+      font-size: 38px;
       margin: 5px 0 5px 0;
+      min-height: 48px;
     }
 
     .userTitle {
       color: $white;
       font-family: "Roboto";
       font-weight: $regular;
-      font-size: 1.5em;
+      font-size: 1.1rem;
       margin: 5px 0 5px 0;
+      min-height: 100%;
     }
 
     .tokenRelated {
@@ -88,6 +92,7 @@ body {
       width: 65%;
       box-sizing: border-box;
       text-align: center;
+      min-height: 70px;
     }
   }
 }
@@ -109,7 +114,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
 
     .infoText {
       display: flex;

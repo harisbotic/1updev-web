@@ -30,6 +30,13 @@ function Profile(props) {
     const [profileInfo, setProfileInfo] = useState({});
     const [userTokens, setUserTokens] = useState();
     const [inventoryValue, setInventoryValue] = useState();
+    
+    const emptyBadge = {
+        "isActive":false,
+        "item":{
+            "name":"empty"
+        }
+    }
 
     const currentUser = jwtdecode(localStorage.getItem("access_token")).Username;
 
@@ -53,7 +60,7 @@ function Profile(props) {
                 profileInfoResponse.data.id
             );
 
-            // const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
+            const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
             
             changeActiveBadgesCount(fetchActiveBadgesCount.data);
 
@@ -69,29 +76,24 @@ function Profile(props) {
                 )   
             );
             
-            // setInventoryValue(fetchInventoryValueResponse.data);
-
-            setIsFetchingInv(false)
+            setInventoryValue(fetchInventoryValueResponse.data);
 
             const fetchAvailableTokens = await tokenTransactions.fetchTokenValue.get(profileInfoResponse.data.username);
 
             setUserTokens(fetchAvailableTokens.data);
+
+            setIsFetchingInv(false)
         }
 
-        fetchData();        
+        fetchData();    
+        fillEmptyBadges();    
 
     },[stateChanged]);
 
     const fillEmptyBadges = () => { 
 
-        for(let i=activeBadges.length;i<3;i++){
-            activeBadges.push({
-                "isActive":false,
-                "item":{
-                    "name":"empty"
-                }
-            });
-        }
+        for(let i=activeBadges.length;i<3;i++)
+            activeBadges.push(emptyBadge);
         
     }
    
@@ -176,6 +178,7 @@ function Profile(props) {
 
             <div className="profileDisplayComponent">
                 
+                
                 <img
                     className="profilePicture"
                     src={`https://robohash.org/${profileInfo.id}`}
@@ -216,7 +219,8 @@ function Profile(props) {
                     <div className="badges">
                         {fillEmptyBadges()}
                         { isFetchingInventory ? 
-                            <div></div> :(
+                            <div></div>
+                            :(
                             activeBadges.map((badge,value) => {
                                 return (
                                     <Badge
@@ -245,13 +249,13 @@ function Profile(props) {
                     <div className="infoText">
                         <p className="inventoryText">Inventory</p>
                         <p className="inventoryValue">
-                        (INVENTORY VALUE:
+                        (INVENTORY VALUE: 
                         
                         <span className="tokenValue">
-                            {inventoryValue}
+                             {inventoryValue} 
                         </span>
                         
-                        Tokens)
+                         Tokens)
                         </p>
                     </div>
 

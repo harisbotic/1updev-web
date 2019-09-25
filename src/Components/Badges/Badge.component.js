@@ -11,7 +11,8 @@ export default function Badge(props) {
     const {
         badgeData,
         item,
-        deactivateBadge
+        deactivateBadge,
+        background
     } = props
 
     const [state,setState] = useState({
@@ -30,7 +31,7 @@ export default function Badge(props) {
         
         { item.name != "empty" ?
 
-            <div className="activeBadge">
+            <div className="activeBadge" style={{ background: background }}>
 
                 <div className="modalClick" onClick={()=>setState({isModalVisible:true})}></div>
 
@@ -76,8 +77,8 @@ export default function Badge(props) {
                     </Modal.Header>
                     
                     <Modal.Body>
-                        <p>You are about to deactive your badge <span className="bold">{item.name}</span> </p>
-                        <p>Note that this badge will go back to your inventory and you can activate it again whenever you want !</p>
+                        You are about to deactive your badge <span className="bold">{item.name}</span>
+                        <br/>Note that this badge will go back to your inventory and you can activate it again whenever you want !
                         <br/>
                     </Modal.Body>
                         
@@ -105,7 +106,7 @@ export default function Badge(props) {
                     </Modal.Header>
                     
                     <Modal.Body>
-                        <p>This badge spot is not active yet, to activate a badge hover over it and than click activate !</p>
+                        This badge spot is not active yet! <br/> To activate a badge hover over it and than click activate.
                     </Modal.Body>
                         
                     <Modal.Footer>
