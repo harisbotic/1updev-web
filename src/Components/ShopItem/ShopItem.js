@@ -44,17 +44,12 @@ export const ShopItem = (props) => {
                     </div>
 
                     <div className="shopitem-hovered" >
-
-
                         <div className='shopitem-hoveredInfo'>
                             <p className="shopitem-infoText"> Price: </p>
                             <p className="shopitem-tokenValue">{props.itemPrice}</p>
                         </div>
                         <div className="shopitem-buttons">
                             <BuyItemModal
-                                // className='vertical-center'
-                                // key={index}
-
                                 itemQuantity={props.itemQuantity}
                                 itemId={props.itemId}
                                 background={props.background}
@@ -71,13 +66,9 @@ export const ShopItem = (props) => {
 
                         </div>
                         <div className="shopitem-hoveredInfo">
-                            {/* <p className="shopitem-infoText"> Price: </p> */}
-                            {/* <p className="shopitem-tokenValue">{props.itemPrice}</p>     */}
                             <p className='shopitem-infotext'> Left: </p>
                             <p className='shopitem-tokenValue'> {props.itemQuantity} </p>
                         </div>
-                        {/* <BuyItemModal style = {{ display:buyItemModal }} /> */}
-
                     </div>
                 </div>
             </div>

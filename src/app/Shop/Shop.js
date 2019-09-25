@@ -6,6 +6,8 @@ import TransactionLog from "../../Components/TransactionLog/Transactionlog.compo
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 import AddItem from "../../Components/AddItem/AddItem";
+import {FilterOptions} from '../../Components/FilterOptions/FilterOptions.component';
+
 
 import "./Shop.scss";
 
@@ -15,6 +17,7 @@ export const Shop = () => {
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
+
 
   const [filter, setFilter] = useState({
     filteredList: []
@@ -31,7 +34,7 @@ export const Shop = () => {
       setFilter({
         filteredList: shopItemsResponse.data
       });
-    };
+    }
 
     fetchData();
   }, [stateChange]);
@@ -43,19 +46,36 @@ export const Shop = () => {
 
   }
 
+    const categoryFilter = async (sort, isAscending) => {
+    const order = isAscending === true ? "asc" : "desc";
+
+    const fetchSortedShopItems = await shop.fetchSortedShopItems.get(
+    sort,
+    order
+    );
+    setShopItems({
+    allShopItems: fetchSortedShopItems.data
+    })
+};
+
+const searchFilter = async searchText => {
+
+  if (searchText === "") searchText = " ";
+
+  const searchShopItem = await shop.searchShopItem.get(
+      searchText
+  );
+
+  setShopItems({
+    allShopItems: searchShopItem.data
+    })
+};
   const deleteShopItem = async (id) => {
 
     await shop.deleteShopItem.remove(id);
 
   }
 
-  const searchFilter = searchText => {
-    setFilter({
-      filteredList: filter.filteredList.filter(item =>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-    });
-  };
 
   return (
     <>
@@ -93,36 +113,14 @@ export const Shop = () => {
             <div className="infoText">
               <p className="shopText">Shop</p>
             </div>
-            <div className="filterOptionsContainer">
-              <div className="filterOptions">
-                <p id="filter">
-                  Filter<i className="fas fa-chevron-up"></i>
-                </p>
-                <p id="sortByName">
-                  Sort by name<i className="fas fa-chevron-up"></i>
-                </p>
-                <p id="sortByValue">
-                  Sort by value<i className="fas fa-chevron-up"></i>
-                </p>
-
-                <p id="sortByCategory">
-                  Sort by category<i className="fas fa-chevron-up"></i>
-                </p>
-
-                <div className="searchBoxComponent">
-                  <i className="fas fa-search"></i>
-                  <input
-                    type="text"
-                    name="search"
-                    className="searchBox"
-                    onChange={e => searchFilter(e.target.value)}
-                    placeholder="Search items..."
-                  />
-                </div>
-              </div>
-            </div>
+            <FilterOptions
+                searchFilter={searchFilter}
+                categoryFilter={categoryFilter}
+            />
+            {
+            }
+            
           </div>
-
           <div className="itemsContainer">
             <div className="item-card xs-column" id="add">
               <AddItem
@@ -153,6 +151,7 @@ export const Shop = () => {
                     itemDisenchantValue={item.disenchantValue}
                     submitEditForm={submitEditForm}
                     deleteItem={deleteShopItem}
+                    showModal={"block"}
                   />
                 </div>
               );

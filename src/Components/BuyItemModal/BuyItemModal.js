@@ -26,10 +26,8 @@ export const BuyItemModal = (props) => {
         const confirmPurchase =  async() =>{
           const BuyItem = await shop.BuyItem.post( props.itemId
         );
-        console.log( BuyItem );
           if( BuyItem.data == false ){
             setInsufficientTokens("block");
-            console.log( "Not enough money" );
           }
           else{
             setInsufficientTokens("none");
