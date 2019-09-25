@@ -14,6 +14,8 @@ import {FilterOptions} from '../../Components/FilterOptions/FilterOptions.compon
 import "./Shop.scss";
 
 export const Shop = () => {
+
+  const [stateChange, rerenderShop] = useState(false);
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
@@ -37,7 +39,14 @@ export const Shop = () => {
     }
 
     fetchData();
-  }, []);
+  }, [stateChange]);
+
+
+  const submitEditForm = async (id, body) => {
+
+    await shop.editShopItem.update(id, body);
+
+  }
 
     const categoryFilter = async (sort, isAscending) => {
     const order = isAscending === true ? "asc" : "desc";
@@ -63,12 +72,16 @@ const searchFilter = async searchText => {
     allShopItems: searchShopItem.data
     })
 };
+  const deleteShopItem = async (id) => {
+
+    await shop.deleteShopItem.remove(id);
+
+  }
 
 
   return (
     <>
-      <div>
-
+      <div className="shop">
         <SpinTheWheelModal />
         <div className="shop-header row xs-column">
           <div className="in_use col-xs-12 col-lg-6 row">
@@ -112,29 +125,36 @@ const searchFilter = async searchText => {
           </div>
           <div className="itemsContainer">
             <div className="item-card xs-column" id="add">
-              <AddItem />
-              
+              <AddItem
+                rerender={rerenderShop}
+                stateChange={stateChange}
+              />
+
             </div>
-            {shopItems.allShopItems.map((item, index) => {
+
+            {shopItems.allShopItems.map((item, value) => {
               return (
                 <div>
-                
-                <ShopItem
-                  key={index}
-                 // itemId={item.id} MUHAMEDE OVO SE MORALO IZBRISATI JER NIJE UZIMALO DOBAR ID. ITEMID JE ID OD ITEMA, KOJI NAM TREBA, A OVO JE NEKI DRUGI
-                   itemQuantity = {item.quantity}
-                  itemId={item.itemId}
-                  background={ item.rarity.background }
-                  itemIcon={item.icon}
-                  itemName={item.name }
-                  itemPrice={item.price}
-                  itemValue={item.value}
-                  itemType = { item.type.name }
-                  itemRarity={ item.rarity.name }
-                  itemActivateValue={item.activatePrice}
-                  itemDisenchantValue={item.disenchantValue}
-                  showModal={"block"}
-                />
+                  <ShopItem
+                    key={value}
+                    id={item.id}
+                    itemQuantity={item.quantity}
+                    itemId={item.itemId}
+                    background={item.rarity.background}
+                    itemIcon={item.image}
+                    itemName={item.name}
+                    itemPrice={item.price}
+                    itemValue={item.value}
+                    itemType={item.type.name}
+                    itemTypeId={item.type.id}
+                    itemRarity={item.rarity.name}
+                    itemRarityId={item.rarity.id}
+                    itemActivateValue={item.activatePrice}
+                    itemDisenchantValue={item.disenchantValue}
+                    submitEditForm={submitEditForm}
+                    deleteItem={deleteShopItem}
+                    showModal={"block"}
+                  />
                 </div>
               );
             })}

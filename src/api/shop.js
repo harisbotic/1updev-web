@@ -31,37 +31,37 @@ const fetchSortedShopItems = {
 
 const shopItems = {
     get: () => tokenRefreshHandler(
-            customAxios.get(
-                `${BASE_URL}/shops/get`,
-                {
-                    headers: getHeaders()
-                }
-            )
+        customAxios.get(
+            `${BASE_URL}/shops/get`,
+            {
+                headers: getHeaders()
+            }
         )
+    )
 };
 
 const spinTheWheelItems = {
     get: () => tokenRefreshHandler(
-            customAxios.get(
-                `${BASE_URL}/Shops/get/SpinTheWheel`,
-                {
-                    headers: getHeaders()
-                }
-            )
+        customAxios.get(
+            `${BASE_URL}/Shops/get/SpinTheWheel`,
+            {
+                headers: getHeaders()
+            }
         )
+    )
 };
 
 const BuyItem = {
     post: (identifier) => tokenRefreshHandler(
-            customAxios.post(
-                `${BASE_URL}/shops/buyItem/${identifier}`,
-                {},
-                {
-                    headers: getHeaders()
-                }
-            )
+        customAxios.post(
+            `${BASE_URL}/shops/buyItem/${identifier}`,
+            {},
+            {
+                headers: getHeaders()
+            }
         )
-}
+    )
+};
 
 const itemTypes = {
     get: () => tokenRefreshHandler(
@@ -94,6 +94,37 @@ const addShopItem = {
             }
         )
     )
+};
+
+const editShopItem = {
+    update: (id, body) => tokenRefreshHandler(
+        customAxios.put(
+            `${BASE_URL}/shops/update/${id}`, 
+            {
+                image: body.image,
+                name: body.name,
+                price: body.price,
+                quantity: body.quantity,
+                value: body.value,
+                typeId: body.typeId,
+                rarityId: body.rarityId
+            },
+            {
+                headers: getHeaders()
+            }
+        )
+    )
+};
+
+const deleteShopItem = {
+    remove: (id) => tokenRefreshHandler(
+        customAxios.delete(
+            `${BASE_URL}/shops/delete/${id}`,
+            {
+                headers: getHeaders()
+            }
+        )
+    )
 }
 
 
@@ -106,5 +137,7 @@ export default {
     addShopItem,
     fetchSortedShopItems,
     searchShopItem,
-    fetchBadges
+    fetchBadges,
+    editShopItem,
+    deleteShopItem
 }

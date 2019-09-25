@@ -28,6 +28,8 @@ function Header(props) {
     });
   };
 
+
+
   return (
     <div className="container-fluid" id="header-container">
       <div className="row" id="header">
@@ -35,12 +37,12 @@ function Header(props) {
           <img className="header-logo" alt="X" src={Logo} />
         </div>
 
-        <div className="col btn">
+        <div className="col">
           <button
             className="header-nav-button"
             id={
               props.location.pathname == "/profile" ||
-              props.location.pathname == "/"
+                props.location.pathname == "/" || props.location.pathname == `/profile/${currentUsername}`
                 ? "header-nav-blue_button"
                 : "header-nav-purple_button"
             }
@@ -93,16 +95,12 @@ function Header(props) {
           </ul>
         </div>
         <div className="col rightWrapper">
-          <img className="header-user-img" alt="X" src={img} />
-
-          <button
-            className="btn dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            style={{ color: "white" }}
-          >
-            @NekoNekic{" "}
-          </button>
+          <a href="/login" className="logoutButton" onClick={() => {
+                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("refresh_token");
+                }}>
+            <i className="fas fa-power-off"></i>
+          </a>
         </div>
       </div>
     </div>

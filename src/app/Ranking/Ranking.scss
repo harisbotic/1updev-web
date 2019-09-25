@@ -1,36 +1,112 @@
 @import "../../Shared/variables.scss";
 
 .container {
-    background-color: #461864;
-    max-width: 100%;
-    height: 100vh;
+     background-color: #461864;
+     max-width: 100%;
+     height: 100vh;
 }
 
 .upper {
-    max-width: 100%;
-    height: 200px;
+     max-width: 100%;
+     height: 200px;
 }
 
 .wholeTable {
-    overflow-y: scroll;
-    border: 1px transparent;
-    //top: 517px;
-    //left: 210px;
-    width: 670px;
-    height: 300px;
-    background-color: #614076;
+    background-color: transparentize(white, 0.8);
     border-radius: 25px;
-    //opacity: 0.7;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    padding: 0 30px 30px 30px;
+    width: 100%;
+    height: 340px;
     color: white;
-    text-align: left;
 }
 
-.tableTitle {
-    //position: fixed;
-    text-align: center;
-    margin-top: 33px;
-    height: 60px;
+.title {
+  font-family: "Roboto";
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: Roboto;
+  font-size: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  //justify-content: space-between;
+  text-align: center;
+  padding-top: 20px;
+  //margin-left: -30px;
+}
+
+.username {
+  margin-left: -20px;
+  word-break: break-all;
+}
+
+.usernameTitle {
+  margin-left: -20px;
+  word-break: break-all;
+}
+
+.specialTitle {
+  padding-left: 8%;
+}
+
+.data_rows {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.data {
+  margin-top: 25px;
+  overflow-y: scroll;
+  height: 224px;
+  width: 623px;
+}
+
+.data::-webkit-scrollbar {
+  width: 10px;
+  border: 0.5px solid $white;
+  border-radius: 10px;
+}
+
+.data::-webkit-scrollbar-thumb {
+  background-color: $white;
+  border-radius: 10px;
+}
+
+.value {
+  padding-left: 6%;
+}
+
+.valueOfInventory {
+  padding-left: 6%;
+}
+
+.badges img {
+  width: 30px;
+  height: 30px;
+}
+
+.ttl {
+  padding-left: 55px;
+}
+
+.badges {
+  text-align: left;
+  padding-left: 80px;
+}
+
+.badgesIcon {
+  padding-left: 60px;
+}
+
+.picture img {
+  margin-left: -25px;
+  max-height: 45px;
 }
