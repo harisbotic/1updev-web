@@ -60,20 +60,13 @@ function Transactionlog() {
     <div className="transaction">
       <div className="transaction_log-container">
         <div className="header_row row">
-          <div className="title col-10">TRANSACTION LOG FOR 24h</div>
-          <div className="time col-2">TIME</div>
+          <div className="transactionLogTitle col-10">TRANSACTION LOG FOR 24h</div>
+          <div className="transactionLogTime col-2">TIME</div>
         </div>
         <div className="transactions">
           {transactionLog.map(transaction => {
             return (
               <div className="transaction_row">
-                {/* <div className="activity_row-img col-2">
-                  <img
-                    src={`https://robohash.org/${transaction.id}?set=set2&size=160x180`}
-                    alt="img"
-                    className="profile_img"
-                  />
-                </div> */}
                 <div className="activity_row-text col-10">
                   <img
                     src={`https://robohash.org/${transaction.id}?set=set2&size=160x180`}

@@ -36,6 +36,11 @@
     flex-direction: row;
   }
 
+  .transaction_log {
+    display: flex;
+    justify-content: center;
+  }
+
   .items-in-use {
     display: inline-flex;
     flex-direction: row;
@@ -149,10 +154,14 @@
       }
     }
 
-    @media only screen and( max-width:768px ) {
+    @media only screen and(max-width: $tablets) {
       .available-tokens,
       .items-own {
         font-size: 18px;
+      }
+
+      .transaction_log {
+        justify-content: space-evenly;
       }
 
       .infoSection {
@@ -188,6 +197,10 @@
       .token-count,
       .own-count {
         font-size: 15px;
+      }
+
+      .transaction_log {
+        height: 250px;
       }
 
       .shopContainer {

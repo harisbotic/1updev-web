@@ -5,8 +5,6 @@ import ShopItem from '../../Components/ShopItem/ShopItem';
 import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
-import SpinTheWheelModal from "../../Components/SpinTheWheelModal/SpinTheWheelModal";
-import BuyItemModal from '../../Components/BuyItemModal/BuyItemModal';
 import AddItem from "../../Components/AddItem/AddItem";
 
 import "./Shop.scss";
@@ -62,7 +60,7 @@ export const Shop = () => {
   return (
     <>
       <div className="shop">
-        <SpinTheWheelModal />
+        {/* <SpinTheWheelModal /> */}
         <div className="shop-header row xs-column">
           <div className="in_use col-xs-12 col-lg-6 row">
             <div className="row">
