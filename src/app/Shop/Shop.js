@@ -98,22 +98,22 @@ export const Shop = () => {
       <div className="shop">
         {/* <SpinTheWheelModal /> */}
         <div className="shop-header row xs-column">
-          <div className="in_use col-xs-12 col-lg-6 row">
+          <div className="in_use col-12 col-lg-6">
             <div className="row">
-              <div className="col-9">
+              <div className="col-9 col-lg-9 no-padding">
                 <BadgesInUse />
               </div>
-              <div className="col-3">
+              <div className="col-3 col-lg-3">
                 <SkinInUse />
               </div>
             </div>
 
             <div className="row tokens_and_items">
-              <div className="available-tokens col-xs-6">
+              <div className="available-tokens col-6 col-lg-12 col-md-12">
                 <p>AVAILABLE TOKENS : </p>
                 <span className="token-count">   {userTokens}</span>
               </div>
-              <div className="items-own col-xs-6">
+              <div className="items-own col-6 col-lg-12 col-md-12">
                 <p>ITEM COUNT:</p>
                 <span className="own-count"> {userItems} </span>
               </div>

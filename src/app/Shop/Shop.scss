@@ -18,7 +18,7 @@
   .items-own {
     display: flex;
     align-items: center;
-    margin-left: 30px;
+    // margin-left: 30px;
     text-align: left;
     p {
       font-family: "Roboto";
@@ -27,14 +27,14 @@
       margin-bottom: 0px;
     }
 
-    margin-right: 20px;
+    // margin-right: 20px;
 
     color: white;
     // margin-bottom: 20px;
   }
 
   .in_use {
-    width: 80%;
+    // width: 80%;
     margin: 0 auto;
     justify-content: flex-start;
   }
@@ -85,7 +85,7 @@
         margin-right: 10px;
       }
 
-      .filterOptionsContainer {
+      // .filterOptionsContainer {
         .filterOptions {
           display: flex;
           flex-direction: row;
@@ -99,7 +99,7 @@
             font-size: 14px;
             font-weight: 500;
             letter-spacing: 0.1px;
-            color: white;
+            color: white !important;
 
             i {
               margin: 0 5px 0 5px;
@@ -111,10 +111,12 @@
 
           p:hover {
             cursor: pointer;
-            color: #712ebd;
+            color: white;
+            // color: #712ebd;
 
             i {
-              color: #712ebd;
+              // color: #712ebd;
+              color: white;
             }
           }
 
@@ -146,7 +148,7 @@
               font-size: 14px;
             }
           }
-        }
+        // }
       }
     }
 
@@ -157,7 +159,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px;
-      margin: -10px;  
+      margin: -10px; 
 
       #add {
         max-height: 180px;
@@ -185,6 +187,10 @@
     .filterOptionsMobile {
       display: none;
     }
+  }
+  .no-padding{
+    padding-left:0px;
+    padding-right:0px;
   }
 
   @media only screen and(max-width: $tablets) {
@@ -232,20 +238,32 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .filterOptionsDesktop {
-    display: none;
-  }
-
-  .filterOptionsMobile {
-    display: block;
-  }
-
-  .available-tokens,
-  .items-own {
-    p {
-      font-size: 1px;
+  .shop{
+    .shopContainer{
+      .filterOptionsDesktop {
+        display: none;
+      }
+    
+      .filterOptionsMobile {
+        display: block;
+      }
     }
   }
+  
+  
+  .shop{
+    .available-tokens,
+    .items-own {
+      p {
+        font-size: 10px;
+      }
+    }
+    .token-count,
+  .own-count {
+    font-size: 12px;
+  }
+  }
+  
   .token-count,
   .own-count {
     font-size: 12px;
