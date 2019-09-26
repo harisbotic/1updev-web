@@ -169,14 +169,10 @@
         }
     }
 
-    .itemCard:active {
-
-        .hovered {
-            opacity:1;
-        }
-    
-    
+    .hovered {
+        display: none;
     }
+
     
 
 }

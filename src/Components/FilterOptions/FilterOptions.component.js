@@ -5,29 +5,28 @@ import "./FilterOptions.style.scss"
 
 export function FilterOptions(props) {
 
+    const [nameFilterAscending,setNameFilterAscending] = useState();
+    const [valueFilterAscending,setValueFilterAscending] = useState();
+    const [typeFilterAscending,setTypeFilterAscending] = useState();
+    const [searchText,setSearchText] = useState();
+
     const {
         searchFilter,
-        typeFilter
+        typeFilter,
+        searchAndSort
     } = props;
-
-    const [state, setState] = useState({});
-
-    const {
-        nameFilterAscending,
-        valueFilterAscending,
-        typeFilterAscending
-    } = state;
 
     return (
 
         <div className="filterOptionsDesktop">                    
             <div className="filterOptions">
+                
                 <p>FILTER</p>
                 
                 <p id="sortByName" 
                     onClick={()=> {
-                        typeFilter("name",nameFilterAscending);
-                        setState({nameFilterAscending:!nameFilterAscending})
+                        searchText != null ? searchAndSort(searchText,"name",nameFilterAscending) : typeFilter("name",nameFilterAscending);
+                        setNameFilterAscending(!nameFilterAscending);
                     }}>Name 
                     <i 
                         style={{ transform: nameFilterAscending ? 'rotate(180deg)' : 'rotate(0deg)' } }  
@@ -37,8 +36,8 @@ export function FilterOptions(props) {
                 
                 <p id="sortByValue" 
                     onClick={()=> {
-                        typeFilter("value",valueFilterAscending);
-                        setState({valueFilterAscending:!valueFilterAscending})
+                        searchText != null ? searchAndSort(searchText,"name",valueFilterAscending) : typeFilter("name",valueFilterAscending);
+                        setValueFilterAscending(!valueFilterAscending)
                     }}>Value 
                     <i 
                         style={{ transform: valueFilterAscending ? 'rotate(180deg)' : 'rotate(0deg)' } }  
@@ -48,8 +47,8 @@ export function FilterOptions(props) {
                 
                 <p id="sortByType" 
                     onClick={()=> {
-                        typeFilter("type",typeFilterAscending);
-                        setState({typeFilterAscending:!typeFilterAscending})
+                        searchText != null ? searchAndSort(searchText,"name",typeFilterAscending) : typeFilter("name",typeFilterAscending);
+                        setTypeFilterAscending(!typeFilterAscending)
                     }}>Type 
                     <i 
                         style={{ transform: typeFilterAscending ? 'rotate(180deg)' : 'rotate(0deg)' } }  
@@ -63,7 +62,7 @@ export function FilterOptions(props) {
                         type="text"
                         name="search"
                         className="searchBox"
-                        onChange={(e) => searchFilter(e.target.value)}
+                        onChange={(e) => {setSearchText(e.target.value);searchFilter(e.target.value)}}
                         placeholder="Search items..."
                     />
                 </div>

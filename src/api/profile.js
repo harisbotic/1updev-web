@@ -60,6 +60,18 @@ const searchProfileInventory = {
     )
 };
 
+const searchAndSortInventory = {
+  get: (profileId,userInput,sort,order) =>
+    tokenRefreshHandler(
+      customAxios.get(
+        `${BASE_URL}/Inventory/sortAndSearchInventory/${profileId}/${userInput}/${sort}/${order}`,
+        {
+          headers: getHeaders()
+        }
+      )
+    )
+};
+
 const searchByQuery = {
   get:query => 
   tokenRefreshHandler(
@@ -121,7 +133,8 @@ export default {
   toggleActivate,
   giftItem,
   getInventoryValue,
-  countActiveBadges
+  countActiveBadges,
+  searchAndSortInventory
 };
 
 

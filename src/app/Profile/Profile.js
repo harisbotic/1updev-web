@@ -118,14 +118,14 @@ function Profile(props) {
         rerenderDOM(!stateChanged);
     };
 
-    const searchFilter = async searchText => {
+    const searchFilter = async userInput => {
     
         setIsFetchingInv(true)
         
-        if (searchText === "") searchText = " ";
+        if (userInput === "") userInput = " ";
 
         const searchProfileInventory = await profile.searchProfileInventory.get(
-            searchText,
+            userInput,
             profileInfo.id
         );
 
@@ -157,6 +157,29 @@ function Profile(props) {
 
     };
 
+    const searchAndSort = async (userInput,sort,isAscending) => {
+
+        setIsFetchingInv(true)
+
+        if (userInput === "") userInput = " ";
+
+        const order = isAscending === true ? "asc" : "desc";
+        
+        const searchAndSortInventory = await profile.searchAndSortInventory.get(
+            profileInfo.id,
+            userInput,
+            sort,
+            order
+        );
+        
+        setInventoryList(searchAndSortInventory.data
+            .filter(inventory=> !inventory.isActive)
+        )
+
+        setIsFetchingInv(false);
+
+    }
+
     const disenchantItem = async (username, itemId) => {
         var newTokensResponse = await tokenTransactions.disenchantItem.post(username, itemId);
         setUserTokens(userTokens + newTokensResponse.data);
@@ -178,12 +201,15 @@ function Profile(props) {
 
             <div className="profileDisplayComponent">
                 
-                
+            <div className="imgContainer">
+                {isFetchingInventory ? <LoadingElement/> : 
                 <img
                     className="profilePicture"
                     src={`https://robohash.org/${profileInfo.id}`}
                     alt="user"
-                />
+                />}
+            </div>
+                
 
                 <div className="profileDetails">
                     {pageUser == currentUser ? (
@@ -249,19 +275,14 @@ function Profile(props) {
                     <div className="infoText">
                         <p className="inventoryText">Inventory</p>
                         <p className="inventoryValue">
-                        (INVENTORY VALUE: 
-                        
-                        <span className="tokenValue">
-                             {inventoryValue} 
-                        </span>
-                        
-                         Tokens)
+                        (INVENTORY VALUE: <span className="tokenValue"> {inventoryValue} </span> Tokens)
                         </p>
                     </div>
 
                     <FilterOptions
                         searchFilter={searchFilter}
                         typeFilter={typeFilter}
+                        searchAndSort={searchAndSort}
                     />
 
                     <FilterOptionsMobile

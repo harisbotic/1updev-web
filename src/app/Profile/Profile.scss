@@ -13,7 +13,7 @@ body {
   margin-bottom: 10px;
   font-size: 10px;
 
-  .profilePicture {
+.imgContainer {
     max-width: 160px;
     max-height: 160px;
     min-width: 160px;
@@ -23,6 +23,14 @@ body {
 
     &:hover {
       background: gray;
+    }
+
+    .loadingContainer {
+      position: relative;
+
+        p {
+          color:$secondary-blue;
+        }
     }
   }
 
@@ -154,6 +162,7 @@ body {
     grid-auto-rows: repeat(auto-fill, minmax(160px, 180px));
     justify-content: space-between;
     grid-gap: 1em;
+
   }
 }
 
