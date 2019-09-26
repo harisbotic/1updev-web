@@ -1,6 +1,6 @@
 @import '../../Shared/variables.scss'; 
 .badge-text{
-width: 242px;
+// width: 242px;
 text-align: left;
 font: Bold 20px/39px Roboto; 
 letter-spacing: 0.36px;
@@ -16,7 +16,7 @@ i{
 .badges-in-use-container{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
-    grid-column-gap:10px;
+    grid-column-gap:3px;
     margin-bottom: 10px;
 }
 .badge-container{
@@ -24,10 +24,6 @@ i{
         justify-content: center;
         align-items: center; 
         box-sizing:border-box;
-        /*min-width:100px;
-        min-height:100px;
-        max-width:100px;
-        max-height:100px;*/
         min-width:85px;
         min-height:85px;
          background: #461864 0% 0% no-repeat padding-box;
@@ -67,10 +63,10 @@ i{
         font-size:45px;
     }
     .badge-container{
-        min-width:60px;
-        min-height:60px;
-        max-width: 60px;
-        max-height:60px;
+        min-width:55px;
+        min-height:55px;
+        max-width: 55px;
+        max-height:55px;
         border-radius:6px;
         img{
             height: 40px;
@@ -78,6 +74,8 @@ i{
         }
     }
     .badge-text{
-        font: Bold 15px/30px Roboto; 
+        font: Bold;
+        font-size:14px;
+        font-family: 'Roboto';
     }
   }

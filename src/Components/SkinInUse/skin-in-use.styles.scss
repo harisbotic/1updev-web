@@ -1,12 +1,8 @@
 @import '../../Shared/variables.scss'; 
 .skin-text{
-        // width: 191px;
-        /* height: 48px; */
         text-align: left;
-        /* font: Bold 36px/61px Roboto; */
         font: Bold 20px/39px Roboto;
         letter-spacing: 0.36px;
-        /* color: #FFFFFF; */
         color:white;
         opacity: 1;
         margin-bottom:0px;
@@ -16,22 +12,15 @@
         display:flex;
         justify-content: space-around;
         align-items: center;
-
-        width: 100px;
-        height: 100px;
-        /* width:10vw; */
-        /* height:10vw; */
-        /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+        width: 85px;
+        height: 85px;
         background:white; 
-        /* privremeno crna boja u upotrebi jer nam je trenutno podloga bjela */
         border-radius: 18px;
-        /* margin-right:40px; */
         opacity: 1;
 }
 .skin1{
-        width: 90px;
-        height: 90px;
-
+        width: 72px;
+        height: 72px;
         background: #2B0D41 0% 0% no-repeat padding-box;
         border-radius: 18px;
         opacity: 1;
@@ -47,23 +36,25 @@
                 border-radius:6px;
         }
         .skin1{
-                width:70px;
-                height:70px;
+                width:65px;
+                height:65px;
                 border-radius:6px;
         }
 }
 @media only screen and (max-width: $mobile ) {
         .skin-text{
-                font: Bold 13px/26px Roboto;
+                font: Bold;
+                font-size:14px;
+                font-family: 'Roboto';
         }
         .skin-container{
-                width:60px;
-                height:60px;
+                width:55px;
+                height:55px;
                 border-radius:6px;
         }
         .skin1{
-                width:50px;
-                height:50px;
+                width:47px;
+                height:47px;
                 border-radius:6px;
         }
 }

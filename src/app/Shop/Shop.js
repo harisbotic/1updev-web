@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { shop } from "../../api/index";
-import { profile, tokenTransactions } from "../../api/index";
-
 import ShopItem from '../../Components/ShopItem/ShopItem';
 import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
@@ -102,13 +100,13 @@ const searchFilter = async searchText => {
               </div>
             </div>
 
-            <div className="row tmp">
+            <div className="row tokens_and_items">
               <div className="available-tokens col-xs-6">
-                AVAILABLE TOKENS:
-                <span className="token-count"> {userTokens}</span>
+                <p>AVAILABLE TOKENS : </p>
+                <span className="token-count">   {userTokens}</span>
               </div>
               <div className="items-own col-xs-6">
-                ITEM COUNT:
+                <p>ITEM COUNT:</p>
                 <span className="own-count"> {userItems} </span>
               </div>
             </div>
@@ -167,7 +165,7 @@ const searchFilter = async searchText => {
                     itemDisenchantValue={item.disenchantValue}
                     submitEditForm={submitEditForm}
                     deleteItem={deleteShopItem}
-                    showModal={"block"}
+                    showModal={"flex"}
                   />
                 </div>
               );
