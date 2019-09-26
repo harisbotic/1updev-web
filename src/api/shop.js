@@ -2,6 +2,15 @@ import customAxios from './customAxios';
 import { BASE_URL, getHeaders, tokenRefreshHandler } from './shared';
 import React, { useState, useEffect } from "react";
 
+const fetchSkin = {
+    get: () =>
+      tokenRefreshHandler(
+        customAxios.get(`${BASE_URL}/shops/skin`, {
+          headers: getHeaders()
+        })
+      )
+};
+
 const fetchAvailableTokens = {
     get: () =>
       tokenRefreshHandler(
@@ -158,5 +167,6 @@ export default {
     editShopItem,
     deleteShopItem,
     fetchAvailableTokens,
-    fetchUserItems
+    fetchUserItems,
+    fetchSkin
 }
