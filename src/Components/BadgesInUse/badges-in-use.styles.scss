@@ -1,8 +1,9 @@
 @import '../../Shared/variables.scss'; 
 .badge-text{
-// width: 242px;
 text-align: left;
-font: Bold 20px/39px Roboto; 
+font-family:'Roboto';
+font-weight: bold;
+font-size:16px;
 letter-spacing: 0.36px;
 color:white;
 opacity: 1;

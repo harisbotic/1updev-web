@@ -16,25 +16,19 @@
 
   .available-tokens,
   .items-own {
+    padding-left:0px;
     display: flex;
     align-items: center;
-    // margin-left: 30px;
     text-align: left;
     p {
       font-family: "Roboto";
       font-size: 15px;
-      // letter-spacing: 0.1px;
       margin-bottom: 0px;
     }
-
-    // margin-right: 20px;
-
     color: white;
-    // margin-bottom: 20px;
   }
 
   .in_use {
-    // width: 80%;
     margin: 0 auto;
     justify-content: flex-start;
   }
@@ -85,7 +79,6 @@
         margin-right: 10px;
       }
 
-      // .filterOptionsContainer {
         .filterOptions {
           display: flex;
           flex-direction: row;
@@ -108,14 +101,11 @@
               font-size: 14px;
             }
           }
-
           p:hover {
             cursor: pointer;
             color: white;
-            // color: #712ebd;
 
             i {
-              // color: #712ebd;
               color: white;
             }
           }
@@ -148,7 +138,6 @@
               font-size: 14px;
             }
           }
-        // }
       }
     }
 
@@ -277,13 +266,15 @@
     flex-direction: column;
 
     .itemsContainer {
-      // display: flex;
-      // flex-direction: column;
-      // flex-wrap: wrap;
       align-self: center;
-      // justify-content: center;
-      // grid-template-columns: 1fr 1fr;
       padding: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .shop{
+    .items-own{
+      padding-left:15px;
     }
   }
 }
