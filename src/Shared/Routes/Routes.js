@@ -12,7 +12,8 @@ function Routes() {
       <div>
         <Switch>
           <Route exact path="/" component={Profile} />
-          <Route exact path="/ranking" component={Ranking} />
+          {/* <Route exact path="/ranking" component={Ranking} /> */}
+          <Route exact path="/ranking/:identifier" component={Ranking} />
           <Route exact path="/shop" component={Shop} />
           <Route exact path="/profile/:identifier" component={Profile} />
           <Route exact path="/editprofile/" component={EditProfile} />

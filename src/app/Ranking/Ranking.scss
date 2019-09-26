@@ -1,10 +1,11 @@
 @import "../../Shared/variables.scss";
 
+
 .container {
-     background-color: #461864;
      margin: 0 auto;
      max-width: 100%;
      height: 100vh;
+     display: flex;
 }
 
 .upper {
@@ -112,7 +113,8 @@
 }
 
 .badges {
-  text-align: left;
+  display: flex;
+  //text-align: left;
   padding-left: 50px;
 }
 
@@ -125,6 +127,33 @@
   max-height: 35px;
   position: relative;
   top: -10px;
+}
+
+// MOJ CSS
+.wrapper {
+  background: url('../../Assets/Group\ 1444.png');
+  padding: 12% 0 0 15%; 
+  .profileDisplayComponent {
+    padding-bottom: 2%;
+    
+  }
+}
+
+
+.profileInfo {
+  color: white;
+  padding: 3% 10% 0 10%;
+  font-family: "Roboto";
+  margin-left: -12.5%;
+
+
+  p {
+    margin-bottom: 5px;
+  }
+
+}
+.profilePicture {
+  margin-left: -30%;
 }
 
 @media screen and (max-width: 520px) {
