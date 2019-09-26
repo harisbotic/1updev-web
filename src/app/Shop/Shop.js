@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { shop } from "../../api/index";
-
 import ShopItem from '../../Components/ShopItem/ShopItem';
 import TransactionLog from "../../Components/TransactionLog/Transactionlog.component";
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 import AddItem from "../../Components/AddItem/AddItem";
-import { FilterOptions } from '../../Components/FilterOptions/FilterOptions.component';
+import {FilterOptions,FilterOptionsMobile} from '../../Components/FilterOptions/FilterOptions.component';
 
 
 import "./Shop.scss";
@@ -22,11 +21,13 @@ export const Shop = () => {
   });
   const [addItemModalShow, setAddItemModalShow] = useState("none");
   const handleShow = () => setAddItemModalShow("flex");
+  const[userTokens,setUserTokens] = useState();
+  const[userItems,setUserItems] = useState();
 
 
   useEffect(() => {
     const fetchData = async () => {
-
+      
       const shopItemsResponse = await shop.shopItems.get();
 
       setShopItems({
@@ -35,6 +36,14 @@ export const Shop = () => {
       setFilter({
         filteredList: shopItemsResponse.data
       });
+      
+
+      const fetchAvailableTokens = await shop.fetchAvailableTokens.get();
+      setUserTokens( fetchAvailableTokens.data );
+
+      const fetchUserItems = await shop.fetchUserItems.get();
+      setUserItems( fetchUserItems.data );
+
     }
 
     fetchData();
@@ -106,14 +115,14 @@ export const Shop = () => {
               </div>
             </div>
 
-            <div className="row tmp">
+            <div className="row tokens_and_items">
               <div className="available-tokens col-xs-6">
-                AVAILABLE TOKENS:
-                <span className="token-count"> 455</span>
+                <p>AVAILABLE TOKENS : </p>
+                <span className="token-count">   {userTokens}</span>
               </div>
               <div className="items-own col-xs-6">
-                ITEMS OWN:
-                <span className="own-count"> 22</span>
+                <p>ITEM COUNT:</p>
+                <span className="own-count"> {userItems} </span>
               </div>
             </div>
           </div>
@@ -128,8 +137,14 @@ export const Shop = () => {
               <p className="shopText">Shop</p>
             </div>
             <FilterOptions
-              searchFilter={searchFilter}
-              categoryFilter={categoryFilter}
+                className='filterOptionsDesktop'
+                searchFilter={searchFilter}
+                categoryFilter={categoryFilter}
+            />
+            <FilterOptionsMobile
+                className='filterOptionsMobile'
+                searchFilter={searchFilter}
+                categoryFilter={categoryFilter}
             />
             {
             }
@@ -161,7 +176,7 @@ export const Shop = () => {
                     itemDisenchantValue={item.disenchantValue}
                     submitEditForm={submitEditForm}
                     deleteItem={deleteShopItem}
-                    showModal={"block"}
+                    showModal={"flex"}
                   />
                 </div>
               );

@@ -16,21 +16,28 @@ import ShopItem from '../ShopItem/ShopItem';
 export const BuyItemModal = (props) => {
     const [show, setShow] = useState(false);
     const [insufficientTokens, setInsufficientTokens] = useState( "none" );
+    const [insufficientItems, setInsufficientItems] = useState("none");
     const handleClose = () =>{
+      setInsufficientItems("none");
       setInsufficientTokens("none");
       setShow(false);
     } 
     const handleShow = () => setShow(true);
     const closeTokens =() => setInsufficientTokens("none");
+    const closeItems = () => setInsufficientItems("none");
 
         const confirmPurchase =  async() =>{
           const BuyItem = await shop.BuyItem.post( props.itemId
         );
-          if( BuyItem.data == false ){
+          if( BuyItem.data == 1 ){
             setInsufficientTokens("block");
+          }
+          else if( BuyItem.data == 0 ){
+            setInsufficientItems("block");
           }
           else{
             setInsufficientTokens("none");
+            setInsufficientItems("none");
             setShow(false);
           }
         }
@@ -72,12 +79,13 @@ export const BuyItemModal = (props) => {
     
             <Modal.Footer>
               <p className='col-6' style={{ display: insufficientTokens }} > You don't have enough money </p>
-                       
+              <p className = 'col-6' style = {{ display:insufficientItems }}> Item quantity is 0 </p>
               <Button 
               variant="primary" 
               onClick={() =>  {
                 confirmPurchase();
                 closeTokens();
+                closeItems();
                }}
               className='yes-button col-3'>
               <div className='col-12'>Yes</div>  

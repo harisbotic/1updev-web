@@ -16,28 +16,40 @@
 
   .available-tokens,
   .items-own {
+    display:flex;
+    align-items:center;
+    margin-left:30px;
     text-align: left;
-    font: Regular 16px/32px Roboto;
+    p{
+      font-family:'Roboto';
+      font-size:15px;
+      // letter-spacing: 0.1px;
+      margin-bottom:0px;
+    }
+  
+    
     margin-right: 20px;
-    letter-spacing: 0.1px;
+    
     color: white;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
 
   .in_use {
     width: 80%;
     margin: 0 auto;
+    justify-content: space-around;
+  }
+  .tokens_and_items{
+      justify-content: center;
+      text-align:center;
   }
 
   .token-count,
   .own-count {
-    width: 38px;
-    height: 29px;
     text-align: left;
-    font: Bold 22px/32px Roboto;
+    font: Bold 20px/25px Roboto;
     letter-spacing: 0.13px;
     color: white;
-    display: inline-flex;
     flex-direction: row;
   }
 
@@ -160,17 +172,34 @@
         }
       }
     }
-  }
-
-  @media only screen and(max-width: $tablets) {
-    .available-tokens,
-    .items-own {
-      font-size: 18px;
+    .filterOptionsDesktop {
+      display: block;
+    }
+    
+    .filterOptionsMobile {
+      display: none;
     }
 
-    .transaction_log {
-      justify-content: space-evenly;
-    }
+    @media only screen and(max-width: $tablets) {
+      
+      .available-tokens,
+      .items-own {
+        p{
+          font-size:12px;
+        }
+      }
+
+      .transaction_log {
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .token-count,
+      .own-count {
+          font-size:13px;
+      }
+
+    
 
     .infoSection {
       display: flex;
@@ -187,33 +216,40 @@
       }
     }
 
-    .xs-column {
-      display: flex;
-      flex-direction: column;
-    }
-    .token-count,
-    .own-count {
-      font-size: 20px;
+      .xs-column {
+        display: flex;
+        flex-direction: column;
+      }
+      
     }
   }
 
-  @media only screen and(max-width:$mobile) {
-    .available-tokens,
-    .items-own {
-      font-size: 11px;
-    }
-    .token-count,
-    .own-count {
-      font-size: 15px;
-    }
-
-    .transaction_log {
-      height: 250px;
-    }
-
-    .shopContainer {
-      display: flex;
-      flex-direction: column;
+    @media only screen and (max-width:480px) {
+      .filterOptionsDesktop {
+        display: none;
+      }
+    
+      .filterOptionsMobile {
+        display: block;
+      }
+        
+        .available-tokens,
+        .items-own {
+          p{
+            font-size: 1px;
+          }
+        }
+        .token-count,
+        .own-count {
+          font-size: 12px;
+        }
+      
+      .transaction_log {
+        height: 250px;
+      }
+      .shopContainer {
+        display: flex;
+        flex-direction: column;
 
       .itemsContainer {
         display: grid;

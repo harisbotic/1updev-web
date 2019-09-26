@@ -1,20 +1,13 @@
 @import '../../Shared/variables.scss'; 
 .badge-text{
-/* top: 183px; */
-/* left: 220px; */
-width: 242px;
-// height: 48px;
+// width: 242px;
 text-align: left;
-/* font: Bold 36px/61px Roboto; */
 font: Bold 20px/39px Roboto; 
 letter-spacing: 0.36px;
-/* color: #FFFFFF; */
 color:white;
 opacity: 1;
 margin-bottom:0px;
 }
-
-/* moram skontat kako da mi badgevi budu responsive */
 i{
     font-size:50px;
     color:$lighter-blue;
@@ -23,21 +16,17 @@ i{
 .badges-in-use-container{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
-    grid-column-gap:10px;
+    grid-column-gap:3px;
     margin-bottom: 10px;
 }
 .badge-container{
-    
         display:flex;
         justify-content: center;
         align-items: center; 
         box-sizing:border-box;
-        min-width:100px;
-        min-height:100px;
-        max-width:100px;
-        max-height:100px;
+        min-width:85px;
+        min-height:85px;
          background: #461864 0% 0% no-repeat padding-box;
-        // background-color:lightblue;
         border-radius: 18px;
         opacity: 1;
         
@@ -46,85 +35,47 @@ i{
             height: 64px;
             width: 64px;
             color: #ffffff;
-            margin-bottom: 10px;
           }
 }
-/*.badge-container {
-    width: 70px;
-    height: 70px;
-    max-width: 70px;
-    max-height: 70px;
-    border-radius:15%;
-    // background-color: $primary-purple;
-    background-color:lightblue;
-    cursor:pointer;
-    position: relative;    
-    transition: 0.5s ease-in-out;
-
-    .activeBadge,.inactiveBadge {
-        height: 100%;
-        width:100%;
-        border-radius:15%;
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-
-        .modal-header {
-            text-align: center;
-        }
-
-        .modalClick {
-            position: absolute;
-            top:0;
-            bottom:0;
-            right:0;
-            left:0;
-            border-radius: $border-radius;
-        }
-
-        
-
-    }
-    img {
-        align-self: center;
-        height: 64px;
-        width: 64px;
-        color: #ffffff;
-        margin-bottom: 10px;
-      }
-}*/
 
 @media only screen and (max-width: 768px) {
     i{
         font-size:45px;
     }
     .badge-container{
-        min-width:80px;
-        min-height:80px;
-        max-width: 80px;
-        max-height:80px ;
-        // width:80px;
-        // height:80px;
+        min-width:75px;
+        min-height:75px;
+        max-width: 75px;
+        max-height:75px ;
         border-radius:6px;
+        img{
+            height: 55px;
+            width: 55px;
+        }
     }
     .badge-text{
         font: Bold 20px/39px Roboto; 
     }
+    
   }
 @media only screen and (max-width: $mobile ) {
     i{
         font-size:45px;
     }
     .badge-container{
-        min-width:60px;
-        min-height:60px;
-        max-width: 60px;
-        max-height:60px ;
+        min-width:55px;
+        min-height:55px;
+        max-width: 55px;
+        max-height:55px;
         border-radius:6px;
+        img{
+            height: 40px;
+            width: 40px;
+        }
     }
     .badge-text{
-        font: Bold 15px/30px Roboto; 
+        font: Bold;
+        font-size:14px;
+        font-family: 'Roboto';
     }
   }

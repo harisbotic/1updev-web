@@ -43,7 +43,8 @@ export const ShopItem = (props) => {
                         <p className="shopItemRarity">{props.itemRarity}</p>
                     </div>
 
-                    <div className="shopitem-hovered" >
+                    <div className="shopitem-hovered" style={{ display: props.showModal }} >
+
                         <div className='shopitem-hoveredInfo'>
                             <p className="shopitem-infoText"> Price: </p>
                             <p className="shopitem-tokenValue">{props.itemPrice}</p>
