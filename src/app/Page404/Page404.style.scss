@@ -3,7 +3,6 @@
 .page404 {
   .wrapper404 {
     position: fixed;
-    height: 50vh;
     width: 65vw;
     background-color: white;
     top: 25vh;
@@ -11,30 +10,45 @@
     border-radius: 5px;
     padding: 35px;
     font-family: "Roboto light";
-    border: 1px solid black;
     -webkit-box-shadow: 0 16px 12px -12px black;
     -moz-box-shadow: 0 16px 12px -12px black;
     box-shadow: 0 16px 12px -12px black;
 
-    .homeButton {
-      border-radius: 15px;
-      text-align: center;
-      background: $secondary-purple;
-      width: 125px;
-      height: 40px;
-      line-height: 40px;
-      cursor: pointer;
-      transition: 0.2s;
-      margin: 5px 0 5px 0;
-      color: white;
-
-      p {
-        padding: 10px;
-        font-size: 14px;
+    .header404 {
+      p{
+        font-size: 32px;
+        white-space: normal;
       }
 
-      &:hover {
-        opacity: 0.9;
+    }
+
+    .body404 {
+      p {
+        white-space: normal;
+      }
+    }
+
+    .footer404 {
+      .profileButton {
+        border-radius: 15px;
+        text-align: center;
+        background: $secondary-purple;
+        width: 125px;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        transition: 0.2s;
+        margin: 5px 0 5px 0;
+        color: white;
+
+        p {
+          padding: 10px;
+          font-size: 14px;
+        }
+
+        &:hover {
+          opacity: 0.9;
+        }
       }
     }
   }

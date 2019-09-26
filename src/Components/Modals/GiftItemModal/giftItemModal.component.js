@@ -12,23 +12,14 @@ const GiftItemModal = (props) => {
     const currentUserId = jwtdecode(localStorage.getItem("access_token")).ProfileId;
 
     const [selectedItem, setSelectedItem] = useState({
-        id: 0,
+        id: "",
         item: {
             name: "",
             image: "",
             backgroundColor: ""
         }
     });
-
-    useEffect(() => {
-        if (props.inventoryItem){
-            setSelectedItem(props.inventoryItem);
-        }
-    }, [])
-    
     const [selectedUser, setSelectedUser] = useState({});
-
-    console.log(selectedItem);
 
     const [toggleList, setToggleList] = useState("block");
 
@@ -39,6 +30,31 @@ const GiftItemModal = (props) => {
     const [userList, setUserList] = useState({
         userList: []
     });
+
+
+
+    useEffect(() => {
+
+        const checkProps = async () => {
+            if (props.inventoryItem) {
+                setSelectedItem(props.inventoryItem);
+            }
+    
+            if (props.giftToUser){
+                const giftToUserResponse = await profile.profileInfo.get(props.giftToUser);
+                console.log("gift To User: ", giftToUserResponse.data);
+
+                setSelectedUser(giftToUserResponse.data);
+
+                setInputs(inputs => ({
+                    ...inputs,
+                    giftToUser: `${giftToUserResponse.data.firstName} ${giftToUserResponse.data.lastName}`
+                }));
+            }
+        }
+
+        checkProps();
+    }, [])
 
     const onChangeHandler = async event => {
         event.persist();
@@ -71,8 +87,6 @@ const GiftItemModal = (props) => {
 
         setToggleList("none");
 
-        console.log(user);
-
         setSelectedUser(user);
     }
 
@@ -93,7 +107,7 @@ const GiftItemModal = (props) => {
                     <div className="giftTo">
                         <p>Gift To:</p>
                         <input type="text" name="giftToUser" onChange={onChangeHandler} value={inputs.giftToUser} />
-                        <ul className="giftToUserList" style={{display: toggleList}}>
+                        <ul className="giftToUserList" style={{ display: toggleList }}>
                             {userList.userList.map((user, index) => {
                                 return (
                                     <li onClick={(event) => {
@@ -110,24 +124,24 @@ const GiftItemModal = (props) => {
                         <p>Item: {selectedItem.item.name}</p>
 
                         {props.inventoryItem ? (
-                        <InventoryItemsModal
-                            background={selectedItem.item.backgroundColor}
-                            icon={selectedItem.item.image}
-                            inventoryItem={selectedItem}
-                            setItem={setSelectedItem} />
+                            <InventoryItemsModal
+                                background={selectedItem.item.backgroundColor}
+                                icon={selectedItem.item.image}
+                                inventoryItem={selectedItem}
+                                setItem={setSelectedItem} />
                         ) : (
-                            <InventoryItemsModal setItem={setSelectedItem} />
-                        )}
+                                <InventoryItemsModal setItem={setSelectedItem} />
+                            )}
                     </div>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    {userList.userList.length != 0 ? (
+                    {selectedUser && selectedItem.id ? (
                         <div variant="secondary" className="modalButton" onClick={() => { props.giftItem(currentUserId, selectedUser.id, selectedItem.id); setModalShow(false) }}>
                             <p>SEND</p>
                         </div>
                     ) : (
-                            <div className="modalButton" style={{background: "gray"}}>
+                            <div className="modalButton" style={{ background: "gray" }}>
                                 <p>SEND</p>
                             </div>
                         )}

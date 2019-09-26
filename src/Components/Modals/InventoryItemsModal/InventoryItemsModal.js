@@ -2,16 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { profile } from "../../../api/index";
 import jwtdecode from "jwt-decode";
-import "./InventoryItemsModal.style.scss"
+import "./InventoryItemsModal.style.scss";
 
 const InventoryItemModal = (props) => {
     const [modalShow, setModalShow] = useState(false);
     const [itemsList, setItemsList] = useState([]);
 
-    // const [selectedItem, setSelectedItem] = useState({
-    //     background: props.inventoryItem.item.rarity.backgroundColor,
-    //     icon: props.inventoryItem.item.image
-    // });
     const [selectedItem, setSelectedItem] = useState({
         background: "#79BEFF",
         icon: ""
@@ -47,8 +43,6 @@ const InventoryItemModal = (props) => {
 
         fetchData();
     }, []);
-
-    const { itemList } = itemsList;
 
     return (
         <>

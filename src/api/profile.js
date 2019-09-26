@@ -15,6 +15,10 @@ const profileInfo = {
     tokenRefreshHandler(
       customAxios.get(`${BASE_URL}/profiles/${identifier}`, {
         headers: getHeaders()
+      }).catch(error => {
+        if (error.response.status == 500) {
+          window.location.replace(window.location.origin + "/404");
+        }
       })
     )
 };
@@ -61,44 +65,44 @@ const searchProfileInventory = {
 };
 
 const searchByQuery = {
-  get:query => 
-  tokenRefreshHandler(
+  get: query =>
+    tokenRefreshHandler(
       customAxios.get(`${BASE_URL}/Profiles/getByQuery?=${query}`),
       {
-          headers: getHeaders()
+        headers: getHeaders()
       }
-  )
+    )
 };
 
 const toggleActivate = {
-  get:(activateId,profileId) => 
-  tokenRefreshHandler(
+  get: (activateId, profileId) =>
+    tokenRefreshHandler(
       customAxios.get(`${BASE_URL}/Inventory/toggleActivate/${activateId}/${profileId}`),
       {
-          headers: getHeaders()
+        headers: getHeaders()
       }
-  )
+    )
 };
 
 const giftItem = {
-  get:(senderId,recieverId,inventoryId) => 
-  tokenRefreshHandler(
+  get: (senderId, recieverId, inventoryId) =>
+    tokenRefreshHandler(
       customAxios.get(`${BASE_URL}/Inventory/giftItem/${senderId}/${recieverId}/${inventoryId}`),
 
       {
-          headers: getHeaders()
+        headers: getHeaders()
       }
-  )
+    )
 };
 
 const getInventoryValue = {
-  get: profileId => 
-  tokenRefreshHandler(
-    customAxios.get(`${BASE_URL}/inventory/inventoryValue/${profileId}`),
-    {
-      headers: getHeaders()
-    }
-  )
+  get: profileId =>
+    tokenRefreshHandler(
+      customAxios.get(`${BASE_URL}/inventory/inventoryValue/${profileId}`),
+      {
+        headers: getHeaders()
+      }
+    )
 };
 
 export default {

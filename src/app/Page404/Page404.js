@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import jwtdecode from 'jwt-decode';
+import Logo from "../../Assets/logo.png";
 
 import "./Page404.style.scss";
 
@@ -10,14 +11,23 @@ function Page404(props) {
         props.history.push(`/profile/${currentUser}`);
     }
 
-    return(
+    return (
         <div className="page404">
             <div className="wrapper404">
-                <h1 className="header404">Page Not Found</h1>
-                <hr/>
-                <p>The requested page does not exist!</p>
-                <p>Please go to the 1UpDev home page by clicking the button below</p>
-                <div className="homeButton" onClick={handleClick}>1UpDev Home</div>
+                <div className="header404">
+                    <p>Page Not Found</p>
+                </div>
+                <div className="body404">
+                    <hr />
+                    <p>The requested page does not exist!</p>
+                    <p>Please go to your 1UpDev Profile Page by clicking/tapping the button below.</p>
+                </div>
+                <hr />
+
+                <div className="footer404">
+                    <div className="profileButton" onClick={handleClick}>Profile Page</div>
+                </div>
+
             </div>
         </div>
     )

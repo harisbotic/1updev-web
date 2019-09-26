@@ -22,14 +22,17 @@ import "./Profile.scss";
 
 function Profile(props) {
 
+    const [profileInfo, setProfileInfo] = useState({});
     const [inventoryList, setInventoryList] = useState([]);
-    const [stateChanged, rerenderDOM] = useState(false);
+    const [isFetchingInventory, setIsFetchingInv] = useState();
+
     const [badges, setBadges] = useState([]);
     const [activeBadges, setActiveBadges] = useState([]);
-    const [isFetchingInventory, setIsFetchingInv] = useState()
-    const [profileInfo, setProfileInfo] = useState({});
+
     const [userTokens, setUserTokens] = useState();
     const [inventoryValue, setInventoryValue] = useState();
+    
+    const [stateChanged, rerenderDOM] = useState(false);
 
     const currentUser = jwtdecode(localStorage.getItem("access_token")).Username;
 
@@ -102,13 +105,18 @@ function Profile(props) {
 
         //console.log(senderId, recieverId, inventoryId);
 
-        await profile.giftItem.get(
+        const giftItemResponse = await profile.giftItem.get(
             senderId,
             recieverId,
             inventoryId
         );
+
+        if (giftItemResponse.data == 500) {
+            alert("You can't gift items to yourself!");
+        } else {
+            rerenderDOM(!stateChanged);
+        }
         
-        rerenderDOM(!stateChanged);
     };
 
     const searchFilter = async searchText => {
@@ -184,8 +192,9 @@ function Profile(props) {
                         </div>
                     ) : (
                         <div className="editProfileButton">
-                            {/* <p>SEND GIFT</p> */}
-                            <GiftItemModal giftItem={giftItem} />
+                            <GiftItemModal 
+                            giftToUser={pageUser}
+                            giftItem={giftItem} />
                         </div>
                     )}
                     
@@ -203,7 +212,7 @@ function Profile(props) {
                         Available tokens: {userTokens}
                         </p>
                         <p className="profileValue">
-                        Profile value: {jsonProfileList.availableTokens}
+                        Profile value: {inventoryValue + userTokens}
                         </p>
                         <p className="profileRank">#6</p>
                     </div>
