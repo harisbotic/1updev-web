@@ -64,9 +64,9 @@ function Transactionlog() {
           <div className="transactionLogTime col-2">TIME</div>
         </div>
         <div className="transactions">
-          {transactionLog.map(transaction => {
+          {transactionLog.map((transaction, index) => {
             return (
-              <div className="transaction_row">
+              <div className="transaction_row" key={index}>
                 <div className="activity_row-text col-10">
                   <img
                     src={`https://robohash.org/${transaction.id}?set=set2&size=160x180`}

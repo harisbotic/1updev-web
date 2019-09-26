@@ -16,9 +16,6 @@ export const Shop = () => {
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
-  const [filter, setFilter] = useState({
-    filteredList: []
-  });
   const [addItemModalShow, setAddItemModalShow] = useState("none");
   const handleShow = () => setAddItemModalShow("flex");
   const[userTokens,setUserTokens] = useState();
@@ -32,11 +29,7 @@ export const Shop = () => {
 
       setShopItems({
         allShopItems: shopItemsResponse.data
-      });
-      setFilter({
-        filteredList: shopItemsResponse.data
-      });
-      
+      });    
 
       const fetchAvailableTokens = await shop.fetchAvailableTokens.get();
       setUserTokens( fetchAvailableTokens.data );
@@ -157,9 +150,8 @@ export const Shop = () => {
 
             {shopItems.allShopItems.map((item, value) => {
               return (
-                <div>
+                <div key={value}>
                   <ShopItem
-                    key={value}
                     id={item.id}
                     itemQuantity={item.quantity}
                     itemId={item.itemId}

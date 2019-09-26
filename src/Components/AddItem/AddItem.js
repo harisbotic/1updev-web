@@ -20,8 +20,6 @@ function AddItem(props) {
     rarityId: 0
   });
 
-  const handleClose = () => { props.modalClose("none") };
-
   useEffect(() => {
     const fetchData = async () => {
 
@@ -49,8 +47,6 @@ function AddItem(props) {
     price,
     value,
     quantity,
-    typeId,
-    rarityId
   } = addItem;
 
 
