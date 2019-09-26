@@ -5,7 +5,6 @@ import "./AddItem.scss";
 
 function AddItem(props) {
 
-  const [modalShowState, setModalShowState] = useState("none");
   const [itemTypesAndRarities, setItemTypesAndRarities] = useState({
     allItemTypes: [],
     allItemRarities: []
@@ -21,8 +20,7 @@ function AddItem(props) {
     rarityId: 0
   });
 
-  const handleClose = () => setModalShowState("none");
-  const handleShow = () => setModalShowState("block");
+  const handleClose = () => { props.modalClose("none") };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +32,7 @@ function AddItem(props) {
         allItemTypes: itemTypesResponse.data,
         allItemRarities: itemRaritiesResponse.data
       });
-      
+
     };
 
     fetchData();
@@ -73,26 +71,21 @@ function AddItem(props) {
     }));
   }
 
-
-  const submitForm = async event => {
-    event.preventDefault();
-
-    await shop.addShopItem.post(addItem);
-
-    props.rerender(!props.stateChange);
-    handleClose();
-  }
-
   return (
     <>
-      <i className="fas fa-plus" onClick={() => handleShow()}></i>
-      <div className="addItem" style={{ display: modalShowState }}>
+      <div className="addItem" style={{ display: props.modalShow }}>
         <div className="addItemModal">
-          <form className="addItemForm" id="addItemForm" onSubmit={(e) => { submitForm(e); }}>
+          <form className="addItemForm" id="addItemForm" onSubmit={(e) => {
+            props.submitAddForm(e, addItem); props.modalClose("none"); setAddItem({
+              image: "", name: "", price: 0, quantity: 0, value: 0, typeId: 0, rarityId: 0
+            })
+          }}>
             <div className="addItemFormLeft">
-              <label>Add image:
-              <input type="text" name="image" value={image}
-                  onChange={(e) => { handleChange(e) }} />
+              <label>
+                <div className="addImage"><p>Add Image</p>
+                  <input type="text" name="image" value={image}
+                    onChange={(e) => { handleChange(e) }} />
+                </div>
               </label>
             </div>
             <div className="addItemFormRight">
@@ -127,7 +120,7 @@ function AddItem(props) {
               </div>
               <div className="formButtons">
                 <button type="submit" form="addItemForm" className="addItemFormButton"><p>ADD</p></button>
-                <button className="addItemFormButton" onClick={() => handleClose()}><p>CANCEL</p></button>
+                <button onClick={() => props.modalClose("none")} className="cancelFormButton"><p>CANCEL</p></button>
               </div>
             </div>
           </form>

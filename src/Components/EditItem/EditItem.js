@@ -75,9 +75,11 @@ export default function EditItem(props) {
                 <div className="editItemModal">
                     <form className="editItemForm" >
                         <div className="editItemFormLeft">
-                            <label>Item image:
-                            <input type="text" name="image" value={image}
-                                    onChange={(e) => { InputHandler(e) }} />
+                            <label>
+                                <div className="editImage"><p>Item Image</p>
+                                    <input type="text" name="image" value={image}
+                                        onChange={(e) => { InputHandler(e) }} />
+                                </div>
                             </label>
                         </div>
                         <div className="editItemFormRight">
@@ -114,7 +116,7 @@ export default function EditItem(props) {
                                 <button onClick={() => props.modalClose("none")} className="cancelEditButton"><p>CANCEL</p></button>
                             </div>
                             <div className="itemDelete">
-                                <button className="itemDeleteButton" onClick={() => {props.deleteItem(id)}}><p>DELETE ITEM</p></button>
+                                <button className="itemDeleteButton" onClick={() => { props.deleteItem(id) }}><p>DELETE ITEM</p></button>
                             </div>
                         </div>
                     </form>

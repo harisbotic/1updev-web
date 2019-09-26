@@ -8,10 +8,10 @@
 }
 
 .transaction {
-  margin: 5%;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
   width: 400px;
+  height: 190px;
 
   .transaction_log-container {
     padding: 5% 5% 5% 0%;
@@ -86,7 +86,7 @@
   border-radius: 10px;
 }
 
-@media screen and(min-width: $tablets) {
+@media screen and(max-width: $tablets) {
   .transaction {
     width: 450px;
   }

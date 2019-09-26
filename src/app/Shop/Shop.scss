@@ -6,8 +6,13 @@
   padding-top: 5%;
   padding-bottom: 13%;
   background-image: url("../../Assets/shop_background_image2.jpg");
-  background-size: cover;  
+  background-size: cover;
   background-repeat: no-repeat;
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
   .available-tokens,
   .items-own {
@@ -37,8 +42,9 @@
   }
 
   .transaction_log {
+    padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .items-in-use {
@@ -141,79 +147,80 @@
       grid-gap: 10px;
 
       #add {
-        border: white solid 4px;
+        border: white solid 6px;
+        border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        i:hover {
+        &:hover {
           color: #712ebd;
           font-weight: 700;
           cursor: pointer;
         }
       }
     }
+  }
 
-    @media only screen and(max-width: $tablets) {
-      .available-tokens,
-      .items-own {
-        font-size: 18px;
-      }
+  @media only screen and(max-width: $tablets) {
+    .available-tokens,
+    .items-own {
+      font-size: 18px;
+    }
 
-      .transaction_log {
-        justify-content: space-evenly;
-      }
+    .transaction_log {
+      justify-content: space-evenly;
+    }
 
-      .infoSection {
+    .infoSection {
+      display: flex;
+      flex-direction: column;
+
+      .filterOptionsContainer {
         display: flex;
         flex-direction: column;
 
-        .filterOptionsContainer {
-          display: flex;
-          flex-direction: column;
-
-          .filterOptions {
-            flex-wrap: wrap;
-            align-content: flex-start;
-          }
+        .filterOptions {
+          flex-wrap: wrap;
+          align-content: flex-start;
         }
-      }
-
-      .xs-column {
-        display: flex;
-        flex-direction: column;
-      }
-      .token-count,
-      .own-count {
-        font-size: 20px;
       }
     }
 
-    @media only screen and(max-width:$mobile) {
-      .available-tokens,
-      .items-own {
-        font-size: 11px;
-      }
-      .token-count,
-      .own-count {
-        font-size: 15px;
-      }
+    .xs-column {
+      display: flex;
+      flex-direction: column;
+    }
+    .token-count,
+    .own-count {
+      font-size: 20px;
+    }
+  }
 
-      .transaction_log {
-        height: 250px;
-      }
+  @media only screen and(max-width:$mobile) {
+    .available-tokens,
+    .items-own {
+      font-size: 11px;
+    }
+    .token-count,
+    .own-count {
+      font-size: 15px;
+    }
 
-      .shopContainer {
-        display: flex;
-        flex-direction: column;
+    .transaction_log {
+      height: 250px;
+    }
 
-        .itemsContainer {
-          display: grid;
-          align-self: center;
-          justify-content: center;
-          grid-template-columns: 1fr 1fr;
-          padding: 10px;
-        }
+    .shopContainer {
+      display: flex;
+      flex-direction: column;
+
+      .itemsContainer {
+        display: grid;
+        align-self: center;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
       }
     }
   }

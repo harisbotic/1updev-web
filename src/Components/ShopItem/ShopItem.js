@@ -9,7 +9,7 @@ export const ShopItem = (props) => {
     const [buyItemModal, setBuyItemModal] = useState(false);
     const [editItemModalShow, setEditItemModalShow] = useState("none");
 
-    const handleShow = () => setEditItemModalShow("block");
+    const handleShow = () => setEditItemModalShow("flex");
 
     return (
         <>

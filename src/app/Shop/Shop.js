@@ -6,7 +6,7 @@ import TransactionLog from "../../Components/TransactionLog/Transactionlog.compo
 import BadgesInUse from "../../Components/BadgesInUse/badges-in-use";
 import SkinInUse from "../../Components/SkinInUse/skin-in-use";
 import AddItem from "../../Components/AddItem/AddItem";
-import {FilterOptions} from '../../Components/FilterOptions/FilterOptions.component';
+import { FilterOptions } from '../../Components/FilterOptions/FilterOptions.component';
 
 
 import "./Shop.scss";
@@ -17,11 +17,12 @@ export const Shop = () => {
   const [shopItems, setShopItems] = useState({
     allShopItems: []
   });
-
-
   const [filter, setFilter] = useState({
     filteredList: []
   });
+  const [addItemModalShow, setAddItemModalShow] = useState("none");
+  const handleShow = () => setAddItemModalShow("flex");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,30 +47,38 @@ export const Shop = () => {
 
   }
 
-    const categoryFilter = async (sort, isAscending) => {
+  const submitAddForm = async (event, body) => {
+    event.preventDefault();
+
+    await shop.addShopItem.post(body);
+
+    rerenderShop(!stateChange);
+  }
+
+  const categoryFilter = async (sort, isAscending) => {
     const order = isAscending === true ? "asc" : "desc";
 
     const fetchSortedShopItems = await shop.fetchSortedShopItems.get(
-    sort,
-    order
+      sort,
+      order
     );
     setShopItems({
-    allShopItems: fetchSortedShopItems.data
+      allShopItems: fetchSortedShopItems.data
     })
-};
+  };
 
-const searchFilter = async searchText => {
+  const searchFilter = async searchText => {
 
-  if (searchText === "") searchText = " ";
+    if (searchText === "") searchText = " ";
 
-  const searchShopItem = await shop.searchShopItem.get(
+    const searchShopItem = await shop.searchShopItem.get(
       searchText
-  );
+    );
 
-  setShopItems({
-    allShopItems: searchShopItem.data
+    setShopItems({
+      allShopItems: searchShopItem.data
     })
-};
+  };
   const deleteShopItem = async (id) => {
 
     await shop.deleteShopItem.remove(id);
@@ -79,6 +88,11 @@ const searchFilter = async searchText => {
 
   return (
     <>
+      <AddItem
+        modalShow={addItemModalShow}
+        modalClose={setAddItemModalShow}
+        submitAddForm={submitAddForm}
+      />
       <div className="shop">
         {/* <SpinTheWheelModal /> */}
         <div className="shop-header row xs-column">
@@ -114,20 +128,16 @@ const searchFilter = async searchText => {
               <p className="shopText">Shop</p>
             </div>
             <FilterOptions
-                searchFilter={searchFilter}
-                categoryFilter={categoryFilter}
+              searchFilter={searchFilter}
+              categoryFilter={categoryFilter}
             />
             {
             }
-            
+
           </div>
           <div className="itemsContainer">
-            <div className="item-card xs-column" id="add">
-              <AddItem
-                rerender={rerenderShop}
-                stateChange={stateChange}
-              />
-
+            <div className="item-card xs-column" id="add" onClick={() => handleShow()}>
+              <i className="fas fa-plus"></i>
             </div>
 
             {shopItems.allShopItems.map((item, value) => {
