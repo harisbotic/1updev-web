@@ -16,20 +16,19 @@
 
   .available-tokens,
   .items-own {
-    display:flex;
-    align-items:center;
-    margin-left:30px;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
     text-align: left;
-    p{
-      font-family:'Roboto';
-      font-size:15px;
+    p {
+      font-family: "Roboto";
+      font-size: 15px;
       // letter-spacing: 0.1px;
-      margin-bottom:0px;
+      margin-bottom: 0px;
     }
-  
-    
+
     margin-right: 20px;
-    
+
     color: white;
     // margin-bottom: 20px;
   }
@@ -37,11 +36,11 @@
   .in_use {
     width: 80%;
     margin: 0 auto;
-    justify-content: space-around;
+    justify-content: flex-start;
   }
-  .tokens_and_items{
-      justify-content: center;
-      text-align:center;
+  .tokens_and_items {
+    justify-content: center;
+    text-align: center;
   }
 
   .token-count,
@@ -175,31 +174,33 @@
     .filterOptionsDesktop {
       display: block;
     }
-    
+
     .filterOptionsMobile {
       display: none;
     }
+  }
 
-    @media only screen and(max-width: $tablets) {
-      
-      .available-tokens,
-      .items-own {
-        p{
-          font-size:12px;
-        }
+  @media only screen and(max-width: $tablets) {
+    .available-tokens,
+    .items-own {
+      p {
+        font-size: 12px;
       }
+    }
 
-      .transaction_log {
-        justify-content: space-evenly;
-        align-items: center;
-      }
+    .in_use {
+      justify-content: space-around;
+    }
 
-      .token-count,
-      .own-count {
-          font-size:13px;
-      }
+    .transaction_log {
+      justify-content: space-evenly;
+      align-items: center;
+    }
 
-    
+    .token-count,
+    .own-count {
+      font-size: 13px;
+    }
 
     .infoSection {
       display: flex;
@@ -216,48 +217,46 @@
       }
     }
 
-      .xs-column {
-        display: flex;
-        flex-direction: column;
-      }
-      
+    .xs-column {
+      display: flex;
+      flex-direction: column;
     }
   }
+}
 
-    @media only screen and (max-width:480px) {
-      .filterOptionsDesktop {
-        display: none;
-      }
-    
-      .filterOptionsMobile {
-        display: block;
-      }
-        
-        .available-tokens,
-        .items-own {
-          p{
-            font-size: 1px;
-          }
-        }
-        .token-count,
-        .own-count {
-          font-size: 12px;
-        }
-      
-      .transaction_log {
-        height: 250px;
-      }
-      .shopContainer {
-        display: flex;
-        flex-direction: column;
+@media only screen and (max-width: 480px) {
+  .filterOptionsDesktop {
+    display: none;
+  }
 
-      .itemsContainer {
-        display: grid;
-        align-self: center;
-        justify-content: center;
-        grid-template-columns: 1fr 1fr;
-        padding: 10px;
-      }
+  .filterOptionsMobile {
+    display: block;
+  }
+
+  .available-tokens,
+  .items-own {
+    p {
+      font-size: 1px;
+    }
+  }
+  .token-count,
+  .own-count {
+    font-size: 12px;
+  }
+
+  .transaction_log {
+    height: 250px;
+  }
+  .shopContainer {
+    display: flex;
+    flex-direction: column;
+
+    .itemsContainer {
+      display: grid;
+      align-self: center;
+      justify-content: center;
+      grid-template-columns: 1fr 1fr;
+      padding: 10px;
     }
   }
 }
