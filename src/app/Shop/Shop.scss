@@ -151,13 +151,20 @@
     }
 
     .itemsContainer {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 180px));
-      grid-auto-rows: repeat(auto-fill, minmax(160px, 180px));
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
-      grid-gap: 10px;
+      align-items: center;
+      padding: 10px;
+      margin: -10px;  
 
       #add {
+        max-height: 180px;
+        max-width: 180px;
+        min-height: 160px;
+        min-width: 160px;
+        margin: 5px;
         border: white solid 6px;
         border-radius: 10px;
         display: flex;
@@ -252,10 +259,12 @@
     flex-direction: column;
 
     .itemsContainer {
-      display: grid;
+      // display: flex;
+      // flex-direction: column;
+      // flex-wrap: wrap;
       align-self: center;
-      justify-content: center;
-      grid-template-columns: 1fr 1fr;
+      // justify-content: center;
+      // grid-template-columns: 1fr 1fr;
       padding: 10px;
     }
   }
