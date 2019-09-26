@@ -8,10 +8,6 @@ const InventoryItemModal = (props) => {
     const [modalShow, setModalShow] = useState(false);
     const [itemsList, setItemsList] = useState([]);
 
-    // const [selectedItem, setSelectedItem] = useState({
-    //     background: props.inventoryItem.item.rarity.backgroundColor,
-    //     icon: props.inventoryItem.item.image
-    // });
     const [selectedItem, setSelectedItem] = useState({
         background: "#79BEFF",
         icon: ""

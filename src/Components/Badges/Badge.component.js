@@ -1,29 +1,26 @@
-import React,{useState} from 'react'
-
+import React,{useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
+import jwtdecode from "jwt-decode";
+
+import ConfirmDeactivationModal from '../Modals/ConfirmDeactivationModal/ConfirmDeactivationModal.component'
+import InactiveBadgeModal from '../Modals/InactiveBadgeModal/InactiveBadgeModal.component'
 
 import './Badge.style.scss';
 
-
-
 export default function Badge(props) {
+
+    const currentUser = jwtdecode(localStorage.getItem("access_token"));
 
     const {
         badgeData,
         item,
-        deactivateBadge,
-        background
+        toggleBadge,
+        background,
+        routeParams,
+        username
     } = props
 
-    const [state,setState] = useState({
-        isModalVisible:false,
-        isConfirmationVisible:false
-    })
-    
-    const {
-        isModalVisible,
-        isConfirmationVisible
-    } = state;
+    const[isModalVisible,setModalVisible]=useState(false);
     
     return (
         
@@ -33,16 +30,17 @@ export default function Badge(props) {
 
             <div className="activeBadge" style={{ background: background }}>
 
-                <div className="modalClick" onClick={()=>setState({isModalVisible:true})}></div>
+                <div className="modalClick" onClick={()=>setModalVisible(true)}></div>
 
                 <img src={props.item.image} />
 
                 <Modal show={isModalVisible} className="badgeModal">
-                                
                     <Modal.Header>
                         <Modal.Title>Badge Info - <span className="bold">{item.name}</span></Modal.Title>
                     </Modal.Header>
                     
+                    { routeParams==currentUser.userName ? 
+                    (                       
                     <Modal.Body>
                         <p>You obtained this badge on {badgeData.created}</p>
                         <p>Rarity : {item.rarity.name}</p>
@@ -51,42 +49,37 @@ export default function Badge(props) {
                         <p>Badge description</p>
 
                         <div className="modalBodyButtons">
-                            <div className = "modalButton actionButton" onClick={()=>setState({isModalVisible:false})}>
-                                <p>UPGRADE</p>
-                            </div>
 
-                            <div className = "modalButton actionButton" onClick={()=>setState({isConfirmationVisible:true})}>
-                                <p>DEACTIVATE</p>
-                            </div>
+                            <ConfirmDeactivationModal
+                                item={item}
+                                deactivateBadge={toggleBadge}
+                                onClick={() => setModalVisible(false)}
+                            />
+
+                            <ConfirmDeactivationModal
+                                item={item}
+                                deactivateBadge={toggleBadge}
+                                closeInitialModal={setModalVisible}
+                            />
+
                         </div>
 
                     </Modal.Body>
-                        
-                    <Modal.Footer>
-                        <div className = "modalButton closeButton" onClick={()=>setState({isModalVisible:false})} >
-                            <p>CLOSE</p>
-                        </div>
-                    </Modal.Footer>
-                    
-                </Modal>
+                    ) : (
+                        <Modal.Body>
+                        <p>{username} obtained badge on {badgeData.created}</p>
+                        <p>Rarity : {item.rarity.name}</p>
+                        <p>Tier : Basic</p>
+                        <p>Quantitiy: 0</p>
+                        <p>Badge description</p>
 
-                <Modal show={isConfirmationVisible} className="badgeModal">
-                                
-                    <Modal.Header>
-                        <Modal.Title>Confirm Deactivation</Modal.Title>
-                    </Modal.Header>
-                    
-                    <Modal.Body>
-                        You are about to deactive your badge <span className="bold">{item.name}</span>
-                        <br/>Note that this badge will go back to your inventory and you can activate it again whenever you want !
-                        <br/>
                     </Modal.Body>
+                    )
+                    }
+
                         
                     <Modal.Footer>
-                    <div className = "modalButton closeButton" onClick={()=>{setState({isModalVisible:false}); deactivateBadge(item.id)}}>
-                            <p>ACCEPT</p>
-                        </div>
-                        <div className = "modalButton closeButton" onClick={()=>setState({isModalVisible:false})} >
+                        <div className = "modalButton closeButton" onClick={()=>setModalVisible(false)} >
                             <p>CLOSE</p>
                         </div>
                     </Modal.Footer>
@@ -96,26 +89,13 @@ export default function Badge(props) {
             </div>
         : 
             <div className="inactiveBadge">
+            
 
-                <div className="modalClick" onClick={()=>setState({isModalVisible:true})}></div>
+                <InactiveBadgeModal
+                    activateBadge={toggleBadge}
+                    routeName={routeParams}
+                />
 
-                <Modal show={isModalVisible} className="badgeModal">
-                                
-                    <Modal.Header className="modalHeader">
-                        <Modal.Title>Badge Info</Modal.Title>
-                    </Modal.Header>
-                    
-                    <Modal.Body>
-                        This badge spot is not active yet! <br/> To activate a badge hover over it and than click activate.
-                    </Modal.Body>
-                        
-                    <Modal.Footer>
-                        <div variant="primary" className = "modalButton" onClick={()=>setState({isModalVisible:false})} >
-                            <p>CLOSE</p>
-                        </div>
-                    </Modal.Footer>
-                    
-                </Modal>
             </div>
         } 
 

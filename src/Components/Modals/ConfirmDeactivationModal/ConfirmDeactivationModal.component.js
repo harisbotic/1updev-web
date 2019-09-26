@@ -5,21 +5,22 @@ import './ConfirmDeactivationModal.style.scss';
 
 export default function ConfirmDeactivationModal(props) {
     
-    const [isConfirmationVisible,setConfirmationVisible]=useState(false);
+    const [isModalVisible,setModalVisible]=useState(false);
     
     const {
         item,
-        deactivateBadge
+        deactivateBadge,
+        closeInitialModal
     } = props;
 
     return (
         <div className="confirmDeactivationModal">
 
-            <div className = "modalButton actionButton" onClick={()=>setConfirmationVisible(true)}>
+            <div className = "modalButton actionButton" onClick={()=>{setModalVisible(true)}}>
                 <p>DEACTIVATE</p>
             </div>
 
-            <Modal show={isConfirmationVisible} className="badgeModal">
+            <Modal show={isModalVisible} className="badgeModal">
                                 
                 <Modal.Header>
                     <Modal.Title>Confirm Deactivation</Modal.Title>
@@ -32,10 +33,10 @@ export default function ConfirmDeactivationModal(props) {
                 </Modal.Body>
                     
                 <Modal.Footer>
-                <div className = "modalButton closeButton" onClick={()=>{setConfirmationVisible(false); deactivateBadge(item.id)}}>
+                <div className = "modalButton closeButton" onClick={()=>{setModalVisible(false); deactivateBadge(item.id)}}>
                         <p>ACCEPT</p>
                     </div>
-                    <div className = "modalButton closeButton" onClick={()=>setConfirmationVisible(false)} >
+                    <div className = "modalButton closeButton" onClick={()=>setModalVisible(false)} >
                         <p>CLOSE</p>
                     </div>
                 </Modal.Footer>

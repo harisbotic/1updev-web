@@ -24,7 +24,7 @@ function Profile(props) {
 
     const [inventoryList, setInventoryList] = useState([]);
     const [stateChanged, rerenderDOM] = useState(false);
-    const [activeBadgesCount, changeActiveBadgesCount] = useState();
+    const [activeBadgesCount, setActiveBadgesCount] = useState();
     const [activeBadges, setActiveBadges] = useState([]);
     const [isFetchingInventory, setIsFetchingInv] = useState()
     const [profileInfo, setProfileInfo] = useState({});
@@ -42,61 +42,67 @@ function Profile(props) {
 
     const routeParams = props.history.location.pathname.split("/");
     const pageUser = routeParams[2];
-    
 
     useEffect(() => {
 
         const fetchData = async () => {
             
-            const profileInfoResponse = await profile.profileInfo.get(pageUser);
-
             setIsFetchingInv(true)
+
+            const profileInfoResponse = await profile.profileInfo.get(
+                pageUser
+            );
+            
+            setProfileInfo(profileInfoResponse.data);
+            
+
+            const fetchActiveBadges = await profile.getActiveBadges.get(
+                profileInfoResponse.data.id
+            );
+
+            setActiveBadges(fetchActiveBadges.data);
+
+            const getActiveBadgesCount = await profile.countActiveBadges.get(
+                profileInfoResponse.data.id
+            );
+
+            setActiveBadgesCount(getActiveBadgesCount.data);
+            
+
+            const fetchInventoryValueResponse = await profile.getInventoryValue.get(
+                profileInfoResponse.data.id
+            );
+
+            setInventoryValue(fetchInventoryValueResponse.data);
+
 
             const fetchProfileInventory = await profile.fetchProfileInventory.get(
                 profileInfoResponse.data.id
             );
-
-            const fetchActiveBadgesCount = await profile.countActiveBadges.get(
-                profileInfoResponse.data.id
-            );
-
-            const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
-            
-            changeActiveBadgesCount(fetchActiveBadgesCount.data);
-
-            setProfileInfo(profileInfoResponse.data);
-
+        
             setInventoryList(fetchProfileInventory.data
-                .filter(inventory => !inventory.isActive))
+                .filter(inventory => !inventory.isActive))   
 
-            setActiveBadges(
-                fetchProfileInventory.data.filter(
-                inventory =>
-                    inventory.isActive && inventory.item.type.name === "Badge"
-                )   
-            );
-            
-            setInventoryValue(fetchInventoryValueResponse.data);
 
             const fetchAvailableTokens = await tokenTransactions.fetchTokenValue.get(profileInfoResponse.data.username);
 
             setUserTokens(fetchAvailableTokens.data);
 
+
             setIsFetchingInv(false)
         }
 
-        fetchData();    
-        fillEmptyBadges();    
+        fetchData();       
 
     },[stateChanged]);
 
-    const fillEmptyBadges = () => { 
+    const fillEmptyBadges = () => {
 
         for(let i=activeBadges.length;i<3;i++)
             activeBadges.push(emptyBadge);
-        
+
     }
-   
+
     const toggleBadge = async itemId => {     
 
         await profile.toggleActivate.get(
@@ -218,7 +224,6 @@ function Profile(props) {
                         </div>
                     ) : (
                         <div className="editProfileButton">
-                            {/* <p>SEND GIFT</p> */}
                             <GiftItemModal giftItem={giftItem} />
                         </div>
                     )}
@@ -244,8 +249,7 @@ function Profile(props) {
 
                     <div className="badges">
                         {fillEmptyBadges()}
-                        { isFetchingInventory ? 
-                            <div></div>
+                        { isFetchingInventory ? <div></div>
                             :(
                             activeBadges.map((badge,value) => {
                                 return (
@@ -253,7 +257,9 @@ function Profile(props) {
                                         key = {value}
                                         badgeData = {badge}
                                         item = {badge.item}
-                                        deactivateBadge = {toggleBadge}
+                                        routeParams={routeParams[2]}
+                                        toggleBadge = {toggleBadge}
+                                        username = {profileInfo.username}
                                     />
                                 );
                             }))
@@ -325,7 +331,6 @@ function Profile(props) {
         </div>
 
     );
-
 }
 
 export default withRouter(Profile);

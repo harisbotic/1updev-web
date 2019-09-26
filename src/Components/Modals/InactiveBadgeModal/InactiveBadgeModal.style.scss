@@ -1,0 +1,35 @@
+@import "../../../Shared/variables.scss";
+
+.itemsContainerModal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 140px));
+    grid-auto-rows: repeat(auto-fill, minmax(130px, 140px));
+    justify-content: space-evenly;
+    grid-gap:10px;
+    margin:10px 0 10px 0;
+    height: 140px;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    .itemCard {
+      position: relative;
+      max-width: 50px;
+      max-height: 50px;
+      box-sizing: border-box;
+      cursor: pointer;
+      font-family: "Roboto";
+      font-weight: $bold;
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      border: 2px solid $secondary-purple;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $secondary-purple;
+      border-radius: 10px;
+    }
+
+}

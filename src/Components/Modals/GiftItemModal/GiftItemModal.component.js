@@ -50,8 +50,6 @@ const GiftItemModal = (props) => {
             event.target.value
         );
 
-        console.log(event.target.value);
-
         setUserList({
             userList: searchQueryResponse.data
         });
@@ -68,8 +66,6 @@ const GiftItemModal = (props) => {
         }));
 
         setToggleList("none");
-
-        console.log(user);
 
         setSelectedUser(user);
     }
