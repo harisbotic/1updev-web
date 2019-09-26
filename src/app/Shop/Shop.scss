@@ -229,6 +229,12 @@
 @media only screen and (max-width: 480px) {
   .shop{
     .shopContainer{
+      .shopText{
+        text-align: center;
+      }
+      .infoSection{
+        flex-direction: column;
+      }
       .filterOptionsDesktop {
         display: none;
       }

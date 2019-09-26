@@ -135,7 +135,7 @@ export const Shop = () => {
                 categoryFilter={categoryFilter}
             />
             <FilterOptionsMobile
-                className='filterOptionsMobile'
+                className='filterOptionsMobile col-12'
                 searchFilter={searchFilter}
                 categoryFilter={categoryFilter}
             />
