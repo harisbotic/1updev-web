@@ -78,8 +78,8 @@ function Header(props) {
                 ? "header-nav-blue_button"
                 : "header-nav-purple_button"
             }
-            onClick={() => handleRedirect("/ranking")}
-          >
+            onClick={() => handleRedirect(`/ranking/${currentUsername}`)}
+                      >
             RANKS
           </button>
         </div>
