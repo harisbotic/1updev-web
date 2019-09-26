@@ -1,4 +1,6 @@
 @import "../../Shared/variables.scss";
+@import "../../Components/ActivityLog/ActivityLog.style.scss";
+
 
 
 .container {
@@ -6,6 +8,7 @@
      max-width: 100%;
      height: 100vh;
      display: flex;
+
 }
 
 .upper {
@@ -16,9 +19,10 @@
 .wholeTable {
     background-color: transparentize(white, 0.8);
     border-radius: 25px;
-    width: 97.5%;
+    width: 100%;
     height: 340px;
     color: white;
+    width: 100%;
 }
 
 .title {
@@ -134,17 +138,24 @@
  // background: url('../../Assets/Group\ 1444.png');
   padding: 12% 0 0 15%; 
   .profileDisplayComponent {
+
     padding-bottom: 2%;
+    margin-left: 12.5%;
+
     
   }
+
+  background: url('../../Assets/Group\ 1444.png');
 }
 
 
 .profileInfo {
   color: white;
-  padding: 3% 10% 0 10%;
+  //padding: 3% 10% 0 10%;
   font-family: "Roboto";
-  margin-left: -12.5%;
+  margin-right: 15%;
+  width: 100%;
+  //margin-left: -12.5%;
 
 
   p {
@@ -155,6 +166,7 @@
 .profilePicture {
   margin-left: -30%;
 }
+
 
 @media screen and (max-width: 520px) {
   
