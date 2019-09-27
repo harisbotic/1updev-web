@@ -31,6 +31,16 @@ function AddItem(props) {
         allItemRarities: itemRaritiesResponse.data
       });
 
+      setAddItem({
+        image: "",
+        name: "",
+        price: 0,
+        quantity: 0,
+        value: 0,
+        typeId: itemTypesResponse.data[0].id,
+        rarityId: itemRaritiesResponse.data[0].id
+      })
+
     };
 
     fetchData();
@@ -89,29 +99,28 @@ function AddItem(props) {
                 <label>Item name:
                 <input type="text" name="name" value={name}
                     onChange={(e) => { handleChange(e) }}
-                    required />
+                  />
                 </label><br />
                 <label>Item price:
                 <input type="number" name="price" value={price}
                     onChange={(e) => { handleChange(e) }}
-                    required />
+                  />
                 </label><br />
                 <label>Disenchant value:
                 <input type="number" name="value" value={value}
                     onChange={(e) => { handleChange(e) }}
-                    required
                   />
                 </label><br />
                 <label>Quantity:
                 <input type="number" name="quantity" value={quantity}
                     onChange={(e) => { handleChange(e) }}
-                    required />
+                  />
                 </label><br />
                 <label>Item type:
                 <select name="typeId" onChange={(e) => { handleChange(e) }}>{typeOptions}</select>
                 </label><br />
                 <label>Item rarity:
-                <select name="rarityId" onChange={(e) => { handleChange(e) }} required>{rarityOptions}</select>
+                <select name="rarityId" onChange={(e) => { handleChange(e) }}>{rarityOptions}</select>
                 </label>
               </div>
               <div className="formButtons">

@@ -19,8 +19,6 @@ import './skin-in-use.styles.scss';
          const fetchSkin = await shop.fetchSkin.get();
            setActiveSkin(fetchSkin.data);
        }
-    console.log( "aaa" );
-     console.log( activeSkin );
        fetchData();
       
      }, []);
