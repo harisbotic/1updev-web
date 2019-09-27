@@ -5,12 +5,12 @@ import jwtdecode from 'jwt-decode';
 import { profile, tokenTransactions } from "../../api/index";
 import Badge from "../../Components/Badges/Badge.component";
 import {
-  ActivityLog,
-  ActivityLogMobile
+    ActivityLog,
+    ActivityLogMobile
 } from "../../Components/ActivityLog/ActivityLog.component";
 import {
-  FilterOptions,
-  FilterOptionsMobile
+    FilterOptions,
+    FilterOptionsMobile
 } from "../../Components/FilterOptions/FilterOptions.component";
 import Item from "../../Components/Item/Item.component";
 import LoadingElement from "../../Components/LoadingElement/LoadingElement.component";
@@ -27,23 +27,33 @@ function Profile(props) {
     const [isFetchingInventory, setIsFetchingInv] = useState();
 
     const [badges, setBadges] = useState([]);
+    const [stateChanged, rerenderDOM] = useState(false);
+    const [activeBadgesCount, changeActiveBadgesCount] = useState();
     const [activeBadges, setActiveBadges] = useState([]);
+    const [activeSkin, setActiveSkin] = useState("https://www.technocrazed.com/wp-content/uploads/2015/12/HD-purple-wallpaper-image-to-use-as-background-111.jpg");
+    const [activeSkinObj, setActiveSkinObj] = useState({});
+    const [activeSkinsCount, setActiveSkinsCount] = useState();
 
     const [userTokens, setUserTokens] = useState();
     const [inventoryValue, setInventoryValue] = useState();
-    
-    const [stateChanged, rerenderDOM] = useState(false);
+
+    const emptyBadge = {
+        "isActive": false,
+        "item": {
+            "name": "empty"
+        }
+    }
 
     const currentUser = jwtdecode(localStorage.getItem("access_token")).Username;
 
     const routeParams = props.history.location.pathname.split("/");
     const pageUser = routeParams[2];
-    
+
 
     useEffect(() => {
 
         const fetchData = async () => {
-            
+
             const profileInfoResponse = await profile.profileInfo.get(pageUser);
 
             setIsFetchingInv(true)
@@ -52,7 +62,13 @@ function Profile(props) {
                 profileInfoResponse.data.id
             );
 
+            const fetchActiveBadgesCount = await profile.countActiveBadges.get(
+                profileInfoResponse.data.id
+            );
+
             const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
+
+            changeActiveBadgesCount(fetchActiveBadgesCount.data);
 
             setProfileInfo(profileInfoResponse.data);
 
@@ -61,49 +77,82 @@ function Profile(props) {
 
             setActiveBadges(
                 fetchProfileInventory.data.filter(
-                inventory =>
-                    inventory.isActive && inventory.item.type.name === "Badge"
-                )   
+                    inventory =>
+                        inventory.isActive && inventory.item.type.name === "Badge"
+                )
             );
-            
-            setInventoryValue(fetchInventoryValueResponse.data);
 
-            setIsFetchingInv(false)
+            const fetchedSkin = fetchProfileInventory.data.filter(
+                inventory =>
+                    inventory.isActive && inventory.item.type.name === "Skin"
+            );
+
+            setInventoryValue(fetchInventoryValueResponse.data);
 
             const fetchAvailableTokens = await tokenTransactions.fetchTokenValue.get(profileInfoResponse.data.username);
 
             setUserTokens(fetchAvailableTokens.data);
+
+            if (fetchedSkin[0]) {
+                setActiveSkin(fetchedSkin[0].item.image);
+                setActiveSkinObj(fetchedSkin[0]);
+            } else {
+                setActiveSkin("https://www.technocrazed.com/wp-content/uploads/2015/12/HD-purple-wallpaper-image-to-use-as-background-111.jpg");
+                setActiveSkinObj(null);
+            }
+
+            setActiveSkinsCount(fetchedSkin.length);
+
+
+            setIsFetchingInv(false)
         }
 
         fetchData();
+        fillEmptyBadges();
 
-    },[stateChanged]);
+    }, [stateChanged]);
 
-    const refactorBadges = activeBadges => {
+    const fillEmptyBadges = () => {
 
-        for(let i=activeBadges.length;i<3;i++) {
-            badges.push({
-                "isActive":false,
-                "item":{
-                    "name":"empty"
-                }
-            });
-        }
+        for (let i = activeBadges.length; i < 3; i++)
+            activeBadges.push(emptyBadge);
+
     }
 
-    const toggleBadge = async itemId => {     
+    const toggleBadge = async itemId => {
 
         await profile.toggleActivate.get(
             itemId,
             profileInfo.id
         );
-        
+
         rerenderDOM(!stateChanged);
     };
 
-    const giftItem = async (senderId,recieverId,inventoryId) => {
+    const toggleSkin = async itemId => {
 
-        //console.log(senderId, recieverId, inventoryId);
+        if (activeSkinsCount >= 1) {
+            alert("You can't activate more than one skin!\nPlease disable your current one to activate a new one.");
+        } else {
+            await profile.toggleActivate.get(
+                itemId,
+                profileInfo.id
+            );
+
+            rerenderDOM(!stateChanged);
+        }
+    }
+
+    const disableSkin = async itemId => {
+        await profile.toggleActivate.get(
+            itemId,
+            profileInfo.id
+        );
+
+        rerenderDOM(!stateChanged);
+    }
+
+    const giftItem = async (senderId, recieverId, inventoryId) => {
 
         const giftItemResponse = await profile.giftItem.get(
             senderId,
@@ -116,22 +165,22 @@ function Profile(props) {
         } else {
             rerenderDOM(!stateChanged);
         }
-        
+
     };
 
-    const searchFilter = async searchText => {
-    
+    const searchFilter = async userInput => {
+
         setIsFetchingInv(true)
-        
-        if (searchText === "") searchText = " ";
+
+        if (userInput === "") userInput = " ";
 
         const searchProfileInventory = await profile.searchProfileInventory.get(
-            searchText,
+            userInput,
             profileInfo.id
         );
 
         setInventoryList(searchProfileInventory.data
-            .filter(inventory=> !inventory.isActive)
+            .filter(inventory => !inventory.isActive)
         )
 
         setIsFetchingInv(false)
@@ -149,14 +198,37 @@ function Profile(props) {
             order,
             profileInfo.id
         );
-        
+
         setInventoryList(fetchSortedProfileInventory.data
-            .filter(inventory=> !inventory.isActive)
+            .filter(inventory => !inventory.isActive)
         )
 
         setIsFetchingInv(false);
 
     };
+
+    const searchAndSort = async (userInput, sort, isAscending) => {
+
+        setIsFetchingInv(true)
+
+        if (userInput === "") userInput = " ";
+
+        const order = isAscending === true ? "asc" : "desc";
+
+        const searchAndSortInventory = await profile.searchAndSortInventory.get(
+            profileInfo.id,
+            userInput,
+            sort,
+            order
+        );
+
+        setInventoryList(searchAndSortInventory.data
+            .filter(inventory => !inventory.isActive)
+        )
+
+        setIsFetchingInv(false);
+
+    }
 
     const disenchantItem = async (username, itemId) => {
         var newTokensResponse = await tokenTransactions.disenchantItem.post(username, itemId);
@@ -166,7 +238,7 @@ function Profile(props) {
     }
 
     const editProfileClick = () => {
-        
+
         props.history.push({
             pathname: "/editprofile",
             state: { username: profileInfo.username }
@@ -177,93 +249,100 @@ function Profile(props) {
 
         <div className="profile">
 
-            <div className="profileDisplayComponent">
-                
-                <img
-                    className="profilePicture"
-                    src={`https://robohash.org/${profileInfo.id}`}
-                    alt="user"
-                />
+            <div className="profileDisplayComponent" style={{ backgroundImage: `url(${activeSkin})` }}>
+
+                <div className="imgContainer">
+                    {isFetchingInventory ? <LoadingElement /> :
+                        <img
+                            className="profilePicture"
+                            src={`https://robohash.org/${profileInfo.id}`}
+                            alt="user"
+                        />}
+                </div>
+
 
                 <div className="profileDetails">
                     {pageUser == currentUser ? (
-                        <div className="editProfileButton" onClick={editProfileClick}>
-                            <p>EDIT PROFILE</p>
+                        <div>
+                            <div className="editProfileButton" onClick={editProfileClick}>
+                                <p>EDIT PROFILE</p>
+                            </div>
+
+                            {activeSkinObj ? (
+                                <div className="editProfileButton" onClick={() => { disableSkin(activeSkinObj.item.id) }}>
+                                    <p>DISABLE SKIN</p>
+                                </div>
+                            ) : (null)}
                         </div>
+
                     ) : (
-                        <div className="editProfileButton">
-                            <GiftItemModal 
-                            giftToUser={pageUser}
-                            giftItem={giftItem} />
-                        </div>
-                    )}
-                    
+                            <div className="editProfileButton">
+                                <GiftItemModal
+                                    giftToUser={pageUser}
+                                    giftItem={giftItem} />
+                            </div>
+                        )}
+
 
                     <h1 className="username">{profileInfo.username}</h1>
 
                     <p className="userTitle">
                         {jsonProfileList.title
-                        ? jsonProfileList.title
-                        : "User special title goes here"}
+                            ? jsonProfileList.title
+                            : "User special title goes here"}
                     </p>
 
                     <div className="tokenRelated">
                         <p className="availableTokens">
-                        Available tokens: {userTokens}
+                            Available tokens: {userTokens}
                         </p>
                         <p className="profileValue">
-                        Profile value: {inventoryValue + userTokens}
+                            Profile value: {inventoryValue + userTokens}
                         </p>
                         <p className="profileRank">#6</p>
                     </div>
 
                     <div className="badges">
-                        {
-                            refactorBadges(activeBadges)
-                        }
-                        { isFetchingInventory ? 
-                            <div></div> :(
-                            badges.map((badge,value) => {
-                                return (
-                                    <Badge
-                                        key = {value}
-                                        badgeData = {badge}
-                                        item = {badge.item}
-                                        deactivateBadge = {toggleBadge}
-                                    />
-                                );
-                            }))
+                        {fillEmptyBadges()}
+                        {isFetchingInventory ?
+                            <div></div>
+                            : (
+                                activeBadges.map((badge, value) => {
+                                    return (
+                                        <Badge
+                                            key={value}
+                                            badgeData={badge}
+                                            item={badge.item}
+                                            deactivateBadge={toggleBadge}
+                                        />
+                                    );
+                                }))
                         }
 
                     </div>
-                    
+
                 </div>
 
                 <ActivityLog />
 
                 <ActivityLogMobile />
-        </div>
+            </div>
 
             <div className="inventoryContainer">
-                
+
                 <div className="infoSection">
 
                     <div className="infoText">
                         <p className="inventoryText">Inventory</p>
                         <p className="inventoryValue">
-                        (INVENTORY VALUE:
-                        
-                        <span className="tokenValue">
-                            {inventoryValue}
-                        </span>
-                        
-                        Tokens)
+                            (INVENTORY VALUE: <span className="tokenValue"> {inventoryValue} </span> Tokens)
                         </p>
                     </div>
 
                     <FilterOptions
                         searchFilter={searchFilter}
                         typeFilter={typeFilter}
+                        searchAndSort={searchAndSort}
                     />
 
                     <FilterOptionsMobile
@@ -274,30 +353,31 @@ function Profile(props) {
                 </div>
 
                 <div className="itemsContainer">
-                    { isFetchingInventory ? 
-                        <LoadingElement/> :
-                        inventoryList.map((inventory,value) => {
-                        return (
-                        <Item
-                            key = {value}
-                            inventoryItem = {inventory}
-                            inventoryId = {inventory.id}
-                            itemId = {inventory.item.id}
-                            background = {inventory.item.rarity.backgroundColor}
-                            itemType = {inventory.item.type.name}
-                            itemIcon = {inventory.item.image}
-                            itemName = {inventory.item.name}
-                            itemValue = {inventory.item.value}
-                            itemRarity = {inventory.item.rarity.name}
-                            currentUsername = {currentUser}
-                            pageUsername = {pageUser}
-                            disenchant = {disenchantItem}
-                            badgesLength = {badges.length}
-                            activateBadge = {toggleBadge}
-                            giftItem = {giftItem}
-                        /> // Bolji destructure uradit ovde
-                        );
-                    })}
+                    {isFetchingInventory ?
+                        <LoadingElement /> :
+                        inventoryList.map((inventory, value) => {
+                            return (
+                                <Item
+                                    key={value}
+                                    inventoryItem={inventory}
+                                    inventoryId={inventory.id}
+                                    itemId={inventory.item.id}
+                                    background={inventory.item.rarity.backgroundColor}
+                                    itemType={inventory.item.type.name}
+                                    itemIcon={inventory.item.image}
+                                    itemName={inventory.item.name}
+                                    itemValue={inventory.item.value}
+                                    itemRarity={inventory.item.rarity.name}
+                                    currentUsername={currentUser}
+                                    pageUsername={pageUser}
+                                    disenchant={disenchantItem}
+                                    badgesLength={activeBadgesCount}
+                                    activateBadge={toggleBadge}
+                                    activateSkin={toggleSkin}
+                                    giftItem={giftItem}
+                                /> // Bolji destructure uradit ovde
+                            );
+                        })}
 
                 </div>
 

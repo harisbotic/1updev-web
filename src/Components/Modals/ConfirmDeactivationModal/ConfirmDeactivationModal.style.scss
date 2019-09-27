@@ -1,0 +1,24 @@
+@import "../../../Shared/variables.scss";
+
+.modalButton {
+    font-family:"Roboto";
+    border-radius: $border-radius;
+    background:$secondary-purple;
+    transition:0.5s ease;
+    text-align: center;
+    padding:10px;
+    width:50%;
+    cursor:pointer;
+    margin-top:10px;
+    width:40%;
+
+    p {
+        color:white;
+        font-weight: $bold;
+        margin:0;
+    }
+
+    &:hover {
+        background: $lighter-blue;
+    }
+}

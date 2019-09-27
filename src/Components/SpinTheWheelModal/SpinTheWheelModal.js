@@ -34,9 +34,9 @@ export function SpinTheWheelModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={() => handleShow()}>
-        Launch modal
-      </Button>
+      <div variant="primary" className="modalButton" onClick={() => handleShow()}>
+        <p>SPIN THE WHEEL</p>
+      </div>
 
       <div className="spin_the_wheel_modal" style={{ display: modalState }}>
         <div className="wheel_container">
@@ -67,10 +67,12 @@ export function SpinTheWheelModal() {
                   <p className="buttonText">CONTINUE</p>
                 </div>
               </div>
-              <p className="contentText1">You have won the <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
-                ? allSpinTheWheelItems[lastItemIndex].name : "..."}</span></p>
-              <p className="contentText2">Item value: <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
-                ? allSpinTheWheelItems[lastItemIndex].value : "..."}</span> Tokens</p>
+              <div className="content">
+                <p className="contentText1">You have won the <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
+                  ? allSpinTheWheelItems[lastItemIndex].name : "..."}</span></p>
+                <p className="contentText2">Item value: <span className="bold">{allSpinTheWheelItems && allSpinTheWheelItems.length
+                  ? allSpinTheWheelItems[lastItemIndex].value : "..."}</span> Tokens</p>
+              </div>
             </div>
           </div>
         </div>

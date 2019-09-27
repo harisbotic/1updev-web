@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import "./ActivateItemModal.style.scss";
 import jwtdecode from "jwt-decode";
+import SpinTheWheelModal from "../../SpinTheWheelModal/SpinTheWheelModal";
 
 
 const ActivateItemModal = (props) => {
@@ -9,18 +10,22 @@ const ActivateItemModal = (props) => {
 
     const [modalShow, setModalShow] = useState(false);
     const [hoveredInfoText, setHoverText] = useState("Name");
-    
+
 
     const activationRedirect = type => {
-        
-        switch(type) {
+
+        switch (type) {
             case "Badge":
-                if(props.badgesLength<3)
+                if (props.badgesLength < 3)
                     props.activateBadge(props.itemId);
+                break;
+            case "Skin":
+                console.log(props.itemName);
+                props.activateSkin(props.itemId);
         }
 
     }
-    
+
     return (
         <>
             <div className="itemButton activate" onClick={() => setModalShow(true)}>
@@ -37,9 +42,13 @@ const ActivateItemModal = (props) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <div variant="secondary" className="modalButton" onClick={() => { activationRedirect(props.itemType); setModalShow(false)}}>
-                        <p>ACCEPT</p>
-                    </div>
+                    {props.itemType != "Games" ? (
+                        <div variant="secondary" className="modalButton" onClick={() => { activationRedirect(props.itemType); setModalShow(false) }}>
+                            <p>ACCEPT</p>
+                        </div>
+                    ) : (
+                        <SpinTheWheelModal/>
+                    )}
                     <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>
                         <p>CANCEL</p>
                     </div>

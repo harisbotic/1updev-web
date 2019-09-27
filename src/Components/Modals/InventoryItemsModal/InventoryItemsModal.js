@@ -9,7 +9,7 @@ const InventoryItemModal = (props) => {
     const [itemsList, setItemsList] = useState([]);
 
     const [selectedItem, setSelectedItem] = useState({
-        background: "#79BEFF",
+        background: "linear-gradient(0deg, rgb(8, 174, 234) 0%, rgb(42, 245, 152) 100%)",
         icon: ""
     });
 

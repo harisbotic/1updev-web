@@ -64,6 +64,18 @@ const searchProfileInventory = {
     )
 };
 
+const searchAndSortInventory = {
+  get: (profileId,userInput,sort,order) =>
+    tokenRefreshHandler(
+      customAxios.get(
+        `${BASE_URL}/Inventory/sortAndSearchInventory/${profileId}/${userInput}/${sort}/${order}`,
+        {
+          headers: getHeaders()
+        }
+      )
+    )
+};
+
 const searchByQuery = {
   get: query =>
     tokenRefreshHandler(
@@ -105,6 +117,16 @@ const getInventoryValue = {
     )
 };
 
+const countActiveBadges = {
+  get: profileId => 
+  tokenRefreshHandler(
+    customAxios.get(`${BASE_URL}/Inventory/countActiveBadges/${profileId}`),
+    {
+      headers: getHeaders()
+    }
+  )
+};
+
 export default {
   profileInfo,
   editProfile,
@@ -114,7 +136,9 @@ export default {
   searchByQuery,
   toggleActivate,
   giftItem,
-  getInventoryValue
+  getInventoryValue,
+  countActiveBadges,
+  searchAndSortInventory
 };
 
 

@@ -1,11 +1,12 @@
 @import "../../Shared/variables.scss";
 
-.badge {
+.badgeHolder {
   width: 70px;
   height: 70px;
   max-width: 70px;
   max-height: 70px;
   border-radius: 15%;
+  border: 1px solid #350f4e;
   background-color: $primary-purple;
   cursor: pointer;
   position: relative;
@@ -15,6 +16,7 @@
     height: 42px;
     width: 42px;
   }
+
   .activeBadge,
   .inactiveBadge {
     height: 100%;
@@ -25,9 +27,39 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    white-space: normal;
 
     .modal-header {
       text-align: center;
+    }
+
+    .modalClick {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      border-radius: $border-radius;
+    }
+
+    img {
+      height: 42px;
+      width: 42px;
+    }
+    .activeBadge,
+    .inactiveBadge {
+      height: 100%;
+      width: 100%;
+      border-radius: 15%;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      p {
+        white-space: normal;
+      }
     }
 
     .modalClick {
@@ -90,9 +122,5 @@
     &:hover {
       background: $lighter-blue;
     }
-  }
-
-  .closeButton {
-    width: 100%;
   }
 }

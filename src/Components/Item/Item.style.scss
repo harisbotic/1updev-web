@@ -10,8 +10,8 @@
   font-size: 12px;
   max-height: 180px;
   max-width: 180px;
-  // min-height: 140px;
-  // min-width: 140px;
+  min-height: 140px;
+  min-width: 100px;
   padding: 10px;
   cursor: pointer;
   color: $white;
@@ -153,9 +153,10 @@
     }
   }
 
-  .itemCard:active {
     .hovered {
-      opacity: 1;
+        display: none;
     }
-  }
+
+    
+
 }

@@ -67,6 +67,8 @@
         position: relative;
         box-sizing: border-box;
         border-radius: 10px;
+        width: 120px;
+        height: 120px;
         max-height: 180px;
         max-width: 180px;
         min-height: 140px;
@@ -74,6 +76,7 @@
         cursor: pointer;
         padding: 10px;
         float: right;
+        box-shadow: 2px 5px 5px #888888;
 
         .noSelectedItemIcon {
           width: 25%;

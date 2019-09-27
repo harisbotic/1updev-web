@@ -1,4 +1,4 @@
-@import '../../Shared/variables.scss';
+@import "../../Shared/variables.scss";
 
 .spin_the_wheel_modal {
   display: none;
@@ -11,7 +11,8 @@
   z-index: 2;
   width: 100%;
   height: 100%;
-  background: transparent linear-gradient(to bottom, rgba(34, 15, 49, 0.95), rgba(80, 9, 132, 1), rgba(34, 15, 49, 0.95)) 0% 0% no-repeat;
+  background: transparent
+    linear-gradient(to bottom, rgba(34, 15, 49, 0.95), rgba(80, 9, 132, 1), rgba(34, 15, 49, 0.95)) 0% 0% no-repeat;
 }
 
 .wheel_container {
@@ -28,8 +29,12 @@
 }
 
 @keyframes spin {
-  from {transform: translateY(calc(50vh - 95px))}
-  to {transform: translateY(calc(-100% + (50vh + 95px)))}
+  from {
+    transform: translateY(calc(50vh - 95px));
+  }
+  to {
+    transform: translateY(calc(-100% + (50vh + 95px)));
+  }
 }
 
 .result_container {
@@ -59,8 +64,12 @@
   }
 
   @keyframes showResult {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   .wheel_result {
@@ -75,7 +84,6 @@
     animation: showResult 150ms forwards;
     animation-timing-function: ease;
     animation-delay: 8s;
-    
 
     .result_info {
       margin-left: 40vw;
@@ -114,23 +122,27 @@
         }
       }
 
-      .contentText1 {
-        color: white;
-        font-size: 18px;
-        padding-top: 2px;
-        margin-bottom: 0%;
-      }
+      .content {
+        float: left;
+        .contentText1 {
+          color: white;
+          font-size: 18px;
+          padding-top: 2px;
+          margin-bottom: 0%;
+        }
 
-      .contentText2 {
-        color: white;
-        font-size: 16px;
-        margin-bottom: 0%;
+        .contentText2 {
+          color: white;
+          font-size: 16px;
+          margin-bottom: 0%;
+          float: left;
+        }
       }
     }
   }
 }
 
-@media screen and (max-width: $mobile){
+@media screen and (max-width: $mobile) {
   .wheel_container {
     width: 100%;
     display: block;
@@ -153,5 +165,4 @@
       }
     }
   }
-  
 }

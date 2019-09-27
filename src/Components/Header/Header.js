@@ -35,13 +35,18 @@ function Header(props) {
       window.location.reload();
   }
 
+  const onLogoClickHandler = () => {
+    props.history.push(`/profile/${currentUsername}`);
+    window.location.reload();
+  }
+
 
 
   return (
     <div className="container-fluid" id="header-container">
       <div className="row" id="header">
         <div className="col header">
-          <img className="header-logo" alt="X" src={Logo} />
+          <img className="header-logo" alt="X" src={Logo} onClick={() => onLogoClickHandler()}/>
         </div>
 
         <div className="col">

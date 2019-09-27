@@ -35,6 +35,7 @@ export function Item(props) {
         itemValue,
         itemRarity,
         activateBadge,
+        activateSkin,
         badgesLength,
         giftItem,
         disenchant,
@@ -65,6 +66,7 @@ export function Item(props) {
                         itemType={itemType}
                         itemValue={itemValue}
                         activateBadge={activateBadge}
+                        activateSkin={activateSkin}
                         badgesLength = {props.badgesLength} />
 
                     <GiftItemModal
