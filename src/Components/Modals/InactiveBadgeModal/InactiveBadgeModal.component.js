@@ -50,7 +50,9 @@ export default function InactiveBadgeModal (props) {
                     This badge spot is not active yet! <br/> To activate a badge hover over it and than click activate or select one from the list below
                     
 
-                    <div className="itemsContainerModal">
+                    {itemsList.length != 0 ?
+                    (
+                        <div className="itemsContainerModal">
                     {
                         itemsList.map((inventoryItem, index) => {
                             return (
@@ -67,6 +69,13 @@ export default function InactiveBadgeModal (props) {
                         })
                     }
                     </div>
+                    ) : (
+                        <div>
+                            <hr/>
+                            <p>No items to show</p>
+                        </div>
+                    )}
+                    
                 </Modal.Body>
                 ):(
                     <p><br/>This badge spot is not active yet! <br/></p>
