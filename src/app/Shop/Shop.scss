@@ -16,7 +16,7 @@
 
   .available-tokens,
   .items-own {
-    padding-left:0px;
+    padding-left: 0px;
     display: flex;
     align-items: center;
     text-align: left;
@@ -79,65 +79,65 @@
         margin-right: 10px;
       }
 
-        .filterOptions {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-end;
-          vertical-align: middle;
-          align-items: center;
+      .filterOptions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        vertical-align: middle;
+        align-items: center;
 
-          p {
-            margin: 0;
-            margin-right: 10px;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.1px;
-            color: white !important;
+        p {
+          margin: 0;
+          margin-right: 10px;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.1px;
+          color: white !important;
 
-            i {
-              margin: 0 5px 0 5px;
-              color: white;
-              text-align: center;
-              font-size: 14px;
-            }
-          }
-          p:hover {
-            cursor: pointer;
+          i {
+            margin: 0 5px 0 5px;
             color: white;
-
-            i {
-              color: white;
-            }
+            text-align: center;
+            font-size: 14px;
           }
+        }
+        p:hover {
+          cursor: pointer;
+          color: white;
 
-          .searchBoxComponent {
-            display: grid;
-            grid-template-columns: 20% 80%;
-            align-items: center;
-            background: #898b91;
-            opacity: 0.5;
+          i {
+            color: white;
+          }
+        }
+
+        .searchBoxComponent {
+          display: grid;
+          grid-template-columns: 20% 80%;
+          align-items: center;
+          background: #898b91;
+          opacity: 0.5;
+          border-radius: 40px;
+
+          .searchBox {
+            margin: 0;
+            border: 0;
             border-radius: 40px;
-
-            .searchBox {
-              margin: 0;
-              border: 0;
-              border-radius: 40px;
-              background: #898b91;
-            }
-
-            .searchBox::placeholder {
-              font-family: "Roboto";
-              color: white;
-              font-size: 14px;
-              vertical-align: middle;
-            }
-
-            i {
-              color: white;
-              text-align: center;
-              font-size: 14px;
-            }
+            background: #898b91;
           }
+
+          .searchBox::placeholder {
+            font-family: "Roboto";
+            color: white;
+            font-size: 14px;
+            vertical-align: middle;
+          }
+
+          i {
+            color: white;
+            text-align: center;
+            font-size: 14px;
+          }
+        }
       }
     }
 
@@ -145,17 +145,19 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
-      padding: 10px;
-      margin: -10px; 
+      padding: 30px;
+      margin: -10px;
 
       #add {
-        max-height: 180px;
-        max-width: 180px;
-        min-height: 160px;
-        min-width: 160px;
-        margin: 5px;
+        height: 180px;
+        width: 160px;
+        // max-height: 180px;
+        // max-width: 180px;
+        // min-height: 160px;
+        // min-width: 160px;
+        margin: 20px;
         border: white solid 6px;
         border-radius: 10px;
         display: flex;
@@ -177,9 +179,17 @@
       display: none;
     }
   }
-  .no-padding{
-    padding-left:0px;
-    padding-right:0px;
+  .no-padding {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  @media screen and(max-width: 1024px){
+    .shopContainer{
+      .itemsContainer{
+        padding: 10px;
+      }
+    }
   }
 
   @media only screen and(max-width: $tablets) {
@@ -227,26 +237,25 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .shop{
-    .shopContainer{
-      .shopText{
+  .shop {
+    .shopContainer {
+      .shopText {
         text-align: center;
       }
-      .infoSection{
+      .infoSection {
         flex-direction: column;
       }
       .filterOptionsDesktop {
         display: none;
       }
-    
+
       .filterOptionsMobile {
         display: block;
       }
     }
   }
-  
-  
-  .shop{
+
+  .shop {
     .available-tokens,
     .items-own {
       p {
@@ -254,11 +263,11 @@
       }
     }
     .token-count,
-  .own-count {
-    font-size: 12px;
+    .own-count {
+      font-size: 12px;
+    }
   }
-  }
-  
+
   .token-count,
   .own-count {
     font-size: 12px;
@@ -278,9 +287,17 @@
   }
 }
 @media only screen and (max-width: 480px) {
-  .shop{
-    .items-own{
-      padding-left:15px;
+  .shop {
+    .items-own {
+      padding-left: 15px;
+    }
+
+    .shopContainer{
+      .itemsContainer{
+        #add {
+          margin: 5px;
+        }
+      }
     }
   }
 }

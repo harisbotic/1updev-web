@@ -1,75 +1,79 @@
-@import '../../Shared/variables.scss'; 
-.skin-text{
-        text-align: left;
-        font-size:16px;
-        font-family:'Roboto';
-        font-weight: bold;
-        letter-spacing: 0.36px;
-        color:white;
-        opacity: 1;
-        margin-bottom:0px;
+@import "../../Shared/variables.scss";
+.skin-text {
+  text-align: left;
+  font-size: 16px;
+  font-family: "Roboto";
+  font-weight: bold;
+  letter-spacing: 0.36px;
+  color: white;
+  opacity: 1;
+  margin-bottom: 0px;
 }
 
-.skin-container{
-        display:flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 85px;
-        height: 85px;
-        background:white; 
-        border-radius: 18px;
-        opacity: 1;
+.skin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85px;
+  height: 85px;
+  background: transparent;
+  border: white solid 10px;
+  border-radius: 18px;
+  opacity: 1;
+
+  img {
+    align-self: center;
+    height: 68px;
+    width: 68px;
+    border-radius: 18px; 
+  }
 }
-img{
-            align-self: center;
-            height: 64px;
-            width: 64px;
-}
-.skin1{
-        width: 72px;
-        height: 72px;
-        background: #2B0D41 0% 0% no-repeat padding-box;
-        border-radius: 18px;
-        opacity: 1;
+
+.skin1 {
+  width: 72px;
+  height: 72px;
+  background: #2b0d41 0% 0% no-repeat padding-box;
+  border-radius: 18px;
+  opacity: 1;
 }
 /* 768 */
 @media only screen and (max-width: 768px) {
-        .skin-text{
-                font: Bold 20px/39px Roboto;
-        }
-        .skin-container{
-                width:75px;
-                height:75px;
-                border-radius:6px;
-        }
-        .skin1{
-                width:65px;
-                height:65px;
-                border-radius:6px;
-        }
-        img{
-                width: 62px;
-                height:62px;
-        }
+  .skin-text {
+    font: Bold 20px/39px Roboto;
+  }
+  .skin-container {
+    width: 75px;
+    height: 75px;
+    border-radius: 6px;
+  }
+  .skin1 {
+    width: 65px;
+    height: 65px;
+    border-radius: 6px;
+  }
+  img {
+    width: 62px;
+    height: 62px;
+  }
 }
-@media only screen and (max-width: $mobile ) {
-        .skin-text{
-                font: Bold;
-                font-size:14px;
-                font-family: 'Roboto';
-        }
-        .skin-container{
-                width:55px;
-                height:55px;
-                border-radius:6px;
-        }
-        .skin1{
-                width:47px;
-                height:47px;
-                border-radius:6px;
-        }
-        img{
-                width:47px;
-                height:47px;
-        }
+@media only screen and (max-width: $mobile) {
+  .skin-text {
+    font: Bold;
+    font-size: 14px;
+    font-family: "Roboto";
+  }
+  .skin-container {
+    width: 55px;
+    height: 55px;
+    border-radius: 6px;
+  }
+  .skin1 {
+    width: 47px;
+    height: 47px;
+    border-radius: 6px;
+  }
+  img {
+    width: 47px;
+    height: 47px;
+  }
 }
