@@ -1,113 +1,173 @@
 @import "../../Shared/variables.scss";
+@import "../../Components/ActivityLog/ActivityLog.style.scss";
 
+
+.wrapper{
 .container {
-     background-color: #461864;
+     margin: 0 auto;
      max-width: 100%;
      height: 100vh;
+     display: flex;
+
 }
 
 .upper {
      max-width: 100%;
      height: 200px;
+}
 
+.wholeTable {
+    background-color: transparentize(white, 0.8);
+    border-radius: 25px;
+    width: 100%;
+    height: 340px;
+    color: white;
+    width: 100%;
+}
 
-  .wholeTable {
-      background-color: transparentize(white, 0.8);
-      border-radius: 25px;
-      width: 100%;
-      height: 340px;
-      color: white;
+.title {
+  font-family: "Roboto";
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50px;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: Roboto;
+  font-size: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding-top: 14px;
+  width: 100%;
+}
+
+.username {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  width: 100%;
+  padding: 0px;
+  margin-left: -6px;
+}
+
+.usernameTitle {
+  margin-left: -29px;
+  padding-left: 24px;
+  word-break: break-all;
+}
+
+.specialTitle {
+  padding-left: 37px;
+}
+
+.data_rows {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  padding-top: 5px;
+  position: relative;
+  height: 45px;
+}
+
+.data {
+  margin-top: 20px;
+  overflow-y: scroll;
+  height: 68%;
+  width: 102.5%;
+}
+
+.data::-webkit-scrollbar {
+  width: 10px;
+  border: 0.5px solid $white;
+  border-radius: 10px;
+}
+
+.data::-webkit-scrollbar-thumb {
+  background-color: $white;
+  border-radius: 10px;
+}
+
+.value {
+  padding-left: 8px;
+}
+
+.valueOfInventory {
+  padding-left: 35px;
+}
+
+.badges img {
+  width: 21px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.ttl {
+  padding-left: 26px;
+}
+
+.orderNumber {
+  text-align: center;
+  padding-left: 7px;
+}
+
+.badges {
+  display: flex;
+  //text-align: left;
+  padding-left: 50px;
+}
+
+.badgesIcon {
+  padding-left: 60px;
+}
+
+.picture img {
+  margin-left: -20px;
+  max-height: 35px;
+  position: relative;
+  top: -10px;
+}
+
+// MOJ CSS
+
+ // background: url('../../Assets/Group\ 1444.png');
+  padding: 12% 0 0 15%; 
+  .profileDisplayComponent {
+
+    padding-bottom: 2%;
+    margin-left: 12.5%;
+
+    
   }
 
-  .title {
-    font-family: "Roboto";
-    font-size: 18px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 50px;
-    padding-top: 20px;
-    text-align: center;
+  background: url('../../Assets/Group1444.png');
+}
+
+
+.profileInfo {
+  color: white;
+  //padding: 3% 10% 0 10%;
+  font-family: "Roboto";
+  margin-right: 15%;
+  width: 100%;
+  //margin-left: -12.5%;
+
+
+  p {
+    margin-bottom: 5px;
   }
 
-  .subtitle {
-    font-family: Roboto;
-    font-size: 14px;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    //justify-content: space-between;
-    text-align: center;
-    padding-top: 20px;
-    //margin-left: -30px;
-  }
+}
+.profilePicture {
+  margin-left: -30%;
+}
 
-  .username {
-    margin-left: -20px;
-    word-break: break-all;
-  }
 
-  .usernameTitle {
-    margin-left: -20px;
-    word-break: break-all;
-  }
-
-  .specialTitle {
-    padding-left: 8%;
-  }
-
-  .data_rows {
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-  }
-
-  .data {
-    margin-top: 25px;
-    overflow-y: scroll;
-    height: 224px;
-    width: 623px;
-  }
-
-  .data::-webkit-scrollbar {
-    width: 10px;
-    border: 0.5px solid $white;
-    border-radius: 10px;
-  }
-
-  .data::-webkit-scrollbar-thumb {
-    background-color: $white;
-    border-radius: 10px;
-  }
-
-  .value {
-    padding-left: 6%;
-  }
-
-  .valueOfInventory {
-    padding-left: 6%;
-  }
-
-  .badges img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .ttl {
-    padding-left: 55px;
-  }
-
-  .badges {
-    text-align: left;
-    padding-left: 80px;
-  }
-
-  .badgesIcon {
-    padding-left: 60px;
-  }
-
-  .picture img {
-    margin-left: -25px;
-    max-height: 45px;
-  }
+@media screen and (max-width: 520px) {
+  
 }

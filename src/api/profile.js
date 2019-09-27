@@ -127,6 +127,28 @@ const countActiveBadges = {
   )
 };
 
+const getActiveBadges = {
+  get: profileId => 
+  tokenRefreshHandler(
+    customAxios.get(`${BASE_URL}/Inventory/getActiveBadges/${profileId}`),
+    {
+      headers: getHeaders()
+    }
+  )
+};
+
+const getInactiveBadges = {
+  get: profileId => 
+  tokenRefreshHandler(
+    customAxios.get(`${BASE_URL}/Inventory/getInactiveBadges/${profileId}`),
+    {
+      headers: getHeaders()
+    }
+  )
+};
+
+
+
 export default {
   profileInfo,
   editProfile,
@@ -138,7 +160,9 @@ export default {
   giftItem,
   getInventoryValue,
   countActiveBadges,
-  searchAndSortInventory
+  searchAndSortInventory,
+  getInactiveBadges,
+  getActiveBadges
 };
 
 

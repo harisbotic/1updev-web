@@ -5,7 +5,7 @@ import { shop } from '../../api/index';
 import './SpinTheWheelModal.scss';
 import { SpinTheWheelItem } from '../SpinTheWheelItem/SpinTheWheelItem';
 
-export function SpinTheWheelModal() {
+export function SpinTheWheelModal(props) {
 
   const [modalState, setModalState] = useState("none");
   const [wheelItems, setWheelItems] = useState({
@@ -34,7 +34,7 @@ export function SpinTheWheelModal() {
 
   return (
     <>
-      <div variant="primary" className="modalButton" onClick={() => handleShow()}>
+      <div variant="primary" className="modalButton" onClick={() => {handleShow();}}>
         <p>SPIN THE WHEEL</p>
       </div>
 
@@ -63,7 +63,7 @@ export function SpinTheWheelModal() {
             <div className="result_info">
               <div className="header">
                 <p className="headerText">Congratulations!</p>
-                <div className="continueButton" onClick={() => handleClose()}>
+                <div className="continueButton" onClick={() => {handleClose(); props.setModalShow(false)}}>
                   <p className="buttonText">CONTINUE</p>
                 </div>
               </div>

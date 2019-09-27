@@ -28,7 +28,7 @@ function Profile(props) {
 
     const [badges, setBadges] = useState([]);
     const [stateChanged, rerenderDOM] = useState(false);
-    const [activeBadgesCount, changeActiveBadgesCount] = useState();
+    const [activeBadgesCount, setActiveBadgesCount] = useState();
     const [activeBadges, setActiveBadges] = useState([]);
     const [activeSkin, setActiveSkin] = useState("https://www.technocrazed.com/wp-content/uploads/2015/12/HD-purple-wallpaper-image-to-use-as-background-111.jpg");
     const [activeSkinObj, setActiveSkinObj] = useState({});
@@ -49,38 +49,48 @@ function Profile(props) {
     const routeParams = props.history.location.pathname.split("/");
     const pageUser = routeParams[2];
 
-
     useEffect(() => {
 
         const fetchData = async () => {
-
-            const profileInfoResponse = await profile.profileInfo.get(pageUser);
-
+            
             setIsFetchingInv(true)
+
+            const profileInfoResponse = await profile.profileInfo.get(
+                pageUser
+            );
+            
+            setProfileInfo(profileInfoResponse.data);
 
             const fetchProfileInventory = await profile.fetchProfileInventory.get(
                 profileInfoResponse.data.id
             );
+            
 
-            const fetchActiveBadgesCount = await profile.countActiveBadges.get(
+            const fetchActiveBadges = await profile.getActiveBadges.get(
                 profileInfoResponse.data.id
             );
 
-            const fetchInventoryValueResponse = await profile.getInventoryValue.get(profileInfoResponse.data.id);
+            setActiveBadges(fetchActiveBadges.data);
 
-            changeActiveBadgesCount(fetchActiveBadgesCount.data);
-
-            setProfileInfo(profileInfoResponse.data);
-
-            setInventoryList(fetchProfileInventory.data
-                .filter(inventory => !inventory.isActive))
-
-            setActiveBadges(
-                fetchProfileInventory.data.filter(
-                    inventory =>
-                        inventory.isActive && inventory.item.type.name === "Badge"
-                )
+            const getActiveBadgesCount = await profile.countActiveBadges.get(
+                profileInfoResponse.data.id
             );
+
+            setActiveBadgesCount(getActiveBadgesCount.data);
+            
+
+            const fetchInventoryValueResponse = await profile.getInventoryValue.get(
+                profileInfoResponse.data.id
+            );
+
+            setInventoryValue(fetchInventoryValueResponse.data);
+
+            // setActiveBadges(
+            //     fetchProfileInventory.data.filter(
+            //         inventory =>
+            //             inventory.isActive && inventory.item.type.name === "Badge"
+            //     )
+            // );
 
             const fetchedSkin = fetchProfileInventory.data.filter(
                 inventory =>
@@ -88,6 +98,10 @@ function Profile(props) {
             );
 
             setInventoryValue(fetchInventoryValueResponse.data);
+        
+            setInventoryList(fetchProfileInventory.data
+                .filter(inventory => !inventory.isActive))   
+
 
             const fetchAvailableTokens = await tokenTransactions.fetchTokenValue.get(profileInfoResponse.data.username);
 
@@ -107,8 +121,7 @@ function Profile(props) {
             setIsFetchingInv(false)
         }
 
-        fetchData();
-        fillEmptyBadges();
+        fetchData();       
 
     }, [stateChanged]);
 
@@ -276,13 +289,11 @@ function Profile(props) {
                         </div>
 
                     ) : (
-                            <div className="editProfileButton">
-                                <GiftItemModal
-                                    giftToUser={pageUser}
-                                    giftItem={giftItem} />
-                            </div>
-                        )}
-
+                        <div className="editProfileButton">
+                            <GiftItemModal giftItem={giftItem} />
+                        </div>
+                    )}
+                    
 
                     <h1 className="username">{profileInfo.username}</h1>
 
@@ -304,19 +315,20 @@ function Profile(props) {
 
                     <div className="badges">
                         {fillEmptyBadges()}
-                        {isFetchingInventory ?
-                            <div></div>
-                            : (
-                                activeBadges.map((badge, value) => {
-                                    return (
-                                        <Badge
-                                            key={value}
-                                            badgeData={badge}
-                                            item={badge.item}
-                                            deactivateBadge={toggleBadge}
-                                        />
-                                    );
-                                }))
+                        { isFetchingInventory ? <div></div>
+                            :(
+                            activeBadges.map((badge,value) => {
+                                return (
+                                    <Badge
+                                        key = {value}
+                                        badgeData = {badge}
+                                        item = {badge.item}
+                                        routeParams={pageUser}
+                                        toggleBadge = {toggleBadge}
+                                        username = {profileInfo.username}
+                                    />
+                                );
+                            }))
                         }
 
                     </div>
@@ -386,7 +398,6 @@ function Profile(props) {
         </div>
 
     );
-
 }
 
 export default withRouter(Profile);

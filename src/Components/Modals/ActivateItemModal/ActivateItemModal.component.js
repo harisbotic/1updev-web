@@ -20,7 +20,6 @@ const ActivateItemModal = (props) => {
                     props.activateBadge(props.itemId);
                 break;
             case "Skin":
-                console.log(props.itemName);
                 props.activateSkin(props.itemId);
         }
 
@@ -47,7 +46,7 @@ const ActivateItemModal = (props) => {
                             <p>ACCEPT</p>
                         </div>
                     ) : (
-                        <SpinTheWheelModal/>
+                        <SpinTheWheelModal setModalShow={setModalShow}/>
                     )}
                     <div variant="primary" className="modalButton" onClick={() => setModalShow(false)}>
                         <p>CANCEL</p>
