@@ -1,3 +1,4 @@
+@import "../../Shared/variables.scss";
 .confirmation-text{
     font-size:25px;
      margin-top:40px;
@@ -14,19 +15,57 @@
    
 }
 .btn-primary{
-    
+    border-color:#712EBD;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    // color: #fff;
+  //  background-color: #00b3db;
+  background: #712EBD 0% 0% no-repeat padding-box;
+     border-color: #712EBD; /*set the color you want here*/
+  
 }
 .yes-button{
     border-radius:40px;
     width:100px;
     background: #712EBD 0% 0% no-repeat padding-box;
-    
 }
+    
+
 .no-button{
     border-radius:40px;
     width:100px;
+    // margin-left:10px;
     //  text-align:center;
     // border: 2px solid #712EBD;
     // background-color:white;
     background: #712EBD 0% 0% no-repeat padding-box;
 }
+.shopItemButton {
+    // margin-top:20px;
+    display:table;
+    border-radius: $border-radius;
+    background:$white;
+    border:2px solid $white;
+    padding:4px;
+    width: 80%;
+    text-align: center;
+    transition: 0.5s ease;
+
+    p {
+        display:table-cell;
+        color:$lighter-blue;
+        font-weight: $bold;
+        margin:0;
+        font-size:12px;
+        text-transform: uppercase;
+    }
+
+    &:hover {
+        background:transparent;
+
+        p {
+            color:$white;
+        }
+    }
+}
+

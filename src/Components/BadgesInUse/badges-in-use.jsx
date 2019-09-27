@@ -1,41 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import {shop} from '../../api/index';
 
 import "./badges-in-use.styles.scss";
 
 function BadgesInUse() {
-  const badges = [
-    {
-      name: "badge1",
-      type: "badge",
-      id: 1,
-      icon: "fas fa-medal"
-    },
-    {
-      name: "badge2",
-      type: "badge",
-      id: 2,
-      icon: "fas fa-award"
-    },
-    {
-      name: "badge3",
-      type: "badge",
-      id: 3,
-      icon: "fas fa-trophy"
-    }
-  ];
 
-  const [badgesInUse, setBadgesInUse] = useState(badges);
+   const [activeBadges, setBadges] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      const fetchBadges = await shop.fetchBadges.get();
+        setBadges(fetchBadges.data);
+    }
+
+    fetchData();
+   
+  }, []);
+
 
   return (
     <div className="badges-parent-div">
+
       <div className="badge-text">Badges in use:</div>
       <div className="badges-in-use-container">
-        {badgesInUse.map(badge => {
-          return (
+        { activeBadges.map(badge => {
+           return (
             <div className="badge-container col-4">
-              <i className={badge.icon}></i>
+              <img src={badge.badgeImage}></img>
             </div>
-          );
+           );
         })}
       </div>
     </div>

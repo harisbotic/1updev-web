@@ -47,7 +47,7 @@ export function SpinTheWheelModal(props) {
                   key={index}
                   id={item.id}
                   background={item.rarity.background}
-                  itemIcon={item.icon}
+                  itemIcon={item.image}
                   itemType={item.type.name}
                   itemName={item.name}
                   itemValue={item.value}

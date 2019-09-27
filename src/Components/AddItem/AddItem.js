@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import { shop } from "../../api/index";
 
 import "./AddItem.scss";
 
-function AddItem() {
+function AddItem(props) {
 
-  const [modalShowState, setModalShowState] = useState("none");
   const [itemTypesAndRarities, setItemTypesAndRarities] = useState({
     allItemTypes: [],
     allItemRarities: []
@@ -22,12 +20,6 @@ function AddItem() {
     rarityId: 0
   });
 
-  // const [modalItemRarities, setModalItemRarities] = useState({
-  // });
-
-  const handleClose = () => setModalShowState("none");
-  const handleShow = () => setModalShowState("block");
-
   useEffect(() => {
     const fetchData = async () => {
 
@@ -39,8 +31,16 @@ function AddItem() {
         allItemRarities: itemRaritiesResponse.data
       });
 
-      console.log(itemTypesResponse.data);
-      console.log(itemRaritiesResponse.data);
+      setAddItem({
+        image: "",
+        name: "",
+        price: 0,
+        quantity: 0,
+        value: 0,
+        typeId: itemTypesResponse.data[0].id,
+        rarityId: itemRaritiesResponse.data[0].id
+      })
+
     };
 
     fetchData();
@@ -57,8 +57,6 @@ function AddItem() {
     price,
     value,
     quantity,
-    typeId,
-    rarityId
   } = addItem;
 
 
@@ -77,67 +75,63 @@ function AddItem() {
       ...addItem,
       [event.target.name]: event.target.value
     }));
-    console.log(addItem);
   }
 
-
-  const submitForm = async event => {
-    event.preventDefault();
-
-    await shop.addShopItem.post(addItem);
-
-    handleClose();
-  }
- 
-return (
-  <div className="addItem">
-    <i className="fas fa-plus" onClick = {() => handleShow()}></i>
-    <div className="addItemModal" style={{ display: modalShowState }}>
-      <form className="addItemForm" onSubmit={(e) => { submitForm(e); }}>
-        <div className="addItemFormLeft">
-          <label>Add image:
-              <input type="text" name="image" value={image}
-              onChange={(e) => { handleChange(e) }} />
-          </label>
-        </div>
-        <div className="addItemFormRight">
-          <div className="formText">
-            <label>Item name:
+  return (
+    <>
+      <div className="addItem" style={{ display: props.modalShow }}>
+        <div className="addItemModal">
+          <form className="addItemForm" id="addItemForm" onSubmit={(e) => {
+            props.submitAddForm(e, addItem); props.modalClose("none"); setAddItem({
+              image: "", name: "", price: 0, quantity: 0, value: 0, typeId: 0, rarityId: 0
+            })
+          }}>
+            <div className="addItemFormLeft">
+              <label>
+                <div className="addImage"><p>Add Image</p>
+                  <input type="text" name="image" value={image}
+                    onChange={(e) => { handleChange(e) }} />
+                </div>
+              </label>
+            </div>
+            <div className="addItemFormRight">
+              <div className="formText">
+                <label>Item name:
                 <input type="text" name="name" value={name}
-                onChange={(e) => { handleChange(e) }}
-                required />
-            </label><br />
-            <label>Item price:
+                    onChange={(e) => { handleChange(e) }}
+                  />
+                </label><br />
+                <label>Item price:
                 <input type="number" name="price" value={price}
-                onChange={(e) => { handleChange(e) }}
-                required />
-            </label><br />
-            <label>Disenchant value:
+                    onChange={(e) => { handleChange(e) }}
+                  />
+                </label><br />
+                <label>Disenchant value:
                 <input type="number" name="value" value={value}
-                onChange={(e) => { handleChange(e) }}
-                required
-              />
-            </label><br />
-            <label>Quantity:
+                    onChange={(e) => { handleChange(e) }}
+                  />
+                </label><br />
+                <label>Quantity:
                 <input type="number" name="quantity" value={quantity}
-                onChange={(e) => { handleChange(e) }}
-                required />
-            </label><br />
-            <label>Item type:
+                    onChange={(e) => { handleChange(e) }}
+                  />
+                </label><br />
+                <label>Item type:
                 <select name="typeId" onChange={(e) => { handleChange(e) }}>{typeOptions}</select>
-            </label><br />
-            <label>Item rarity:
-                <select name="rarityId" onChange={(e) => { handleChange(e) }} required>{rarityOptions}</select>
-            </label>
-          </div>
-          <div className="formButtons">
-            <button type="submit" className="addItemFormButton"><p>ADD</p></button>
-            <button className="addItemFormButton" onClick={() => handleClose()}><p>CANCEL</p></button>
-          </div>
+                </label><br />
+                <label>Item rarity:
+                <select name="rarityId" onChange={(e) => { handleChange(e) }}>{rarityOptions}</select>
+                </label>
+              </div>
+              <div className="formButtons">
+                <button type="submit" form="addItemForm" className="addItemFormButton"><p>ADD</p></button>
+                <button onClick={() => props.modalClose("none")} className="cancelFormButton"><p>CANCEL</p></button>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-  </div>
-);
+      </div>
+    </>
+  );
 }
 export default AddItem;
